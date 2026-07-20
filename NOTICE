@@ -1,0 +1,11 @@
+New Drug Reimbursement Game
+Copyright 2026 the contributors.
+
+This is an independent clean-room implementation inspired by concepts and
+published equations in Brita A. K. Pekarsky (2015), The New Drug Reimbursement
+Game, Springer, DOI 10.1007/978-3-319-08903-4. The book itself is not included.
+
+UOGTO ontology terms are referenced under UOGTO's stated CC-BY-4.0 licensing
+for ontology/documentation. Software integrations remain subject to the
+licences of their respective repositories. See ecosystem.lock.toml and
+DEPENDENCY_MIGRATION_PLAN.md.

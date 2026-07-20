@@ -1,0 +1,10 @@
+PREFIX ndrg: <https://w3id.org/uogto/packs/new-drug-reimbursement#>
+PREFIX uogto: <https://w3id.org/uogto/core#>
+
+# Which reimbursement games have at least a firm and an institution?
+SELECT ?game (COUNT(?player) AS ?players)
+WHERE {
+  ?game a ndrg:NewDrugReimbursementGame ; uogto:hasPlayer ?player .
+}
+GROUP BY ?game
+HAVING (COUNT(?player) >= 2)

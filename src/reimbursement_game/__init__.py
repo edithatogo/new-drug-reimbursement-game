@@ -1,0 +1,26 @@
+"""New-drug reimbursement game application package."""
+
+from .economics import (
+    EconomicContext,
+    OpportunitySet,
+    ReimbursementEvaluation,
+    ReimbursementInputs,
+    evaluate_reimbursement,
+    health_shadow_price,
+    incremental_price_effectiveness_ratio,
+)
+from .chapter8 import Chapter8Equilibrium, solve_revealed_threshold_game
+
+__all__ = [
+    "Chapter8Equilibrium",
+    "EconomicContext",
+    "OpportunitySet",
+    "ReimbursementEvaluation",
+    "ReimbursementInputs",
+    "evaluate_reimbursement",
+    "health_shadow_price",
+    "incremental_price_effectiveness_ratio",
+    "solve_revealed_threshold_game",
+]
+
+__version__ = "0.3.0"

@@ -1,0 +1,17 @@
+schema_version: 1
+scope_policy: edithatogo-only
+repositories:
+  - id: edithatogo/reimbursement-atlas
+    type: dataset
+    mode: reviewed-derived-export
+    revision: pin-before-consumption
+    licence_gate: required
+    human_review_gate: required
+  - id: edithatogo/reimbursement-atlas
+    type: space
+    mode: read-only-link
+    revision: not-an-input
+prohibited:
+  - third-party model dependency
+  - third-party dataset dependency
+  - automatic approval of model-extracted evidence

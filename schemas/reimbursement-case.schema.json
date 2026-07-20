@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edithatogo.github.io/new-drug-reimbursement-game/schema/reimbursement-case.json",
+  "title": "New drug reimbursement case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "context",
+    "incremental_cost",
+    "incremental_health_effect",
+    "opportunities"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "enum": [
+        "fixed",
+        "expandable"
+      ]
+    },
+    "incremental_cost": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "incremental_health_effect": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "opportunities": {
+      "type": "object",
+      "properties": {
+        "expansion_icer": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "contraction_icer": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "displacement_icer": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "additional_alternatives": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

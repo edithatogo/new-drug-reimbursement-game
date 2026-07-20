@@ -1,0 +1,47 @@
+schema_version = 1
+generated_at = "2026-07-20"
+policy = "ecosystem-first"
+
+[[component]]
+name = "UOGTO"
+repository = "https://github.com/edithatogo/UOGTO"
+revision = "849386068399a764ad5304cc8a0ffe53094b091c"
+role = "authoritative game-theory semantics, SHACL and JSON-LD contexts"
+license = "Ontology/docs CC-BY-4.0; code/tooling MIT (verify at integration time)"
+integration = "IRI imports, application extension, conformance fixtures"
+
+[[component]]
+name = "Kairos"
+repository = "https://github.com/edithatogo/kairos"
+revision = "fae901558f07b7b717a676adbafbe2cdc78dea1c"
+role = "authoritative deterministic time, events, ECS, DES and ABM runtime"
+license = "Apache-2.0"
+integration = "adapter contract; no duplicated scheduler"
+
+[[component]]
+name = "Voiage"
+repository = "https://github.com/edithatogo/voiage"
+revision = "6141cc49a9ad41161756677840d6a61b25fd386a"
+role = "authoritative VOI and decision-uncertainty capability"
+license = "REVIEW_REQUIRED: README reports MIT while package metadata has historically contained an Apache classifier"
+integration = "optional Python adapter, then shared Rust contract"
+
+[[component]]
+name = "Reimbursement Atlas"
+repository = "https://github.com/edithatogo/reimbursement-atlas"
+revision = "c73d34dacae2f907a0eac399da8e6f43ce8d00ca"
+role = "authoritative reviewed reimbursement evidence and provenance layer"
+license = "Apache-2.0 for software; source-specific data licences retained"
+integration = "local reviewed derived export; no raw-source copying"
+
+[[hugging_face_repo]]
+id = "edithatogo/reimbursement-atlas"
+type = "dataset"
+role = "reviewed/derived reimbursement evidence publication surface"
+license_review = "REQUIRED: Hub metadata and dataset card must agree before automated consumption"
+
+[[hugging_face_repo]]
+id = "edithatogo/reimbursement-atlas"
+type = "space"
+role = "human-facing atlas exploration surface"
+license_review = "not a model input; read-only linking only"

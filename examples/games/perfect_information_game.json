@@ -1,0 +1,34 @@
+{
+  "schema": "uogto-game-conformance-v0",
+  "root": "institution_decision",
+  "nodes": {
+    "institution_decision": {
+      "kind": "decision",
+      "player": "institution",
+      "edges": [
+        {
+          "action": "reimburse",
+          "target": "reimbursed"
+        },
+        {
+          "action": "reject",
+          "target": "rejected"
+        }
+      ]
+    },
+    "reimbursed": {
+      "kind": "terminal",
+      "payoffs": {
+        "institution": 1.0,
+        "firm": 2.0
+      }
+    },
+    "rejected": {
+      "kind": "terminal",
+      "payoffs": {
+        "institution": 0.0,
+        "firm": 0.0
+      }
+    }
+  }
+}

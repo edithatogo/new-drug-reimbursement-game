@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/uogto-game-core",
+  "crates/uogto-game-solve",
+  "crates/new-drug-reimbursement-game",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+rust-version = "1.75"
+repository = "https://github.com/edithatogo/new-drug-reimbursement-game"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"

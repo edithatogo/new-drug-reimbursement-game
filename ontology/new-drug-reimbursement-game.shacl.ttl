@@ -1,0 +1,11 @@
+@prefix ndrg: <https://w3id.org/uogto/packs/new-drug-reimbursement#> .
+@prefix uogto: <https://w3id.org/uogto/core#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ndrg:NewDrugReimbursementGameShape a sh:NodeShape ;
+    sh:targetClass ndrg:NewDrugReimbursementGame ;
+    sh:property [ sh:path uogto:hasPlayer ; sh:minCount 2 ] ;
+    sh:property [ sh:path ndrg:incrementalCost ; sh:minCount 1 ; sh:datatype xsd:double ; sh:minExclusive 0 ] ;
+    sh:property [ sh:path ndrg:incrementalHealthEffect ; sh:minCount 1 ; sh:datatype xsd:double ; sh:minExclusive 0 ] ;
+    sh:property [ sh:path ndrg:economicContext ; sh:minCount 1 ; sh:in ("fixed" "expandable") ] .

@@ -1,0 +1,15 @@
+{
+  "case_id": "synthetic-ch8-001",
+  "name": "Synthetic fixed-budget Chapter 8 case",
+  "context": "fixed",
+  "incremental_cost": 250000.0,
+  "incremental_health_effect": 10.0,
+  "marginal_cost_per_health_effect": 5000.0,
+  "opportunities": {
+    "expansion_icer": 20000.0,
+    "contraction_icer": 60000.0,
+    "displacement_icer": 40000.0,
+    "additional_alternatives": []
+  },
+  "data_status": "synthetic"
+}

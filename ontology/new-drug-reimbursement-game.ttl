@@ -1,0 +1,53 @@
+@prefix ndrg: <https://w3id.org/uogto/packs/new-drug-reimbursement#> .
+@prefix uogto: <https://w3id.org/uogto/core#> .
+@prefix hta: <https://w3id.org/uogto/packs/hta#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://w3id.org/uogto/packs/new-drug-reimbursement> a owl:Ontology ;
+    rdfs:label "UOGTO applied pack — New Drug Reimbursement Game"@en ;
+    dcterms:source <https://doi.org/10.1007/978-3-319-08903-4> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:imports <https://w3id.org/uogto/packs/hta> .
+
+ndrg:NewDrugReimbursementGame a owl:Class ;
+    rdfs:subClassOf hta:TechnologyAppraisalGame ;
+    rdfs:label "New-drug reimbursement game"@en ;
+    skos:definition "A technology-appraisal game in which price, adoption, financing, displacement and alternative health-producing uses of resources are explicit."@en .
+
+ndrg:FirmRole a owl:Class ; rdfs:subClassOf uogto:Role ; rdfs:label "Firm role"@en .
+ndrg:ReimbursingInstitutionRole a owl:Class ; rdfs:subClassOf uogto:Role ; rdfs:label "Reimbursing institution role"@en .
+ndrg:CapitalMarketRole a owl:Class ; rdfs:subClassOf uogto:Role ; rdfs:label "Capital market role"@en .
+
+ndrg:SetOfferPrice a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Set offer price"@en .
+ndrg:Reimburse a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Reimburse"@en .
+ndrg:Reject a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Reject"@en .
+ndrg:DisplaceProgramme a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Displace programme"@en .
+ndrg:ReallocateResources a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Reallocate resources"@en .
+ndrg:InvestInResearchAndDevelopment a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Invest in R&D"@en .
+ndrg:BorrowResearchCapital a owl:Class ; rdfs:subClassOf uogto:Action ; rdfs:label "Borrow R&D capital"@en .
+
+ndrg:HealthShadowPriceRule a owl:Class ; rdfs:subClassOf hta:AppraisalThreshold ; rdfs:label "Health shadow price rule"@en .
+ndrg:BudgetConstraintRule a owl:Class ; rdfs:subClassOf uogto:Rule ; rdfs:label "Budget constraint rule"@en .
+ndrg:IndifferenceReimbursementRule a owl:Class ; rdfs:subClassOf uogto:Rule ; rdfs:label "Reimburse on indifference rule"@en .
+ndrg:ContractAboveShadowPriceRule a owl:Class ; rdfs:subClassOf uogto:Rule ; rdfs:label "Contract required above shadow price rule"@en .
+
+ndrg:PopulationHealthOutcome a owl:Class ; rdfs:subClassOf uogto:Outcome ; rdfs:label "Population health outcome"@en .
+ndrg:PopulationHealthPayoff a owl:Class ; rdfs:subClassOf uogto:Payoff ; rdfs:label "Population health payoff"@en .
+ndrg:FirmEconomicRent a owl:Class ; rdfs:subClassOf uogto:Payoff ; rdfs:label "Firm economic rent"@en .
+ndrg:ForegoneAlternativeHealth a owl:Class ; rdfs:subClassOf uogto:Payoff ; rdfs:label "Foregone alternative health"@en .
+
+ndrg:incrementalCost a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "incremental cost"@en .
+ndrg:incrementalHealthEffect a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "incremental health effect"@en .
+ndrg:incrementalPriceEffectivenessRatio a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "incremental price-effectiveness ratio"@en .
+ndrg:healthShadowPrice a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "health shadow price"@en .
+ndrg:expansionICER a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "expansion ICER n"@en .
+ndrg:contractionICER a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "contraction ICER m"@en .
+ndrg:displacementICER a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "displacement ICER d"@en .
+ndrg:alternativeHealthProductivity a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "alternative health productivity"@en .
+ndrg:netEconomicBenefitHealth a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "net economic benefit in health units"@en .
+ndrg:economicValueClinicalInnovation a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "economic value of clinical innovation"@en .
+ndrg:economicContext a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "economic context"@en .

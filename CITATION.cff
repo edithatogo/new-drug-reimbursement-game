@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite both this software and Pekarsky (2015) when using the PEA or reimbursement-game models."
+title: "New Drug Reimbursement Game: ecosystem-first research software"
+type: software
+version: 0.3.0
+date-released: 2026-07-20
+license: Apache-2.0
+repository-code: "https://github.com/edithatogo/new-drug-reimbursement-game"
+preferred-citation:
+  type: software
+  title: "New Drug Reimbursement Game: ecosystem-first research software"
+  version: 0.3.0
+references:
+  - type: book
+    authors:
+      - family-names: Pekarsky
+        given-names: Brita A. K.
+    title: "The New Drug Reimbursement Game: A Regulator's Guide to Playing and Winning"
+    publisher:
+      name: Springer International Publishing
+    year: 2015
+    doi: 10.1007/978-3-319-08903-4
