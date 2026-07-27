@@ -49,6 +49,10 @@ Implemented:
 - standard-library ecosystem clone discovery with fail-closed pin checks;
 - repository-local Conductor tracks and baseline Python/Rust CI.
 
-Remote creation, GitHub authentication, and inspection of the user’s local
-checkouts remain workstation actions and are deliberately not claimed as complete
-in the distributed source tree.
+Workstation activation is complete: the private GitHub repository is wired,
+all four ecosystem pins are available in clean ignored cache clones, `main` and
+the implementation branch are pushed, local and hosted baselines are green,
+Conductor T00 is complete, and issues #3-#11 track T01-T09.
+
+No release, publication, regulator-grade validation, licence reconciliation, or
+external domain approval is implied.

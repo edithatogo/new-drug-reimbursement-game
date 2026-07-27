@@ -5,7 +5,7 @@ tracks:
   - id: T00
     title: Repository bootstrap and ecosystem resolution
     priority: 0
-    status: in_progress
+    status: done
     depends_on: []
     exit_evidence:
       - remote repository safely wired

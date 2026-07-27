@@ -23,3 +23,18 @@ Machine-specific paths are written only to the ignored
 `.local/ecosystem-paths.json`. The tracked discovery report contains no absolute
 paths. Authentication tokens and credential material are never written by the
 repository tooling.
+
+## Activated state
+
+Activation completed on 2026-07-27:
+
+- repository: `https://github.com/edithatogo/new-drug-reimbursement-game`;
+- visibility: private;
+- default branch: `main`;
+- merge policy: squash only, with merged branches deleted automatically;
+- issues enabled and wiki disabled;
+- GitHub Actions run `30254455585` passed the stable `python` and `rust` jobs;
+- `Protect main` requires a pull request and both stable checks, blocks deletion
+  and non-fast-forward updates, and retains an administrator recovery route.
+
+This state does not authorize a release or a visibility change.

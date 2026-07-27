@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "track_id": "t00_bootstrap_20260727",
+  "type": "chore",
+  "description": "T00 repository bootstrap and ecosystem resolution",
+  "status": "completed",
+  "created_at": "2026-07-27T09:34:00Z",
+  "updated_at": "2026-07-27T09:49:00Z",
+  "gates": [
+    {
+      "id": "hosted-ci-main",
+      "kind": "hosted",
+      "status": "satisfied",
+      "evidence": "GitHub Actions run 30254455585 completed successfully"
+    }
+  ]
+}
