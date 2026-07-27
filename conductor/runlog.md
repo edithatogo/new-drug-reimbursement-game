@@ -30,3 +30,6 @@
 - Exact Chapter 7 technical-efficiency interpretation, independent
   health-economics review, and regulator-grade validation remain unresolved
   external/domain gates.
+- `c2c95dd` (T01): added an independently written dimensional derivation and
+  assumption ledger bound to executable scope checks; external source and
+  health-economics review remain pending.
