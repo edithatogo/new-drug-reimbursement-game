@@ -27,6 +27,7 @@ def main() -> int:
         [sys.executable, "-m", "compileall", "-q", "src", "scripts", "tests"],
         [sys.executable, "scripts/discover_ecosystem.py", "--offline-fixture-mode"],
         [sys.executable, "scripts/governance_inventory.py", "--check"],
+        [sys.executable, "scripts/validate_extraction.py"],
     ]
     if shutil.which("cargo"):
         commands.extend(

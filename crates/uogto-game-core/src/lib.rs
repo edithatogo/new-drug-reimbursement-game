@@ -1,8 +1,8 @@
 //! Domain-neutral finite extensive-form game types.
 //!
-//! The crate deliberately contains no health, reimbursement, drug, QALY, or
-//! HTA concepts. It is the extraction seed for a Rust game-theory runtime above
-//! Kairos and aligned with UOGTO.
+//! The crate deliberately contains no application-domain concepts. It is the
+//! extraction seed for a Rust game-theory runtime above Kairos and aligned with
+//! UOGTO.
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
