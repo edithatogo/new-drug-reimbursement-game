@@ -49,6 +49,15 @@ pub struct TraceStep {
     pub expected_payoffs: PayoffVector,
 }
 
+pub type StrategyProfile = BTreeMap<PlayerId, ActionId>;
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct NormalFormGame {
+    pub players: Vec<PlayerId>,
+    pub strategies: BTreeMap<PlayerId, Vec<ActionId>>,
+    pub payoffs: BTreeMap<StrategyProfile, PayoffVector>,
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct Solution {
     pub expected_payoffs: PayoffVector,
@@ -64,6 +73,17 @@ pub enum SolveError {
     InvalidGame(ValidationError),
     InvalidTolerance(f64),
     MissingNode(NodeId),
+    DuplicatePlayer(PlayerId),
+    MissingStrategies(PlayerId),
+    DuplicateStrategy {
+        player: PlayerId,
+        strategy: ActionId,
+    },
+    MissingProfile(StrategyProfile),
+    InvalidNormalFormPayoff {
+        profile: StrategyProfile,
+        player: PlayerId,
+    },
 }
 
 impl fmt::Display for SolveError {
@@ -205,6 +225,124 @@ fn push_trace(
 
 fn payoff_for(payoffs: &PayoffVector, player: &PlayerId) -> f64 {
     payoffs.get(player).copied().unwrap_or(0.0)
+}
+
+impl NormalFormGame {
+    /// Validate a finite normal-form payoff table.
+    ///
+    /// # Errors
+    ///
+    /// Returns a structured [`SolveError`] when players or strategies are
+    /// duplicated, a strategy set is empty, a profile is missing, or a payoff
+    /// is absent or non-finite.
+    pub fn validate(&self) -> Result<(), SolveError> {
+        let mut players = std::collections::BTreeSet::new();
+        for player in &self.players {
+            if !players.insert(player.clone()) {
+                return Err(SolveError::DuplicatePlayer(player.clone()));
+            }
+            let strategies = self
+                .strategies
+                .get(player)
+                .ok_or_else(|| SolveError::MissingStrategies(player.clone()))?;
+            if strategies.is_empty() {
+                return Err(SolveError::MissingStrategies(player.clone()));
+            }
+            let mut unique = std::collections::BTreeSet::new();
+            for strategy in strategies {
+                if !unique.insert(strategy.clone()) {
+                    return Err(SolveError::DuplicateStrategy {
+                        player: player.clone(),
+                        strategy: strategy.clone(),
+                    });
+                }
+            }
+        }
+        for profile in self.profiles() {
+            let payoffs = self
+                .payoffs
+                .get(&profile)
+                .ok_or_else(|| SolveError::MissingProfile(profile.clone()))?;
+            for player in &self.players {
+                match payoffs.get(player) {
+                    Some(value) if value.is_finite() => {}
+                    _ => {
+                        return Err(SolveError::InvalidNormalFormPayoff {
+                            profile,
+                            player: player.clone(),
+                        });
+                    }
+                }
+            }
+        }
+        Ok(())
+    }
+
+    fn profiles(&self) -> Vec<StrategyProfile> {
+        let mut profiles = vec![StrategyProfile::new()];
+        for player in &self.players {
+            let Some(strategies) = self.strategies.get(player) else {
+                return Vec::new();
+            };
+            profiles = profiles
+                .into_iter()
+                .flat_map(|profile| {
+                    strategies.iter().map(move |strategy| {
+                        let mut extended = profile.clone();
+                        extended.insert(player.clone(), strategy.clone());
+                        extended
+                    })
+                })
+                .collect();
+        }
+        profiles
+    }
+}
+
+/// Enumerate deterministic pure-strategy Nash equilibria.
+///
+/// Profiles and deviations are traversed in canonical player/strategy order.
+/// A deviation is profitable only when it improves payoff by more than the
+/// configured tolerance.
+///
+/// # Errors
+///
+/// Returns a validation error for incomplete payoff tables or invalid solver
+/// tolerances.
+pub fn pure_nash_equilibria(
+    game: &NormalFormGame,
+    config: SolverConfig,
+) -> Result<Vec<StrategyProfile>, SolveError> {
+    if !config.tolerance.is_finite() || config.tolerance < 0.0 {
+        return Err(SolveError::InvalidTolerance(config.tolerance));
+    }
+    game.validate()?;
+    let mut equilibria = Vec::new();
+    for profile in game.profiles() {
+        let current = &game.payoffs[&profile];
+        let mut stable = true;
+        for player in &game.players {
+            let current_payoff = current[player];
+            for strategy in &game.strategies[player] {
+                if profile[player] == *strategy {
+                    continue;
+                }
+                let mut deviation = profile.clone();
+                deviation.insert(player.clone(), strategy.clone());
+                if game.payoffs[&deviation][player] > current_payoff + config.tolerance {
+                    stable = false;
+                    break;
+                }
+            }
+            if !stable {
+                break;
+            }
+        }
+        if stable {
+            equilibria.push(profile);
+        }
+    }
+    Ok(equilibria)
 }
 
 #[cfg(test)]
@@ -395,5 +533,55 @@ mod tests {
                 (&root, TraceNodeKind::Chance),
             ]
         );
+    }
+
+    #[test]
+    fn enumerates_pure_nash_equilibria_in_canonical_order() {
+        let row = PlayerId("row".into());
+        let column = PlayerId("column".into());
+        let cooperate = ActionId("cooperate".into());
+        let defect = ActionId("defect".into());
+        let profile = |row_action: &ActionId, column_action: &ActionId| {
+            BTreeMap::from([
+                (row.clone(), row_action.clone()),
+                (column.clone(), column_action.clone()),
+            ])
+        };
+        let payoff = |row_payoff, column_payoff| {
+            BTreeMap::from([(row.clone(), row_payoff), (column.clone(), column_payoff)])
+        };
+        let game = NormalFormGame {
+            players: vec![row.clone(), column.clone()],
+            strategies: BTreeMap::from([
+                (row.clone(), vec![cooperate.clone(), defect.clone()]),
+                (column.clone(), vec![cooperate.clone(), defect.clone()]),
+            ]),
+            payoffs: BTreeMap::from([
+                (profile(&cooperate, &cooperate), payoff(3.0, 3.0)),
+                (profile(&cooperate, &defect), payoff(0.0, 5.0)),
+                (profile(&defect, &cooperate), payoff(5.0, 0.0)),
+                (profile(&defect, &defect), payoff(1.0, 1.0)),
+            ]),
+        };
+
+        let equilibria = pure_nash_equilibria(&game, SolverConfig::default()).unwrap();
+
+        assert_eq!(equilibria, vec![profile(&defect, &defect)]);
+    }
+
+    #[test]
+    fn rejects_incomplete_normal_form_payoff_tables() {
+        let player = PlayerId("player".into());
+        let strategy = ActionId("only".into());
+        let game = NormalFormGame {
+            players: vec![player.clone()],
+            strategies: BTreeMap::from([(player.clone(), vec![strategy])]),
+            payoffs: BTreeMap::new(),
+        };
+
+        assert!(matches!(
+            pure_nash_equilibria(&game, SolverConfig::default()),
+            Err(SolveError::MissingProfile(profile)) if profile[&player] == ActionId("only".into())
+        ));
     }
 }
