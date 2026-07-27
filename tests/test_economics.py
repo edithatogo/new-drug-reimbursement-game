@@ -1,5 +1,7 @@
+import csv
 import math
 import unittest
+from pathlib import Path
 
 from reimbursement_game.economics import (
     AlternativeStrategy,
@@ -94,6 +96,39 @@ class EconomicsTests(unittest.TestCase):
     def test_non_identifiable_context_fails_closed(self) -> None:
         with self.assertRaisesRegex(ValueError, "opportunity cost"):
             health_shadow_price(EconomicContext.EXPANDABLE, OpportunitySet())
+
+    def test_versioned_cross_language_conformance_fixture(self) -> None:
+        fixture = Path("fixtures/conformance/economics-v1.csv")
+        with fixture.open(newline="", encoding="utf-8") as stream:
+            rows = list(csv.DictReader(stream))
+        self.assertGreater(len(rows), 0)
+        for row in rows:
+            with self.subTest(case_id=row["case_id"]):
+                self.assertEqual(row["schema_version"], "1")
+                opportunities = OpportunitySet(
+                    expansion_icer=float(row["expansion_icer"]),
+                    contraction_icer=float(row["contraction_icer"]),
+                    displacement_icer=float(row["displacement_icer"]),
+                )
+                result = evaluate_reimbursement(
+                    ReimbursementInputs(
+                        incremental_cost=float(row["incremental_cost"]),
+                        incremental_health_effect=float(row["incremental_health_effect"]),
+                        context=EconomicContext.FIXED,
+                        opportunities=opportunities,
+                    )
+                )
+                self.assertAlmostEqual(
+                    result.health_shadow_price,
+                    float(row["expected_shadow_price"]),
+                    places=9,
+                )
+                self.assertAlmostEqual(
+                    result.net_economic_benefit_health,
+                    float(row["expected_nebh"]),
+                    places=9,
+                )
+                self.assertEqual(result.reimburse, row["expected_reimburse"] == "true")
 
     def test_efficient_fixed_budget_reduces_to_d(self) -> None:
         opportunities = OpportunitySet(

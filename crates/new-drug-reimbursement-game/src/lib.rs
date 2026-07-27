@@ -158,4 +158,44 @@ mod tests {
         assert_eq!(fixed_budget_shadow_price(invalid), None);
         assert_eq!(net_economic_benefit_health(1.0, 1.0, invalid), None);
     }
+
+    #[test]
+    fn versioned_cross_language_conformance_fixture() {
+        let fixture = include_str!("../../../fixtures/conformance/economics-v1.csv");
+        let mut lines = fixture.lines();
+        let header = lines.next().unwrap();
+        assert_eq!(
+            header,
+            "schema_version,case_id,expansion_icer,contraction_icer,displacement_icer,\
+incremental_cost,incremental_health_effect,expected_shadow_price,expected_nebh,\
+expected_reimburse"
+        );
+        for line in lines {
+            let fields: Vec<_> = line.split(',').collect();
+            assert_eq!(fields.len(), 10);
+            assert_eq!(fields[0], "1");
+            let parse = |index: usize| fields[index].parse::<f64>().unwrap();
+            let opportunities = OpportunitySet {
+                expansion_icer: Some(parse(2)),
+                contraction_icer: Some(parse(3)),
+                displacement_icer: Some(parse(4)),
+                additional_best_productivity: 0.0,
+            };
+            let expected_beta = parse(7);
+            let expected_nebh = parse(8);
+            let beta = fixed_budget_shadow_price(opportunities).unwrap();
+            let nebh = net_economic_benefit_health(parse(5), parse(6), opportunities).unwrap();
+            assert!(
+                (beta - expected_beta).abs() < 1e-9,
+                "shadow-price drift in {}",
+                fields[1]
+            );
+            assert!(
+                (nebh - expected_nebh).abs() < 1e-9,
+                "NEBhR drift in {}",
+                fields[1]
+            );
+            assert_eq!(nebh >= -1e-12, fields[9] == "true");
+        }
+    }
 }
