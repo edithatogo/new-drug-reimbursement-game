@@ -21,8 +21,11 @@ def solve_game(spec: dict[str, Any]) -> OracleResult:
     nodes = spec["nodes"]
     choices: dict[str, str] = {}
     visiting: set[str] = set()
+    solved: dict[str, dict[str, float]] = {}
 
     def visit(node_id: str) -> dict[str, float]:
+        if node_id in solved:
+            return solved[node_id]
         if node_id in visiting:
             raise ValueError("game contains a cycle")
         visiting.add(node_id)
@@ -59,6 +62,7 @@ def solve_game(spec: dict[str, Any]) -> OracleResult:
         else:
             raise ValueError(f"unsupported node kind: {kind}")
         visiting.remove(node_id)
+        solved[node_id] = result
         return result
 
     return OracleResult(payoffs=visit(str(spec["root"])), choices=choices)

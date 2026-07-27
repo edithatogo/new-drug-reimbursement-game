@@ -203,9 +203,8 @@ impl Game {
                 }
             }
         }
-        let mut visiting = BTreeSet::new();
         let mut visited = BTreeSet::new();
-        self.depth_first(&self.root, &mut visiting, &mut visited)?;
+        self.validate_acyclic_reachability(&mut visited)?;
         if let Some(unreachable) = self
             .nodes
             .keys()
@@ -237,34 +236,40 @@ impl Game {
         }
     }
 
-    fn depth_first(
+    fn validate_acyclic_reachability(
         &self,
-        node_id: &NodeId,
-        visiting: &mut BTreeSet<NodeId>,
         visited: &mut BTreeSet<NodeId>,
     ) -> Result<(), ValidationError> {
-        if visited.contains(node_id) {
-            return Ok(());
-        }
-        if !visiting.insert(node_id.clone()) {
-            return Err(ValidationError::Cycle(node_id.clone()));
-        }
-        let node = self.nodes.get(node_id).expect("validated node existence");
-        match node {
-            Node::Decision { edges, .. } => {
-                for edge in edges {
-                    self.depth_first(&edge.target, visiting, visited)?;
-                }
+        let mut state = BTreeMap::<NodeId, u8>::new();
+        let mut stack = vec![(self.root.clone(), false)];
+        while let Some((node_id, exiting)) = stack.pop() {
+            if exiting {
+                state.insert(node_id.clone(), 2);
+                visited.insert(node_id);
+                continue;
             }
-            Node::Chance { edges } => {
-                for edge in edges {
-                    self.depth_first(&edge.target, visiting, visited)?;
-                }
+            match state.get(&node_id).copied() {
+                Some(1) => return Err(ValidationError::Cycle(node_id)),
+                Some(2) => continue,
+                _ => {}
             }
-            Node::Terminal { .. } => {}
+            state.insert(node_id.clone(), 1);
+            stack.push((node_id.clone(), true));
+            let node = self.nodes.get(&node_id).expect("validated node existence");
+            match node {
+                Node::Decision { edges, .. } => {
+                    for edge in edges.iter().rev() {
+                        stack.push((edge.target.clone(), false));
+                    }
+                }
+                Node::Chance { edges } => {
+                    for edge in edges.iter().rev() {
+                        stack.push((edge.target.clone(), false));
+                    }
+                }
+                Node::Terminal { .. } => {}
+            }
         }
-        visiting.remove(node_id);
-        visited.insert(node_id.clone());
         Ok(())
     }
 }
@@ -327,6 +332,35 @@ mod tests {
             game.validate(),
             Err(ValidationError::DuplicateAction { node: root, action })
         );
+    }
+
+    #[test]
+    fn validates_deep_games_without_recursive_stack_growth() {
+        let depth = 20_000;
+        let mut nodes = BTreeMap::new();
+        for index in 0..depth {
+            nodes.insert(
+                NodeId(format!("n{index}")),
+                Node::Decision {
+                    player: PlayerId("p".into()),
+                    edges: vec![ActionEdge {
+                        action: ActionId("next".into()),
+                        target: NodeId(format!("n{}", index + 1)),
+                    }],
+                },
+            );
+        }
+        nodes.insert(
+            NodeId(format!("n{depth}")),
+            Node::Terminal {
+                payoffs: BTreeMap::new(),
+            },
+        );
+        let game = Game {
+            root: NodeId("n0".into()),
+            nodes,
+        };
+        assert_eq!(game.validate(), Ok(()));
     }
 
     #[test]

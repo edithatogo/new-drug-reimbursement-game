@@ -34,6 +34,33 @@ class ReferenceGameTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "payoffs must be finite"):
             solve_game(spec)
 
+    def test_shared_descendants_are_solved_once(self) -> None:
+        spec = {
+            "root": "root",
+            "nodes": {
+                "root": {
+                    "kind": "chance",
+                    "edges": [
+                        {"probability": 0.5, "target": "shared"},
+                        {"probability": 0.5, "target": "shared"},
+                    ],
+                },
+                "shared": {
+                    "kind": "decision",
+                    "player": "p",
+                    "edges": [
+                        {"action": "a", "target": "end-a"},
+                        {"action": "b", "target": "end-b"},
+                    ],
+                },
+                "end-a": {"kind": "terminal", "payoffs": {"p": 1}},
+                "end-b": {"kind": "terminal", "payoffs": {"p": 0}},
+            },
+        }
+        result = solve_game(spec)
+        self.assertEqual(result.payoffs, {"p": 1.0})
+        self.assertEqual(result.choices, {"shared": "a"})
+
 
 if __name__ == "__main__":
     unittest.main()

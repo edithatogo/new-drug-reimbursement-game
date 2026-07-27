@@ -6,6 +6,7 @@ use std::fmt;
 use uogto_game_core::{ActionId, Game, Node, NodeId, PayoffVector, PlayerId, ValidationError};
 
 pub const DEFAULT_SOLVER_TOLERANCE: f64 = 1e-12;
+pub const MAX_NORMAL_FORM_PROFILES: usize = 1_000_000;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum TiePolicy {
@@ -79,6 +80,10 @@ pub enum SolveError {
         player: PlayerId,
         strategy: ActionId,
     },
+    ProfileLimitExceeded {
+        profiles: usize,
+        limit: usize,
+    },
     MissingProfile(StrategyProfile),
     InvalidNormalFormPayoff {
         profile: StrategyProfile,
@@ -123,6 +128,7 @@ pub fn backward_induction_with_config(
     let mut choices = BTreeMap::new();
     let mut diagnostics = SolverDiagnostics::default();
     let mut trace = Vec::new();
+    let mut solved = BTreeMap::new();
     let payoffs = solve_node(
         game,
         &game.root,
@@ -130,6 +136,7 @@ pub fn backward_induction_with_config(
         &mut choices,
         &mut diagnostics,
         &mut trace,
+        &mut solved,
     )?;
     Ok(Solution {
         expected_payoffs: payoffs,
@@ -148,33 +155,53 @@ fn solve_node(
     choices: &mut BTreeMap<NodeId, ActionId>,
     diagnostics: &mut SolverDiagnostics,
     trace: &mut Vec<TraceStep>,
+    solved: &mut BTreeMap<NodeId, PayoffVector>,
 ) -> Result<PayoffVector, SolveError> {
+    if let Some(payoffs) = solved.get(node_id) {
+        return Ok(payoffs.clone());
+    }
     diagnostics.visited_nodes += 1;
     let node = game
         .nodes
         .get(node_id)
         .ok_or_else(|| SolveError::MissingNode(node_id.clone()))?;
-    match node {
+    let result = match node {
         Node::Terminal { payoffs } => {
             let result = payoffs.clone();
             push_trace(trace, node_id, TraceNodeKind::Terminal, None, &result);
-            Ok(result)
+            result
         }
         Node::Chance { edges } => {
             let mut expected = PayoffVector::new();
             for edge in edges {
-                let child = solve_node(game, &edge.target, config, choices, diagnostics, trace)?;
+                let child = solve_node(
+                    game,
+                    &edge.target,
+                    config,
+                    choices,
+                    diagnostics,
+                    trace,
+                    solved,
+                )?;
                 for (player, payoff) in child {
                     *expected.entry(player).or_insert(0.0) += edge.probability * payoff;
                 }
             }
             push_trace(trace, node_id, TraceNodeKind::Chance, None, &expected);
-            Ok(expected)
+            expected
         }
         Node::Decision { player, edges } => {
             let mut best: Option<(f64, ActionId, PayoffVector)> = None;
             for edge in edges {
-                let child = solve_node(game, &edge.target, config, choices, diagnostics, trace)?;
+                let child = solve_node(
+                    game,
+                    &edge.target,
+                    config,
+                    choices,
+                    diagnostics,
+                    trace,
+                    solved,
+                )?;
                 let utility = payoff_for(&child, player);
                 let replace = match &best {
                     None => true,
@@ -202,9 +229,11 @@ fn solve_node(
                 Some(action),
                 &payoffs,
             );
-            Ok(payoffs)
+            payoffs
         }
-    }
+    };
+    solved.insert(node_id.clone(), result.clone());
+    Ok(result)
 }
 
 fn push_trace(
@@ -257,6 +286,16 @@ impl NormalFormGame {
                     });
                 }
             }
+        }
+        let profile_count = self.players.iter().try_fold(1usize, |count, player| {
+            count.checked_mul(self.strategies[player].len())
+        });
+        let profiles = profile_count.unwrap_or(usize::MAX);
+        if profiles > MAX_NORMAL_FORM_PROFILES {
+            return Err(SolveError::ProfileLimitExceeded {
+                profiles,
+                limit: MAX_NORMAL_FORM_PROFILES,
+            });
         }
         for profile in self.profiles() {
             let payoffs = self
@@ -536,6 +575,47 @@ mod tests {
     }
 
     #[test]
+    fn shared_descendants_are_solved_and_traced_once() {
+        let player = PlayerId("player".into());
+        let root = NodeId("chance".into());
+        let shared = NodeId("shared".into());
+        let game = Game {
+            root: root.clone(),
+            nodes: BTreeMap::from([
+                (
+                    root,
+                    Node::Chance {
+                        edges: vec![
+                            ChanceEdge {
+                                probability: 0.5,
+                                target: shared.clone(),
+                            },
+                            ChanceEdge {
+                                probability: 0.5,
+                                target: shared.clone(),
+                            },
+                        ],
+                    },
+                ),
+                (
+                    shared,
+                    Node::Terminal {
+                        payoffs: BTreeMap::from([(player.clone(), 1.0)]),
+                    },
+                ),
+            ]),
+        };
+
+        let solution = backward_induction(&game).unwrap();
+        assert_eq!(
+            solution.expected_payoffs[&player].to_bits(),
+            1.0_f64.to_bits()
+        );
+        assert_eq!(solution.diagnostics.visited_nodes, 2);
+        assert_eq!(solution.trace.len(), 2);
+    }
+
+    #[test]
     fn enumerates_pure_nash_equilibria_in_canonical_order() {
         let row = PlayerId("row".into());
         let column = PlayerId("column".into());
@@ -583,5 +663,34 @@ mod tests {
             pure_nash_equilibria(&game, SolverConfig::default()),
             Err(SolveError::MissingProfile(profile)) if profile[&player] == ActionId("only".into())
         ));
+    }
+
+    #[test]
+    fn rejects_normal_forms_above_the_profile_budget_before_enumeration() {
+        let players = (0..20)
+            .map(|index| PlayerId(format!("p{index}")))
+            .collect::<Vec<_>>();
+        let strategies = players
+            .iter()
+            .map(|player| {
+                (
+                    player.clone(),
+                    vec![ActionId("a".into()), ActionId("b".into())],
+                )
+            })
+            .collect();
+        let game = NormalFormGame {
+            players,
+            strategies,
+            payoffs: BTreeMap::new(),
+        };
+
+        assert_eq!(
+            game.validate(),
+            Err(SolveError::ProfileLimitExceeded {
+                profiles: 1 << 20,
+                limit: MAX_NORMAL_FORM_PROFILES,
+            })
+        );
     }
 }
