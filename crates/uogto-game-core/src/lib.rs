@@ -70,6 +70,11 @@ impl fmt::Display for ValidationError {
 impl std::error::Error for ValidationError {}
 
 impl Game {
+    /// # Errors
+    ///
+    /// Returns a [`ValidationError`] when the game graph references a missing
+    /// node, contains a cycle, or otherwise violates the supported finite-game
+    /// contract.
     pub fn validate(&self) -> Result<(), ValidationError> {
         if !self.nodes.contains_key(&self.root) {
             return Err(ValidationError::MissingRoot(self.root.clone()));

@@ -9,8 +9,8 @@ interaction, heterogeneous indications, or private information.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import math
+from dataclasses import dataclass
 
 from .economics import (
     EconomicContext,
@@ -50,10 +50,7 @@ def solve_revealed_threshold_game(
 
     if not math.isfinite(incremental_health_effect) or incremental_health_effect <= 0:
         raise ValueError("incremental_health_effect must be positive and finite")
-    if (
-        not math.isfinite(marginal_cost_per_health_effect)
-        or marginal_cost_per_health_effect < 0
-    ):
+    if not math.isfinite(marginal_cost_per_health_effect) or marginal_cost_per_health_effect < 0:
         raise ValueError("marginal_cost_per_health_effect must be non-negative and finite")
     beta, _ = health_shadow_price(context, opportunities)
     if marginal_cost_per_health_effect > beta:

@@ -25,6 +25,13 @@ impl fmt::Display for SolveError {
 
 impl std::error::Error for SolveError {}
 
+/// Solve a validated finite, acyclic, perfect-information game.
+///
+/// # Errors
+///
+/// Returns [`SolveError::InvalidGame`] when the game violates the supported
+/// contract, or [`SolveError::MissingNode`] when traversal cannot resolve a
+/// referenced node.
 pub fn backward_induction(game: &Game) -> Result<Solution, SolveError> {
     game.validate().map_err(SolveError::InvalidGame)?;
     let mut choices = BTreeMap::new();
@@ -103,20 +110,34 @@ mod tests {
             Node::Decision {
                 player: player.clone(),
                 edges: vec![
-                    ActionEdge { action: ActionId("reimburse".into()), target: accept.clone() },
-                    ActionEdge { action: ActionId("reject".into()), target: reject.clone() },
+                    ActionEdge {
+                        action: ActionId("reimburse".into()),
+                        target: accept.clone(),
+                    },
+                    ActionEdge {
+                        action: ActionId("reject".into()),
+                        target: reject.clone(),
+                    },
                 ],
             },
         );
         nodes.insert(
             accept,
-            Node::Terminal { payoffs: BTreeMap::from([(player.clone(), 1.0)]) },
+            Node::Terminal {
+                payoffs: BTreeMap::from([(player.clone(), 1.0)]),
+            },
         );
         nodes.insert(
             reject,
-            Node::Terminal { payoffs: BTreeMap::from([(player.clone(), 0.0)]) },
+            Node::Terminal {
+                payoffs: BTreeMap::from([(player.clone(), 0.0)]),
+            },
         );
-        let solution = backward_induction(&Game { root: root.clone(), nodes }).unwrap();
+        let solution = backward_induction(&Game {
+            root: root.clone(),
+            nodes,
+        })
+        .unwrap();
         assert_eq!(solution.choices[&root], ActionId("reimburse".into()));
     }
 }

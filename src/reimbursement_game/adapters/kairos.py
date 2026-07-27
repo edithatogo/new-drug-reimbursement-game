@@ -11,9 +11,7 @@ class KairosScenarioExporter:
 
     schema = "https://github.com/edithatogo/kairos/conformance/game-events/v0"
 
-    def export_scenario(
-        self, events: Sequence[Mapping[str, Any]]
-    ) -> Mapping[str, Any]:
+    def export_scenario(self, events: Sequence[Mapping[str, Any]]) -> Mapping[str, Any]:
         normalized = []
         for index, event in enumerate(events):
             normalized.append(

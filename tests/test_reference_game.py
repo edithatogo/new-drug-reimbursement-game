@@ -1,6 +1,6 @@
 import json
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 from reimbursement_game.reference_game import solve_game
 

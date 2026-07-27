@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 import importlib.util
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
-
+from pathlib import Path
 
 MODULE_PATH = Path("scripts/discover_ecosystem.py")
 SPEC = importlib.util.spec_from_file_location("discover_ecosystem", MODULE_PATH)
@@ -32,7 +31,10 @@ class EcosystemDiscoveryTests(unittest.TestCase):
 
     def test_loads_owner_controlled_components(self) -> None:
         components = MODULE.load_components(Path("ecosystem.lock.toml"))
-        self.assertEqual([component.name for component in components], ["UOGTO", "Kairos", "Voiage", "Reimbursement Atlas"])
+        self.assertEqual(
+            [component.name for component in components],
+            ["UOGTO", "Kairos", "Voiage", "Reimbursement Atlas"],
+        )
         self.assertTrue(all(len(component.revision) == 40 for component in components))
 
     def test_discovers_exact_remote_and_pin(self) -> None:
@@ -40,12 +42,21 @@ class EcosystemDiscoveryTests(unittest.TestCase):
             root = Path(temporary_directory)
             checkout = root / "voiage"
             checkout.mkdir()
-            subprocess.run(["git", "init", "-b", "main", str(checkout)], check=True, capture_output=True)
+            subprocess.run(
+                ["git", "init", "-b", "main", str(checkout)], check=True, capture_output=True
+            )
             subprocess.run(["git", "-C", str(checkout), "config", "user.name", "Test"], check=True)
-            subprocess.run(["git", "-C", str(checkout), "config", "user.email", "test@example.invalid"], check=True)
+            subprocess.run(
+                ["git", "-C", str(checkout), "config", "user.email", "test@example.invalid"],
+                check=True,
+            )
             (checkout / "README.md").write_text("fixture\n", encoding="utf-8")
             subprocess.run(["git", "-C", str(checkout), "add", "README.md"], check=True)
-            subprocess.run(["git", "-C", str(checkout), "commit", "-m", "fixture"], check=True, capture_output=True)
+            subprocess.run(
+                ["git", "-C", str(checkout), "commit", "-m", "fixture"],
+                check=True,
+                capture_output=True,
+            )
             head = subprocess.run(
                 ["git", "-C", str(checkout), "rev-parse", "HEAD"],
                 check=True,
@@ -53,7 +64,15 @@ class EcosystemDiscoveryTests(unittest.TestCase):
                 text=True,
             ).stdout.strip()
             subprocess.run(
-                ["git", "-C", str(checkout), "remote", "add", "origin", "git@github.com:edithatogo/voiage.git"],
+                [
+                    "git",
+                    "-C",
+                    str(checkout),
+                    "remote",
+                    "add",
+                    "origin",
+                    "git@github.com:edithatogo/voiage.git",
+                ],
                 check=True,
             )
             component = MODULE.Component(

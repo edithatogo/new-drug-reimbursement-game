@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict
 import json
+from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
@@ -42,9 +42,7 @@ def main(argv: list[str] | None = None) -> int:
             incremental_health_effect=inputs.incremental_health_effect,
             context=inputs.context,
             opportunities=inputs.opportunities,
-            marginal_cost_per_health_effect=float(
-                case.get("marginal_cost_per_health_effect", 0.0)
-            ),
+            marginal_cost_per_health_effect=float(case.get("marginal_cost_per_health_effect", 0.0)),
         )
         _print(asdict(result))
     elif args.command == "uogto":

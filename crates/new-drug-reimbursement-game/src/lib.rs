@@ -8,6 +8,7 @@ pub struct OpportunitySet {
     pub additional_best_productivity: f64,
 }
 
+#[must_use]
 pub fn reallocation_productivity(opportunities: OpportunitySet) -> f64 {
     match (opportunities.expansion_icer, opportunities.contraction_icer) {
         (Some(n), Some(m)) if n > 0.0 && m > 0.0 => (1.0 / n - 1.0 / m).max(0.0),
@@ -15,6 +16,7 @@ pub fn reallocation_productivity(opportunities: OpportunitySet) -> f64 {
     }
 }
 
+#[must_use]
 pub fn fixed_budget_shadow_price(opportunities: OpportunitySet) -> Option<f64> {
     let d = opportunities.displacement_icer?;
     if d <= 0.0 {
@@ -26,6 +28,7 @@ pub fn fixed_budget_shadow_price(opportunities: OpportunitySet) -> Option<f64> {
     (denominator > 0.0).then_some(1.0 / denominator)
 }
 
+#[must_use]
 pub fn net_economic_benefit_health(
     incremental_cost: f64,
     incremental_health_effect: f64,
@@ -54,6 +57,11 @@ mod tests {
         assert!((beta - expected).abs() < 1e-9);
         let effect = 10.0;
         let cost = beta * effect;
-        assert!(net_economic_benefit_health(cost, effect, opportunities).unwrap().abs() < 1e-10);
+        assert!(
+            net_economic_benefit_health(cost, effect, opportunities)
+                .unwrap()
+                .abs()
+                < 1e-10
+        );
     }
 }

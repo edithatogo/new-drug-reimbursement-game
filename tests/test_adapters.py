@@ -1,7 +1,7 @@
 import json
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from reimbursement_game.adapters.kairos import KairosScenarioExporter
 from reimbursement_game.adapters.reimbursement_atlas import ReimbursementAtlasExport

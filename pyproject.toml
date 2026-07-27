@@ -35,12 +35,20 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "RUF", "S"]
-ignore = ["S101"]
+ignore = ["E501", "RUF001", "RUF002", "S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*.py" = ["S603", "S607"]
+"tests/*.py" = ["S603", "S607"]
 
 [tool.mypy]
 python_version = "3.11"
 strict = true
 packages = ["reimbursement_game"]
+
+[[tool.mypy.overrides]]
+module = ["numpy", "voiage.*"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

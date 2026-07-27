@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any
+from typing import Any, ClassVar
 
 
 class UogtoExporter:
-    context = {
+    context: ClassVar[Mapping[str, Any]] = {
         "uogto": "https://w3id.org/uogto/core#",
         "hta": "https://w3id.org/uogto/packs/hta#",
         "ndrg": "https://w3id.org/uogto/packs/new-drug-reimbursement#",

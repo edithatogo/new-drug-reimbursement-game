@@ -12,12 +12,12 @@ as independently written code and makes uncertain extensions explicit.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from enum import Enum
 import math
+from dataclasses import dataclass
+from enum import StrEnum
 
 
-class EconomicContext(str, Enum):
+class EconomicContext(StrEnum):
     """Budget-financing context for reimbursement."""
 
     EXPANDABLE = "expandable"
@@ -115,9 +115,7 @@ class OpportunitySet:
 
         if fixed_budget:
             candidates = [
-                item
-                for item in self.additional_alternatives
-                if item.health_gain_per_currency >= 0
+                item for item in self.additional_alternatives if item.health_gain_per_currency >= 0
             ]
             reallocation = self.reallocation_productivity()
             if reallocation > 0:
@@ -153,13 +151,8 @@ class ReimbursementInputs:
     def __post_init__(self) -> None:
         if not math.isfinite(self.incremental_cost) or self.incremental_cost <= 0:
             raise ValueError("incremental_cost must be finite and greater than zero")
-        if (
-            not math.isfinite(self.incremental_health_effect)
-            or self.incremental_health_effect <= 0
-        ):
-            raise ValueError(
-                "incremental_health_effect must be finite and greater than zero"
-            )
+        if not math.isfinite(self.incremental_health_effect) or self.incremental_health_effect <= 0:
+            raise ValueError("incremental_health_effect must be finite and greater than zero")
         if self.context is EconomicContext.FIXED and self.opportunities.displacement_icer is None:
             raise ValueError("fixed-budget reimbursement requires displacement_icer")
 
@@ -233,9 +226,7 @@ def evaluate_reimbursement(inputs: ReimbursementInputs) -> ReimbursementEvaluati
     displacement_loss = 0.0
     if fixed:
         assert inputs.opportunities.displacement_icer is not None
-        displacement_loss = (
-            inputs.incremental_cost / inputs.opportunities.displacement_icer
-        )
+        displacement_loss = inputs.incremental_cost / inputs.opportunities.displacement_icer
     alternative = inputs.opportunities.best_alternative(fixed_budget=fixed)
     alternative_gain = (
         0.0

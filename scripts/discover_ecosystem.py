@@ -8,14 +8,14 @@ absolute paths. The generated Markdown report is portable and safe to commit.
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict, dataclass
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tomllib
-from typing import Iterable, Sequence
+from collections.abc import Iterable, Sequence
+from dataclasses import asdict, dataclass
+from pathlib import Path
 from urllib.parse import urlparse
 
 SKIP_DIRECTORIES = {
@@ -96,7 +96,9 @@ class Selection:
     ambiguity: tuple[str, ...] = ()
 
 
-def run_git(path: Path, args: Sequence[str], *, check: bool = False) -> subprocess.CompletedProcess[str]:
+def run_git(
+    path: Path, args: Sequence[str], *, check: bool = False
+) -> subprocess.CompletedProcess[str]:
     """Run Git against ``path`` and return captured UTF-8 text."""
 
     command = ["git", "-C", str(path), *args]
@@ -158,7 +160,9 @@ def load_components(lock_path: Path) -> list[Component]:
     components: list[Component] = []
     for raw in raw_components:
         revision = str(raw["revision"])
-        if len(revision) != 40 or any(character not in "0123456789abcdef" for character in revision):
+        if len(revision) != 40 or any(
+            character not in "0123456789abcdef" for character in revision
+        ):
             raise ValueError(f"{raw['name']} does not use a full lowercase commit SHA")
         repository = str(raw["repository"])
         owner, _ = normalized_repo_parts(repository)
@@ -195,7 +199,9 @@ def candidate_roots(repo_root: Path) -> list[Path]:
     ]
     env_value = os.environ.get("NDRG_ECOSYSTEM_ROOTS", "")
     if env_value:
-        roots.extend(Path(item).expanduser() for item in env_value.split(os.pathsep) if item.strip())
+        roots.extend(
+            Path(item).expanduser() for item in env_value.split(os.pathsep) if item.strip()
+        )
 
     result: list[Path] = []
     seen: set[str] = set()
@@ -253,7 +259,9 @@ def path_distance(repo_root: Path, candidate: Path) -> int:
     return (len(left) - common) + (len(right) - common)
 
 
-def inspect_candidate(path: Path, component: Component, repo_root: Path, source: str) -> Candidate | None:
+def inspect_candidate(
+    path: Path, component: Component, repo_root: Path, source: str
+) -> Candidate | None:
     """Inspect a possible checkout and return it only for an exact remote match."""
 
     top_level = run_git(path, ["rev-parse", "--show-toplevel"])
@@ -427,12 +435,18 @@ def offline_fixture_check(components: Sequence[Component]) -> int:
     for component in components:
         normalized = normalize_remote(component.repository)
         owner, repository = normalized_repo_parts(component.repository)
-        if owner != "edithatogo" or not repository or not normalized.startswith("https://github.com/"):
+        if (
+            owner != "edithatogo"
+            or not repository
+            or not normalized.startswith("https://github.com/")
+        ):
             failures.append(component.name)
     if failures:
         print("offline ecosystem contract validation failed:", ", ".join(failures))
         return 1
-    print(f"offline ecosystem contract validation passed ({len(components)} components; clones not asserted)")
+    print(
+        f"offline ecosystem contract validation passed ({len(components)} components; clones not asserted)"
+    )
     return 0
 
 
@@ -443,8 +457,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
     parser.add_argument("--lock", type=Path, default=Path("ecosystem.lock.toml"))
     parser.add_argument("--json", action="store_true", help="print the local manifest payload")
-    parser.add_argument("--check", action="store_true", help="fail unless every component and pin resolves")
-    parser.add_argument("--clone-missing", action="store_true", help="clone unresolved components into .local")
+    parser.add_argument(
+        "--check", action="store_true", help="fail unless every component and pin resolves"
+    )
+    parser.add_argument(
+        "--clone-missing", action="store_true", help="clone unresolved components into .local"
+    )
     parser.add_argument("--offline-fixture-mode", action="store_true")
     parser.add_argument("--max-depth", type=int, default=DEFAULT_MAX_DEPTH)
     return parser.parse_args(argv)

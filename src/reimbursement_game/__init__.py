@@ -1,5 +1,6 @@
 """New-drug reimbursement game application package."""
 
+from .chapter8 import Chapter8Equilibrium, solve_revealed_threshold_game
 from .economics import (
     EconomicContext,
     OpportunitySet,
@@ -9,7 +10,6 @@ from .economics import (
     health_shadow_price,
     incremental_price_effectiveness_ratio,
 )
-from .chapter8 import Chapter8Equilibrium, solve_revealed_threshold_game
 
 __all__ = [
     "Chapter8Equilibrium",
