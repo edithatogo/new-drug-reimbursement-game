@@ -8,6 +8,8 @@
   (`2477281`).
 - [x] Add monotonicity/property sweeps without introducing a capability
   dependency (`e661e6a`).
-- [~] Run automated review and the complete repository quality gate.
+- [x] Apply review fixes for Rust fail-closed semantics and decision tolerance
+  (`f2a065c`).
+- [x] Run automated review and the complete repository quality gate.
 - [ ] Record exact Chapter 7 source verification and independent expert review
   evidence; keep this pending until supplied.

@@ -37,3 +37,7 @@
   by Python and Rust; 29 Python tests and eight Rust workspace tests passed.
 - `e661e6a` (T01): added dependency-free deterministic monotonicity sweeps;
   31 Python tests and ten Rust workspace tests passed.
+- `f2a065c` (T01 review fix): made the public Rust reallocation calculation
+  fail closed and aligned fixture decisions with Python's scale-aware tolerance.
+  The complete gate passed; T01 remains open only for its explicit source and
+  independent health-economics review tasks.
