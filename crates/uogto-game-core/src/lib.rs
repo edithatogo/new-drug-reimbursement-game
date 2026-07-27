@@ -50,9 +50,19 @@ pub struct Game {
     pub nodes: BTreeMap<NodeId, Node>,
 }
 
+pub const GAME_SPEC_SCHEMA_VERSION: &str = "1.0.0";
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct GameSpecification {
+    pub schema_version: String,
+    pub id: String,
+    pub game: Game,
+}
+
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum ValidationError {
     EmptyIdentifier { path: String },
+    UnsupportedSchemaVersion { path: String, value: String },
     MissingRoot(NodeId),
     MissingTarget { from: NodeId, target: NodeId },
     EmptyDecision(NodeId),
@@ -72,6 +82,66 @@ impl fmt::Display for ValidationError {
 }
 
 impl std::error::Error for ValidationError {}
+
+impl ValidationError {
+    #[must_use]
+    pub fn code(&self) -> &'static str {
+        match self {
+            Self::EmptyIdentifier { .. } => "empty_identifier",
+            Self::UnsupportedSchemaVersion { .. } => "unsupported_schema_version",
+            Self::MissingRoot(_) => "missing_root",
+            Self::MissingTarget { .. } => "missing_target",
+            Self::EmptyDecision(_) => "empty_decision",
+            Self::DuplicateAction { .. } => "duplicate_action",
+            Self::EmptyChance(_) => "empty_chance",
+            Self::InvalidProbability(_) => "invalid_probability",
+            Self::ProbabilityMass(_) => "probability_mass",
+            Self::InvalidPayoff { .. } => "invalid_payoff",
+            Self::Cycle(_) => "cycle",
+            Self::UnreachableNode(_) => "unreachable_node",
+        }
+    }
+
+    #[must_use]
+    pub fn path(&self) -> String {
+        match self {
+            Self::EmptyIdentifier { path } | Self::UnsupportedSchemaVersion { path, .. } => {
+                path.clone()
+            }
+            Self::MissingTarget { from, target } => {
+                format!("game.nodes.{}.target.{}", from.0, target.0)
+            }
+            Self::MissingRoot(node)
+            | Self::EmptyDecision(node)
+            | Self::DuplicateAction { node, .. }
+            | Self::EmptyChance(node)
+            | Self::InvalidProbability(node)
+            | Self::ProbabilityMass(node)
+            | Self::InvalidPayoff { node, .. }
+            | Self::Cycle(node)
+            | Self::UnreachableNode(node) => format!("game.nodes.{}", node.0),
+        }
+    }
+}
+
+impl GameSpecification {
+    /// Validate specification metadata and the embedded game graph.
+    ///
+    /// # Errors
+    ///
+    /// Returns a structured [`ValidationError`] for unsupported schema
+    /// versions, empty canonical identifiers, or invalid game semantics.
+    pub fn validate(&self) -> Result<(), ValidationError> {
+        if self.schema_version != GAME_SPEC_SCHEMA_VERSION {
+            return Err(ValidationError::UnsupportedSchemaVersion {
+                path: "schema_version".into(),
+                value: self.schema_version.clone(),
+            });
+        }
+        Game::ensure_identifier("id", &self.id)?;
+        self.game.validate()
+    }
+}
 
 impl Game {
     /// # Errors
@@ -302,5 +372,34 @@ mod tests {
             unreachable_game.validate(),
             Err(ValidationError::UnreachableNode(unreachable))
         );
+    }
+
+    #[test]
+    fn specification_metadata_is_versioned_and_errors_have_paths() {
+        let root = NodeId("terminal".into());
+        let game = Game {
+            root: root.clone(),
+            nodes: BTreeMap::from([(
+                root,
+                Node::Terminal {
+                    payoffs: BTreeMap::new(),
+                },
+            )]),
+        };
+        let valid = GameSpecification {
+            schema_version: GAME_SPEC_SCHEMA_VERSION.into(),
+            id: "urn:uogto:game:fixture".into(),
+            game: game.clone(),
+        };
+        assert_eq!(valid.validate(), Ok(()));
+
+        let invalid = GameSpecification {
+            schema_version: "2.0.0".into(),
+            id: valid.id,
+            game,
+        };
+        let error = invalid.validate().unwrap_err();
+        assert_eq!(error.code(), "unsupported_schema_version");
+        assert_eq!(error.path(), "schema_version");
     }
 }
