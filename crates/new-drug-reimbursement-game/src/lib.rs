@@ -24,11 +24,16 @@ fn valid_opportunity_set(opportunities: OpportunitySet) -> bool {
 }
 
 #[must_use]
-pub fn reallocation_productivity(opportunities: OpportunitySet) -> f64 {
-    match (opportunities.expansion_icer, opportunities.contraction_icer) {
-        (Some(n), Some(m)) if n > 0.0 && m > 0.0 => (1.0 / n - 1.0 / m).max(0.0),
-        _ => 0.0,
+pub fn reallocation_productivity(opportunities: OpportunitySet) -> Option<f64> {
+    if !valid_opportunity_set(opportunities) {
+        return None;
     }
+    Some(
+        match (opportunities.expansion_icer, opportunities.contraction_icer) {
+            (Some(n), Some(m)) => (1.0 / n - 1.0 / m).max(0.0),
+            _ => 0.0,
+        },
+    )
 }
 
 #[must_use]
@@ -38,7 +43,7 @@ pub fn fixed_budget_shadow_price(opportunities: OpportunitySet) -> Option<f64> {
     }
     let d = opportunities.displacement_icer?;
     let alternative =
-        reallocation_productivity(opportunities).max(opportunities.additional_best_productivity);
+        reallocation_productivity(opportunities)?.max(opportunities.additional_best_productivity);
     let denominator = 1.0 / d + alternative;
     (denominator > 0.0).then_some(1.0 / denominator)
 }
@@ -59,7 +64,7 @@ pub fn net_economic_benefit_health(
     }
     let d = opportunities.displacement_icer?;
     let alternative =
-        reallocation_productivity(opportunities).max(opportunities.additional_best_productivity);
+        reallocation_productivity(opportunities)?.max(opportunities.additional_best_productivity);
     Some(incremental_health_effect - incremental_cost / d - incremental_cost * alternative)
 }
 
@@ -156,6 +161,7 @@ mod tests {
             additional_best_productivity: 0.0,
         };
         assert_eq!(fixed_budget_shadow_price(invalid), None);
+        assert_eq!(reallocation_productivity(invalid), None);
         assert_eq!(net_economic_benefit_health(1.0, 1.0, invalid), None);
     }
 
@@ -185,6 +191,8 @@ expected_reimburse"
             let expected_nebh = parse(8);
             let beta = fixed_budget_shadow_price(opportunities).unwrap();
             let nebh = net_economic_benefit_health(parse(5), parse(6), opportunities).unwrap();
+            let iper = parse(5) / parse(6);
+            let tolerance = 1e-12 * beta.abs().max(iper.abs()).max(1.0);
             assert!(
                 (beta - expected_beta).abs() < 1e-9,
                 "shadow-price drift in {}",
@@ -195,7 +203,7 @@ expected_reimburse"
                 "NEBhR drift in {}",
                 fields[1]
             );
-            assert_eq!(nebh >= -1e-12, fields[9] == "true");
+            assert_eq!(iper <= beta + tolerance, fields[9] == "true");
         }
     }
 
