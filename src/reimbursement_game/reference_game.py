@@ -6,6 +6,7 @@ not a replacement for the planned Rust game-theory capability.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from typing import Any
 
@@ -29,11 +30,15 @@ def solve_game(spec: dict[str, Any]) -> OracleResult:
         kind = node["kind"]
         if kind == "terminal":
             result = {str(k): float(v) for k, v in node["payoffs"].items()}
+            if any(not math.isfinite(value) for value in result.values()):
+                raise ValueError("terminal payoffs must be finite")
         elif kind == "chance":
             result = {}
             total = 0.0
             for edge in node["edges"]:
                 probability = float(edge["probability"])
+                if not math.isfinite(probability):
+                    raise ValueError("chance probabilities must be finite")
                 total += probability
                 child = visit(str(edge["target"]))
                 for player, value in child.items():

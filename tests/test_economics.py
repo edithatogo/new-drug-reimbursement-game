@@ -97,6 +97,17 @@ class EconomicsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "opportunity cost"):
             health_shadow_price(EconomicContext.EXPANDABLE, OpportunitySet())
 
+    def test_non_finite_derived_values_fail_closed(self) -> None:
+        with self.assertRaisesRegex(ValueError, "derived economic values must be finite"):
+            evaluate_reimbursement(
+                ReimbursementInputs(
+                    incremental_cost=1e308,
+                    incremental_health_effect=1e-308,
+                    context=EconomicContext.FIXED,
+                    opportunities=OpportunitySet(displacement_icer=1e-308),
+                )
+            )
+
     def test_versioned_cross_language_conformance_fixture(self) -> None:
         fixture = Path("fixtures/conformance/economics-v1.csv")
         with fixture.open(newline="", encoding="utf-8") as stream:

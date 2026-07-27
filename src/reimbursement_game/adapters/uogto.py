@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 from collections.abc import Mapping
 from typing import Any, ClassVar
 
@@ -20,6 +21,10 @@ class UogtoExporter:
     def export_game(self, case: Mapping[str, Any]) -> Mapping[str, Any]:
         case_id = str(case.get("case_id", "case"))
         base = f"urn:ndrg:{case_id}:"
+        incremental_cost = float(case["incremental_cost"])
+        incremental_health_effect = float(case["incremental_health_effect"])
+        if not math.isfinite(incremental_cost) or not math.isfinite(incremental_health_effect):
+            raise ValueError("UOGTO economic values must be finite")
         return {
             "@context": self.context,
             "@id": base + "game",
@@ -28,7 +33,7 @@ class UogtoExporter:
             "name": str(case.get("name", "New-drug reimbursement case")),
             "hasPlayer": [base + "firm", base + "institution"],
             "governedByRule": [base + "threshold-rule", base + "budget-rule"],
-            "ndrg:incrementalCost": float(case["incremental_cost"]),
-            "ndrg:incrementalHealthEffect": float(case["incremental_health_effect"]),
+            "ndrg:incrementalCost": incremental_cost,
+            "ndrg:incrementalHealthEffect": incremental_health_effect,
             "ndrg:economicContext": str(case["context"]),
         }
