@@ -27,6 +27,12 @@ jobs:
         run: python -m compileall -q src scripts tests
       - name: Validate ecosystem lock and discovery contract offline
         run: python scripts/discover_ecosystem.py --check --offline-fixture-mode
+      - name: Validate governance and extraction inventories
+        run: |
+          python scripts/governance_inventory.py --check
+          python scripts/validate_extraction.py
+      - name: Build and install distribution in a clean environment
+        run: python scripts/validate_packaging.py
       - name: Ruff
         run: ruff check .
       - name: Mypy

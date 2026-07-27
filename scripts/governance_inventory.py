@@ -36,7 +36,7 @@ def build_inventory(root: Path) -> dict[str, Any]:
         "project": {
             "name": project["name"],
             "version": project["version"],
-            "license": project["license"]["text"],
+            "license": project["license"],
             "python_runtime_dependencies": sorted(project.get("dependencies", [])),
             "python_optional_dependencies": {
                 name: sorted(values)

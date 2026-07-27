@@ -8,7 +8,8 @@ version = "0.4.0"
 description = "Ecosystem-first price-effectiveness and reimbursement-game research software"
 readme = "README.md"
 requires-python = ">=3.11"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 authors = [{name = "New Drug Reimbursement Game contributors"}]
 keywords = ["health economics", "game theory", "reimbursement", "price-effectiveness", "UOGTO"]
 dependencies = []
