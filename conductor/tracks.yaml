@@ -54,5 +54,5 @@ tracks:
   - id: T09
     title: Governance, release, validation, and extraction readiness
     priority: 1
-    status: planned
+    status: in_progress
     depends_on: [T00]
