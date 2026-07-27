@@ -45,6 +45,15 @@ class ScopeTests(unittest.TestCase):
         repositories = [item["repository"] for item in lock["component"]]
         self.assertTrue(all("github.com/edithatogo/" in repo for repo in repositories))
 
+    def test_dimensional_derivation_preserves_source_and_review_boundary(self) -> None:
+        ledger = Path("docs/research/dimensional-derivation-ledger.md").read_text()
+        normalized = " ".join(ledger.split())
+        self.assertIn("10.1007/978-3-319-08903-4", ledger)
+        self.assertIn("Chapter 7", ledger)
+        self.assertIn("NEBhR = Delta E - Delta C / d - Delta C * g*", ledger)
+        self.assertIn("technical-efficiency interpretation", normalized)
+        self.assertIn("independent dimensional and economic review", normalized)
+
 
 if __name__ == "__main__":
     unittest.main()

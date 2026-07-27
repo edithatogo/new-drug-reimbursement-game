@@ -41,3 +41,7 @@ symbol.
 
 No source pages, figures, tables, or substantial prose are included. Notation
 and equations are attributed. Examples and test values are synthetic.
+
+The independent dimensional derivation, executable evidence, and pending review
+gates are recorded in
+[`dimensional-derivation-ledger.md`](./dimensional-derivation-ledger.md).
