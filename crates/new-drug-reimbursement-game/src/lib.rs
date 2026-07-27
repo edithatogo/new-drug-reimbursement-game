@@ -198,4 +198,32 @@ expected_reimburse"
             assert_eq!(nebh >= -1e-12, fields[9] == "true");
         }
     }
+
+    #[test]
+    fn deterministic_monotonicity_sweeps_hold() {
+        let base = OpportunitySet {
+            expansion_icer: Some(20_000.0),
+            contraction_icer: Some(60_000.0),
+            displacement_icer: Some(40_000.0),
+            additional_best_productivity: 0.0,
+        };
+        let mut prior_beta = fixed_budget_shadow_price(base).unwrap();
+        for displacement in [45_000.0, 60_000.0, 100_000.0] {
+            let opportunities = OpportunitySet {
+                displacement_icer: Some(displacement),
+                ..base
+            };
+            let beta = fixed_budget_shadow_price(opportunities).unwrap();
+            assert!(beta > prior_beta);
+            prior_beta = beta;
+        }
+
+        let beta = fixed_budget_shadow_price(base).unwrap();
+        let mut prior_nebh = f64::INFINITY;
+        for multiplier in [0.25, 0.5, 0.75, 1.0, 1.25, 2.0] {
+            let nebh = net_economic_benefit_health(beta * multiplier * 10.0, 10.0, base).unwrap();
+            assert!(nebh < prior_nebh);
+            prior_nebh = nebh;
+        }
+    }
 }

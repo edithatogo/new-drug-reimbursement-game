@@ -130,6 +130,50 @@ class EconomicsTests(unittest.TestCase):
                 )
                 self.assertEqual(result.reimburse, row["expected_reimburse"] == "true")
 
+    def test_shadow_price_monotonicity_sweep(self) -> None:
+        baseline, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
+        for displacement in (45_000.0, 60_000.0, 100_000.0):
+            with self.subTest(displacement_icer=displacement):
+                beta, _ = health_shadow_price(
+                    EconomicContext.FIXED,
+                    OpportunitySet(
+                        expansion_icer=20_000.0,
+                        contraction_icer=60_000.0,
+                        displacement_icer=displacement,
+                    ),
+                )
+                self.assertGreater(beta, baseline)
+                baseline = beta
+
+        baseline, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
+        for expansion in (25_000.0, 30_000.0, 40_000.0):
+            with self.subTest(expansion_icer=expansion):
+                beta, _ = health_shadow_price(
+                    EconomicContext.FIXED,
+                    OpportunitySet(
+                        expansion_icer=expansion,
+                        contraction_icer=60_000.0,
+                        displacement_icer=40_000.0,
+                    ),
+                )
+                self.assertGreater(beta, baseline)
+                baseline = beta
+
+    def test_nebh_decreases_monotonically_with_price_sweep(self) -> None:
+        beta, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
+        prior = math.inf
+        for multiplier in (0.25, 0.5, 0.75, 1.0, 1.25, 2.0):
+            result = evaluate_reimbursement(
+                ReimbursementInputs(
+                    incremental_cost=beta * multiplier * 10.0,
+                    incremental_health_effect=10.0,
+                    context=EconomicContext.FIXED,
+                    opportunities=self.opportunities,
+                )
+            )
+            self.assertLess(result.net_economic_benefit_health, prior)
+            prior = result.net_economic_benefit_health
+
     def test_efficient_fixed_budget_reduces_to_d(self) -> None:
         opportunities = OpportunitySet(
             expansion_icer=30_000.0,
