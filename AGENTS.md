@@ -3,10 +3,11 @@
 Read these files before editing:
 
 1. `README.md`
-2. `DEPENDENCY_MIGRATION_PLAN.md`
-3. `ecosystem.lock.toml`
-4. `docs/architecture/capability-boundary.md`
-5. `CODEX_IMPLEMENTATION_PROMPT.md`
+2. `CODEX_REPOSITORY_ACTIVATION_PROMPT.md` when activating a restored checkout
+3. `DEPENDENCY_MIGRATION_PLAN.md`
+4. `ecosystem.lock.toml`
+5. `docs/architecture/capability-boundary.md`
+6. `CODEX_IMPLEMENTATION_PROMPT.md`
 
 ## Non-negotiable constraints
 
@@ -35,5 +36,8 @@ Read these files before editing:
 python scripts/validate_scope.py
 python -m unittest discover -s tests -p 'test_*.py'
 python -m compileall -q src scripts tests
+python scripts/discover_ecosystem.py --offline-fixture-mode
+cargo fmt --all -- --check
+cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 ```

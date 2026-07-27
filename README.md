@@ -80,6 +80,20 @@ seed for the general capability.
 - Upstream proposal packets for UOGTO, Kairos, Voiage, and Reimbursement Atlas.
 - A comprehensive Codex implementation prompt.
 
+## Bundle-first Codex handoff
+
+The v0.4.0 handoff is designed to be copied into an otherwise empty parent
+folder. Its outer covering prompt restores this repository from a Git bundle,
+which preserves the original history and tags. Codex then executes
+`CODEX_REPOSITORY_ACTIVATION_PROMPT.md` inside the checkout to create or safely
+wire the GitHub remote, resolve the pinned owner-controlled ecosystem clones,
+activate Conductor, and continue autonomously into
+`CODEX_IMPLEMENTATION_PROMPT.md`.
+
+The source ZIP is supplied as an auditable fallback tree, but the Git bundle is
+the authoritative restoration path. See `START_HERE_CODEX.md` and
+`docs/GITHUB_BOOTSTRAP.md`.
+
 ## Quick start
 
 ```bash

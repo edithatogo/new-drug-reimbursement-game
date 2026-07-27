@@ -16,3 +16,8 @@ site/
 local-data/
 raw-data/
 confidential/
+.local/
+*.bundle
+*.zip
+*.tar.gz
+bootstrap-state.json

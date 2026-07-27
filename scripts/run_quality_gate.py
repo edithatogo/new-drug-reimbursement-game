@@ -1,24 +1,40 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import os
+from pathlib import Path
 import shutil
 import subprocess
 import sys
 
 
 def run(command: list[str]) -> int:
-    print("+", " ".join(command))
-    return subprocess.run(command, check=False).returncode
+    """Run one quality command without hiding its output."""
+
+    print("+", " ".join(command), flush=True)
+    environment = os.environ.copy()
+    source_path = str((Path.cwd() / "src").resolve())
+    environment["PYTHONPATH"] = source_path + os.pathsep + environment.get("PYTHONPATH", "")
+    return subprocess.run(command, check=False, env=environment).returncode
 
 
 def main() -> int:
+    """Run portable Python gates and available Rust gates."""
+
     commands = [
         [sys.executable, "scripts/validate_scope.py"],
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
         [sys.executable, "-m", "compileall", "-q", "src", "scripts", "tests"],
+        [sys.executable, "scripts/discover_ecosystem.py", "--offline-fixture-mode"],
     ]
     if shutil.which("cargo"):
-        commands.append(["cargo", "test", "--workspace"])
+        commands.extend(
+            [
+                ["cargo", "fmt", "--all", "--", "--check"],
+                ["cargo", "clippy", "--workspace", "--all-targets", "--", "-D", "warnings"],
+                ["cargo", "test", "--workspace"],
+            ]
+        )
     return max(run(command) for command in commands)
 
 

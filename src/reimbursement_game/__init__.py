@@ -23,4 +23,4 @@ __all__ = [
     "solve_revealed_threshold_game",
 ]
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"

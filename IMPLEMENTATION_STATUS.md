@@ -38,3 +38,17 @@
 - Native Rust/Python FFI and released Kairos integration.
 - Upstream PRs to UOGTO, Voiage, Kairos, or Reimbursement Atlas.
 - Regulator-grade validation, legal review, or deployment approval.
+
+## v0.4.0 handoff and activation
+
+Implemented:
+
+- Git-bundle-first workstation restoration preserving the original commit history;
+- an internal activation prompt that creates or safely wires the GitHub remote,
+  resolves pinned ecosystem clones, validates CI, and starts implementation;
+- standard-library ecosystem clone discovery with fail-closed pin checks;
+- repository-local Conductor tracks and baseline Python/Rust CI.
+
+Remote creation, GitHub authentication, and inspection of the user’s local
+checkouts remain workstation actions and are deliberately not claimed as complete
+in the distributed source tree.
