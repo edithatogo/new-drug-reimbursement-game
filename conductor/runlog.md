@@ -33,3 +33,7 @@
 - `c2c95dd` (T01): added an independently written dimensional derivation and
   assumption ledger bound to executable scope checks; external source and
   health-economics review remain pending.
+- `2477281` (T01): added a versioned economics fixture consumed independently
+  by Python and Rust; 29 Python tests and eight Rust workspace tests passed.
+- `e661e6a` (T01): added dependency-free deterministic monotonicity sweeps;
+  31 Python tests and ten Rust workspace tests passed.
