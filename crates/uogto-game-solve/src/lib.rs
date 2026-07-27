@@ -33,6 +33,22 @@ pub struct SolverDiagnostics {
     pub resolved_ties: usize,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum TraceNodeKind {
+    Decision,
+    Chance,
+    Terminal,
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct TraceStep {
+    pub sequence: usize,
+    pub node: NodeId,
+    pub kind: TraceNodeKind,
+    pub selected_action: Option<ActionId>,
+    pub expected_payoffs: PayoffVector,
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct Solution {
     pub expected_payoffs: PayoffVector,
@@ -40,6 +56,7 @@ pub struct Solution {
     pub tolerance: f64,
     pub tie_policy: TiePolicy,
     pub diagnostics: SolverDiagnostics,
+    pub trace: Vec<TraceStep>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -85,13 +102,22 @@ pub fn backward_induction_with_config(
     game.validate().map_err(SolveError::InvalidGame)?;
     let mut choices = BTreeMap::new();
     let mut diagnostics = SolverDiagnostics::default();
-    let payoffs = solve_node(game, &game.root, config, &mut choices, &mut diagnostics)?;
+    let mut trace = Vec::new();
+    let payoffs = solve_node(
+        game,
+        &game.root,
+        config,
+        &mut choices,
+        &mut diagnostics,
+        &mut trace,
+    )?;
     Ok(Solution {
         expected_payoffs: payoffs,
         choices,
         tolerance: config.tolerance,
         tie_policy: config.tie_policy,
         diagnostics,
+        trace,
     })
 }
 
@@ -101,6 +127,7 @@ fn solve_node(
     config: SolverConfig,
     choices: &mut BTreeMap<NodeId, ActionId>,
     diagnostics: &mut SolverDiagnostics,
+    trace: &mut Vec<TraceStep>,
 ) -> Result<PayoffVector, SolveError> {
     diagnostics.visited_nodes += 1;
     let node = game
@@ -108,21 +135,26 @@ fn solve_node(
         .get(node_id)
         .ok_or_else(|| SolveError::MissingNode(node_id.clone()))?;
     match node {
-        Node::Terminal { payoffs } => Ok(payoffs.clone()),
+        Node::Terminal { payoffs } => {
+            let result = payoffs.clone();
+            push_trace(trace, node_id, TraceNodeKind::Terminal, None, &result);
+            Ok(result)
+        }
         Node::Chance { edges } => {
             let mut expected = PayoffVector::new();
             for edge in edges {
-                let child = solve_node(game, &edge.target, config, choices, diagnostics)?;
+                let child = solve_node(game, &edge.target, config, choices, diagnostics, trace)?;
                 for (player, payoff) in child {
                     *expected.entry(player).or_insert(0.0) += edge.probability * payoff;
                 }
             }
+            push_trace(trace, node_id, TraceNodeKind::Chance, None, &expected);
             Ok(expected)
         }
         Node::Decision { player, edges } => {
             let mut best: Option<(f64, ActionId, PayoffVector)> = None;
             for edge in edges {
-                let child = solve_node(game, &edge.target, config, choices, diagnostics)?;
+                let child = solve_node(game, &edge.target, config, choices, diagnostics, trace)?;
                 let utility = payoff_for(&child, player);
                 let replace = match &best {
                     None => true,
@@ -142,10 +174,33 @@ fn solve_node(
                 }
             }
             let (_, action, payoffs) = best.expect("validated decision has an action");
-            choices.insert(node_id.clone(), action);
+            choices.insert(node_id.clone(), action.clone());
+            push_trace(
+                trace,
+                node_id,
+                TraceNodeKind::Decision,
+                Some(action),
+                &payoffs,
+            );
             Ok(payoffs)
         }
     }
+}
+
+fn push_trace(
+    trace: &mut Vec<TraceStep>,
+    node: &NodeId,
+    kind: TraceNodeKind,
+    selected_action: Option<ActionId>,
+    expected_payoffs: &PayoffVector,
+) {
+    trace.push(TraceStep {
+        sequence: trace.len(),
+        node: node.clone(),
+        kind,
+        selected_action,
+        expected_payoffs: expected_payoffs.clone(),
+    });
 }
 
 fn payoff_for(payoffs: &PayoffVector, player: &PlayerId) -> f64 {
@@ -157,7 +212,7 @@ mod tests {
     use std::collections::BTreeMap;
 
     use super::*;
-    use uogto_game_core::{ActionEdge, Game, Node};
+    use uogto_game_core::{ActionEdge, ChanceEdge, Game, Node};
 
     #[test]
     fn chooses_controlling_players_best_action() {
@@ -207,6 +262,8 @@ mod tests {
         assert_eq!(solution.tie_policy, TiePolicy::LexicographicAction);
         assert_eq!(solution.diagnostics.visited_nodes, 3);
         assert_eq!(solution.diagnostics.resolved_ties, 0);
+        assert_eq!(solution.trace.len(), 3);
+        assert_eq!(solution.trace[2].node, root);
     }
 
     #[test]
@@ -280,5 +337,63 @@ mod tests {
                     if value.to_bits() == tolerance.to_bits()
             ));
         }
+    }
+
+    #[test]
+    fn chance_payoffs_and_trace_are_deterministic() {
+        let player = PlayerId("player".into());
+        let root = NodeId("chance".into());
+        let low = NodeId("low".into());
+        let high = NodeId("high".into());
+        let game = Game {
+            root: root.clone(),
+            nodes: BTreeMap::from([
+                (
+                    root.clone(),
+                    Node::Chance {
+                        edges: vec![
+                            ChanceEdge {
+                                probability: 0.25,
+                                target: low.clone(),
+                            },
+                            ChanceEdge {
+                                probability: 0.75,
+                                target: high.clone(),
+                            },
+                        ],
+                    },
+                ),
+                (
+                    low.clone(),
+                    Node::Terminal {
+                        payoffs: BTreeMap::from([(player.clone(), 2.0)]),
+                    },
+                ),
+                (
+                    high.clone(),
+                    Node::Terminal {
+                        payoffs: BTreeMap::from([(player.clone(), 6.0)]),
+                    },
+                ),
+            ]),
+        };
+
+        let first = backward_induction(&game).unwrap();
+        let second = backward_induction(&game).unwrap();
+
+        assert_eq!(first, second);
+        assert_eq!(first.expected_payoffs[&player].to_bits(), 5.0_f64.to_bits());
+        assert_eq!(
+            first
+                .trace
+                .iter()
+                .map(|step| (&step.node, step.kind))
+                .collect::<Vec<_>>(),
+            vec![
+                (&low, TraceNodeKind::Terminal),
+                (&high, TraceNodeKind::Terminal),
+                (&root, TraceNodeKind::Chance),
+            ]
+        );
     }
 }
