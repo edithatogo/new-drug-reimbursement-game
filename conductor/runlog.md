@@ -18,3 +18,15 @@
   `30254455585` passed.
 - Enabled the `Protect main` ruleset with stable `python` and `rust` checks.
 - Created non-duplicate implementation issues #3 through #11 for T01-T09.
+
+## Implementation milestones
+
+- `0e6e968` (T01): added Python and Rust threshold sign, special-case,
+  currency-rescaling, and fail-closed input invariants. The full gate passed
+  with 27 Python tests and six Rust workspace tests.
+- `9717125` (T02): added machine-readable validation failures for empty
+  identifiers, duplicate actions, invalid payoffs, and unreachable nodes in the
+  domain-neutral Rust game graph. The full Python/Rust gate remained green.
+- Exact Chapter 7 technical-efficiency interpretation, independent
+  health-economics review, and regulator-grade validation remain unresolved
+  external/domain gates.

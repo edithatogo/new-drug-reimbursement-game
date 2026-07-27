@@ -31,6 +31,15 @@
   not fetch raw data or claim evidence readiness.
 - Voiage integration is optional and has not been vendored.
 
+## Workstation implementation milestones
+
+- T01 now has cross-language threshold, sign, special-case, unit-rescaling, and
+  invalid-input invariants in Python and Rust (`0e6e968`).
+- T02 now rejects empty identifiers, duplicate actions, non-finite payoffs, and
+  unreachable nodes with structured Rust validation errors (`9717125`).
+- These checks harden the seed implementation; they do not resolve the Chapter
+  7 technical-efficiency interpretation or provide independent domain review.
+
 ## Not complete
 
 - Full formal reconstructions of the Chapter 9 and Chapter 10 games.
