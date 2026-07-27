@@ -51,6 +51,50 @@ class EconomicsTests(unittest.TestCase):
         )
         self.assertGreater(result.net_economic_benefit_health, 0.0)
 
+    def test_price_above_shadow_price_is_negative(self) -> None:
+        beta, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
+        result = evaluate_reimbursement(
+            ReimbursementInputs(
+                incremental_cost=beta * 1.2 * 10.0,
+                incremental_health_effect=10.0,
+                context=EconomicContext.FIXED,
+                opportunities=self.opportunities,
+            )
+        )
+        self.assertLess(result.net_economic_benefit_health, 0.0)
+        self.assertFalse(result.reimburse)
+
+    def test_currency_unit_rescaling_preserves_health_result(self) -> None:
+        beta, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
+        baseline = evaluate_reimbursement(
+            ReimbursementInputs(
+                incremental_cost=beta * 10.0,
+                incremental_health_effect=10.0,
+                context=EconomicContext.FIXED,
+                opportunities=self.opportunities,
+            )
+        )
+        scale = 100.0
+        rescaled_opportunities = OpportunitySet(
+            expansion_icer=self.opportunities.expansion_icer * scale,
+            contraction_icer=self.opportunities.contraction_icer * scale,
+            displacement_icer=self.opportunities.displacement_icer * scale,
+        )
+        rescaled = evaluate_reimbursement(
+            ReimbursementInputs(
+                incremental_cost=beta * scale * 10.0,
+                incremental_health_effect=10.0,
+                context=EconomicContext.FIXED,
+                opportunities=rescaled_opportunities,
+            )
+        )
+        self.assertAlmostEqual(rescaled.net_economic_benefit_health, baseline.net_economic_benefit_health)
+        self.assertAlmostEqual(rescaled.health_shadow_price, baseline.health_shadow_price * scale)
+
+    def test_non_identifiable_context_fails_closed(self) -> None:
+        with self.assertRaisesRegex(ValueError, "opportunity cost"):
+            health_shadow_price(EconomicContext.EXPANDABLE, OpportunitySet())
+
     def test_efficient_fixed_budget_reduces_to_d(self) -> None:
         opportunities = OpportunitySet(
             expansion_icer=30_000.0,
