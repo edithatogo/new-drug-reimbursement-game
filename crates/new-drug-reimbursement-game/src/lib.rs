@@ -28,12 +28,11 @@ pub fn reallocation_productivity(opportunities: OpportunitySet) -> Option<f64> {
     if !valid_opportunity_set(opportunities) {
         return None;
     }
-    Some(
-        match (opportunities.expansion_icer, opportunities.contraction_icer) {
-            (Some(n), Some(m)) => (1.0 / n - 1.0 / m).max(0.0),
-            _ => 0.0,
-        },
-    )
+    let productivity = match (opportunities.expansion_icer, opportunities.contraction_icer) {
+        (Some(n), Some(m)) => (1.0 / n - 1.0 / m).max(0.0),
+        _ => 0.0,
+    };
+    productivity.is_finite().then_some(productivity)
 }
 
 #[must_use]
@@ -45,7 +44,9 @@ pub fn fixed_budget_shadow_price(opportunities: OpportunitySet) -> Option<f64> {
     let alternative =
         reallocation_productivity(opportunities)?.max(opportunities.additional_best_productivity);
     let denominator = 1.0 / d + alternative;
-    (denominator > 0.0).then_some(1.0 / denominator)
+    let shadow_price = 1.0 / denominator;
+    (denominator.is_finite() && denominator > 0.0 && shadow_price.is_finite())
+        .then_some(shadow_price)
 }
 
 #[must_use]
@@ -65,7 +66,8 @@ pub fn net_economic_benefit_health(
     let d = opportunities.displacement_icer?;
     let alternative =
         reallocation_productivity(opportunities)?.max(opportunities.additional_best_productivity);
-    Some(incremental_health_effect - incremental_cost / d - incremental_cost * alternative)
+    let result = incremental_health_effect - incremental_cost / d - incremental_cost * alternative;
+    result.is_finite().then_some(result)
 }
 
 #[cfg(test)]
@@ -163,6 +165,17 @@ mod tests {
         assert_eq!(fixed_budget_shadow_price(invalid), None);
         assert_eq!(reallocation_productivity(invalid), None);
         assert_eq!(net_economic_benefit_health(1.0, 1.0, invalid), None);
+
+        let smallest_positive_subnormal = f64::from_bits(1);
+        let extreme = OpportunitySet {
+            expansion_icer: Some(smallest_positive_subnormal),
+            contraction_icer: Some(1.0),
+            displacement_icer: Some(smallest_positive_subnormal),
+            additional_best_productivity: 0.0,
+        };
+        assert_eq!(reallocation_productivity(extreme), None);
+        assert_eq!(fixed_budget_shadow_price(extreme), None);
+        assert_eq!(net_economic_benefit_health(f64::MAX, 1.0, extreme), None);
     }
 
     #[test]

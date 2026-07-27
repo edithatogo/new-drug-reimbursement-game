@@ -37,6 +37,21 @@ class EcosystemDiscoveryTests(unittest.TestCase):
         )
         self.assertTrue(all(len(component.revision) == 40 for component in components))
 
+    def test_rejects_owner_shaped_paths_on_non_github_hosts(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            lock = Path(temporary_directory) / "ecosystem.lock.toml"
+            lock.write_text(
+                """
+[[component]]
+name = "Voiage"
+repository = "https://attacker.invalid/edithatogo/voiage"
+revision = "0123456789abcdef0123456789abcdef01234567"
+""",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "canonical github.com host"):
+                MODULE.load_components(lock)
+
     def test_discovers_exact_remote_and_pin(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
