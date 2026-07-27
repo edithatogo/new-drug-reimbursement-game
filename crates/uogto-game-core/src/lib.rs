@@ -52,13 +52,17 @@ pub struct Game {
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum ValidationError {
+    EmptyIdentifier { path: String },
     MissingRoot(NodeId),
     MissingTarget { from: NodeId, target: NodeId },
     EmptyDecision(NodeId),
+    DuplicateAction { node: NodeId, action: ActionId },
     EmptyChance(NodeId),
     InvalidProbability(NodeId),
     ProbabilityMass(NodeId),
+    InvalidPayoff { node: NodeId, player: PlayerId },
     Cycle(NodeId),
+    UnreachableNode(NodeId),
 }
 
 impl fmt::Display for ValidationError {
@@ -76,16 +80,27 @@ impl Game {
     /// node, contains a cycle, or otherwise violates the supported finite-game
     /// contract.
     pub fn validate(&self) -> Result<(), ValidationError> {
+        Self::ensure_identifier("root", &self.root.0)?;
         if !self.nodes.contains_key(&self.root) {
             return Err(ValidationError::MissingRoot(self.root.clone()));
         }
         for (node_id, node) in &self.nodes {
+            Self::ensure_identifier("nodes", &node_id.0)?;
             match node {
-                Node::Decision { edges, .. } => {
+                Node::Decision { player, edges } => {
+                    Self::ensure_identifier("decision.player", &player.0)?;
                     if edges.is_empty() {
                         return Err(ValidationError::EmptyDecision(node_id.clone()));
                     }
+                    let mut actions = BTreeSet::new();
                     for edge in edges {
+                        Self::ensure_identifier("decision.action", &edge.action.0)?;
+                        if !actions.insert(edge.action.clone()) {
+                            return Err(ValidationError::DuplicateAction {
+                                node: node_id.clone(),
+                                action: edge.action.clone(),
+                            });
+                        }
                         self.ensure_target(node_id, &edge.target)?;
                     }
                 }
@@ -106,15 +121,39 @@ impl Game {
                     }
                 }
                 Node::Terminal { payoffs } => {
-                    if payoffs.values().any(|value| !value.is_finite()) {
-                        return Err(ValidationError::InvalidProbability(node_id.clone()));
+                    for (player, value) in payoffs {
+                        Self::ensure_identifier("terminal.player", &player.0)?;
+                        if !value.is_finite() {
+                            return Err(ValidationError::InvalidPayoff {
+                                node: node_id.clone(),
+                                player: player.clone(),
+                            });
+                        }
                     }
                 }
             }
         }
         let mut visiting = BTreeSet::new();
         let mut visited = BTreeSet::new();
-        self.depth_first(&self.root, &mut visiting, &mut visited)
+        self.depth_first(&self.root, &mut visiting, &mut visited)?;
+        if let Some(unreachable) = self
+            .nodes
+            .keys()
+            .find(|node_id| !visited.contains(*node_id))
+        {
+            return Err(ValidationError::UnreachableNode(unreachable.clone()));
+        }
+        Ok(())
+    }
+
+    fn ensure_identifier(path: &str, value: &str) -> Result<(), ValidationError> {
+        if value.trim().is_empty() {
+            Err(ValidationError::EmptyIdentifier {
+                path: path.to_owned(),
+            })
+        } else {
+            Ok(())
+        }
     }
 
     fn ensure_target(&self, from: &NodeId, target: &NodeId) -> Result<(), ValidationError> {
@@ -180,5 +219,88 @@ mod tests {
         );
         let game = Game { root, nodes };
         assert!(matches!(game.validate(), Err(ValidationError::Cycle(_))));
+    }
+
+    #[test]
+    fn rejects_duplicate_actions_at_a_decision_node() {
+        let root = NodeId("root".into());
+        let terminal = NodeId("terminal".into());
+        let action = ActionId("same".into());
+        let game = Game {
+            root: root.clone(),
+            nodes: BTreeMap::from([
+                (
+                    root.clone(),
+                    Node::Decision {
+                        player: PlayerId("player".into()),
+                        edges: vec![
+                            ActionEdge {
+                                action: action.clone(),
+                                target: terminal.clone(),
+                            },
+                            ActionEdge {
+                                action: action.clone(),
+                                target: terminal.clone(),
+                            },
+                        ],
+                    },
+                ),
+                (
+                    terminal,
+                    Node::Terminal {
+                        payoffs: BTreeMap::new(),
+                    },
+                ),
+            ]),
+        };
+        assert_eq!(
+            game.validate(),
+            Err(ValidationError::DuplicateAction { node: root, action })
+        );
+    }
+
+    #[test]
+    fn rejects_unreachable_nodes_and_non_finite_payoffs() {
+        let root = NodeId("root".into());
+        let unreachable = NodeId("unreachable".into());
+        let player = PlayerId("player".into());
+        let invalid_payoff = Game {
+            root: root.clone(),
+            nodes: BTreeMap::from([(
+                root.clone(),
+                Node::Terminal {
+                    payoffs: BTreeMap::from([(player.clone(), f64::NAN)]),
+                },
+            )]),
+        };
+        assert_eq!(
+            invalid_payoff.validate(),
+            Err(ValidationError::InvalidPayoff {
+                node: root.clone(),
+                player,
+            })
+        );
+
+        let unreachable_game = Game {
+            root: root.clone(),
+            nodes: BTreeMap::from([
+                (
+                    root,
+                    Node::Terminal {
+                        payoffs: BTreeMap::new(),
+                    },
+                ),
+                (
+                    unreachable.clone(),
+                    Node::Terminal {
+                        payoffs: BTreeMap::new(),
+                    },
+                ),
+            ]),
+        };
+        assert_eq!(
+            unreachable_game.validate(),
+            Err(ValidationError::UnreachableNode(unreachable))
+        );
     }
 }
