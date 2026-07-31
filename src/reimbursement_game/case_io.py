@@ -46,7 +46,7 @@ def inputs_from_case(case: dict[str, Any]) -> ReimbursementInputs:
 def chapter7_inputs_from_case(case: dict[str, Any]) -> Chapter7Inputs:
     """Parse a strict versioned Chapter 7 scenario document."""
 
-    if case.get("schema_version") != 1:
+    if type(case.get("schema_version")) is not int or case["schema_version"] != 1:
         raise ValueError("Chapter 7 case requires schema_version 1")
     if case.get("model_kind") != "pekarsky-2015-ch7":
         raise ValueError("Chapter 7 case requires model_kind pekarsky-2015-ch7")
@@ -88,29 +88,38 @@ def chapter7_inputs_from_case(case: dict[str, Any]) -> Chapter7Inputs:
         raise ValueError(f"Chapter 7 case contains scenario-incompatible fields: {unexpected}")
     if missing:
         raise ValueError(f"Chapter 7 case is missing required fields: {missing}")
-    common = {
-        "incremental_cost": _required_number(case, "incremental_cost"),
-        "incremental_health_effect": _required_number(case, "incremental_health_effect"),
-    }
+    cost = _required_number(case, "incremental_cost")
+    effect = _required_number(case, "incremental_health_effect")
+    evidence_revision = str(case["evidence_revision"])
     if scenario == "scenario_1":
-        return Scenario1Inputs(**common, expansion_icer=_required_number(case, "expansion_icer"))
+        return Scenario1Inputs(
+            cost,
+            effect,
+            expansion_icer=_required_number(case, "expansion_icer"),
+            evidence_revision=evidence_revision,
+        )
     if scenario == "scenario_2":
         return Scenario2Inputs(
-            **common,
+            cost,
+            effect,
             expansion_icer=_required_number(case, "expansion_icer"),
             contraction_icer=_required_number(case, "contraction_icer"),
             displacement_icer=_required_number(case, "displacement_icer"),
+            evidence_revision=evidence_revision,
         )
     if scenario == "scenario_3":
         return Scenario3Inputs(
-            **common,
+            cost,
+            effect,
             expansion_icer=_required_number(case, "expansion_icer"),
             contraction_icer=_required_number(case, "contraction_icer"),
             displacement_icer=_required_number(case, "displacement_icer"),
+            evidence_revision=evidence_revision,
         )
     if scenario == "scenario_4":
         return Scenario4Inputs(
-            **common,
+            cost,
+            effect,
             contraction_icer=_required_number(case, "contraction_icer"),
             displacement_icer=_required_number(case, "displacement_icer"),
             investment_icer=_required_number(case, "investment_icer"),
@@ -118,7 +127,7 @@ def chapter7_inputs_from_case(case: dict[str, Any]) -> Chapter7Inputs:
             annual_program_health_effect=_required_number(
                 case, "annual_program_health_effect"
             ),
-            evidence_revision=str(case["evidence_revision"]),
+            evidence_revision=evidence_revision,
         )
     raise AssertionError("unreachable validated Chapter 7 scenario")
 

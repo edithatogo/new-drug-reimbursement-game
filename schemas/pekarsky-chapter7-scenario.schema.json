@@ -104,6 +104,16 @@
             "required": [
               "investment_icer"
             ]
+          },
+          {
+            "required": [
+              "present_value_multiplier"
+            ]
+          },
+          {
+            "required": [
+              "annual_program_health_effect"
+            ]
           }
         ]
       }

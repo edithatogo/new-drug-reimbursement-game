@@ -48,10 +48,31 @@ class Chapter7ScenarioTests(unittest.TestCase):
 
     def test_source_domains_fail_closed(self) -> None:
         invalid = (
-            Scenario1Inputs(1, 1, expansion_icer=math.nan),
-            Scenario2Inputs(1, 1, expansion_icer=20, contraction_icer=21, displacement_icer=20),
-            Scenario3Inputs(1, 1, expansion_icer=30, contraction_icer=20, displacement_icer=25),
-            Scenario3Inputs(1, 1, expansion_icer=20, contraction_icer=60, displacement_icer=70),
+            Scenario1Inputs(1, 1, expansion_icer=math.nan, evidence_revision="source"),
+            Scenario2Inputs(
+                1,
+                1,
+                expansion_icer=20,
+                contraction_icer=21,
+                displacement_icer=20,
+                evidence_revision="source",
+            ),
+            Scenario3Inputs(
+                1,
+                1,
+                expansion_icer=30,
+                contraction_icer=20,
+                displacement_icer=25,
+                evidence_revision="source",
+            ),
+            Scenario3Inputs(
+                1,
+                1,
+                expansion_icer=20,
+                contraction_icer=60,
+                displacement_icer=70,
+                evidence_revision="source",
+            ),
             Scenario4Inputs(
                 100,
                 1,
@@ -131,16 +152,80 @@ class Chapter7ScenarioTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "JSON number"):
             chapter7_inputs_from_case(case)
 
+        case["incremental_cost"] = 200_000
+        case["schema_version"] = True
+        with self.assertRaisesRegex(ValueError, "schema_version 1"):
+            chapter7_inputs_from_case(case)
+
+    def test_schema_scenario_one_forbids_dynamic_fields(self) -> None:
+        schema = json.loads(
+            Path("schemas/pekarsky-chapter7-scenario.schema.json").read_text(encoding="utf-8")
+        )
+        forbidden = {
+            item["required"][0] for item in schema["oneOf"][0]["not"]["anyOf"]
+        }
+        self.assertTrue(
+            {
+                "contraction_icer",
+                "displacement_icer",
+                "investment_icer",
+                "present_value_multiplier",
+                "annual_program_health_effect",
+            }
+            <= forbidden
+        )
+
     def test_currency_rescaling_does_not_change_economic_preference(self) -> None:
         baseline = evaluate_chapter7_scenario(
-            Scenario1Inputs(110, 1, expansion_icer=100)
+            Scenario1Inputs(110, 1, expansion_icer=100, evidence_revision="source")
         )
         scaled = evaluate_chapter7_scenario(
-            Scenario1Inputs(110e12, 1, expansion_icer=100e12)
+            Scenario1Inputs(110e12, 1, expansion_icer=100e12, evidence_revision="source")
         )
         self.assertFalse(baseline.economically_preferred)
         self.assertFalse(scaled.economically_preferred)
         self.assertAlmostEqual(baseline.nebh, scaled.nebh)
+
+    def test_health_unit_rescaling_does_not_change_economic_preference(self) -> None:
+        baseline = evaluate_chapter7_scenario(
+            Scenario1Inputs(
+                1.0001e-7,
+                1e-9,
+                expansion_icer=100,
+                evidence_revision="source",
+            )
+        )
+        scaled = evaluate_chapter7_scenario(
+            Scenario1Inputs(
+                1.0001e-7,
+                1e-3,
+                expansion_icer=1e-4,
+                evidence_revision="source",
+            )
+        )
+        self.assertFalse(baseline.economically_preferred)
+        self.assertFalse(scaled.economically_preferred)
+
+    def test_tiny_scenario_two_equality_is_currency_scale_invariant(self) -> None:
+        baseline = Scenario2Inputs(
+            1e-13,
+            1,
+            expansion_icer=1e-13,
+            contraction_icer=2e-13,
+            displacement_icer=1e-13,
+            evidence_revision="source",
+        )
+        scaled = Scenario2Inputs(
+            0.1,
+            1,
+            expansion_icer=0.1,
+            contraction_icer=0.2,
+            displacement_icer=0.1,
+            evidence_revision="source",
+        )
+        for inputs in (baseline, scaled):
+            with self.assertRaisesRegex(ValueError, "n = m"):
+                evaluate_chapter7_scenario(inputs)
 
     def test_all_versioned_examples_parse_and_evaluate(self) -> None:
         for scenario in range(1, 5):
@@ -148,18 +233,32 @@ class Chapter7ScenarioTests(unittest.TestCase):
             case = json.loads(path.read_text(encoding="utf-8"))
             result = evaluate_chapter7_scenario(chapter7_inputs_from_case(case))
             self.assertEqual(result.scenario, f"scenario_{scenario}")
+            self.assertEqual(result.evidence_revision, case["evidence_revision"])
 
     @staticmethod
     def _inputs(row: dict[str, str]) -> object:
         common = (float(row["incremental_cost"]), float(row["incremental_health_effect"]))
         if row["scenario"] == "scenario_1":
-            return Scenario1Inputs(*common, expansion_icer=float(row["n"]))
+            return Scenario1Inputs(
+                *common,
+                expansion_icer=float(row["n"]),
+                evidence_revision=(
+                    row["evidence_revision"]
+                    if "evidence_revision" in row
+                    else "synthetic-fixture-v1"
+                ),
+            )
         if row["scenario"] == "scenario_2":
             return Scenario2Inputs(
                 *common,
                 expansion_icer=float(row["n"]),
                 contraction_icer=float(row["m"]),
                 displacement_icer=float(row["d"]),
+                evidence_revision=(
+                    row["evidence_revision"]
+                    if "evidence_revision" in row
+                    else "synthetic-fixture-v1"
+                ),
             )
         if row["scenario"] == "scenario_3":
             return Scenario3Inputs(
@@ -167,6 +266,11 @@ class Chapter7ScenarioTests(unittest.TestCase):
                 expansion_icer=float(row["n"]),
                 contraction_icer=float(row["m"]),
                 displacement_icer=float(row["d"]),
+                evidence_revision=(
+                    row["evidence_revision"]
+                    if "evidence_revision" in row
+                    else "synthetic-fixture-v1"
+                ),
             )
         return Scenario4Inputs(
             *common,

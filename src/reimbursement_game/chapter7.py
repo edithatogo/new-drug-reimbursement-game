@@ -27,6 +27,7 @@ class Scenario1Inputs:
     incremental_cost: float
     incremental_health_effect: float
     expansion_icer: float
+    evidence_revision: str
 
 
 @dataclass(frozen=True, slots=True)
@@ -36,6 +37,7 @@ class Scenario2Inputs:
     expansion_icer: float
     contraction_icer: float
     displacement_icer: float
+    evidence_revision: str
 
 
 @dataclass(frozen=True, slots=True)
@@ -45,6 +47,7 @@ class Scenario3Inputs:
     expansion_icer: float
     contraction_icer: float
     displacement_icer: float
+    evidence_revision: str
 
 
 @dataclass(frozen=True, slots=True)
@@ -90,7 +93,7 @@ def _positive(name: str, value: float) -> float:
 
 
 def _close(left: float, right: float) -> bool:
-    tolerance = 1e-12 * max(1.0, abs(left), abs(right))
+    tolerance = 1e-12 * max(abs(left), abs(right))
     return abs(left - right) <= tolerance
 
 
@@ -99,6 +102,8 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
 
     cost = _positive("incremental_cost", inputs.incremental_cost)
     effect = _positive("incremental_health_effect", inputs.incremental_health_effect)
+    if not inputs.evidence_revision.strip():
+        raise ValueError("Chapter 7 scenarios require a non-empty evidence_revision")
     iper = cost / effect
 
     if isinstance(inputs, Scenario1Inputs):
@@ -113,7 +118,6 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow = None
         source = "Pekarsky 2015, equation 7.1, printed p. 110/PDF p. 120"
         parameterization = "exact"
-        evidence_revision = None
     elif isinstance(inputs, Scenario2Inputs):
         n = _positive("expansion_icer", inputs.expansion_icer)
         m = _positive("contraction_icer", inputs.contraction_icer)
@@ -130,7 +134,6 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow = n
         source = "Pekarsky 2015, Scenario 2, printed pp. 110-114/PDF pp. 120-124"
         parameterization = "exact"
-        evidence_revision = None
     elif isinstance(inputs, Scenario3Inputs):
         n = _positive("expansion_icer", inputs.expansion_icer)
         m = _positive("contraction_icer", inputs.contraction_icer)
@@ -150,7 +153,6 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow = None
         source = "Pekarsky 2015, equations 7.2-7.5, printed pp. 116-119/PDF pp. 126-129"
         parameterization = "exact"
-        evidence_revision = None
     elif isinstance(inputs, Scenario4Inputs):
         m = _positive("contraction_icer", inputs.contraction_icer)
         d = _positive("displacement_icer", inputs.displacement_icer)
@@ -159,8 +161,6 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         annual_effect = _positive(
             "annual_program_health_effect", inputs.annual_program_health_effect
         )
-        if not inputs.evidence_revision.strip():
-            raise ValueError("Scenario 4 requires a non-empty evidence_revision")
         if phi <= 1:
             raise ValueError("Scenario 4 requires present_value_multiplier phi > 1")
         if mu >= m:
@@ -184,7 +184,6 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow = None
         source = "Pekarsky 2012, Appendix 5, pp. 231-234; Pekarsky 2015, Table 7.2"
         parameterization = "source-backed-exogenous-mu"
-        evidence_revision = inputs.evidence_revision
     else:
         raise TypeError("unsupported Chapter 7 scenario input type")
 
@@ -194,7 +193,6 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
     if not all(math.isfinite(value) for value in values):
         raise ValueError("derived Chapter 7 values must be finite")
     tolerance = 1e-12 * max(
-        1.0,
         abs(effect),
         abs(reimbursement_effect),
         abs(alternative_gain),
@@ -216,5 +214,5 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow_price=conditional_expansion_shadow,
         source_location=source,
         parameterization=parameterization,
-        evidence_revision=evidence_revision,
+        evidence_revision=inputs.evidence_revision,
     )

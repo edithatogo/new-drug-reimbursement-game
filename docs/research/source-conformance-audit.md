@@ -88,6 +88,10 @@ The equilibrium command uses the strict Game 1 solver. Its input
 by equilibrium because Game 1 endogenizes `f*` and therefore
 `Delta C_P = f* Delta E_P`.
 
+The strict Chapter 7 case contract requires an evidence revision and explicit
+currency and health units for every scenario. CLI receipts preserve those
+fields; Python and Rust calculation results preserve the evidence revision.
+
 ## Source discrepancies
 
 The apparent `n = m` typo on printed page 115/PDF page 125 and the

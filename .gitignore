@@ -17,6 +17,7 @@ local-data/
 raw-data/
 confidential/
 .local/
+tmp/
 *.bundle
 *.zip
 *.tar.gz

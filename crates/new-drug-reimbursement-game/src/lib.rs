@@ -29,6 +29,7 @@ pub enum Chapter7ScenarioInputs {
         incremental_cost: f64,
         incremental_health_effect: f64,
         expansion_icer: f64,
+        evidence_revision: String,
     },
     Scenario2 {
         incremental_cost: f64,
@@ -36,6 +37,7 @@ pub enum Chapter7ScenarioInputs {
         expansion_icer: f64,
         contraction_icer: f64,
         displacement_icer: f64,
+        evidence_revision: String,
     },
     Scenario3 {
         incremental_cost: f64,
@@ -43,6 +45,7 @@ pub enum Chapter7ScenarioInputs {
         expansion_icer: f64,
         contraction_icer: f64,
         displacement_icer: f64,
+        evidence_revision: String,
     },
     Scenario4 {
         incremental_cost: f64,
@@ -69,7 +72,7 @@ pub struct Chapter7ScenarioEvaluation {
     pub adoption_required: bool,
     pub economically_preferred: bool,
     pub tolerance: f64,
-    pub evidence_revision: Option<String>,
+    pub evidence_revision: String,
     pub budget_shadow_price_expansion: Option<f64>,
     pub budget_shadow_price_contraction: Option<f64>,
     pub conditional_expansion_shadow_price: Option<f64>,
@@ -97,7 +100,7 @@ fn chapter7_positive(name: &'static str, value: f64) -> Result<f64, Chapter7Erro
 }
 
 fn chapter7_close(left: f64, right: f64) -> bool {
-    let tolerance = 1e-12 * left.abs().max(right.abs()).max(1.0);
+    let tolerance = 1e-12 * left.abs().max(right.abs());
     (left - right).abs() <= tolerance
 }
 
@@ -260,7 +263,28 @@ fn chapter7_health_tolerance(core: &Chapter7Core) -> f64 {
             .abs()
             .max(core.reimbursement_effect.abs())
             .max(core.alternative_gain.abs())
-            .max(1.0)
+}
+
+fn chapter7_evidence_revision(inputs: &Chapter7ScenarioInputs) -> Result<String, Chapter7Error> {
+    let revision = match inputs {
+        Chapter7ScenarioInputs::Scenario1 {
+            evidence_revision, ..
+        }
+        | Chapter7ScenarioInputs::Scenario2 {
+            evidence_revision, ..
+        }
+        | Chapter7ScenarioInputs::Scenario3 {
+            evidence_revision, ..
+        }
+        | Chapter7ScenarioInputs::Scenario4 {
+            evidence_revision, ..
+        } => evidence_revision,
+    };
+    if revision.trim().is_empty() {
+        Err(Chapter7Error("Chapter 7 requires evidence_revision"))
+    } else {
+        Ok(revision.clone())
+    }
 }
 
 /// Evaluate one strict Pekarsky Chapter 7 scenario.
@@ -272,11 +296,13 @@ fn chapter7_health_tolerance(core: &Chapter7Core) -> f64 {
 pub fn evaluate_chapter7_scenario(
     inputs: &Chapter7ScenarioInputs,
 ) -> Result<Chapter7ScenarioEvaluation, Chapter7Error> {
+    let evidence_revision = chapter7_evidence_revision(inputs)?;
     let core = match inputs {
         Chapter7ScenarioInputs::Scenario1 {
             incremental_cost,
             incremental_health_effect,
             expansion_icer,
+            evidence_revision: _,
         } => chapter7_scenario1(
             *incremental_cost,
             *incremental_health_effect,
@@ -288,6 +314,7 @@ pub fn evaluate_chapter7_scenario(
             expansion_icer,
             contraction_icer,
             displacement_icer,
+            evidence_revision: _,
         } => chapter7_scenario2(
             *incremental_cost,
             *incremental_health_effect,
@@ -301,6 +328,7 @@ pub fn evaluate_chapter7_scenario(
             expansion_icer,
             contraction_icer,
             displacement_icer,
+            evidence_revision: _,
         } => chapter7_scenario3(
             *incremental_cost,
             *incremental_health_effect,
@@ -358,12 +386,7 @@ pub fn evaluate_chapter7_scenario(
         adoption_required: true,
         economically_preferred: nebh >= -tolerance,
         tolerance,
-        evidence_revision: match inputs {
-            Chapter7ScenarioInputs::Scenario4 {
-                evidence_revision, ..
-            } => Some(evidence_revision.clone()),
-            _ => None,
-        },
+        evidence_revision,
         budget_shadow_price_expansion: core.budget_shadow_price_expansion,
         budget_shadow_price_contraction: core.budget_shadow_price_contraction,
         conditional_expansion_shadow_price: core.conditional_expansion_shadow_price,
@@ -701,7 +724,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
         assert!(header.starts_with("schema_version,case_id,scenario,"));
         for line in lines {
             let fields: Vec<_> = line.split(',').collect();
-            assert_eq!(fields.len(), 18);
+            assert_eq!(fields.len(), 19);
             assert_eq!(fields[0], "1");
             let parse = |index: usize| fields[index].parse::<f64>().unwrap();
             let inputs = match fields[2] {
@@ -709,6 +732,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     incremental_cost: parse(3),
                     incremental_health_effect: parse(4),
                     expansion_icer: parse(5),
+                    evidence_revision: fields[18].to_owned(),
                 },
                 "scenario_2" => Chapter7ScenarioInputs::Scenario2 {
                     incremental_cost: parse(3),
@@ -716,6 +740,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     expansion_icer: parse(5),
                     contraction_icer: parse(6),
                     displacement_icer: parse(7),
+                    evidence_revision: fields[18].to_owned(),
                 },
                 "scenario_3" => Chapter7ScenarioInputs::Scenario3 {
                     incremental_cost: parse(3),
@@ -723,6 +748,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     expansion_icer: parse(5),
                     contraction_icer: parse(6),
                     displacement_icer: parse(7),
+                    evidence_revision: fields[18].to_owned(),
                 },
                 "scenario_4" => Chapter7ScenarioInputs::Scenario4 {
                     incremental_cost: parse(3),
@@ -732,7 +758,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     investment_icer: parse(8),
                     present_value_multiplier: parse(9),
                     annual_program_health_effect: parse(10),
-                    evidence_revision: "synthetic-fixture-v1".to_owned(),
+                    evidence_revision: fields[18].to_owned(),
                 },
                 _ => panic!("unknown fixture scenario"),
             };
@@ -745,14 +771,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
             assert!((result.evci - parse(16)).abs() < 1e-9);
             assert!((result.net_financial_cost - parse(17)).abs() < 1e-9);
             assert!(result.adoption_required);
-            if fields[2] == "scenario_4" {
-                assert_eq!(
-                    result.evidence_revision.as_deref(),
-                    Some("synthetic-fixture-v1")
-                );
-            } else {
-                assert_eq!(result.evidence_revision, None);
-            }
+            assert_eq!(result.evidence_revision, fields[18]);
             assert_eq!(
                 result.economically_preferred,
                 result.nebh >= -result.tolerance
@@ -787,6 +806,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                 expansion_icer: 20.0,
                 contraction_icer: 21.0,
                 displacement_icer: 20.0,
+                evidence_revision: "source".to_owned(),
             },
             Chapter7ScenarioInputs::Scenario3 {
                 incremental_cost: 1.0,
@@ -794,6 +814,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                 expansion_icer: 30.0,
                 contraction_icer: 20.0,
                 displacement_icer: 25.0,
+                evidence_revision: "source".to_owned(),
             },
             Chapter7ScenarioInputs::Scenario4 {
                 incremental_cost: 100.0,
@@ -829,6 +850,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     incremental_cost: parse(3),
                     incremental_health_effect: parse(4),
                     expansion_icer: parse(5),
+                    evidence_revision: fields[11].to_owned(),
                 },
                 "scenario_2" => Chapter7ScenarioInputs::Scenario2 {
                     incremental_cost: parse(3),
@@ -836,6 +858,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     expansion_icer: parse(5),
                     contraction_icer: parse(6),
                     displacement_icer: parse(7),
+                    evidence_revision: fields[11].to_owned(),
                 },
                 "scenario_3" => Chapter7ScenarioInputs::Scenario3 {
                     incremental_cost: parse(3),
@@ -843,6 +866,7 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                     expansion_icer: parse(5),
                     contraction_icer: parse(6),
                     displacement_icer: parse(7),
+                    evidence_revision: fields[11].to_owned(),
                 },
                 "scenario_4" => Chapter7ScenarioInputs::Scenario4 {
                     incremental_cost: parse(3),
@@ -870,16 +894,53 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
             incremental_cost: 110.0,
             incremental_health_effect: 1.0,
             expansion_icer: 100.0,
+            evidence_revision: "source".to_owned(),
         })
         .unwrap();
         let scaled = evaluate_chapter7_scenario(&Chapter7ScenarioInputs::Scenario1 {
             incremental_cost: 110e12,
             incremental_health_effect: 1.0,
             expansion_icer: 100e12,
+            evidence_revision: "source".to_owned(),
         })
         .unwrap();
         assert!(!baseline.economically_preferred);
         assert!(!scaled.economically_preferred);
         assert!((baseline.nebh - scaled.nebh).abs() < 1e-12);
+    }
+
+    #[test]
+    fn chapter_seven_preference_is_health_scale_invariant() {
+        let baseline = evaluate_chapter7_scenario(&Chapter7ScenarioInputs::Scenario1 {
+            incremental_cost: 1.0001e-7,
+            incremental_health_effect: 1e-9,
+            expansion_icer: 100.0,
+            evidence_revision: "source".to_owned(),
+        })
+        .unwrap();
+        let scaled = evaluate_chapter7_scenario(&Chapter7ScenarioInputs::Scenario1 {
+            incremental_cost: 1.0001e-7,
+            incremental_health_effect: 1e-3,
+            expansion_icer: 1e-4,
+            evidence_revision: "source".to_owned(),
+        })
+        .unwrap();
+        assert!(!baseline.economically_preferred);
+        assert!(!scaled.economically_preferred);
+    }
+
+    #[test]
+    fn chapter_seven_tiny_scenario_two_equality_is_scale_invariant() {
+        for scale in [1.0, 1e12] {
+            let inputs = Chapter7ScenarioInputs::Scenario2 {
+                incremental_cost: 1e-13 * scale,
+                incremental_health_effect: 1.0,
+                expansion_icer: 1e-13 * scale,
+                contraction_icer: 2e-13 * scale,
+                displacement_icer: 1e-13 * scale,
+                evidence_revision: "source".to_owned(),
+            };
+            assert!(evaluate_chapter7_scenario(&inputs).is_err());
+        }
     }
 }
