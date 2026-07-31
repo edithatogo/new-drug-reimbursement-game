@@ -24,7 +24,7 @@ tracks:
   - id: T03
     title: UOGTO reimbursement and execution semantics
     priority: 2
-    status: planned
+    status: in_progress
     depends_on: [T01, T02]
   - id: T04
     title: Pekarsky application games 1 to 3
