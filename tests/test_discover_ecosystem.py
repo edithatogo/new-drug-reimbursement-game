@@ -106,6 +106,76 @@ revision = "0123456789abcdef0123456789abcdef01234567"
             self.assertTrue(result.candidate.clean)
             self.assertTrue(result.candidate.pin_available)
 
+    def test_explicit_bootstrap_cache_wins_over_equivalent_sibling_clone(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            application = root / "application"
+            cache = application / ".local" / "ecosystem" / "voiage"
+            sibling = root / "voiage"
+            cache.parent.mkdir(parents=True)
+            subprocess.run(
+                ["git", "init", "-b", "main", str(cache)], check=True, capture_output=True
+            )
+            subprocess.run(
+                ["git", "-C", str(cache), "config", "user.name", "Test"], check=True
+            )
+            subprocess.run(
+                ["git", "-C", str(cache), "config", "user.email", "test@example.invalid"],
+                check=True,
+            )
+            (cache / "README.md").write_text("fixture\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(cache), "add", "README.md"], check=True)
+            subprocess.run(
+                ["git", "-C", str(cache), "commit", "-m", "fixture"],
+                check=True,
+                capture_output=True,
+            )
+            head = subprocess.run(
+                ["git", "-C", str(cache), "rev-parse", "HEAD"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+            subprocess.run(
+                [
+                    "git",
+                    "-C",
+                    str(cache),
+                    "remote",
+                    "add",
+                    "origin",
+                    "https://github.com/edithatogo/voiage",
+                ],
+                check=True,
+            )
+            subprocess.run(["git", "clone", str(cache), str(sibling)], check=True, capture_output=True)
+            subprocess.run(
+                [
+                    "git",
+                    "-C",
+                    str(sibling),
+                    "remote",
+                    "set-url",
+                    "origin",
+                    "https://github.com/edithatogo/voiage",
+                ],
+                check=True,
+            )
+            component = MODULE.Component(
+                name="Voiage",
+                repository="https://github.com/edithatogo/voiage",
+                revision=head,
+                role="test",
+                license="test",
+                integration="test",
+            )
+            result = MODULE.discover_component(component, application, [root], max_depth=3)
+            self.assertEqual(result.status, "resolved-at-pin")
+            self.assertIsNotNone(result.candidate)
+            assert result.candidate is not None
+            self.assertEqual(Path(result.candidate.path), cache.resolve())
+            self.assertEqual(result.candidate.source, "bootstrap-cache")
+
     def test_offline_fixture_check_does_not_assert_local_clones(self) -> None:
         components = MODULE.load_components(Path("ecosystem.lock.toml"))
         self.assertEqual(MODULE.offline_fixture_check(components), 0)
