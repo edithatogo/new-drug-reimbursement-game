@@ -12,4 +12,4 @@
 | T07 Atlas/Hugging Face | Planned | Owner-scoped manifests and adapter seed exist. |
 | T08 Research extensions | Planned | Research map exists; primary-source verification remains required. |
 | T09 Governance/release | In progress | Issue #11; release and external review remain separate gates. |
-| T10 Chapter 7 all scenarios | In progress | Strict Scenario 1-4 Python/Rust implementation complete; documentation and final review underway. |
+| T10 Chapter 7 all scenarios | Done | Strict Scenario 1-4 Python/Rust implementation, source bindings, shared fixtures, full validation, and clean two-member technical review complete; empirical and human review remain external. |
