@@ -1,12 +1,21 @@
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import ModuleType
+from unittest.mock import patch
 
 from reimbursement_game.adapters.kairos import KairosScenarioExporter
-from reimbursement_game.adapters.reimbursement_atlas import ReimbursementAtlasExport
+from reimbursement_game.adapters.reimbursement_atlas import (
+    ReimbursementAtlasExport,
+    ReimbursementAtlasParameterExport,
+)
 from reimbursement_game.adapters.uogto import UogtoExporter
 from reimbursement_game.adapters.voiage import VoiageAdapter
+from reimbursement_game.calibration import calibrate_chapter7_scenario
+from reimbursement_game.chapter7 import Chapter7Scenario
+from reimbursement_game.evidence import ParameterRole
 
 
 class AdapterTests(unittest.TestCase):
@@ -29,6 +38,71 @@ class AdapterTests(unittest.TestCase):
                 encoding="utf-8",
             )
             self.assertEqual(ReimbursementAtlasExport(path).records()[0]["record_id"], "x")
+
+    def test_atlas_parameter_export_and_voiage_schema_handoff(self) -> None:
+        packet = ReimbursementAtlasParameterExport(
+            "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
+        ).packet()
+        calibrated = calibrate_chapter7_scenario(
+            case_id="adapter-synthetic-s1",
+            scenario=Chapter7Scenario.EXPANDABLE_EFFICIENT,
+            incremental_cost=120,
+            incremental_health_effect=20,
+            packet=packet,
+            record_ids={ParameterRole.EXPANSION_ICER: "n-allocative"},
+        )
+        numpy_module = ModuleType("numpy")
+
+        def fake_asarray(values, dtype):  # type: ignore[no-untyped-def]
+            sequence = tuple(values)
+            if sequence and isinstance(sequence[0], (list, tuple)):
+                sequence = tuple(tuple(row) for row in sequence)
+            return sequence, dtype
+
+        numpy_module.asarray = fake_asarray  # type: ignore[attr-defined]
+        schema_module = ModuleType("voiage.schema")
+
+        class FakeValueArray:
+            @classmethod
+            def from_numpy(cls, values, strategy_names):  # type: ignore[no-untyped-def]
+                return {"values": values, "strategy_names": strategy_names}
+
+        class FakeParameterSet:
+            @classmethod
+            def from_numpy_or_dict(cls, values):  # type: ignore[no-untyped-def]
+                return values
+
+        schema_module.ValueArray = FakeValueArray  # type: ignore[attr-defined]
+        schema_module.ParameterSet = FakeParameterSet  # type: ignore[attr-defined]
+        voiage_module = ModuleType("voiage")
+        voiage_module.schema = schema_module  # type: ignore[attr-defined]
+        with patch.dict(
+            sys.modules,
+            {
+                "numpy": numpy_module,
+                "voiage": voiage_module,
+                "voiage.schema": schema_module,
+            },
+        ):
+            values, parameters = VoiageAdapter().prepare_inputs(calibrated.voiage_samples)
+        self.assertEqual(
+            values["strategy_names"], ["reimburse", "best_available_alternative"]
+        )
+        self.assertEqual(sorted(parameters), ["n"])
+        self.assertEqual(len(values["values"][0]), 2)
+
+    def test_atlas_parameter_export_rejects_legacy_and_symlink_inputs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            legacy = Path(directory) / "records.jsonl"
+            legacy.write_text("{}\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "versioned JSON"):
+                ReimbursementAtlasParameterExport(legacy).packet()
+            link = Path(directory) / "packet.json"
+            link.symlink_to(
+                Path.cwd() / "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
+            )
+            with self.assertRaisesRegex(ValueError, "non-symlink"):
+                ReimbursementAtlasParameterExport(link).packet()
 
     def test_adapters_reject_non_finite_numbers(self) -> None:
         with self.assertRaisesRegex(ValueError, "event time must be finite"):

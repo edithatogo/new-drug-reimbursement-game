@@ -75,6 +75,8 @@ seed for the general capability.
 - UOGTO-aligned RDF/JSON-LD application extension and SHACL proposal.
 - Ports/adapters for Voiage, Kairos, UOGTO, and local exports from Reimbursement
   Atlas.
+- A strict approved-derived parameter-evidence packet, deterministic Chapter 7
+  calibration receipts, and aligned Voiage `ValueArray`/`ParameterSet` handoff.
 - An `edithatogo`-only Hugging Face manifest.
 - Research synthesis and a post-2015 extension map.
 - Upstream proposal packets for UOGTO, Kairos, Voiage, and Reimbursement Atlas.
@@ -99,6 +101,8 @@ the authoritative restoration path. See `START_HERE_CODEX.md` and
 ```bash
 python -m reimbursement_game.cli evaluate examples/cases/chapter8_example.json
 python -m reimbursement_game.cli scenario examples/cases/chapter7_scenario4.json
+python -m reimbursement_game.cli evidence fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json
+python -m reimbursement_game.cli calibrate fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json scenario_3 120 20 --case-id synthetic-demo --record n=n-allocative --record m=m-contraction --record d=d-displacement
 python -m reimbursement_game.cli equilibrium examples/cases/chapter8_example.json
 python -m reimbursement_game.cli uogto examples/cases/chapter8_example.json
 python scripts/validate_scope.py
@@ -128,3 +132,8 @@ actual filenames; the file is `docs/research/pekarsky-foundation.md`.
 This is research software and a capability incubator. It is not a reimbursement
 recommendation, an HTA submission, or regulator-grade software. See
 `IMPLEMENTATION_STATUS.md` and `docs/governance/model-risk.md`.
+
+The committed evidence fixture is synthetic and explicitly prohibited from
+decision use. Real calibration requires approved Atlas-derived records and
+independent health-economic review; see
+`docs/architecture/evidence-calibration-contract.md`.
