@@ -1,0 +1,23 @@
+{
+  "track_id": "t10_chapter7_all_scenarios_20260731",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-07-31T08:28:06Z",
+  "updated_at": "2026-07-31T08:28:06Z",
+  "description": "Strict source-mapped implementation of all four Chapter 7 economic scenarios",
+  "evidence_schema": "1.0",
+  "gates": [
+    {
+      "id": "mu-derivation-source",
+      "kind": "source",
+      "status": "pending",
+      "scope": "external"
+    },
+    {
+      "id": "human-health-economics-review",
+      "kind": "human_review",
+      "status": "pending",
+      "scope": "external"
+    }
+  ]
+}

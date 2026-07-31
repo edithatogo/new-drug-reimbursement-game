@@ -56,3 +56,8 @@ tracks:
     priority: 1
     status: in_progress
     depends_on: [T00]
+  - id: T10
+    title: Chapter 7 all-scenario implementation
+    priority: 1
+    status: planned
+    depends_on: [T01]
