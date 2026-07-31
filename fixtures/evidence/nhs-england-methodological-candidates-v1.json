@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "dossier_kind": "parameter-evidence-candidates",
+  "dossier_id": "nhs-england-methodological-pilot-2026",
+  "context": {
+    "jurisdiction": "England",
+    "payer": "NHS England and DHSC national policy context",
+    "budget_boundary": "National NHS and DHSC funding context; no specific commissioner, service line, or displaced programme selected",
+    "currency_unit": "GBP",
+    "health_unit": "QALY"
+  },
+  "candidates": [
+    {
+      "candidate_id": "dhsc-2026-pragmatic-margin-15000",
+      "kind": "policy_proxy",
+      "value": 15000,
+      "unit": "GBP/QALY",
+      "price_year": null,
+      "study_period": "2026 statutory-scheme policy modelling",
+      "programme_id": null,
+      "alignment_id": null,
+      "roles_considered": ["n", "m"],
+      "estimand": "Pragmatic simplifying assumption for health opportunity cost at the NHS budget margin",
+      "geographic_scope": "England",
+      "budget_scope": "National NHS expenditure affected by the statutory branded-medicines pricing scheme",
+      "evidence_method": "DHSC policy impact-assessment assumption informed by a reported research estimate",
+      "uncertainty_status": "not_quantified",
+      "transformation": "No numeric transformation; the impact assessment rounds a reported GBP 12,981 estimate to GBP 15,000 for modelling",
+      "assumptions": [
+        "The policy proxy may be considered separately for marginal expansion and contraction roles",
+        "The 2026 impact-assessment context is retained without back-casting historical estimates"
+      ],
+      "mapping_limitations": [
+        "DHSC describes GBP 15,000/QALY as a simplifying assumption, not a firm estimate, prediction, or commitment",
+        "The value is distinct from NICE's technology-appraisal decision threshold",
+        "The publication and policy year do not establish the monetary price year",
+        "The source does not identify the programme actually displaced and therefore cannot supply d",
+        "No parameter uncertainty distribution or role-specific human approval is available"
+      ],
+      "approval_state": "candidate",
+      "source": {
+        "uri": "https://assets.publishing.service.gov.uk/media/6989d4b14cff1c70a3b6e4fd/consultation-stage-impact-assessment-proposed-2026-changes-to-statutory-scheme-for-branded-medicines-pricing.pdf",
+        "sha256": "da2f3bb1ae21e65cd0aac668f1e21f35e5c1685c69aa6f76f0048e9eea90c60e",
+        "artifact_kind": "official_pdf",
+        "exact_location": "Annex C, PDF page 22, paragraphs 3-5"
+      }
+    },
+    {
+      "candidate_id": "dhsc-2026-reported-research-estimate-12981",
+      "kind": "research_estimate",
+      "value": 12981,
+      "unit": "GBP/QALY",
+      "price_year": null,
+      "study_period": "Underlying research period not established by the reviewed impact-assessment passage",
+      "programme_id": null,
+      "alignment_id": null,
+      "roles_considered": ["n", "m"],
+      "estimand": "Research estimate of marginal NHS cost per QALY as reported by DHSC",
+      "geographic_scope": "England",
+      "budget_scope": "NHS budget margin; underlying estimation scope is not fully specified in the impact-assessment excerpt",
+      "evidence_method": "Secondary reporting in an official impact assessment",
+      "uncertainty_status": "not_quantified",
+      "transformation": "No transformation; recorded exactly as the base estimate reported by DHSC",
+      "assumptions": [
+        "The reported estimate is retained as a distinct candidate from DHSC's rounded policy proxy"
+      ],
+      "mapping_limitations": [
+        "The price year and uncertainty are not established by the reviewed impact-assessment passage",
+        "This secondary report is not treated as a substitute for review of the underlying research",
+        "The source does not establish separate expansion and contraction estimates or actual displacement d"
+      ],
+      "approval_state": "candidate",
+      "source": {
+        "uri": "https://assets.publishing.service.gov.uk/media/6989d4b14cff1c70a3b6e4fd/consultation-stage-impact-assessment-proposed-2026-changes-to-statutory-scheme-for-branded-medicines-pricing.pdf",
+        "sha256": "da2f3bb1ae21e65cd0aac668f1e21f35e5c1685c69aa6f76f0048e9eea90c60e",
+        "artifact_kind": "official_pdf",
+        "exact_location": "Annex C, PDF page 22, paragraph 4"
+      }
+    },
+    {
+      "candidate_id": "martin-2023-reported-local-services-approx-7000",
+      "kind": "research_estimate",
+      "value": 7000,
+      "unit": "GBP/QALY",
+      "price_year": null,
+      "study_period": "2014/15",
+      "programme_id": null,
+      "alignment_id": null,
+      "roles_considered": ["n", "m"],
+      "estimand": "Approximate marginal cost per QALY for locally commissioned NHS services in 2014/15",
+      "geographic_scope": "England",
+      "budget_scope": "Locally commissioned NHS services in 2014/15",
+      "evidence_method": "Related primary research paper's report of the 2014/15 study result",
+      "uncertainty_status": "not_quantified",
+      "transformation": "No transformation; 7000 preserves the published approximation and 2014/15 is recorded separately as the study period",
+      "assumptions": [
+        "The approximate point is retained only as a historical research candidate"
+      ],
+      "mapping_limitations": [
+        "The estimate is not a current national NHS-wide value",
+        "Material heterogeneity by programme and geography prevents unreviewed transfer to a specific decision",
+        "No inflation or scope transformation has been applied",
+        "The 2014/15 observation period does not establish the monetary price year",
+        "The reviewed 2023 paper reports the result from Martin et al. (2022), DOI 10.1007/s40258-022-00723-2",
+        "The estimate does not identify the programme actually displaced by the pilot decision"
+      ],
+      "approval_state": "candidate",
+      "source": {
+        "uri": "https://eprints.whiterose.ac.uk/id/eprint/197618/3/1_s2.0_S0168851023000854_main.pdf",
+        "sha256": "2eea0d4ac30aa2175fa0496a0c95e9294b9fd1499c84c8b52c32f9a36d6988b4",
+        "artifact_kind": "official_repository_pdf",
+        "exact_location": "PDF page 2, article page 1, Introduction, report of the 2014/15 study"
+      }
+    },
+    {
+      "candidate_id": "dhsc-2026-impact-assessment-qaly-discount-015",
+      "kind": "method_guidance",
+      "value": 0.015,
+      "unit": "proportion/year",
+      "price_year": null,
+      "study_period": "2026 statutory-scheme policy modelling",
+      "programme_id": null,
+      "alignment_id": null,
+      "roles_considered": ["discount_rate"],
+      "estimand": "Annual QALY discount rate used in the statutory-scheme impact-assessment example",
+      "geographic_scope": "United Kingdom statutory-scheme impact assessment",
+      "budget_scope": "Modelled health opportunity costs of proposed statutory-scheme payment changes",
+      "evidence_method": "Policy impact-assessment modelling assumption",
+      "uncertainty_status": "point_only",
+      "transformation": "Converted 1.5 percent to the proportion 0.015",
+      "assumptions": [
+        "The rate is retained only as a description of the impact-assessment calculation"
+      ],
+      "mapping_limitations": [
+        "The rate is not silently substituted for NICE's standard 3.5 percent reference-case rate",
+        "The rate does not identify a programme horizon, time profile, or Scenario 4 multiplier phi"
+      ],
+      "approval_state": "candidate",
+      "source": {
+        "uri": "https://assets.publishing.service.gov.uk/media/6989d4b14cff1c70a3b6e4fd/consultation-stage-impact-assessment-proposed-2026-changes-to-statutory-scheme-for-branded-medicines-pricing.pdf",
+        "sha256": "da2f3bb1ae21e65cd0aac668f1e21f35e5c1685c69aa6f76f0048e9eea90c60e",
+        "artifact_kind": "official_pdf",
+        "exact_location": "PDF page 11 paragraph 51, PDF page 12 Table 2, and PDF page 14 Table 4"
+      }
+    },
+    {
+      "candidate_id": "nice-reference-case-discount-rate-035",
+      "kind": "method_guidance",
+      "value": 0.035,
+      "unit": "proportion/year",
+      "price_year": null,
+      "study_period": "Current NICE reference-case manual",
+      "programme_id": null,
+      "alignment_id": null,
+      "roles_considered": ["discount_rate"],
+      "estimand": "Annual reference-case discount rate for costs and health effects",
+      "geographic_scope": "England",
+      "budget_scope": "NICE technology appraisal and highly specialised technologies reference case",
+      "evidence_method": "Normative methods guidance",
+      "uncertainty_status": "point_only",
+      "transformation": "Converted 3.5 percent to the proportion 0.035",
+      "assumptions": [
+        "The standard NICE reference case is the relevant methodological comparator"
+      ],
+      "mapping_limitations": [
+        "The rate does not by itself establish Scenario 4's programme-specific present-value multiplier phi",
+        "The DHSC impact-assessment example applies 1.5 percent to QALYs, so the two contexts must not be conflated"
+      ],
+      "approval_state": "candidate",
+      "source": {
+        "uri": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+        "sha256": "20b1111fc52b846dcb1e3ce4c705af4592472bbc13369f7d74ac2fb578de40b5",
+        "artifact_kind": "official_html_snapshot",
+        "exact_location": "Section 4.5.1, discounting"
+      }
+    },
+    {
+      "candidate_id": "nice-reference-case-time-horizon-guidance",
+      "kind": "method_guidance",
+      "value": null,
+      "unit": "year",
+      "price_year": null,
+      "study_period": "Current NICE reference-case manual",
+      "programme_id": null,
+      "alignment_id": null,
+      "roles_considered": ["horizon"],
+      "estimand": "Time horizon long enough to reflect all important differences in costs or outcomes",
+      "geographic_scope": "England",
+      "budget_scope": "NICE technology appraisal and highly specialised technologies reference case",
+      "evidence_method": "Normative methods guidance without a universal numeric horizon",
+      "uncertainty_status": "not_quantified",
+      "transformation": "No transformation and no numeric value inferred",
+      "assumptions": [
+        "A decision-specific horizon would require a defined technology, population, comparator, and programme"
+      ],
+      "mapping_limitations": [
+        "NICE specifies a sufficiency principle rather than one universal number of years",
+        "The guidance cannot produce phi without a programme-specific stream of health effects and an approved discounting interpretation"
+      ],
+      "approval_state": "candidate",
+      "source": {
+        "uri": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+        "sha256": "20b1111fc52b846dcb1e3ce4c705af4592472bbc13369f7d74ac2fb578de40b5",
+        "artifact_kind": "official_html_snapshot",
+        "exact_location": "Sections 4.2.22-4.2.25, time horizon"
+      }
+    }
+  ]
+}

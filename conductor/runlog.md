@@ -71,3 +71,14 @@
   and pinned Voiage `ValueArray`/`ParameterSet` handoff. The complete gate
   passed with 75 Python and 29 Rust tests; real evidence, health-economics
   review, and Voiage licence reconciliation remain external.
+- `2026-07-31T22:35:49Z` (T12 planning): selected the NHS England
+  methodological pilot and verified DHSC/CHE source PDFs outside Git. The
+  pilot remains candidate-only until Atlas and health-economics review.
+- `c9efd96` and `cb6d3d2` (T12): implemented and independently reviewed a
+  bounded candidate-only source contract, NHS England dossier, role/scenario
+  readiness engine, exact CLI receipt, and non-promotion boundary. The full
+  gate passed with 86 Python and 29 Rust tests, Ruff, strict mypy, reproducible
+  packaging, governance and scope checks, and clean resolution of all four
+  pinned ecosystem repositories. Scenario 1 is `candidate_only`; Scenarios
+  2-4 are `not_identifiable`. Atlas approval, independent health-economic
+  approval, and a specific displaced programme remain external gates.

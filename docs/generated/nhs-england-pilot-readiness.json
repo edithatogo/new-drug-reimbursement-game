@@ -1,0 +1,149 @@
+{
+  "approved_calibration_permitted": false,
+  "dossier_id": "nhs-england-methodological-pilot-2026",
+  "dossier_revision": "sha256:7730992de9dc197dea0353eb10a5625b02246aa566c4afa09e5c8764b4ce5da4",
+  "next_gate": "Reimbursement Atlas and an independent health economist must review a specific decision context before any record can be promoted.",
+  "roles": [
+    {
+      "considered_candidate_ids": [
+        "dhsc-2026-pragmatic-margin-15000",
+        "dhsc-2026-reported-research-estimate-12981",
+        "martin-2023-reported-local-services-approx-7000"
+      ],
+      "numeric_candidate_ids": [
+        "dhsc-2026-pragmatic-margin-15000",
+        "dhsc-2026-reported-research-estimate-12981",
+        "martin-2023-reported-local-services-approx-7000"
+      ],
+      "reason": "Numeric candidates exist, but Atlas and health-economics approval are absent. At least one candidate also lacks a quantified distribution.",
+      "role": "n",
+      "status": "candidate_only"
+    },
+    {
+      "considered_candidate_ids": [],
+      "numeric_candidate_ids": [],
+      "reason": "No source identifies the programme actually displaced by a reimbursement decision.",
+      "role": "d",
+      "status": "not_identifiable"
+    },
+    {
+      "considered_candidate_ids": [
+        "dhsc-2026-pragmatic-margin-15000",
+        "dhsc-2026-reported-research-estimate-12981",
+        "martin-2023-reported-local-services-approx-7000"
+      ],
+      "numeric_candidate_ids": [
+        "dhsc-2026-pragmatic-margin-15000",
+        "dhsc-2026-reported-research-estimate-12981",
+        "martin-2023-reported-local-services-approx-7000"
+      ],
+      "reason": "Numeric candidates exist, but Atlas and health-economics approval are absent. At least one candidate also lacks a quantified distribution.",
+      "role": "m",
+      "status": "candidate_only"
+    },
+    {
+      "considered_candidate_ids": [],
+      "numeric_candidate_ids": [],
+      "reason": "No reviewed source supplies the required programme-specific Scenario 4 quantity.",
+      "role": "mu",
+      "status": "not_identifiable"
+    },
+    {
+      "considered_candidate_ids": [],
+      "numeric_candidate_ids": [],
+      "reason": "No reviewed source supplies the required programme-specific Scenario 4 quantity.",
+      "role": "phi",
+      "status": "not_identifiable"
+    },
+    {
+      "considered_candidate_ids": [],
+      "numeric_candidate_ids": [],
+      "reason": "No reviewed source supplies the required programme-specific Scenario 4 quantity.",
+      "role": "annual_program_health_effect",
+      "status": "not_identifiable"
+    },
+    {
+      "considered_candidate_ids": [
+        "nice-reference-case-time-horizon-guidance"
+      ],
+      "numeric_candidate_ids": [],
+      "reason": "NICE requires a sufficient horizon but does not supply one universal numeric horizon.",
+      "role": "horizon",
+      "status": "not_identifiable"
+    },
+    {
+      "considered_candidate_ids": [
+        "dhsc-2026-impact-assessment-qaly-discount-015",
+        "nice-reference-case-discount-rate-035"
+      ],
+      "numeric_candidate_ids": [
+        "dhsc-2026-impact-assessment-qaly-discount-015",
+        "nice-reference-case-discount-rate-035"
+      ],
+      "reason": "Numeric candidates exist, but Atlas and health-economics approval are absent. At least one candidate also lacks a quantified distribution.",
+      "role": "discount_rate",
+      "status": "candidate_only"
+    }
+  ],
+  "scenarios": [
+    {
+      "pending_constraints": [
+        "n requires Atlas and independent health-economics approval"
+      ],
+      "reason": "All required roles have candidates, but none are approved model evidence.",
+      "required_roles": [
+        "n"
+      ],
+      "scenario": "scenario_1",
+      "status": "candidate_only"
+    },
+    {
+      "pending_constraints": [
+        "d must identify actual displacement",
+        "n = m must be established in one aligned context"
+      ],
+      "reason": "Required roles are not identifiable: d.",
+      "required_roles": [
+        "d",
+        "m",
+        "n"
+      ],
+      "scenario": "scenario_2",
+      "status": "not_identifiable"
+    },
+    {
+      "pending_constraints": [
+        "d must identify actual displacement",
+        "m > n and n <= d <= m must be established in one aligned context"
+      ],
+      "reason": "Required roles are not identifiable: d.",
+      "required_roles": [
+        "d",
+        "m",
+        "n"
+      ],
+      "scenario": "scenario_3",
+      "status": "not_identifiable"
+    },
+    {
+      "pending_constraints": [
+        "mu, phi, annual effect, horizon, and discounting must identify one investment programme",
+        "m and d must align to the same decision context without being conflated with that programme",
+        "a numeric horizon and time profile must be approved",
+        "phi * annual_program_health_effect = incremental_cost / mu is case-specific and remains unchecked"
+      ],
+      "reason": "Required roles are not identifiable: annual_program_health_effect, d, horizon, mu, phi.",
+      "required_roles": [
+        "annual_program_health_effect",
+        "d",
+        "discount_rate",
+        "horizon",
+        "m",
+        "mu",
+        "phi"
+      ],
+      "scenario": "scenario_4",
+      "status": "not_identifiable"
+    }
+  ]
+}
