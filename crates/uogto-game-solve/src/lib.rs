@@ -163,6 +163,7 @@ pub fn backward_induction_with_config(
     })
 }
 
+#[allow(clippy::too_many_arguments)]
 fn solve_node(
     game: &Game,
     node_id: &NodeId,
