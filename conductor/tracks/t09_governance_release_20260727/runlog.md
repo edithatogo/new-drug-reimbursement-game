@@ -14,3 +14,8 @@
 - `2026-07-27T11:40:00Z` — Full local gate passed: 40 Python tests, 19 Rust
   tests, Ruff, mypy, rustfmt, Clippy, scope, offline ecosystem, governance,
   extraction, and clean reproducible packaging. Hosted checks remain pending.
+- `2026-07-31T07:43:00Z` — Added the release-readiness evidence register at
+  `docs/governance/release-readiness-evidence.md`. It records the independent
+  review, upstream approval, licence/provenance, extraction, and release gates
+  without treating automated CI as approval. Hosted CI for the current branch
+  is queued; no release decision is inferred.
