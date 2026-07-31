@@ -14,3 +14,6 @@
 - [x] Record exact Chapter 7 source verification and independent technical-panel
   review for implemented Scenario 3; keep Scenario 4 `mu` explicitly excluded
   (`4ef89bc`, current evidence update).
+- [x] Apply exhaustive equation/assumption audit fixes: strict Game 1 contract,
+  Chapter 8 Python/Rust parity, equations 7.3–7.4 tests, typed schema, source
+  discrepancy adjudication, and extension labelling (`b3e1290`).
