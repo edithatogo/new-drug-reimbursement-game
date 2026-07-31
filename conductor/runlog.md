@@ -41,3 +41,9 @@
   fail closed and aligned fixture decisions with Python's scale-aware tolerance.
   The complete gate passed; T01 remains open only for its explicit source and
   independent health-economics review tasks.
+- `2026-07-31T07:55:00Z` (T01 review): verified the authorized Pekarsky
+  (2015) PDF by SHA-256 and visually reviewed Chapter 7 printed pages 116-119.
+  An independent technical panel confirmed source fidelity for implemented
+  Scenario 3 equations 7.2-7.5, `beta_c^alpha`, EVCI, and sign conditions.
+  T01 is complete for that bounded scope; Scenario 4 `mu`/`beta_c^v` remains
+  explicitly excluded.

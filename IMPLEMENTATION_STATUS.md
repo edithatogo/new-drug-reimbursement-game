@@ -37,8 +37,10 @@
   invalid-input invariants in Python and Rust (`0e6e968`).
 - T02 now rejects empty identifiers, duplicate actions, non-finite payoffs, and
   unreachable nodes with structured Rust validation errors (`9717125`).
-- These checks harden the seed implementation; they do not resolve the Chapter
-  7 technical-efficiency interpretation or provide independent domain review.
+- These checks harden the seed implementation. Authorized-source verification
+  and an independent technical panel now pass the implemented Chapter 7
+  Scenario 3 model; Scenario 4 `mu`/`beta_c^v` and regulator-grade domain review
+  remain out of scope.
 
 ## Not complete
 

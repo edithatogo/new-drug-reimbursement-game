@@ -6,7 +6,7 @@ entries are intentionally open; no approval is inferred from a passing test.
 
 | Gate | Required evidence | Current state | Owner/action |
 |---|---|---|---|
-| Chapter 7 interpretation | Exact source location, dimensional derivation, and independent economics review | Conditional panel review; source verification pending | Obtain page/edition evidence and reviewer sign-off |
+| Chapter 7 interpretation | Exact source location, dimensional derivation, and independent economics review | Passed for implemented Scenario 3; Scenario 4 explicitly excluded | Preserve source hash/pages and scope boundary |
 | UOGTO ontology | Validation against the pinned UOGTO revision and upstream disposition | Owner approval recorded; upstream disposition pending | Run pinned SHACL validation when toolchain is available |
 | Kairos execution | Pinned API compatibility and upstream execution/trace review | Owner approval recorded; native released integration pending | Adopt released DTO/code contract |
 | Extraction boundary | Approval that the game runtime can be extracted without application leakage | Local checks and panel review pass; transfer approval pending | Record extraction owner authorization |

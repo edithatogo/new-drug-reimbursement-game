@@ -3,7 +3,7 @@
 | Track | Status | Current evidence |
 |---|---|---|
 | T00 Repository bootstrap and ecosystem resolution | Done | Private GitHub remote, pinned cache clones, green local baseline, green hosted CI, implementation branch, and main ruleset verified on 2026-07-27. |
-| T01 Mathematical foundation | In progress | Issue #3; existing Python/Rust seed is being extended with independent cross-language fixtures. |
+| T01 Mathematical foundation | Done | Source-verified Scenario 3 derivation, independent panel review, and Python/Rust conformance evidence complete; Scenario 4 remains explicitly excluded. |
 | T02 Rust game runtime | In progress | Issue #4; finite perfect-information seed exists. |
 | T03 UOGTO semantics | Planned | Application extension proposal exists. |
 | T04 Application games | Planned | Game 1 seed exists; Games 2 and 3 remain incomplete. |

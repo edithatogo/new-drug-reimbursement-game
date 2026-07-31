@@ -11,5 +11,6 @@
 - [x] Apply review fixes for Rust fail-closed semantics and decision tolerance
   (`f2a065c`).
 - [x] Run automated review and the complete repository quality gate.
-- [ ] Record exact Chapter 7 source verification and independent expert review
-  evidence; keep this pending until supplied.
+- [x] Record exact Chapter 7 source verification and independent technical-panel
+  review for implemented Scenario 3; keep Scenario 4 `mu` explicitly excluded
+  (`4ef89bc`, current evidence update).

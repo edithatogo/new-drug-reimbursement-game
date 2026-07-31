@@ -1,11 +1,14 @@
 # Dimensional derivation and assumption ledger
 
-Status: independently derived implementation note; external health-economics
-review pending.
+Status: authorized-source verified and independently reviewed for the implemented
+Scenario 3 reallocation model. Scenario 4 investment parameter `mu` remains
+explicitly out of scope.
 
 Primary conceptual source: Pekarsky (2015), Chapters 6-8, especially Chapter 7
-equations 7.2-7.5 and the Chapter 8 Game 1 solution. DOI
-`10.1007/978-3-319-08903-4`.
+equations 7.2-7.5 on printed pages 116, 118, and 119 (PDF pages 126, 128,
+and 129), and the Chapter 8 Game 1 solution. DOI
+`10.1007/978-3-319-08903-4`. The authorized PDF reviewed for this ledger has
+SHA-256 `8455ad153cf5b6c1570bfc945108efe659904b3c8f89fdf7b74b88c9523c4848`.
 
 This note records repository algebra without reproducing source prose or
 claiming to resolve the outstanding Chapter 7 technical-efficiency
@@ -83,9 +86,12 @@ Special cases:
 - `n = m` implies `g_reallocation = 0`, so `beta_c = d`.
 - `d = m` and `n < m` imply `1 / beta_c = 1 / n`, so `beta_c = n`.
 
-The exact mapping of any source technical-efficiency parameter to `g*` remains
-unresolved. Code must use a named `AlternativeStrategy` with units and
-provenance instead of silently assigning a formula to that parameter.
+Section 7.5 on printed page 117 (PDF page 127) defines `mu` for a distinct
+Scenario 4 investment strategy that combines a current static-efficiency cost
+with a future dynamic-efficiency gain and derives a separate `beta_c^v`. It is
+not the Scenario 3 reallocation productivity `g*`. The implementation therefore
+does not map `mu` to `g*`; it keeps investment opportunities as named,
+provenanced alternatives and does not claim Scenario 4 conformance.
 
 ## EVCI and decision sign
 
@@ -118,9 +124,13 @@ This guards against mixing dollars, cents, or other currency units.
 - The full repository gate runs both implementations, lint, typing, formatting,
   and clean-room scope checks.
 
-## Pending review gates
+## Review disposition
 
-- Verify the exact Chapter 7 technical-efficiency formulation against an
-  authorized source and record the precise location.
-- Obtain independent dimensional and economic review.
-- Do not treat passing tests as policy, HTA, or regulator-grade validation.
+- Source fidelity passes for the implemented Scenario 3 reallocation model,
+  including equations 7.2-7.5, `beta_c^alpha`, EVCI, and sign conditions.
+- The independent technical panel receipt is recorded in
+  `docs/governance/independent-review-panel.md`.
+- Scenario 4 `mu`/`beta_c^v` remains excluded; implementing it would require
+  the detailed Pekarsky (2012, Appendix 5) formulation and a new review.
+- Passing source and implementation checks is not policy, HTA, legal, or
+  regulator-grade approval.

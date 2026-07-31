@@ -17,11 +17,11 @@ Strengths confirmed: dimensional consistency, fixed-budget algebra, tested
 special cases and rescaling/sign invariants, fail-closed invalid inputs, and
 explicit Chapter 8 assumptions.
 
-Open gates: exact Chapter 7 equation/page/edition evidence and independent
-sign-off; adjudication of the technical-efficiency mapping; reviewed parameter
-records with jurisdiction, year, horizon, uncertainty, reviewer, and checksum;
-and confirmation that the Chapter 8 corner solution is not presented as a
-general equilibrium.
+Authorized-source follow-up disposition: PASS for source fidelity of the
+implemented Scenario 3 reallocation model (equations 7.2-7.5,
+`beta_c^alpha`, EVCI, and sign conditions). Scenario 4 `mu`/`beta_c^v` remains
+excluded. Reviewed empirical parameter records and regulator/publication-grade
+approval remain separate gates.
 
 ## Ontology/runtime review
 

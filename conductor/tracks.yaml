@@ -14,7 +14,7 @@ tracks:
   - id: T01
     title: Mathematical foundation and cross-language conformance
     priority: 1
-    status: in_progress
+    status: done
     depends_on: [T00]
   - id: T02
     title: Domain-neutral UOGTO-native Rust game runtime
