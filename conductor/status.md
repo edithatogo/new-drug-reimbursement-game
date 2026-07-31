@@ -14,3 +14,4 @@
 | T09 Governance/release | In progress | Issue #11; release and external review remain separate gates. |
 | T10 Chapter 7 all scenarios | Done | Strict Scenario 1-4 Python/Rust implementation, source bindings, shared fixtures, full validation, and clean two-member technical review complete; empirical and human review remain external. |
 | T11 Evidence and uncertainty | Done | Strict approved-derived packet, all-scenario calibration receipts, aligned uncertainty checks, CLI, Atlas ingestion, and actual pinned Voiage schema handoff pass; real evidence and human review remain external. |
+| T12 NHS England pilot | Planned | Official and primary candidates verified outside Git; strict readiness and non-promotion controls remain to be implemented. |

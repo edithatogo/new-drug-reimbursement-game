@@ -24,7 +24,7 @@ tracks:
   - id: T03
     title: UOGTO reimbursement and execution semantics
     priority: 2
-    status: in_progress
+    status: planned
     depends_on: [T01, T02]
   - id: T04
     title: Pekarsky application games 1 to 3
@@ -64,5 +64,10 @@ tracks:
   - id: T11
     title: Governed evidence and uncertainty integration
     priority: 2
-    status: planned
+    status: done
     depends_on: [T10]
+  - id: T12
+    title: NHS England methodological evidence pilot
+    priority: 2
+    status: planned
+    depends_on: [T11]

@@ -71,3 +71,6 @@
   and pinned Voiage `ValueArray`/`ParameterSet` handoff. The complete gate
   passed with 75 Python and 29 Rust tests; real evidence, health-economics
   review, and Voiage licence reconciliation remain external.
+- `2026-07-31T22:35:49Z` (T12 planning): selected the NHS England
+  methodological pilot and verified DHSC/CHE source PDFs outside Git. The
+  pilot remains candidate-only until Atlas and health-economics review.

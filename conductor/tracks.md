@@ -13,6 +13,8 @@
   *Link: [./tracks/t10_chapter7_all_scenarios_20260731/index.md](./tracks/t10_chapter7_all_scenarios_20260731/index.md)*
 - [x] **Track: T11 governed evidence and uncertainty integration**
   *Link: [./tracks/t11_evidence_uncertainty_20260801/index.md](./tracks/t11_evidence_uncertainty_20260801/index.md)*
+- [ ] **Track: T12 NHS England methodological evidence pilot**
+  *Link: [./tracks/t12_nhs_england_methodological_pilot_20260801/index.md](./tracks/t12_nhs_england_methodological_pilot_20260801/index.md)*
 
 The remaining implementation programme T03-T08 remains authoritative in
 `conductor/tracks.yaml` and will be migrated into detailed track folders as each
