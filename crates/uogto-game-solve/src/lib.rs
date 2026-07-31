@@ -7,6 +7,8 @@ use uogto_game_core::{ActionId, Game, Node, NodeId, PayoffVector, PlayerId, Vali
 
 pub const DEFAULT_SOLVER_TOLERANCE: f64 = 1e-12;
 pub const MAX_NORMAL_FORM_PROFILES: usize = 1_000_000;
+pub const DEFAULT_MAX_SOLVE_DEPTH: usize = 10_000;
+pub const DEFAULT_MAX_VISITED_NODES: usize = 1_000_000;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum TiePolicy {
@@ -17,6 +19,8 @@ pub enum TiePolicy {
 pub struct SolverConfig {
     pub tolerance: f64,
     pub tie_policy: TiePolicy,
+    pub max_depth: usize,
+    pub max_visited_nodes: usize,
 }
 
 impl Default for SolverConfig {
@@ -24,6 +28,8 @@ impl Default for SolverConfig {
         Self {
             tolerance: DEFAULT_SOLVER_TOLERANCE,
             tie_policy: TiePolicy::LexicographicAction,
+            max_depth: DEFAULT_MAX_SOLVE_DEPTH,
+            max_visited_nodes: DEFAULT_MAX_VISITED_NODES,
         }
     }
 }
@@ -84,6 +90,14 @@ pub enum SolveError {
         profiles: usize,
         limit: usize,
     },
+    DepthLimitExceeded {
+        depth: usize,
+        limit: usize,
+    },
+    VisitedNodeLimitExceeded {
+        visited: usize,
+        limit: usize,
+    },
     MissingProfile(StrategyProfile),
     InvalidNormalFormPayoff {
         profile: StrategyProfile,
@@ -137,6 +151,7 @@ pub fn backward_induction_with_config(
         &mut diagnostics,
         &mut trace,
         &mut solved,
+        0,
     )?;
     Ok(Solution {
         expected_payoffs: payoffs,
@@ -156,9 +171,22 @@ fn solve_node(
     diagnostics: &mut SolverDiagnostics,
     trace: &mut Vec<TraceStep>,
     solved: &mut BTreeMap<NodeId, PayoffVector>,
+    depth: usize,
 ) -> Result<PayoffVector, SolveError> {
+    if depth > config.max_depth {
+        return Err(SolveError::DepthLimitExceeded {
+            depth,
+            limit: config.max_depth,
+        });
+    }
     if let Some(payoffs) = solved.get(node_id) {
         return Ok(payoffs.clone());
+    }
+    if diagnostics.visited_nodes >= config.max_visited_nodes {
+        return Err(SolveError::VisitedNodeLimitExceeded {
+            visited: diagnostics.visited_nodes,
+            limit: config.max_visited_nodes,
+        });
     }
     diagnostics.visited_nodes += 1;
     let node = game
@@ -182,6 +210,7 @@ fn solve_node(
                     diagnostics,
                     trace,
                     solved,
+                    depth + 1,
                 )?;
                 for (player, payoff) in child {
                     *expected.entry(player).or_insert(0.0) += edge.probability * payoff;
@@ -201,6 +230,7 @@ fn solve_node(
                     diagnostics,
                     trace,
                     solved,
+                    depth + 1,
                 )?;
                 let utility = payoff_for(&child, player);
                 let replace = match &best {
@@ -487,6 +517,7 @@ mod tests {
             SolverConfig {
                 tolerance: 0.001,
                 tie_policy: TiePolicy::LexicographicAction,
+                ..SolverConfig::default()
             },
         )
         .unwrap();
@@ -514,6 +545,93 @@ mod tests {
                     if value.to_bits() == tolerance.to_bits()
             ));
         }
+    }
+
+    #[test]
+    fn rejects_paths_beyond_depth_budget() {
+        let player = PlayerId("p".into());
+        let mut nodes = BTreeMap::new();
+        for index in 0..=3 {
+            let node = NodeId(format!("n{index}"));
+            let next = NodeId(format!("n{}", index + 1));
+            nodes.insert(
+                node,
+                if index == 3 {
+                    Node::Terminal {
+                        payoffs: BTreeMap::from([(player.clone(), 1.0)]),
+                    }
+                } else {
+                    Node::Decision {
+                        player: player.clone(),
+                        edges: vec![ActionEdge {
+                            action: ActionId("continue".into()),
+                            target: next,
+                        }],
+                    }
+                },
+            );
+        }
+        let result = backward_induction_with_config(
+            &Game {
+                root: NodeId("n0".into()),
+                nodes,
+            },
+            SolverConfig {
+                max_depth: 2,
+                ..SolverConfig::default()
+            },
+        );
+        assert!(matches!(
+            result,
+            Err(SolveError::DepthLimitExceeded { depth: 3, limit: 2 })
+        ));
+    }
+
+    #[test]
+    fn rejects_when_distinct_node_budget_is_exhausted() {
+        let player = PlayerId("p".into());
+        let mut nodes = BTreeMap::new();
+        nodes.insert(
+            NodeId("root".into()),
+            Node::Decision {
+                player: player.clone(),
+                edges: vec![
+                    ActionEdge {
+                        action: ActionId("a".into()),
+                        target: NodeId("a".into()),
+                    },
+                    ActionEdge {
+                        action: ActionId("b".into()),
+                        target: NodeId("b".into()),
+                    },
+                ],
+            },
+        );
+        for id in ["a", "b"] {
+            nodes.insert(
+                NodeId(id.into()),
+                Node::Terminal {
+                    payoffs: BTreeMap::from([(player.clone(), 1.0)]),
+                },
+            );
+        }
+        let result = backward_induction_with_config(
+            &Game {
+                root: NodeId("root".into()),
+                nodes,
+            },
+            SolverConfig {
+                max_visited_nodes: 2,
+                ..SolverConfig::default()
+            },
+        );
+        assert!(matches!(
+            result,
+            Err(SolveError::VisitedNodeLimitExceeded {
+                visited: 2,
+                limit: 2
+            })
+        ));
     }
 
     #[test]
