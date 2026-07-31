@@ -11,7 +11,7 @@
   *Link: [./tracks/t09_governance_release_20260727/index.md](./tracks/t09_governance_release_20260727/index.md)*
 - [x] **Track: T10 Chapter 7 all-scenario implementation**
   *Link: [./tracks/t10_chapter7_all_scenarios_20260731/index.md](./tracks/t10_chapter7_all_scenarios_20260731/index.md)*
-- [~] **Track: T11 governed evidence and uncertainty integration**
+- [x] **Track: T11 governed evidence and uncertainty integration**
   *Link: [./tracks/t11_evidence_uncertainty_20260801/index.md](./tracks/t11_evidence_uncertainty_20260801/index.md)*
 
 The remaining implementation programme T03-T08 remains authoritative in

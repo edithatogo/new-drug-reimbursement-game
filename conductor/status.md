@@ -13,4 +13,4 @@
 | T08 Research extensions | Planned | Research map exists; primary-source verification remains required. |
 | T09 Governance/release | In progress | Issue #11; release and external review remain separate gates. |
 | T10 Chapter 7 all scenarios | Done | Strict Scenario 1-4 Python/Rust implementation, source bindings, shared fixtures, full validation, and clean two-member technical review complete; empirical and human review remain external. |
-| T11 Evidence and uncertainty | In progress | Implementing the approved-derived parameter contract, scenario calibration receipts, Atlas ingestion, and Voiage handoff; real evidence and human review remain external. |
+| T11 Evidence and uncertainty | Done | Strict approved-derived packet, all-scenario calibration receipts, aligned uncertainty checks, CLI, Atlas ingestion, and actual pinned Voiage schema handoff pass; real evidence and human review remain external. |
