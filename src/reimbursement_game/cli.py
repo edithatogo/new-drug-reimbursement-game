@@ -10,7 +10,8 @@ from typing import Any
 
 from .adapters.kairos import KairosScenarioExporter
 from .adapters.uogto import UogtoExporter
-from .case_io import inputs_from_case
+from .case_io import chapter7_inputs_from_case, inputs_from_case
+from .chapter7 import evaluate_chapter7_scenario
 from .chapter8 import solve_pekarsky_game1
 from .economics import evaluate_reimbursement
 
@@ -29,13 +30,15 @@ def _print(value: object) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ndr-game")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("evaluate", "equilibrium", "uogto", "kairos"):
+    for name in ("evaluate", "scenario", "equilibrium", "uogto", "kairos"):
         command = sub.add_parser(name)
         command.add_argument("case")
     args = parser.parse_args(argv)
     case = _load(args.case)
     if args.command == "evaluate":
         _print(asdict(evaluate_reimbursement(inputs_from_case(case))))
+    elif args.command == "scenario":
+        _print(asdict(evaluate_chapter7_scenario(chapter7_inputs_from_case(case))))
     elif args.command == "equilibrium":
         inputs = inputs_from_case(case)
         result = solve_pekarsky_game1(

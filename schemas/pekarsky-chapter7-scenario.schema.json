@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edithatogo.github.io/new-drug-reimbursement-game/schema/pekarsky-chapter7-scenario.json",
+  "title": "Strict Pekarsky Chapter 7 scenario",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "model_kind",
+    "case_id",
+    "scenario",
+    "incremental_cost",
+    "incremental_health_effect",
+    "currency_unit",
+    "health_unit",
+    "evidence_revision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "model_kind": {
+      "const": "pekarsky-2015-ch7"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario": {
+      "enum": [
+        "scenario_1",
+        "scenario_2",
+        "scenario_3",
+        "scenario_4"
+      ]
+    },
+    "incremental_cost": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "incremental_health_effect": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "currency_unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "health_unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expansion_icer": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "contraction_icer": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "displacement_icer": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "investment_icer": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "present_value_multiplier": {
+      "type": "number",
+      "exclusiveMinimum": 1
+    },
+    "annual_program_health_effect": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "scenario": {
+          "const": "scenario_1"
+        }
+      },
+      "required": [
+        "expansion_icer"
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "contraction_icer"
+            ]
+          },
+          {
+            "required": [
+              "displacement_icer"
+            ]
+          },
+          {
+            "required": [
+              "investment_icer"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "scenario": {
+          "const": "scenario_2"
+        }
+      },
+      "required": [
+        "expansion_icer",
+        "contraction_icer",
+        "displacement_icer"
+      ]
+    },
+    {
+      "properties": {
+        "scenario": {
+          "const": "scenario_3"
+        }
+      },
+      "required": [
+        "expansion_icer",
+        "contraction_icer",
+        "displacement_icer"
+      ]
+    },
+    {
+      "properties": {
+        "scenario": {
+          "const": "scenario_4"
+        }
+      },
+      "required": [
+        "contraction_icer",
+        "displacement_icer",
+        "investment_icer",
+        "present_value_multiplier",
+        "annual_program_health_effect"
+      ],
+      "not": {
+        "required": [
+          "expansion_icer"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": false
+}

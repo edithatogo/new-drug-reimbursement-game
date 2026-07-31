@@ -15,6 +15,309 @@ pub struct Chapter8Game1Equilibrium {
     pub institution_nebh: f64,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Chapter7Scenario {
+    Scenario1,
+    Scenario2,
+    Scenario3,
+    Scenario4,
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub enum Chapter7ScenarioInputs {
+    Scenario1 {
+        incremental_cost: f64,
+        incremental_health_effect: f64,
+        expansion_icer: f64,
+    },
+    Scenario2 {
+        incremental_cost: f64,
+        incremental_health_effect: f64,
+        expansion_icer: f64,
+        contraction_icer: f64,
+        displacement_icer: f64,
+    },
+    Scenario3 {
+        incremental_cost: f64,
+        incremental_health_effect: f64,
+        expansion_icer: f64,
+        contraction_icer: f64,
+        displacement_icer: f64,
+    },
+    Scenario4 {
+        incremental_cost: f64,
+        incremental_health_effect: f64,
+        contraction_icer: f64,
+        displacement_icer: f64,
+        investment_icer: f64,
+        present_value_multiplier: f64,
+        annual_program_health_effect: f64,
+        evidence_revision: String,
+    },
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Chapter7ScenarioEvaluation {
+    pub scenario: Chapter7Scenario,
+    pub iper: f64,
+    pub reimbursement_health_effect: f64,
+    pub alternative_health_gain: f64,
+    pub nebh: f64,
+    pub beta: f64,
+    pub evci: f64,
+    pub net_financial_cost: f64,
+    pub adoption_required: bool,
+    pub economically_preferred: bool,
+    pub tolerance: f64,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Chapter7Error(pub &'static str);
+
+impl std::fmt::Display for Chapter7Error {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter.write_str(self.0)
+    }
+}
+
+impl std::error::Error for Chapter7Error {}
+
+fn chapter7_positive(name: &'static str, value: f64) -> Result<f64, Chapter7Error> {
+    if value.is_finite() && value > 0.0 {
+        Ok(value)
+    } else {
+        Err(Chapter7Error(name))
+    }
+}
+
+fn chapter7_close(left: f64, right: f64) -> bool {
+    let tolerance = 1e-12 * left.abs().max(right.abs()).max(1.0);
+    (left - right).abs() <= tolerance
+}
+
+struct Chapter7Core {
+    scenario: Chapter7Scenario,
+    cost: f64,
+    effect: f64,
+    reimbursement_effect: f64,
+    alternative_gain: f64,
+    beta: f64,
+    net_cost: f64,
+}
+
+fn chapter7_scenario1(cost: f64, effect: f64, n: f64) -> Result<Chapter7Core, Chapter7Error> {
+    let cost = chapter7_positive("incremental_cost", cost)?;
+    let effect = chapter7_positive("incremental_health_effect", effect)?;
+    let n = chapter7_positive("expansion_icer", n)?;
+    Ok(Chapter7Core {
+        scenario: Chapter7Scenario::Scenario1,
+        cost,
+        effect,
+        reimbursement_effect: effect,
+        alternative_gain: cost / n,
+        beta: n,
+        net_cost: cost,
+    })
+}
+
+fn chapter7_scenario2(
+    cost: f64,
+    effect: f64,
+    n: f64,
+    m: f64,
+    d: f64,
+) -> Result<Chapter7Core, Chapter7Error> {
+    let cost = chapter7_positive("incremental_cost", cost)?;
+    let effect = chapter7_positive("incremental_health_effect", effect)?;
+    let n = chapter7_positive("expansion_icer", n)?;
+    let m = chapter7_positive("contraction_icer", m)?;
+    let d = chapter7_positive("displacement_icer", d)?;
+    if !chapter7_close(n, m) {
+        return Err(Chapter7Error("Scenario 2 requires n = m"));
+    }
+    Ok(Chapter7Core {
+        scenario: Chapter7Scenario::Scenario2,
+        cost,
+        effect,
+        reimbursement_effect: effect - cost / d,
+        alternative_gain: 0.0,
+        beta: d,
+        net_cost: 0.0,
+    })
+}
+
+fn chapter7_scenario3(
+    cost: f64,
+    effect: f64,
+    n: f64,
+    m: f64,
+    d: f64,
+) -> Result<Chapter7Core, Chapter7Error> {
+    let cost = chapter7_positive("incremental_cost", cost)?;
+    let effect = chapter7_positive("incremental_health_effect", effect)?;
+    let n = chapter7_positive("expansion_icer", n)?;
+    let m = chapter7_positive("contraction_icer", m)?;
+    let d = chapter7_positive("displacement_icer", d)?;
+    if m <= n {
+        return Err(Chapter7Error("Scenario 3 requires m > n"));
+    }
+    if !(n <= d && d <= m) {
+        return Err(Chapter7Error("Scenario 3 requires n <= d <= m"));
+    }
+    Ok(Chapter7Core {
+        scenario: Chapter7Scenario::Scenario3,
+        cost,
+        effect,
+        reimbursement_effect: effect - cost / d,
+        alternative_gain: cost * (1.0 / n - 1.0 / m),
+        beta: 1.0 / (1.0 / d + 1.0 / n - 1.0 / m),
+        net_cost: 0.0,
+    })
+}
+
+fn chapter7_scenario4(
+    cost: f64,
+    effect: f64,
+    m: f64,
+    d: f64,
+    investment: (f64, f64, f64),
+    evidence_revision: &str,
+) -> Result<Chapter7Core, Chapter7Error> {
+    let (mu, phi, annual_effect) = investment;
+    let cost = chapter7_positive("incremental_cost", cost)?;
+    let effect = chapter7_positive("incremental_health_effect", effect)?;
+    let m = chapter7_positive("contraction_icer", m)?;
+    let d = chapter7_positive("displacement_icer", d)?;
+    let mu = chapter7_positive("investment_icer", mu)?;
+    let phi = chapter7_positive("present_value_multiplier", phi)?;
+    let annual_effect = chapter7_positive("annual_program_health_effect", annual_effect)?;
+    if evidence_revision.trim().is_empty() {
+        return Err(Chapter7Error("Scenario 4 requires evidence_revision"));
+    }
+    if phi <= 1.0 || mu >= m || d > m {
+        return Err(Chapter7Error("Scenario 4 ordering assumptions failed"));
+    }
+    let present_value_gain = phi * annual_effect;
+    if !present_value_gain.is_finite() || !chapter7_close(present_value_gain, cost / mu) {
+        return Err(Chapter7Error(
+            "Scenario 4 requires phi * DeltaE_G = incremental_cost / mu",
+        ));
+    }
+    let alternative_gain = present_value_gain - cost / m;
+    if !alternative_gain.is_finite() || alternative_gain <= 0.0 {
+        return Err(Chapter7Error(
+            "Scenario 4 requires positive net investment gain",
+        ));
+    }
+    Ok(Chapter7Core {
+        scenario: Chapter7Scenario::Scenario4,
+        cost,
+        effect,
+        reimbursement_effect: effect - cost / d,
+        alternative_gain,
+        beta: 1.0 / (1.0 / d + 1.0 / mu - 1.0 / m),
+        net_cost: 0.0,
+    })
+}
+
+/// Evaluate one strict Pekarsky Chapter 7 scenario.
+///
+/// # Errors
+///
+/// Returns [`Chapter7Error`] when an input violates its scenario's source
+/// domain or when a derived value is non-finite.
+pub fn evaluate_chapter7_scenario(
+    inputs: &Chapter7ScenarioInputs,
+) -> Result<Chapter7ScenarioEvaluation, Chapter7Error> {
+    let core = match inputs {
+        Chapter7ScenarioInputs::Scenario1 {
+            incremental_cost,
+            incremental_health_effect,
+            expansion_icer,
+        } => chapter7_scenario1(
+            *incremental_cost,
+            *incremental_health_effect,
+            *expansion_icer,
+        )?,
+        Chapter7ScenarioInputs::Scenario2 {
+            incremental_cost,
+            incremental_health_effect,
+            expansion_icer,
+            contraction_icer,
+            displacement_icer,
+        } => chapter7_scenario2(
+            *incremental_cost,
+            *incremental_health_effect,
+            *expansion_icer,
+            *contraction_icer,
+            *displacement_icer,
+        )?,
+        Chapter7ScenarioInputs::Scenario3 {
+            incremental_cost,
+            incremental_health_effect,
+            expansion_icer,
+            contraction_icer,
+            displacement_icer,
+        } => chapter7_scenario3(
+            *incremental_cost,
+            *incremental_health_effect,
+            *expansion_icer,
+            *contraction_icer,
+            *displacement_icer,
+        )?,
+        Chapter7ScenarioInputs::Scenario4 {
+            incremental_cost,
+            incremental_health_effect,
+            contraction_icer,
+            displacement_icer,
+            investment_icer,
+            present_value_multiplier,
+            annual_program_health_effect,
+            evidence_revision,
+        } => chapter7_scenario4(
+            *incremental_cost,
+            *incremental_health_effect,
+            *contraction_icer,
+            *displacement_icer,
+            (
+                *investment_icer,
+                *present_value_multiplier,
+                *annual_program_health_effect,
+            ),
+            evidence_revision,
+        )?,
+    };
+    let iper = core.cost / core.effect;
+    let nebh = core.reimbursement_effect - core.alternative_gain;
+    let evci = core.beta * core.effect;
+    let values = [
+        iper,
+        core.reimbursement_effect,
+        core.alternative_gain,
+        nebh,
+        core.beta,
+        evci,
+        core.net_cost,
+    ];
+    if !values.iter().all(|value| value.is_finite()) {
+        return Err(Chapter7Error("derived values must be finite"));
+    }
+    let tolerance = 1e-12 * core.beta.abs().max(iper.abs()).max(nebh.abs()).max(1.0);
+    Ok(Chapter7ScenarioEvaluation {
+        scenario: core.scenario,
+        iper,
+        reimbursement_health_effect: core.reimbursement_effect,
+        alternative_health_gain: core.alternative_gain,
+        nebh,
+        beta: core.beta,
+        evci,
+        net_financial_cost: core.net_cost,
+        adoption_required: true,
+        economically_preferred: nebh >= -tolerance,
+        tolerance,
+    })
+}
+
 fn valid_positive(value: Option<f64>) -> bool {
     match value {
         None => true,
@@ -334,5 +637,97 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
             additional_best_productivity: 1.0 / 10_000.0,
         };
         assert_eq!(solve_pekarsky_game1(1.0, extra_strategy), None);
+    }
+
+    #[test]
+    fn chapter_seven_all_scenario_fixture_conforms() {
+        let fixture = include_str!("../../../fixtures/conformance/chapter7-scenarios-v1.csv");
+        let mut lines = fixture.lines();
+        let header = lines.next().unwrap();
+        assert!(header.starts_with("schema_version,case_id,scenario,"));
+        for line in lines {
+            let fields: Vec<_> = line.split(',').collect();
+            assert_eq!(fields.len(), 18);
+            assert_eq!(fields[0], "1");
+            let parse = |index: usize| fields[index].parse::<f64>().unwrap();
+            let inputs = match fields[2] {
+                "scenario_1" => Chapter7ScenarioInputs::Scenario1 {
+                    incremental_cost: parse(3),
+                    incremental_health_effect: parse(4),
+                    expansion_icer: parse(5),
+                },
+                "scenario_2" => Chapter7ScenarioInputs::Scenario2 {
+                    incremental_cost: parse(3),
+                    incremental_health_effect: parse(4),
+                    expansion_icer: parse(5),
+                    contraction_icer: parse(6),
+                    displacement_icer: parse(7),
+                },
+                "scenario_3" => Chapter7ScenarioInputs::Scenario3 {
+                    incremental_cost: parse(3),
+                    incremental_health_effect: parse(4),
+                    expansion_icer: parse(5),
+                    contraction_icer: parse(6),
+                    displacement_icer: parse(7),
+                },
+                "scenario_4" => Chapter7ScenarioInputs::Scenario4 {
+                    incremental_cost: parse(3),
+                    incremental_health_effect: parse(4),
+                    contraction_icer: parse(6),
+                    displacement_icer: parse(7),
+                    investment_icer: parse(8),
+                    present_value_multiplier: parse(9),
+                    annual_program_health_effect: parse(10),
+                    evidence_revision: "synthetic-fixture-v1".to_owned(),
+                },
+                _ => panic!("unknown fixture scenario"),
+            };
+            let result = evaluate_chapter7_scenario(&inputs).unwrap();
+            assert!((result.iper - parse(11)).abs() < 1e-9);
+            assert!((result.reimbursement_health_effect - parse(12)).abs() < 1e-9);
+            assert!((result.alternative_health_gain - parse(13)).abs() < 1e-9);
+            assert!((result.nebh - parse(14)).abs() < 1e-9);
+            assert!((result.beta - parse(15)).abs() < 1e-9);
+            assert!((result.evci - parse(16)).abs() < 1e-9);
+            assert!((result.net_financial_cost - parse(17)).abs() < 1e-9);
+            assert!(result.adoption_required);
+            assert_eq!(
+                result.economically_preferred,
+                result.nebh >= -result.tolerance
+            );
+        }
+    }
+
+    #[test]
+    fn chapter_seven_scenario_domains_fail_closed() {
+        let invalid = [
+            Chapter7ScenarioInputs::Scenario2 {
+                incremental_cost: 1.0,
+                incremental_health_effect: 1.0,
+                expansion_icer: 20.0,
+                contraction_icer: 21.0,
+                displacement_icer: 20.0,
+            },
+            Chapter7ScenarioInputs::Scenario3 {
+                incremental_cost: 1.0,
+                incremental_health_effect: 1.0,
+                expansion_icer: 30.0,
+                contraction_icer: 20.0,
+                displacement_icer: 25.0,
+            },
+            Chapter7ScenarioInputs::Scenario4 {
+                incremental_cost: 100.0,
+                incremental_health_effect: 1.0,
+                contraction_icer: 50.0,
+                displacement_icer: 40.0,
+                investment_icer: 60.0,
+                present_value_multiplier: 2.0,
+                annual_program_health_effect: 100.0 / 60.0 / 2.0,
+                evidence_revision: "source".to_owned(),
+            },
+        ];
+        for inputs in invalid {
+            assert!(evaluate_chapter7_scenario(&inputs).is_err());
+        }
     }
 }
