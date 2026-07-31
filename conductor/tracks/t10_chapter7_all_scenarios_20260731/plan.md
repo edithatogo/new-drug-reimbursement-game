@@ -2,7 +2,7 @@
 
 ## Phase 1 - Contract and tests
 
-- [ ] Add the shared all-scenario fixture and failing Python/Rust conformance and
+- [~] Add the shared all-scenario fixture and failing Python/Rust conformance and
   invalid-domain tests.
 - [ ] Automated review and focused validation checkpoint.
 

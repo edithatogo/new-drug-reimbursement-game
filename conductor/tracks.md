@@ -9,7 +9,7 @@
   *Link: [./tracks/t02_rust_runtime_20260727/index.md](./tracks/t02_rust_runtime_20260727/index.md)*
 - [~] **Track: T09 governance, release, validation, and extraction readiness**
   *Link: [./tracks/t09_governance_release_20260727/index.md](./tracks/t09_governance_release_20260727/index.md)*
-- [ ] **Track: T10 Chapter 7 all-scenario implementation**
+- [~] **Track: T10 Chapter 7 all-scenario implementation**
   *Link: [./tracks/t10_chapter7_all_scenarios_20260731/index.md](./tracks/t10_chapter7_all_scenarios_20260731/index.md)*
 
 The remaining implementation programme T03-T08 remains authoritative in

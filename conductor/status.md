@@ -12,4 +12,4 @@
 | T07 Atlas/Hugging Face | Planned | Owner-scoped manifests and adapter seed exist. |
 | T08 Research extensions | Planned | Research map exists; primary-source verification remains required. |
 | T09 Governance/release | In progress | Issue #11; release and external review remain separate gates. |
-| T10 Chapter 7 all scenarios | Planned | Strict Scenario 1-4 implementation approved; Scenario 4 is bounded to caller-supplied `mu`. |
+| T10 Chapter 7 all scenarios | In progress | Strict Scenario 1-4 implementation underway; Scenario 4 is bounded to caller-supplied `mu`. |

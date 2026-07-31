@@ -1,9 +1,9 @@
 {
   "track_id": "t10_chapter7_all_scenarios_20260731",
   "type": "feature",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-07-31T08:28:06Z",
-  "updated_at": "2026-07-31T08:28:06Z",
+  "updated_at": "2026-07-31T08:28:59Z",
   "description": "Strict source-mapped implementation of all four Chapter 7 economic scenarios",
   "evidence_schema": "1.0",
   "gates": [
