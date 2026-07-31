@@ -118,7 +118,26 @@
         "expansion_icer",
         "contraction_icer",
         "displacement_icer"
-      ]
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "investment_icer"
+            ]
+          },
+          {
+            "required": [
+              "present_value_multiplier"
+            ]
+          },
+          {
+            "required": [
+              "annual_program_health_effect"
+            ]
+          }
+        ]
+      }
     },
     {
       "properties": {
@@ -130,7 +149,26 @@
         "expansion_icer",
         "contraction_icer",
         "displacement_icer"
-      ]
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "investment_icer"
+            ]
+          },
+          {
+            "required": [
+              "present_value_multiplier"
+            ]
+          },
+          {
+            "required": [
+              "annual_program_health_effect"
+            ]
+          }
+        ]
+      }
     },
     {
       "properties": {

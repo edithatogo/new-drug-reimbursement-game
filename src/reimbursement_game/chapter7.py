@@ -80,6 +80,7 @@ class Chapter7ScenarioEvaluation:
     conditional_expansion_shadow_price: float | None
     source_location: str
     parameterization: str
+    evidence_revision: str | None
 
 
 def _positive(name: str, value: float) -> float:
@@ -112,6 +113,7 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow = None
         source = "Pekarsky 2015, equation 7.1, printed p. 110/PDF p. 120"
         parameterization = "exact"
+        evidence_revision = None
     elif isinstance(inputs, Scenario2Inputs):
         n = _positive("expansion_icer", inputs.expansion_icer)
         m = _positive("contraction_icer", inputs.contraction_icer)
@@ -128,6 +130,7 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow = n
         source = "Pekarsky 2015, Scenario 2, printed pp. 110-114/PDF pp. 120-124"
         parameterization = "exact"
+        evidence_revision = None
     elif isinstance(inputs, Scenario3Inputs):
         n = _positive("expansion_icer", inputs.expansion_icer)
         m = _positive("contraction_icer", inputs.contraction_icer)
@@ -138,14 +141,16 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
             raise ValueError("Scenario 3 requires n <= d <= m")
         scenario = Chapter7Scenario.FIXED_ALLOCATIVE_INEFFICIENCY
         reimbursement_effect = effect - cost / d
-        alternative_gain = cost * (1 / n - 1 / m)
-        beta = 1 / (1 / d + 1 / n - 1 / m)
+        reallocation_productivity = (1 / n) * (1 - n / m)
+        alternative_gain = cost * reallocation_productivity
+        beta = 1 / (1 / d + reallocation_productivity)
         net_cost = 0.0
         expansion_shadow = None
         contraction_shadow = None
         conditional_expansion_shadow = None
         source = "Pekarsky 2015, equations 7.2-7.5, printed pp. 116-119/PDF pp. 126-129"
         parameterization = "exact"
+        evidence_revision = None
     elif isinstance(inputs, Scenario4Inputs):
         m = _positive("contraction_icer", inputs.contraction_icer)
         d = _positive("displacement_icer", inputs.displacement_icer)
@@ -168,16 +173,18 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
             raise ValueError("Scenario 4 requires phi * DeltaE_G = incremental_cost / mu")
         scenario = Chapter7Scenario.FIXED_TECHNICAL_INVESTMENT
         reimbursement_effect = effect - cost / d
-        alternative_gain = present_value_gain - cost / m
+        investment_productivity = (1 / mu) * (1 - mu / m)
+        alternative_gain = cost * investment_productivity
         if alternative_gain <= 0:
             raise ValueError("Scenario 4 requires a positive net investment health gain")
-        beta = 1 / (1 / d + 1 / mu - 1 / m)
+        beta = 1 / (1 / d + investment_productivity)
         net_cost = 0.0
         expansion_shadow = None
         contraction_shadow = None
         conditional_expansion_shadow = None
         source = "Pekarsky 2012, Appendix 5, pp. 231-234; Pekarsky 2015, Table 7.2"
         parameterization = "source-backed-exogenous-mu"
+        evidence_revision = inputs.evidence_revision
     else:
         raise TypeError("unsupported Chapter 7 scenario input type")
 
@@ -186,7 +193,12 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
     values = (iper, reimbursement_effect, alternative_gain, nebh, beta, evci, net_cost)
     if not all(math.isfinite(value) for value in values):
         raise ValueError("derived Chapter 7 values must be finite")
-    tolerance = 1e-12 * max(1.0, abs(beta), abs(iper), abs(nebh))
+    tolerance = 1e-12 * max(
+        1.0,
+        abs(effect),
+        abs(reimbursement_effect),
+        abs(alternative_gain),
+    )
     return Chapter7ScenarioEvaluation(
         scenario=scenario,
         iper=iper,
@@ -204,4 +216,5 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
         conditional_expansion_shadow_price=conditional_expansion_shadow,
         source_location=source,
         parameterization=parameterization,
+        evidence_revision=evidence_revision,
     )

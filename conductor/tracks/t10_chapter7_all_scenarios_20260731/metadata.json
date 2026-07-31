@@ -10,8 +10,9 @@
     {
       "id": "mu-derivation-source",
       "kind": "source",
-      "status": "pending",
-      "scope": "external"
+      "status": "satisfied",
+      "scope": "source",
+      "evidence": "Pekarsky 2012 Appendix 5 pp. 231-234; sha256:10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723"
     },
     {
       "id": "human-health-economics-review",

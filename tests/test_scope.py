@@ -55,8 +55,12 @@ class ScopeTests(unittest.TestCase):
             "8455ad153cf5b6c1570bfc945108efe659904b3c8f89fdf7b74b88c9523c4848",
             ledger,
         )
-        self.assertIn("Source fidelity passes for the implemented Scenario 3", normalized)
-        self.assertIn("Scenario 4 `mu`/`beta_c^v` remains excluded", normalized)
+        self.assertIn("Source fidelity passes for Scenarios 1–3", normalized)
+        self.assertIn("Scenario 4 identities against the 2012 Appendix 5", normalized)
+        self.assertIn(
+            "10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723",
+            ledger,
+        )
 
 
 if __name__ == "__main__":

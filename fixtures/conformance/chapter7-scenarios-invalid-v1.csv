@@ -1,0 +1,9 @@
+schema_version,case_id,scenario,incremental_cost,incremental_health_effect,n,m,d,mu,phi,annual_program_health_effect,evidence_revision
+1,s1-nonfinite,scenario_1,nan,1,20,,,,,,
+1,s2-inefficient,scenario_2,100,1,20,21,20,,,,
+1,s3-no-inefficiency,scenario_3,100,1,30,20,25,,,,
+1,s3-displacement-outside,scenario_3,100,1,20,60,70,,,,
+1,s4-mu-not-better,scenario_4,100,1,,50,40,60,2,0.8333333333333333,source
+1,s4-phi-not-pv,scenario_4,100,1,,100,50,25,1,4,source
+1,s4-identity-mismatch,scenario_4,100,1,,100,50,25,2,3,source
+1,s4-missing-evidence,scenario_4,100,1,,100,50,25,2,2,

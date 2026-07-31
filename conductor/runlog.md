@@ -47,3 +47,13 @@
   Scenario 3 equations 7.2-7.5, `beta_c^alpha`, EVCI, and sign conditions.
   T01 is complete for that bounded scope; Scenario 4 `mu`/`beta_c^v` remains
   explicitly excluded.
+- `2026-07-31T08:28:00Z` (T10 source expansion): obtained the public University
+  of Adelaide repository copy of Pekarsky (2012), verified SHA-256
+  `10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723`,
+  and visually reviewed Appendix 5 PDF pages 231-234. This supersedes the
+  earlier Scenario 4 source gap without changing T01's historical scope.
+- `217814e` (T10): implemented strict scenario-specific Python and Rust
+  evaluators for all four Chapter 7 contexts, a shared cross-language fixture,
+  fail-closed domain checks, a versioned schema, four examples, and a CLI
+  surface. Scenario 4 validates the Appendix 5 dynamic identity and requires an
+  evidence revision; empirical parameter estimation remains external.

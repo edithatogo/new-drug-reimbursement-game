@@ -3,7 +3,7 @@
 | Track | Status | Current evidence |
 |---|---|---|
 | T00 Repository bootstrap and ecosystem resolution | Done | Private GitHub remote, pinned cache clones, green local baseline, green hosted CI, implementation branch, and main ruleset verified on 2026-07-27. |
-| T01 Mathematical foundation | Done | Source-verified Scenario 3 derivation, independent panel review, and Python/Rust conformance evidence complete; Scenario 4 remains explicitly excluded. |
+| T01 Mathematical foundation | Done | Source-verified Scenario 3 derivation, independent panel review, and Python/Rust conformance evidence complete. |
 | T02 Rust game runtime | In progress | Issue #4; finite perfect-information seed exists. |
 | T03 UOGTO semantics | Planned | Application extension proposal exists. |
 | T04 Application games | Planned | Game 1 seed exists; Games 2 and 3 remain incomplete. |
@@ -12,4 +12,4 @@
 | T07 Atlas/Hugging Face | Planned | Owner-scoped manifests and adapter seed exist. |
 | T08 Research extensions | Planned | Research map exists; primary-source verification remains required. |
 | T09 Governance/release | In progress | Issue #11; release and external review remain separate gates. |
-| T10 Chapter 7 all scenarios | In progress | Strict Scenario 1-4 implementation underway; Scenario 4 is bounded to caller-supplied `mu`. |
+| T10 Chapter 7 all scenarios | In progress | Strict Scenario 1-4 Python/Rust implementation complete; documentation and final review underway. |

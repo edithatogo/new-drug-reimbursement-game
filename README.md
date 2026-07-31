@@ -65,9 +65,9 @@ seed for the general capability.
 - Price-effectiveness analysis (PEA) primitives: IPER, reimbursement health
   effect, net economic benefit in health units, economic value of clinical
   innovation, and the health shadow price.
-- A general opportunity-set formulation that reproduces Pekarsky's fixed-budget
-  allocative-inefficiency equation while avoiding an unjustified hard-coded
-  interpretation of technical-efficiency parameter `mu`.
+- Strict, source-mapped evaluators for all four Chapter 7 economic scenarios,
+  including the Appendix 5 investment formulation for `mu`, alongside a
+  separately labelled generalized opportunity-set API.
 - Analytic Chapter-8-style revealed-threshold equilibrium under explicit
   assumptions.
 - A domain-neutral finite perfect-information game model and backward-induction
@@ -98,6 +98,7 @@ the authoritative restoration path. See `START_HERE_CODEX.md` and
 
 ```bash
 python -m reimbursement_game.cli evaluate examples/cases/chapter8_example.json
+python -m reimbursement_game.cli scenario examples/cases/chapter7_scenario4.json
 python -m reimbursement_game.cli equilibrium examples/cases/chapter8_example.json
 python -m reimbursement_game.cli uogto examples/cases/chapter8_example.json
 python scripts/validate_scope.py

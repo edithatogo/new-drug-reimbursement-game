@@ -38,7 +38,16 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "evaluate":
         _print(asdict(evaluate_reimbursement(inputs_from_case(case))))
     elif args.command == "scenario":
-        _print(asdict(evaluate_chapter7_scenario(chapter7_inputs_from_case(case))))
+        output = asdict(evaluate_chapter7_scenario(chapter7_inputs_from_case(case)))
+        output.update(
+            {
+                "case_id": case["case_id"],
+                "currency_unit": case["currency_unit"],
+                "health_unit": case["health_unit"],
+                "case_evidence_revision": case["evidence_revision"],
+            }
+        )
+        _print(output)
     elif args.command == "equilibrium":
         inputs = inputs_from_case(case)
         result = solve_pekarsky_game1(

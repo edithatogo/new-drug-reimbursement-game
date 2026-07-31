@@ -13,6 +13,9 @@ opportunity-set API as a separately labelled extension.
 - Authorized local source PDF SHA-256
   `8455ad153cf5b6c1570bfc945108efe659904b3c8f89fdf7b74b88c9523c4848`;
   the PDF itself must not enter the repository.
+- Pekarsky (2012), dissertation Appendix 5, University of Adelaide repository
+  PDF pages 231-234, SHA-256
+  `10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723`.
 - `CODEX_IMPLEMENTATION_PROMPT.md`, Workstream 1.
 - `docs/research/source-conformance-audit.md`.
 
@@ -33,8 +36,9 @@ opportunity-set API as a separately labelled extension.
   descriptors with finite, dimensionally consistent outputs.
 - Reject missing, non-positive, non-finite, misordered, or scenario-incompatible
   parameters instead of silently changing scenarios.
-- Keep the Scenario 4 summary model distinct from deriving `mu`; do not invent
-  the investment-production model cited to Pekarsky (2012, Appendix 5).
+- Implement and validate the Scenario 4 Appendix 5 identities while keeping
+  empirical estimation of `mu`, `phi`, effects, horizon, and discounting
+  outside the deterministic evaluator.
 - Maintain independent Python and Rust implementations using a shared,
   versioned all-scenario fixture.
 - Expose a stable CLI/schema input contract and update source, status, and
@@ -59,8 +63,8 @@ opportunity-set API as a separately labelled extension.
 
 ## External gates
 
-- Deriving or calibrating `mu` from investment primitives requires Pekarsky
-  (2012, Appendix 5), parameter evidence, and renewed independent review.
+- Empirical derivation or calibration of Scenario 4 inputs requires reviewed
+  programme evidence and renewed independent review.
 - Human health-economist, HTA, and regulator-grade validation remain external.
 
 ## Out of scope

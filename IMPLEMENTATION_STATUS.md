@@ -4,7 +4,8 @@
 
 - Ecosystem-first architecture and pin file.
 - Clean-room PEA kernel with source notes and invariant tests.
-- Explicit opportunity-set abstraction for alternative strategies.
+- Strict Python/Rust implementations of all four Chapter 7 economic scenarios,
+  plus an explicit generalized opportunity-set abstraction.
 - Analytic revealed-threshold reimbursement equilibrium.
 - Domain-neutral Rust extensive-form types, validation, and backward induction.
 - Python conformance oracle implementing the same finite perfect-information
@@ -25,8 +26,9 @@
   expected-payoff chance nodes. Imperfect information, mixed strategies,
   repeated games, mechanism design, learning, and equilibrium refinements are
   roadmap items.
-- Technical-efficiency opportunities are represented as explicit alternative
-  strategy productivity. No undocumented equation for `mu` is asserted.
+- Scenario 4 implements the source Appendix 5 identities with caller-supplied,
+  provenance-bound `mu`, `phi`, and annual programme health effect. The
+  software does not empirically estimate those parameters.
 - Reimbursement Atlas integration reads reviewed local derived exports; it does
   not fetch raw data or claim evidence readiness.
 - Voiage integration is optional and has not been vendored.
@@ -38,9 +40,8 @@
 - T02 now rejects empty identifiers, duplicate actions, non-finite payoffs, and
   unreachable nodes with structured Rust validation errors (`9717125`).
 - These checks harden the seed implementation. Authorized-source verification
-  and an independent technical panel now pass the implemented Chapter 7
-  Scenario 3 model; Scenario 4 `mu`/`beta_c^v` and regulator-grade domain review
-  remain out of scope.
+  now covers all four Chapter 7 scenarios, including the 2012 Appendix 5
+  investment derivation; regulator-grade domain review remains out of scope.
 
 ## Not complete
 

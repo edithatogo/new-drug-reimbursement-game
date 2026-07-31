@@ -23,6 +23,26 @@ implemented Scenario 3 reallocation model (equations 7.2-7.5,
 excluded. Reviewed empirical parameter records and regulator/publication-grade
 approval remain separate gates.
 
+## T10 all-scenario review
+
+A subsequent two-member read-only panel reviewed the strict Scenario 1-4
+implementation and shared Python/Rust fixtures. The review confirmed the
+Scenario 1-3 formulas, fixture arithmetic, and separation of Chapter 7 required
+adoption from economic preference. Initial findings identified dimensional
+tolerance, scenario-incompatible parser fields, incomplete Rust descriptors,
+and detached Scenario 4 provenance. Those findings were corrected and subjected
+to a second review pass.
+
+The Scenario 4 source boundary changed only after the official University of
+Adelaide repository copy of Pekarsky (2012), Appendix 5, PDF pages 231-234, was
+obtained and visually verified at SHA-256
+`10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723`.
+The resulting implementation validates the Appendix identity but does not
+estimate `mu`, `phi`, programme effects, horizon, or discounting.
+
+This is an independent technical-agent review, not independent human
+health-economist, HTA, legal, or regulatory approval.
+
 ## Ontology/runtime review
 
 Disposition: conditional pass for local compatibility and extraction evidence.

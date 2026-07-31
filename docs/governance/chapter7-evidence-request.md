@@ -29,3 +29,17 @@ The implemented Scenario 3 derivation is internally consistent and
 source-faithful. The remaining source requirement applies only if Scenario 4 is
 implemented: obtain Pekarsky (2012, Appendix 5), derive `mu`/`beta_c^v`, and
 repeat dimensional and implementation review.
+
+## 2026-07-31 superseding evidence
+
+The public University of Adelaide repository copy of Pekarsky (2012) was
+obtained after the bounded Scenario 3 disposition above. Appendix 5, PDF pages
+231-234, was textually and visually reviewed. The file SHA-256 is
+`10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723`.
+
+It defines `phi * Delta E_G = Delta C_P / mu`, `phi > 1`, positive net
+investment health gain, the Scenario 4 NEBh identity, and
+`beta_c^v = (1/d + 1/mu - 1/m)^-1`. T10 implements those identities with a
+mandatory evidence revision and preserves empirical estimation as a separate
+external gate. The historical Scenario 3 review above remains valid but no
+longer describes the complete implemented scenario surface.

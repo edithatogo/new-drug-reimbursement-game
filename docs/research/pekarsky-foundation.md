@@ -12,6 +12,8 @@ DOI 10.1007/978-3-319-08903-4.
 | Health shadow price `beta_c` | Chapters 6–7 | `health_shadow_price` |
 | Expansion `n`, contraction `m`, displacement `d` | Chapters 7 and glossary | `OpportunitySet` |
 | Net economic benefit in health units | Chapter 7, equations 7.2–7.5 | `evaluate_reimbursement` |
+| Four strict Chapter 7 economic scenarios | Chapter 7, equations 7.1–7.5 and Table 7.2 | `evaluate_chapter7_scenario` |
+| Scenario 4 investment identities | Pekarsky (2012), Appendix 5, pp. 231–234 | `Scenario4Inputs` |
 | Economic value of clinical innovation | Chapter 6 | `economic_value_clinical_innovation` result |
 | Firm chooses the highest reimbursable price under the exact Game 1 assumptions | Chapter 8, equation 8.2, printed p. 150/PDF p. 160 | `solve_pekarsky_game1` |
 | Public-threshold game with other contexts or non-zero IMER | Repository extension, not equation 8.2 | `solve_revealed_threshold_game` |

@@ -1,19 +1,22 @@
 # Dimensional derivation and assumption ledger
 
-Status: authorized-source verified and independently reviewed for the implemented
-Scenario 3 reallocation model. Scenario 4 investment parameter `mu` remains
-explicitly out of scope.
+Status: authorized-source verified for all four implemented Chapter 7
+scenarios. The Scenario 4 investment identities are also verified against
+Pekarsky (2012), Appendix 5; empirical derivation of its inputs remains out of
+scope.
 
 Primary conceptual source: Pekarsky (2015), Chapters 6-8, especially Chapter 7
 equations 7.2-7.5 on printed pages 116, 118, and 119 (PDF pages 126, 128,
 and 129), and the Chapter 8 Game 1 solution. DOI
 `10.1007/978-3-319-08903-4`. The authorized PDF reviewed for this ledger has
 SHA-256 `8455ad153cf5b6c1570bfc945108efe659904b3c8f89fdf7b74b88c9523c4848`.
+The reviewed University of Adelaide repository copy of Pekarsky (2012),
+Appendix 5 has SHA-256
+`10b727b52872483ac60f3958c9e4dd2c6fba2d1e875b1fac5cd9d52469341723`.
 
 This note records repository algebra without reproducing source prose or
-claiming to resolve the outstanding Chapter 7 technical-efficiency
-interpretation. Its review binding is the Git commit containing this file and
-the executable tests cited below.
+claiming empirical validity. Its review binding is the Git commit containing
+this file and the executable tests cited below.
 
 ## Units
 
@@ -87,11 +90,20 @@ Special cases:
 - `d = m` and `n < m` imply `1 / beta_c = 1 / n`, so `beta_c = n`.
 
 Section 7.5 on printed page 117 (PDF page 127) defines `mu` for a distinct
-Scenario 4 investment strategy that combines a current static-efficiency cost
-with a future dynamic-efficiency gain and derives a separate `beta_c^v`. It is
-not the Scenario 3 reallocation productivity `g*`. The implementation therefore
-does not map `mu` to `g*`; it keeps investment opportunities as named,
-provenanced alternatives and does not claim Scenario 4 conformance.
+Scenario 4 investment strategy. Pekarsky (2012), Appendix 5, pp. 231–234
+provides the detailed identities. With `phi > 1`, annual programme effect
+`Delta E_G`, and contraction ICER `m`:
+
+```text
+phi * Delta E_G = Delta C / mu
+Delta E_V = phi * Delta E_G - Delta C / m > 0
+NEBhR = Delta E - Delta C / d - Delta E_V
+1 / beta_c^v = 1 / d + 1 / mu - 1 / m
+```
+
+The strict Scenario 4 API validates these identities and requires a non-empty
+evidence revision. It never maps `mu` to the Scenario 3 reallocation
+productivity.
 
 ## EVCI and decision sign
 
@@ -158,6 +170,8 @@ This guards against mixing dollars, cents, or other currency units.
 ## Executable evidence
 
 - `tests/test_economics.py` independently exercises the Python identities.
+- `tests/test_chapter7_scenarios.py` exercises every strict scenario and the
+  Appendix 5 parameter relation.
 - `crates/new-drug-reimbursement-game/src/lib.rs` independently implements and
   tests the Rust identities.
 - The full repository gate runs both implementations, lint, typing, formatting,
@@ -165,11 +179,11 @@ This guards against mixing dollars, cents, or other currency units.
 
 ## Review disposition
 
-- Source fidelity passes for the implemented Scenario 3 reallocation model,
-  including equations 7.2-7.5, `beta_c^alpha`, EVCI, and sign conditions.
+- Source fidelity passes for Scenarios 1–3 against the 2015 book and for the
+  Scenario 4 identities against the 2012 Appendix 5.
 - The independent technical panel receipt is recorded in
   `docs/governance/independent-review-panel.md`.
-- Scenario 4 `mu`/`beta_c^v` remains excluded; implementing it would require
-  the detailed Pekarsky (2012, Appendix 5) formulation and a new review.
+- Scenario 4 parameters remain exogenous and evidence-bound; the repository
+  does not estimate `mu`, the present-value multiplier, or programme effects.
 - Passing source and implementation checks is not policy, HTA, legal, or
   regulator-grade approval.
