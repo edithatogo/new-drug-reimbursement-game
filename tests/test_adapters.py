@@ -6,6 +6,7 @@ from pathlib import Path
 from reimbursement_game.adapters.kairos import KairosScenarioExporter
 from reimbursement_game.adapters.reimbursement_atlas import ReimbursementAtlasExport
 from reimbursement_game.adapters.uogto import UogtoExporter
+from reimbursement_game.adapters.voiage import VoiageAdapter
 
 
 class AdapterTests(unittest.TestCase):
@@ -36,6 +37,17 @@ class AdapterTests(unittest.TestCase):
         case["incremental_cost"] = float("inf")
         with self.assertRaisesRegex(ValueError, "economic values must be finite"):
             UogtoExporter().export_game(case)
+
+    def test_voiage_boundary_rejects_malformed_samples_before_optional_import(self) -> None:
+        adapter = VoiageAdapter()
+        with self.assertRaisesRegex(ValueError, "non-empty matrix"):
+            adapter.evpi([])
+        with self.assertRaisesRegex(ValueError, "at least two strategies"):
+            adapter.evpi([[1.0], [2.0]])
+        with self.assertRaisesRegex(ValueError, "rectangular"):
+            adapter.evpi([[1.0, 2.0], [3.0]])
+        with self.assertRaisesRegex(ValueError, "finite numbers"):
+            adapter.evpi([[1.0, float("nan")], [3.0, 4.0]])
 
     def test_atlas_reader_rejects_unapproved_or_scalar_records(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
