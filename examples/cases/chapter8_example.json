@@ -4,7 +4,6 @@
   "context": "fixed",
   "incremental_cost": 250000.0,
   "incremental_health_effect": 10.0,
-  "marginal_cost_per_health_effect": 5000.0,
   "opportunities": {
     "expansion_icer": 20000.0,
     "contraction_icer": 60000.0,

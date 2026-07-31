@@ -1,0 +1,3 @@
+schema_version,case_id,expansion_icer,contraction_icer,displacement_icer,incremental_health_effect,expected_price,expected_firm_rent,expected_nebh
+1,baseline,20000,60000,40000,10,17142.85714285714,171428.57142857142,0
+1,optimal_displacement,25000,50000,50000,4,25000,100000,0

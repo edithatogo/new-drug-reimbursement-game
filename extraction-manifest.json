@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "crates": [
+    "crates/uogto-game-core",
+    "crates/uogto-game-solve"
+  ],
+  "allowed_internal_dependencies": {
+    "uogto-game-core": [],
+    "uogto-game-solve": [
+      "uogto-game-core"
+    ]
+  },
+  "forbidden_vocabulary": [
+    "drug",
+    "hta",
+    "manufacturer",
+    "payer",
+    "qaly",
+    "reimbursement"
+  ],
+  "external_gate": "Extraction repository and release authorization"
+}

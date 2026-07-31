@@ -143,7 +143,10 @@ def normalized_repo_parts(repository: str) -> tuple[str, str]:
     """Return normalized GitHub owner and repository names."""
 
     normalized = normalize_remote(repository)
-    parts = urlparse(normalized).path.strip("/").split("/")
+    parsed = urlparse(normalized)
+    if parsed.scheme != "https" or (parsed.hostname or "").lower() != "github.com":
+        raise ValueError(f"repository must use the canonical github.com host: {repository}")
+    parts = parsed.path.strip("/").split("/")
     if len(parts) < 2:
         raise ValueError(f"invalid repository URL: {repository}")
     return parts[-2], parts[-1]

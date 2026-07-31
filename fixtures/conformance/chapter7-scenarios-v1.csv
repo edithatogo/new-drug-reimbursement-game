@@ -1,0 +1,5 @@
+schema_version,case_id,scenario,incremental_cost,incremental_health_effect,n,m,d,mu,phi,annual_program_health_effect,expected_iper,expected_reimbursement_health_effect,expected_alternative_health_gain,expected_nebh,expected_beta,expected_evci,expected_net_financial_cost,evidence_revision
+1,expandable-efficient,scenario_1,200000,10,25000,,,,,,20000,10,8,2,25000,250000,200000,synthetic-fixture-v1
+1,fixed-efficient,scenario_2,200000,10,50000,50000,40000,,,,20000,5,0,5,40000,400000,0,synthetic-fixture-v1
+1,fixed-allocative-inefficiency,scenario_3,200000,10,20000,60000,40000,,,,20000,5,6.666666666666667,-1.666666666666667,17142.85714285714,171428.57142857142,0,synthetic-fixture-v1
+1,fixed-technical-investment,scenario_4,200000,10,,100000,50000,25000,2,4,20000,6,6,0,20000,200000,0,synthetic-fixture-v1

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "model_kind": "pekarsky-2015-ch7",
+  "case_id": "synthetic-ch7-s4",
+  "scenario": "scenario_4",
+  "incremental_cost": 200000,
+  "incremental_health_effect": 10,
+  "currency_unit": "synthetic currency",
+  "health_unit": "synthetic health unit",
+  "evidence_revision": "synthetic-example-v1",
+  "contraction_icer": 100000,
+  "displacement_icer": 50000,
+  "investment_icer": 25000,
+  "present_value_multiplier": 2,
+  "annual_program_health_effect": 4
+}

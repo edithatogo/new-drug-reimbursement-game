@@ -3,6 +3,7 @@
 | Risk | Current control | Remaining action |
 |---|---|---|
 | Misinterpreting Pekarsky notation | Source map, invariants, named alternatives | Independent health-economist review |
+| Scenario 4 dynamic inputs | Appendix 5 identity checks and mandatory evidence revision | Empirical review of `mu`, `phi`, horizon, and discounting |
 | Treating average ICER as marginal productivity | Evidence-role metadata | Empirical protocol and causal review |
 | Hidden displacement | Explicit `d` provenance | Link budget implementation evidence |
 | Threshold endogeneity | Strategic game representation | Empirical behavioural calibration |

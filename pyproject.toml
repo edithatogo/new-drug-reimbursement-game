@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools==83.0.0", "wheel==0.47.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,7 +8,8 @@ version = "0.4.0"
 description = "Ecosystem-first price-effectiveness and reimbursement-game research software"
 readme = "README.md"
 requires-python = ">=3.11"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 authors = [{name = "New Drug Reimbursement Game contributors"}]
 keywords = ["health economics", "game theory", "reimbursement", "price-effectiveness", "UOGTO"]
 dependencies = []
@@ -18,7 +19,7 @@ dependencies = []
 # deterministic PEA core can run offline and so repository checkout order is
 # controllable through ecosystem.lock.toml.
 voiage = ["voiage"]
-dev = ["build>=1.2", "mypy>=1.11", "pytest>=8.3", "pytest-cov>=5", "ruff>=0.8"]
+dev = ["build==1.5.0", "mypy>=1.11", "pytest>=8.3", "pytest-cov>=5", "ruff>=0.8"]
 
 [project.scripts]
 ndr-game = "reimbursement_game.cli:main"

@@ -236,6 +236,18 @@ def evaluate_reimbursement(inputs: ReimbursementInputs) -> ReimbursementEvaluati
     reimbursement_effect = inputs.incremental_health_effect - displacement_loss
     nebh = reimbursement_effect - alternative_gain
     evci = beta * inputs.incremental_health_effect
+    derived_values = {
+        "iper": iper,
+        "health_shadow_price": beta,
+        "displacement_health_loss": displacement_loss,
+        "best_alternative_health_gain": alternative_gain,
+        "reimbursement_population_health_effect": reimbursement_effect,
+        "net_economic_benefit_health": nebh,
+        "economic_value_clinical_innovation": evci,
+    }
+    non_finite = [name for name, value in derived_values.items() if not math.isfinite(value)]
+    if non_finite:
+        raise ValueError(f"derived economic values must be finite: {', '.join(non_finite)}")
     tolerance = 1e-12 * max(1.0, abs(beta), abs(iper))
     return ReimbursementEvaluation(
         iper=iper,

@@ -40,13 +40,13 @@ Clone resolution is performed by the activation prompt on the user's machine.
 
 ## Rust, Ruff, and MyPy
 
-The artifact-construction container did not expose Cargo/Rust, Ruff, or MyPy and
-could not install build tooling from its restricted package index. These checks
-are therefore configured in GitHub Actions and required by the activation prompt,
-but are not represented as locally executed for v0.4.0.
+The 2026-07-27 workstation activation used Python 3.14.6, Ruff 0.16.0, mypy
+2.3.0, Cargo 1.96.1, and Rust 1.96.1. Ruff passed, mypy checked 12 source files
+without issues, and Rust formatting, Clippy with warnings denied, three unit
+tests, and all doc-test targets passed.
 
-The earlier source seed also recorded Cargo as unavailable; no Rust result is
-silently carried forward.
+GitHub Actions run `30254455585` independently passed the `python` and `rust`
+jobs on `main`.
 
 ## Git and distribution checks
 

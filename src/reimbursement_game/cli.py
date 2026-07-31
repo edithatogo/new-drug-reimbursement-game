@@ -10,8 +10,9 @@ from typing import Any
 
 from .adapters.kairos import KairosScenarioExporter
 from .adapters.uogto import UogtoExporter
-from .case_io import inputs_from_case
-from .chapter8 import solve_revealed_threshold_game
+from .case_io import chapter7_inputs_from_case, inputs_from_case
+from .chapter7 import evaluate_chapter7_scenario
+from .chapter8 import solve_pekarsky_game1
 from .economics import evaluate_reimbursement
 
 
@@ -29,20 +30,30 @@ def _print(value: object) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ndr-game")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("evaluate", "equilibrium", "uogto", "kairos"):
+    for name in ("evaluate", "scenario", "equilibrium", "uogto", "kairos"):
         command = sub.add_parser(name)
         command.add_argument("case")
     args = parser.parse_args(argv)
     case = _load(args.case)
     if args.command == "evaluate":
         _print(asdict(evaluate_reimbursement(inputs_from_case(case))))
+    elif args.command == "scenario":
+        output = asdict(evaluate_chapter7_scenario(chapter7_inputs_from_case(case)))
+        output.update(
+            {
+                "case_id": case["case_id"],
+                "currency_unit": case["currency_unit"],
+                "health_unit": case["health_unit"],
+                "case_evidence_revision": case["evidence_revision"],
+            }
+        )
+        _print(output)
     elif args.command == "equilibrium":
         inputs = inputs_from_case(case)
-        result = solve_revealed_threshold_game(
+        result = solve_pekarsky_game1(
             incremental_health_effect=inputs.incremental_health_effect,
             context=inputs.context,
             opportunities=inputs.opportunities,
-            marginal_cost_per_health_effect=float(case.get("marginal_cost_per_health_effect", 0.0)),
         )
         _print(asdict(result))
     elif args.command == "uogto":

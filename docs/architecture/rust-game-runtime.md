@@ -40,6 +40,9 @@ Python/R/TS/Julia/.NET facades
 8. The application depends on the released capability, then removes its Python
    conformance solver from the production path.
 
+The concrete UOGTO and Kairos API inspection is recorded in
+[`pinned-runtime-contracts.md`](pinned-runtime-contracts.md).
+
 ## Initial solver roadmap
 
 - finite acyclic perfect-information backward induction;

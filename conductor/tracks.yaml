@@ -5,7 +5,7 @@ tracks:
   - id: T00
     title: Repository bootstrap and ecosystem resolution
     priority: 0
-    status: in_progress
+    status: done
     depends_on: []
     exit_evidence:
       - remote repository safely wired
@@ -14,12 +14,12 @@ tracks:
   - id: T01
     title: Mathematical foundation and cross-language conformance
     priority: 1
-    status: planned
+    status: done
     depends_on: [T00]
   - id: T02
     title: Domain-neutral UOGTO-native Rust game runtime
     priority: 1
-    status: planned
+    status: in_progress
     depends_on: [T00]
   - id: T03
     title: UOGTO reimbursement and execution semantics
@@ -54,5 +54,10 @@ tracks:
   - id: T09
     title: Governance, release, validation, and extraction readiness
     priority: 1
-    status: planned
+    status: in_progress
     depends_on: [T00]
+  - id: T10
+    title: Chapter 7 all-scenario implementation
+    priority: 1
+    status: done
+    depends_on: [T01]
