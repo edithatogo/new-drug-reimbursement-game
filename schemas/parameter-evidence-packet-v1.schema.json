@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/new-drug-reimbursement-game/schemas/parameter-evidence-packet-v1.schema.json",
+  "title": "Approved derived Chapter 7 parameter evidence packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "export_kind", "packet_id", "packet_revision", "context", "records"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "export_kind": {"const": "approved-derived-parameter-evidence"},
+    "packet_id": {"type": "string", "minLength": 1},
+    "packet_revision": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "context": {"$ref": "#/$defs/context"},
+    "records": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/record"}}
+  },
+  "$defs": {
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jurisdiction", "payer", "budget_boundary", "service_line", "price_year", "decision_date", "implementation_horizon_years", "currency_unit", "health_unit"],
+      "properties": {
+        "jurisdiction": {"type": "string", "minLength": 1},
+        "payer": {"type": "string", "minLength": 1},
+        "budget_boundary": {"type": "string", "minLength": 1},
+        "service_line": {"type": "string", "minLength": 1},
+        "price_year": {"type": "integer", "minimum": 1900},
+        "decision_date": {"type": "string", "format": "date"},
+        "implementation_horizon_years": {"type": "integer", "minimum": 1},
+        "currency_unit": {"type": "string", "minLength": 1},
+        "health_unit": {"type": "string", "minLength": 1}
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_id", "role", "value", "unit", "programme_id", "evidence_method", "marginality", "causal_assumptions", "uncertainty", "scale_limits", "source", "transformation", "reviewer", "approval_state", "evidence_revision", "derived_only"],
+      "properties": {
+        "record_id": {"type": "string", "minLength": 1},
+        "role": {"enum": ["n", "d", "m", "mu", "phi", "annual_program_health_effect", "horizon", "discount_rate"]},
+        "value": {"type": "number"},
+        "unit": {"type": "string", "minLength": 1},
+        "programme_id": {"type": "string", "minLength": 1},
+        "evidence_method": {"enum": ["observed", "elicited", "modelled", "inferred"]},
+        "marginality": {"enum": ["marginal", "incremental", "not_applicable"]},
+        "causal_assumptions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "uncertainty": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "samples"],
+          "properties": {
+            "kind": {"enum": ["deterministic", "empirical_samples", "posterior_samples"]},
+            "samples": {"type": "array", "minItems": 1, "items": {"type": "number"}}
+          }
+        },
+        "scale_limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["min", "max"],
+          "properties": {"min": {"type": "number"}, "max": {"type": "number"}}
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["uri", "sha256", "licence"],
+          "properties": {
+            "uri": {"type": "string", "format": "uri"},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "licence": {"type": "string", "minLength": 1}
+          }
+        },
+        "transformation": {"type": "string", "minLength": 1},
+        "reviewer": {"type": "string", "minLength": 1},
+        "approval_state": {"const": "approved"},
+        "evidence_revision": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "derived_only": {"const": true}
+      }
+    }
+  }
+}

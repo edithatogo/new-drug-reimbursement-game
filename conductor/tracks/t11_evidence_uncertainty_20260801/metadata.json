@@ -1,0 +1,29 @@
+{
+  "track_id": "t11_evidence_uncertainty_20260801",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-07-31T22:08:03Z",
+  "updated_at": "2026-07-31T22:29:16Z",
+  "description": "Governed Chapter 7 evidence records, calibration receipts, Atlas ingestion, and Voiage uncertainty handoff",
+  "evidence_schema": "1.0",
+  "gates": [
+    {
+      "id": "real-atlas-parameter-records",
+      "kind": "external_evidence",
+      "status": "pending",
+      "scope": "external"
+    },
+    {
+      "id": "human-health-economics-review",
+      "kind": "human_review",
+      "status": "pending",
+      "scope": "external"
+    },
+    {
+      "id": "voiage-licence-reconciliation",
+      "kind": "licence_review",
+      "status": "pending",
+      "scope": "external"
+    }
+  ]
+}

@@ -74,13 +74,14 @@ class Candidate:
     distance: int
 
     @property
-    def score(self) -> tuple[int, int, int, int, int]:
-        """Rank exact, pinned, clean, non-bare, nearby clones in that order."""
+    def score(self) -> tuple[int, int, int, int, int, int]:
+        """Rank exact, pinned, clean, explicit cache, non-bare, nearby clones."""
 
         return (
             1 if self.normalized_remote else 0,
             1 if self.pin_available else 0,
             1 if self.clean else 0,
+            1 if self.source == "bootstrap-cache" else 0,
             1 if not self.bare else 0,
             -self.distance,
         )

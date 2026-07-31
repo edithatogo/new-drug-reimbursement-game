@@ -12,6 +12,8 @@
   contract.
 - UOGTO reimbursement extension proposal, JSON-LD example, and SHACL proposal.
 - Voiage, Kairos, Reimbursement Atlas, and UOGTO application adapters.
+- Strict approved-derived parameter packets, all-scenario calibration receipts,
+  aligned uncertainty validation, and pinned-compatible Voiage schema handoff.
 - `edithatogo`-only Hugging Face manifest and scope validator.
 - Post-2015 synthesis, gap map, model-risk register, and upstream proposal
   packets.
@@ -29,9 +31,12 @@
 - Scenario 4 implements the source Appendix 5 identities with caller-supplied,
   provenance-bound `mu`, `phi`, and annual programme health effect. The
   software does not empirically estimate those parameters.
-- Reimbursement Atlas integration reads reviewed local derived exports; it does
-  not fetch raw data or claim evidence readiness.
-- Voiage integration is optional and has not been vendored.
+- Reimbursement Atlas integration reads reviewed local derived exports; the new
+  parameter adapter accepts only the strict version-1 approved-derived packet
+  and does not fetch raw data or claim evidence readiness.
+- Voiage integration is optional and has not been vendored. The application
+  prepares pinned `ValueArray`/`ParameterSet` inputs but retains no VOI
+  algorithm or sampler.
 
 ## Workstation implementation milestones
 

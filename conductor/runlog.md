@@ -57,3 +57,17 @@
   fail-closed domain checks, a versioned schema, four examples, and a CLI
   surface. Scenario 4 validates the Appendix 5 dynamic identity and requires an
   evidence revision; empirical parameter estimation remains external.
+- `2026-07-31T22:08:03Z` (T11 planning): specified an approved-derived
+  parameter-evidence contract, deterministic Chapter 7 calibration receipts,
+  and pinned-compatible Atlas/Voiage boundaries. Real calibration data and
+  health-economics approval remain explicit external gates.
+- `334607b` and `e06c75e` (T11): implemented strict evidence packets,
+  all-scenario evidence selection, deterministic receipts, and aligned Voiage
+  samples with synthetic decision-use prohibition.
+- `613d01c` (T11 review fix): made the explicit ignored ecosystem cache
+  deterministically outrank equivalent sibling worktrees; all four ecosystem
+  pins resolve without mutating sibling checkouts.
+- `c90a31a` (T11): integrated the governed Atlas reader, CLI, documentation,
+  and pinned Voiage `ValueArray`/`ParameterSet` handoff. The complete gate
+  passed with 75 Python and 29 Rust tests; real evidence, health-economics
+  review, and Voiage licence reconciliation remain external.

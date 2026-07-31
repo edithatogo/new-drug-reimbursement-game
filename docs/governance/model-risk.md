@@ -3,7 +3,7 @@
 | Risk | Current control | Remaining action |
 |---|---|---|
 | Misinterpreting Pekarsky notation | Source map, invariants, named alternatives | Independent health-economist review |
-| Scenario 4 dynamic inputs | Appendix 5 identity checks and mandatory evidence revision | Empirical review of `mu`, `phi`, horizon, and discounting |
+| Scenario 4 dynamic inputs | Appendix 5 identity checks on every supplied draw, approved-derived records, one-programme constraint, horizon/discount evidence, and deterministic receipt | Empirical and human review of `mu`, `phi`, programme effects, horizon, discounting, and their joint uncertainty |
 | Treating average ICER as marginal productivity | Evidence-role metadata | Empirical protocol and causal review |
 | Hidden displacement | Explicit `d` provenance | Link budget implementation evidence |
 | Threshold endogeneity | Strategic game representation | Empirical behavioural calibration |
@@ -11,6 +11,7 @@
 | Static complete-information assumptions | Model status labels | Implement information sets/repeated games |
 | Equity omitted | Extension map | UOGTO payoff/perspective extension |
 | VOI duplicated or inconsistent | Voiage-only adapter | Shared fixtures and Rust contract |
+| Synthetic fixture mistaken for evidence | Reserved synthetic jurisdiction, immutable receipt flag, CLI warning field, and explicit decision-use prohibition | Keep synthetic outputs out of publications and decision packets |
 | Scheduler duplicated | Kairos-only execution contract | Native binding integration |
 | Ontology/runtime drift | Pinned UOGTO revision | Upstream conformance CI |
 | HF licence mismatch | Fail-closed manifest note | Reconcile Hub card metadata |
