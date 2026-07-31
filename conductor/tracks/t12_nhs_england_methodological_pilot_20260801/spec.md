@@ -10,15 +10,17 @@ receipts. It must not convert candidate evidence into an approved calibration.
 ## Authoritative inputs
 
 - DHSC, *Consultation stage impact assessment: proposed 2026 changes to the
-  statutory scheme for branded medicines pricing*, Annex C, PDF pp. 21-23,
+  statutory scheme for branded medicines pricing*, Annex C, PDF pp. 22-23,
   SHA-256 `da2f3bb1ae21e65cd0aac668f1e21f35e5c1685c69aa6f76f0048e9eea90c60e`.
 - Centre for Health Economics, University of York, *Research Summary 9:
   Estimating the health effects of changes in health care expenditure* (July
   2023), SHA-256
   `4b1814572e363dcb2e722a4fb43b1a6e04ef5c6b278bc6f6130fdf375fdaad02`.
-- Martin, Claxton, Lomas, and Longo (2022), DOI
-  `10.1007/s40258-022-00723-2`; Crossref metadata snapshot SHA-256
-  `399667d4e6907a52afa277079be4a86a3dd07b5b71bdf58582ec45358bba763b`.
+- Martin, Claxton, Lomas, and Longo (2023), DOI
+  `10.1016/j.healthpol.2023.104800`; White Rose repository PDF SHA-256
+  `2eea0d4ac30aa2175fa0496a0c95e9294b9fd1499c84c8b52c32f9a36d6988b4`,
+  reporting the 2014/15 result from Martin et al. (2022), DOI
+  `10.1007/s40258-022-00723-2`.
 - NICE, *Technology appraisal and highly specialised technologies guidance:
   the manual*, sections 4.2 and 4.5.
 - `schemas/parameter-evidence-packet-v1.schema.json`,
@@ -32,8 +34,9 @@ receipts. It must not convert candidate evidence into an approved calibration.
   budget boundary, price year, unit, estimand, candidate roles, uncertainty,
   transformations, assumptions, and mapping limitations.
 - Represent GBP 15,000/QALY, GBP 12,981/QALY, approximately GBP 7,000/QALY for
-  2014/15 locally commissioned services, and NICE's 3.5% discount rate without
-  conflating their scopes or price years.
+  2014/15 locally commissioned services, DHSC's 1.5% QALY discount rate, and
+  NICE's 3.5% reference-case discount rate without conflating their scopes or
+  price years.
 - Treat GBP 15,000/QALY as a pragmatic policy proxy, not a firm prediction or
   the NICE decision threshold.
 - Assess every Chapter 7 role and scenario as `supported`, `candidate_only`,

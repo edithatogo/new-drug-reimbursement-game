@@ -77,6 +77,9 @@ seed for the general capability.
   Atlas.
 - A strict approved-derived parameter-evidence packet, deterministic Chapter 7
   calibration receipts, and aligned Voiage `ValueArray`/`ParameterSet` handoff.
+- A fail-closed NHS England methodological candidate dossier and deterministic
+  readiness receipt covering every Chapter 7 scenario without promoting public
+  estimates into approved calibration evidence.
 - An `edithatogo`-only Hugging Face manifest.
 - Research synthesis and a post-2015 extension map.
 - Upstream proposal packets for UOGTO, Kairos, Voiage, and Reimbursement Atlas.
@@ -102,6 +105,7 @@ the authoritative restoration path. See `START_HERE_CODEX.md` and
 python -m reimbursement_game.cli evaluate examples/cases/chapter8_example.json
 python -m reimbursement_game.cli scenario examples/cases/chapter7_scenario4.json
 python -m reimbursement_game.cli evidence fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json
+python -m reimbursement_game.cli pilot-readiness fixtures/evidence/nhs-england-methodological-candidates-v1.json
 python -m reimbursement_game.cli calibrate fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json scenario_3 120 20 --case-id synthetic-demo --record n=n-allocative --record m=m-contraction --record d=d-displacement
 python -m reimbursement_game.cli equilibrium examples/cases/chapter8_example.json
 python -m reimbursement_game.cli uogto examples/cases/chapter8_example.json
@@ -137,3 +141,5 @@ The committed evidence fixture is synthetic and explicitly prohibited from
 decision use. Real calibration requires approved Atlas-derived records and
 independent health-economic review; see
 `docs/architecture/evidence-calibration-contract.md`.
+The NHS England pilot remains candidate-only; see
+`docs/research/nhs-england-methodological-pilot.md`.

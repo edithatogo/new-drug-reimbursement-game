@@ -12,6 +12,12 @@ The executable packet contract is
 `schemas/parameter-evidence-packet-v1.schema.json`. It is bound to the Atlas and
 Voiage revisions in `ecosystem.lock.toml`.
 
+Public-source methodological triage uses the separate
+`schemas/parameter-evidence-candidate-dossier-v1.schema.json` contract. Its
+records are candidate-only, cannot be converted by the application, and never
+enter the approved packet or calibration path. See
+`docs/research/nhs-england-methodological-pilot.md`.
+
 ## Fail-closed controls
 
 Every packet has one decision context: jurisdiction, payer, budget boundary,

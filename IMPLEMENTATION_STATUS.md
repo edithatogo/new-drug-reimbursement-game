@@ -14,6 +14,9 @@
 - Voiage, Kairos, Reimbursement Atlas, and UOGTO application adapters.
 - Strict approved-derived parameter packets, all-scenario calibration receipts,
   aligned uncertainty validation, and pinned-compatible Voiage schema handoff.
+- Candidate-only NHS England source mapping with deterministic role and
+  all-scenario readiness receipts; this does not constitute empirical
+  calibration or approval.
 - `edithatogo`-only Hugging Face manifest and scope validator.
 - Post-2015 synthesis, gap map, model-risk register, and upstream proposal
   packets.

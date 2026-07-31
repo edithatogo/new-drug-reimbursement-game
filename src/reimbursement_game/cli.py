@@ -17,6 +17,7 @@ from .chapter7 import Chapter7Scenario, evaluate_chapter7_scenario
 from .chapter8 import solve_pekarsky_game1
 from .economics import evaluate_reimbursement
 from .evidence import ParameterRole
+from .pilot_readiness import assess_pilot_readiness, candidate_dossier_from_mapping
 
 
 def _load(path: str) -> dict[str, Any]:
@@ -38,6 +39,8 @@ def main(argv: list[str] | None = None) -> int:
         command.add_argument("case")
     evidence_command = sub.add_parser("evidence")
     evidence_command.add_argument("packet")
+    readiness_command = sub.add_parser("pilot-readiness")
+    readiness_command.add_argument("dossier")
     calibration_command = sub.add_parser("calibrate")
     calibration_command.add_argument("packet")
     calibration_command.add_argument("scenario", choices=[item.value for item in Chapter7Scenario])
@@ -52,6 +55,10 @@ def main(argv: list[str] | None = None) -> int:
         help="select exactly one approved evidence record for each required role",
     )
     args = parser.parse_args(argv)
+    if args.command == "pilot-readiness":
+        dossier = candidate_dossier_from_mapping(_load(args.dossier))
+        _print(asdict(assess_pilot_readiness(dossier)))
+        return 0
     if args.command == "evidence":
         packet = ReimbursementAtlasParameterExport(args.packet).packet()
         _print(
