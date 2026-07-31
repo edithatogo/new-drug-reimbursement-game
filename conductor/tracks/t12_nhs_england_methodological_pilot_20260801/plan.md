@@ -20,8 +20,10 @@
 
 - [x] Add the CLI readiness command and pilot documentation.
 - [x] Run CLI and source-receipt smoke checks.
-- [ ] Run whole-track review and full repository validation.
-- [ ] Record hash-chained evidence and reconcile Conductor state while leaving
+- [x] Run whole-track review and full repository validation (86 Python and 29
+  Rust tests; Ruff, strict mypy, packaging, scope, governance, extraction,
+  hardening, and all four pinned ecosystem checks passed at `cb6d3d2`).
+- [x] Record hash-chained evidence and reconcile Conductor state while leaving
   external gates pending.
 
 ## Review fixes

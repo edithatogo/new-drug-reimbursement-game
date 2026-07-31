@@ -1,9 +1,9 @@
 {
   "track_id": "t12_nhs_england_methodological_pilot_20260801",
   "type": "feature",
-  "status": "in_progress",
+  "status": "completed",
   "created_at": "2026-07-31T22:35:49Z",
-  "updated_at": "2026-07-31T22:38:46Z",
+  "updated_at": "2026-07-31T23:05:54Z",
   "description": "Fail-closed NHS England Chapter 7 evidence-candidate and readiness pilot",
   "evidence_schema": "1.0",
   "gates": [
