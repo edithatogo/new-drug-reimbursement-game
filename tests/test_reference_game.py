@@ -61,6 +61,29 @@ class ReferenceGameTests(unittest.TestCase):
         self.assertEqual(result.payoffs, {"p": 1.0})
         self.assertEqual(result.choices, {"shared": "a"})
 
+    def test_replay_is_deterministic_and_ties_break_by_action(self) -> None:
+        """Repeated solves must produce a stable, replayable conformance result."""
+        spec = {
+            "root": "decision",
+            "nodes": {
+                "decision": {
+                    "kind": "decision",
+                    "player": "institution",
+                    "edges": [
+                        {"action": "z-last", "target": "z"},
+                        {"action": "a-first", "target": "a"},
+                    ],
+                },
+                "z": {"kind": "terminal", "payoffs": {"institution": 1}},
+                "a": {"kind": "terminal", "payoffs": {"institution": 1}},
+            },
+        }
+
+        first = solve_game(spec)
+        second = solve_game(spec)
+        self.assertEqual(first, second)
+        self.assertEqual(first.choices, {"decision": "a-first"})
+
 
 if __name__ == "__main__":
     unittest.main()
