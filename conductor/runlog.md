@@ -57,3 +57,7 @@
   fail-closed domain checks, a versioned schema, four examples, and a CLI
   surface. Scenario 4 validates the Appendix 5 dynamic identity and requires an
   evidence revision; empirical parameter estimation remains external.
+- `2026-07-31T22:08:03Z` (T11 planning): specified an approved-derived
+  parameter-evidence contract, deterministic Chapter 7 calibration receipts,
+  and pinned-compatible Atlas/Voiage boundaries. Real calibration data and
+  health-economics approval remain explicit external gates.
