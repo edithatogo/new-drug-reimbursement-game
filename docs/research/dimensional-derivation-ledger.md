@@ -110,6 +110,45 @@ NEBhR = Delta E * (1 - f / beta_c)
 
 Thus `f < beta_c` is positive, equality is zero, and `f > beta_c` is negative.
 
+For the strict Scenario 3 domain, the book presents two equivalent
+decompositions of that positive-benefit condition:
+
+```text
+Eq 7.3: (1/f - 1/d) > (1/n - 1/m)
+Eq 7.4: (1/f - 1/n) > (1/d - 1/m)
+Eq 7.5: f < beta_c
+```
+
+The first compares reimbursement net of displacement with reallocation; the
+second rearranges the same terms. Their equivalence is tested directly.
+
+## Source discrepancies and adjudication
+
+- Scenario 3 prose on printed page 115 (PDF page 125) says `n = m`, but the
+  same page requires a positive reallocation gain and equation 7.2 uses
+  `1/n - 1/m`; printed page 119 (PDF page 129) explicitly requires `m > n`.
+  The implementation follows the internally coherent `m > n` interpretation.
+  This is an adjudication of an apparent source typo, not silent normalization.
+- Printed page 109 (PDF page 119) refers once to expansion funded by
+  `Delta E_P`; the surrounding dimensional algebra requires currency
+  `Delta C_P`. The implementation uses `Delta C_P`.
+- The source Scenario 3 domain also states `n <= d <= m`. The reusable
+  opportunity-set kernel intentionally accepts wider domains, but exact
+  Chapter 8 Game 1 validation enforces this ordering.
+
+## Implementation policies and extensions
+
+- `max(0, 1/n - 1/m)` treats a non-beneficial reallocation as unavailable in
+  the generalized kernel. It is not the strict Scenario 3 domain condition.
+- Choosing the most productive named `additional_alternatives` is a repository
+  extension; the source equation does not define that maximization.
+- The scale-aware floating-point tolerance around `f <= beta_c` is a numerical
+  policy. Reimbursement on exact indifference follows Chapter 8, not Chapter
+  7's required-adoption setup.
+- Linearity, certainty, feasibility, and the institutional meaning of `n`,
+  `m`, and `d` cannot be inferred from three numbers. Results are conditional
+  on callers establishing those assumptions.
+
 ## Currency-unit rescaling
 
 For a positive currency scale `s`, scale `Delta C`, `n`, `m`, and `d` by `s`.

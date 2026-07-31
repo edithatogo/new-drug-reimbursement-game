@@ -11,7 +11,7 @@ from typing import Any
 from .adapters.kairos import KairosScenarioExporter
 from .adapters.uogto import UogtoExporter
 from .case_io import inputs_from_case
-from .chapter8 import solve_revealed_threshold_game
+from .chapter8 import solve_pekarsky_game1
 from .economics import evaluate_reimbursement
 
 
@@ -38,11 +38,10 @@ def main(argv: list[str] | None = None) -> int:
         _print(asdict(evaluate_reimbursement(inputs_from_case(case))))
     elif args.command == "equilibrium":
         inputs = inputs_from_case(case)
-        result = solve_revealed_threshold_game(
+        result = solve_pekarsky_game1(
             incremental_health_effect=inputs.incremental_health_effect,
             context=inputs.context,
             opportunities=inputs.opportunities,
-            marginal_cost_per_health_effect=float(case.get("marginal_cost_per_health_effect", 0.0)),
         )
         _print(asdict(result))
     elif args.command == "uogto":

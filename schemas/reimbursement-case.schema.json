@@ -23,7 +23,8 @@
     },
     "incremental_cost": {
       "type": "number",
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Used by evaluation; Game 1 equilibrium endogenizes price and cost from the fixed health effect."
     },
     "incremental_health_effect": {
       "type": "number",
@@ -54,10 +55,54 @@
           "exclusiveMinimum": 0
         },
         "additional_alternatives": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "health_gain_per_currency",
+              "provenance"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "health_gain_per_currency": {
+                "type": "number",
+                "minimum": 0
+              },
+              "provenance": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "context": {
+            "const": "fixed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "opportunities": {
+            "required": [
+              "displacement_icer"
+            ]
+          }
         }
       }
     }
-  },
-  "additionalProperties": true
+  ],
+  "additionalProperties": false
 }

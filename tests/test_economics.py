@@ -66,6 +66,19 @@ class EconomicsTests(unittest.TestCase):
         self.assertLess(result.net_economic_benefit_health, 0.0)
         self.assertFalse(result.reimburse)
 
+    def test_equations_7_3_and_7_4_are_equivalent(self) -> None:
+        """Cross-check both source inequality decompositions under Scenario 3."""
+
+        n, m, d = 20_000.0, 60_000.0, 40_000.0
+        beta, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
+        for f, expected in ((beta * 0.8, True), (beta * 1.2, False)):
+            with self.subTest(f=f):
+                equation_7_3 = (1 / f - 1 / d) > (1 / n - 1 / m)
+                equation_7_4 = (1 / f - 1 / n) > (1 / d - 1 / m)
+                self.assertEqual(equation_7_3, expected)
+                self.assertEqual(equation_7_4, expected)
+                self.assertEqual(equation_7_3, equation_7_4)
+
     def test_currency_unit_rescaling_preserves_health_result(self) -> None:
         beta, _ = health_shadow_price(EconomicContext.FIXED, self.opportunities)
         baseline = evaluate_reimbursement(

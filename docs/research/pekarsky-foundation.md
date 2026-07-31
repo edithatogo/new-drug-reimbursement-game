@@ -13,7 +13,8 @@ DOI 10.1007/978-3-319-08903-4.
 | Expansion `n`, contraction `m`, displacement `d` | Chapters 7 and glossary | `OpportunitySet` |
 | Net economic benefit in health units | Chapter 7, equations 7.2–7.5 | `evaluate_reimbursement` |
 | Economic value of clinical innovation | Chapter 6 | `economic_value_clinical_innovation` result |
-| Firm chooses the highest reimbursable price under the Game 1 assumptions | Chapter 8, equation 8.2 and surrounding solution | `solve_revealed_threshold_game` |
+| Firm chooses the highest reimbursable price under the exact Game 1 assumptions | Chapter 8, equation 8.2, printed p. 150/PDF p. 160 | `solve_pekarsky_game1` |
+| Public-threshold game with other contexts or non-zero IMER | Repository extension, not equation 8.2 | `solve_revealed_threshold_game` |
 | R&D financing game | Chapter 9 | specification backlog; not claimed complete |
 | Three-period premium game | Chapter 10 | specification backlog; not claimed complete |
 
@@ -45,3 +46,5 @@ and equations are attributed. Examples and test values are synthetic.
 The independent dimensional derivation, executable evidence, and pending review
 gates are recorded in
 [`dimensional-derivation-ledger.md`](./dimensional-derivation-ledger.md).
+The exhaustive equation, parameter, assumption, and heuristic disposition is in
+[`source-conformance-audit.md`](./source-conformance-audit.md).

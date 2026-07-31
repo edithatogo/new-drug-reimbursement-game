@@ -35,8 +35,10 @@ failing closed when a context is incomplete or non-identifiable.
 
 ## External gates
 
-- Exact Chapter 7 technical-efficiency source verification.
-- Independent health-economics review of derivations and dimensional analysis.
+- Exact technical source verification and an independent technical-panel review
+  are complete for the implemented Scenario 3 and Game 1 equations.
+- Human health-economist, HTA, and regulator-grade review remain external and
+  are not acceptance criteria for this technical track.
 
 ## Out of scope
 

@@ -8,6 +8,13 @@ pub struct OpportunitySet {
     pub additional_best_productivity: f64,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Chapter8Game1Equilibrium {
+    pub offered_iper: f64,
+    pub firm_economic_rent: f64,
+    pub institution_nebh: f64,
+}
+
 fn valid_positive(value: Option<f64>) -> bool {
     match value {
         None => true,
@@ -68,6 +75,38 @@ pub fn net_economic_benefit_health(
         reallocation_productivity(opportunities)?.max(opportunities.additional_best_productivity);
     let result = incremental_health_effect - incremental_cost / d - incremental_cost * alternative;
     result.is_finite().then_some(result)
+}
+
+/// Solve Pekarsky Chapter 8 Game 1 only when its quantitative assumptions hold.
+#[must_use]
+pub fn solve_pekarsky_game1(
+    incremental_health_effect: f64,
+    opportunities: OpportunitySet,
+) -> Option<Chapter8Game1Equilibrium> {
+    if !incremental_health_effect.is_finite()
+        || incremental_health_effect <= 0.0
+        || !valid_opportunity_set(opportunities)
+        || opportunities.additional_best_productivity != 0.0
+    {
+        return None;
+    }
+    let n = opportunities.expansion_icer?;
+    let m = opportunities.contraction_icer?;
+    let d = opportunities.displacement_icer?;
+    if !(m > n && n <= d && d <= m) {
+        return None;
+    }
+    let offered_iper = fixed_budget_shadow_price(opportunities)?;
+    let incremental_cost = offered_iper * incremental_health_effect;
+    let institution_nebh =
+        net_economic_benefit_health(incremental_cost, incremental_health_effect, opportunities)?;
+    let firm_economic_rent = offered_iper * incremental_health_effect;
+    (offered_iper.is_finite() && firm_economic_rent.is_finite() && institution_nebh.is_finite())
+        .then_some(Chapter8Game1Equilibrium {
+            offered_iper,
+            firm_economic_rent,
+            institution_nebh,
+        })
 }
 
 #[cfg(test)]
@@ -246,5 +285,54 @@ expected_reimburse"
             assert!(nebh < prior_nebh);
             prior_nebh = nebh;
         }
+    }
+
+    #[test]
+    fn chapter_eight_game_one_fixture_conforms() {
+        let fixture = include_str!("../../../fixtures/conformance/chapter8-game1-v1.csv");
+        let mut lines = fixture.lines();
+        assert_eq!(
+            lines.next().unwrap(),
+            "schema_version,case_id,expansion_icer,contraction_icer,displacement_icer,\
+incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
+        );
+        for line in lines {
+            let fields: Vec<_> = line.split(',').collect();
+            assert_eq!(fields.len(), 9);
+            assert_eq!(fields[0], "1");
+            let parse = |index: usize| fields[index].parse::<f64>().unwrap();
+            let result = solve_pekarsky_game1(
+                parse(5),
+                OpportunitySet {
+                    expansion_icer: Some(parse(2)),
+                    contraction_icer: Some(parse(3)),
+                    displacement_icer: Some(parse(4)),
+                    additional_best_productivity: 0.0,
+                },
+            )
+            .unwrap();
+            assert!((result.offered_iper - parse(6)).abs() < 1e-9);
+            assert!((result.firm_economic_rent - parse(7)).abs() < 1e-9);
+            assert!((result.institution_nebh - parse(8)).abs() < 1e-9);
+        }
+    }
+
+    #[test]
+    fn chapter_eight_game_one_rejects_generalized_domains() {
+        let invalid_ordering = OpportunitySet {
+            expansion_icer: Some(60_000.0),
+            contraction_icer: Some(20_000.0),
+            displacement_icer: Some(40_000.0),
+            additional_best_productivity: 0.0,
+        };
+        assert_eq!(solve_pekarsky_game1(1.0, invalid_ordering), None);
+
+        let extra_strategy = OpportunitySet {
+            expansion_icer: Some(20_000.0),
+            contraction_icer: Some(60_000.0),
+            displacement_icer: Some(40_000.0),
+            additional_best_productivity: 1.0 / 10_000.0,
+        };
+        assert_eq!(solve_pekarsky_game1(1.0, extra_strategy), None);
     }
 }
