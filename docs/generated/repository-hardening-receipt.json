@@ -10,7 +10,7 @@
     ".github/ISSUE_TEMPLATE/feature_request.md": "9bc7f070f41117b6829eff526e537da9823240531257bc8af8a75f65cc1bbe6f",
     ".github/pull_request_template.md": "bd3cff8fbdaab58dfd58ca93862cc4a2be180c0d93137dffd4ce7f157e840cec",
     ".github/renovate.json5": "b086df495076a6930e57d18be5cc222011776e068f789c4101cab48fd3be6ce8",
-    ".github/workflows/ci.yml": "91b957839a9742a10b59c720ea7cb790a000eb96b2f767571b1c12572cce2f62",
+    ".github/workflows/ci.yml": "b7a5feee53db3dae9852e319034435c672062cdb8bc056b76d08aef5143f12c7",
     "AGENTS.md": "e897f00c453c01bfabc8fb83f22e9a38f2024bff0522219fa8a8528d558694fb",
     "CONTRIBUTING.md": "d04f331380909406247bf0d2ab7cddeea4a774705007f896fd5d03df764f909b",
     "SECURITY.md": "bbeffbfdd9de1c0bade993012024bb249bfc6a64a39a380d035dcc482f7788f2"
