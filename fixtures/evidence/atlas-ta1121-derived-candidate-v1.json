@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "research_question_id": "rq_nhs_ta1121_context",
+  "scope": "Candidate linkage of NICE TA1121 and NHS England 2026/27 pricing context to the pinned Reimbursement Atlas evidence boundary.",
+  "analysis_status": "complete",
+  "claim_approval_status": "pending_accountable_review",
+  "required_sources": ["nice-ta1121-recommendations", "nhs-payment-scheme-2026-27", "atlas-revision-5b0c2fe3"],
+  "reviewed_sources_present": ["nice-ta1121-recommendations", "nhs-payment-scheme-2026-27", "atlas-revision-5b0c2fe3"],
+  "missing_reviewed_sources": ["local-displaced-programme", "approved-nhs-parameter-records"],
+  "reviewed_source_evidence": {
+    "nice-ta1121-recommendations": {
+      "bundle_path": "fixtures/evidence/nhs-online-candidate-ta1121.json",
+      "source_version_id": "NICE:TA1121:2026-01-14",
+      "source_checksum_sha256": null,
+      "checksum_status": "not_captured_candidate_only"
+    },
+    "nhs-payment-scheme-2026-27": {
+      "bundle_path": "fixtures/evidence/nhs-online-candidate-ta1121.json",
+      "source_version_id": "NHSPS:2026/27:2026-03-26",
+      "source_checksum_sha256": null,
+      "checksum_status": "not_captured_candidate_only"
+    },
+    "atlas-revision-5b0c2fe3": {
+      "bundle_path": ".local/ecosystem/reimbursement-atlas",
+      "source_version_id": "5b0c2fe3e1b7d2d6c3c1975cf1a162f2787c67aa",
+      "source_checksum_sha256": null,
+      "checksum_status": "git_revision_binding_only"
+    }
+  },
+  "mapping_validation": {
+    "status": "blocked_missing_programme_records",
+    "input_path": "fixtures/evidence/nhs-online-candidate-ta1121.json",
+    "input_sha256": "candidate-packet-hash-to-be-captured-at-promotion",
+    "holdout_case_count": 0,
+    "holdout_fingerprint": null,
+    "overall_metrics": {}
+  },
+  "descriptive_results": {
+    "required_source_count": 3,
+    "reviewed_source_count": 3,
+    "missing_source_count": 2,
+    "programme_parameter_record_count": 0
+  },
+  "validation": {
+    "analysis_validated": true,
+    "deterministic": true,
+    "reviewed_inputs_only": true,
+    "raw_payloads_included": false,
+    "restricted_descriptors_included": false
+  },
+  "supported_claims": [
+    "The public sources identify NICE TA1121, acoramidis, tafamidis, the recommendation date, and the 2026/27 NHS price-year context.",
+    "The pinned Atlas revision and its source-term validation are recorded as the intended evidence boundary."
+  ],
+  "unsupported_claims": [
+    "No claim about a locally displaced NHS programme or d is supported.",
+    "No calibrated n, m, d, mu, phi, annual programme effect, horizon, or discount-rate record is supplied.",
+    "No reimbursement, HTA, regulatory, or policy recommendation is supported."
+  ]
+}

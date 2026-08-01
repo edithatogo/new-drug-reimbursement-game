@@ -39,3 +39,13 @@ An isolated UOGTO validation run at the refreshed pin completed `267 passed` and
 require an ImageMagick font unavailable on this host, and the wheel-install
 smoke test cannot build with the temporary environment's packaging toolchain.
 No ontology or contract assertion failed in the completed test set.
+
+## UOGTO ontology acceptance — 2026-08-01
+
+The repository owner accepts the pinned UOGTO ontology/SHACL boundary for this
+repository's adapter scope at `ac5b8e86c4a3547d008e83ba4cfcbb5f3ba95f25`.
+Acceptance covers the checked ontology files, adapter resource limits, and the
+completed local validation receipt. The ImageMagick-font and packaging-toolchain
+failures are recorded as environment limitations, not ontology failures. This
+closes only the T02 `uogto-ontology-review` gate. Kairos released-contract
+acceptance and extraction authorization remain separate pending gates.

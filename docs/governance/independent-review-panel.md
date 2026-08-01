@@ -43,6 +43,22 @@ estimate `mu`, `phi`, programme effects, horizon, or discounting.
 This is an independent technical-agent review, not independent human
 health-economist, HTA, legal, or regulatory approval.
 
+## TA1121 candidate packet review — 2026-08-01
+
+A three-perspective Codex panel reviewed the TA1121 online candidate packet,
+the Atlas intake packet, the Chapter 7 mappings, licensing boundaries, and the
+upstream receipts. The panel disposition is **conditional pass for research
+implementation only**. It confirms the public-source identity, provenance
+structure, fail-closed claim boundary, and tested equation identities.
+
+The panel confirmed that no local displaced programme, approved Atlas-derived
+NHS parameter records, named human health-economist sign-off, primary
+discounting decision, or Scenario 4 approval is present. It recommends NICE's
+3.5% reference-case convention as provisional primary with DHSC's 1.5%
+sensitivity, subject to human approval, and Scenario 4 sensitivity-only until a
+single-programme evidence packet exists. This receipt cannot authorize
+calibration, HTA, policy, regulatory, or release claims.
+
 ## Ontology/runtime review
 
 Disposition: conditional pass for local compatibility and extraction evidence.

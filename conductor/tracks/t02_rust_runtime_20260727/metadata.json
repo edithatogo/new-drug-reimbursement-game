@@ -3,14 +3,15 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-07-27T10:02:00Z",
-  "updated_at": "2026-07-27T10:24:03Z",
+  "updated_at": "2026-08-01T00:00:00Z",
   "description": "T02 domain-neutral UOGTO-native Rust game runtime",
   "evidence_schema": "1.0",
   "gates": [
     {
       "id": "uogto-ontology-review",
       "kind": "human",
-      "status": "pending"
+      "status": "satisfied",
+      "evidence": "docs/governance/upstream-approval-record.md#uogto-ontology-acceptance-2026-08-01"
     },
     {
       "id": "kairos-contract-review",
