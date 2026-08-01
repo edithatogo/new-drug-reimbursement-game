@@ -30,6 +30,13 @@ to the BOB Area Prescribing Committee in March 2026. It still does not identify
 what programme was displaced or provide a baseline cost, so it remains
 supporting-only evidence.
 
+The current NICE resource-impact page also provides national assumptions: NHS
+England is the commissioner, NHS hospital trusts are providers, the pathway is
+first line, and the illustrative eligible population is 1,400 people with
+acoramidis market share assumptions of 12.5%, 15.0%, and 17.5% over three years.
+These are amendable national planning assumptions, not a local displacement
+record or an approved Atlas parameter packet.
+
 Next automated acquisition pass: search ICB and trust formulary/medicines-
 optimisation records for an explicit acoramidis implementation or replacement
 decision. Promotion remains blocked until such a record names the displaced
