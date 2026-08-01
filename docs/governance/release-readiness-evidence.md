@@ -4,6 +4,9 @@ This register separates repository validation from approvals that must be
 supplied by an independent reviewer or an upstream component owner. Empty
 entries are intentionally open; no approval is inferred from a passing test.
 
+The actionable closure sequence and fallback states are maintained in
+[the external-gate resolution plan](./external-gate-resolution-plan.md).
+
 | Gate | Required evidence | Current state | Owner/action |
 |---|---|---|---|
 | Chapter 7 interpretation | Exact source location, dimensional derivation, and independent economics review | Source and executable conformance cover Scenarios 1–4; human health-economics review remains external | Preserve both source hashes/pages and empirical-parameter boundary |

@@ -19,3 +19,9 @@
   review, upstream approval, licence/provenance, extraction, and release gates
   without treating automated CI as approval. Hosted CI for the current branch
   is queued; no release decision is inferred.
+- `2026-08-01T04:00:00Z` — Added
+  `docs/governance/external-gate-resolution-plan.md`, consolidating the
+  recommended closure sequence, required receipts, owners, and fail-closed
+  fallbacks for the NHS context, Atlas evidence, source terms, independent
+  review, discounting, upstream integration, extraction, and release gates.
+  Repository scope validation passed; external gates remain pending.
