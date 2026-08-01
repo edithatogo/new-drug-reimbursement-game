@@ -13,6 +13,11 @@ particular local decision. These negative findings are recorded rather than
 filled by inference. The TA1121 candidate packet now includes the regional PDF
 as a provenance-linked source.
 
+The acquisition pass also found Kent and Medway's formulary entry (TA1121 via
+tertiary services) and the North West TAG agreement (restricted specialist
+prescribing). Both strengthen the service-line and implementation context but
+neither names a displaced programme or supplies a baseline cost.
+
 Next automated acquisition pass: search ICB and trust formulary/medicines-
 optimisation records for an explicit acoramidis implementation or replacement
 decision. Promotion remains blocked until such a record names the displaced

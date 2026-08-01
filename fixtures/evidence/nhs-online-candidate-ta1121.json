@@ -40,6 +40,24 @@
       "exact_location": "PDF page 5, TA1121 row",
       "supports": ["payer", "service_line", "implementation_status"],
       "negative_evidence": "The row identifies NHS England as commissioner and hospital trusts as providers, but does not identify a displaced programme, local budget boundary, or baseline cost."
+    },
+    {
+      "source_id": "kent-medway-formulary-ta1121",
+      "uri": "https://www.kentandmedwayformulary.nhs.uk/therapeutic-sections/cardiovascular-system/heart-failure/",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "regional_nhs_formulary_html",
+      "exact_location": "Heart Failure section, TA1121 entry",
+      "supports": ["service_line", "implementation_status"],
+      "negative_evidence": "The entry identifies tertiary-service use and formulary preference but does not identify an actual displaced programme or baseline cost."
+    },
+    {
+      "source_id": "northwest-tag-agreement-acoramidis-2026",
+      "uri": "https://nwknowledgenow.nhs.uk/wp-content/uploads/2026/03/TAG-Agreements-March-2026.pdf",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "regional_nhs_tag_pdf",
+      "exact_location": "Acoramidis/Beyonttra entry, March 2026 TAG agreement",
+      "supports": ["service_line", "implementation_status"],
+      "negative_evidence": "The entry records restricted specialist prescribing, but does not identify a displaced programme, payer budget boundary, or cost."
     }
   ],
   "transformations": [],
