@@ -11,5 +11,6 @@
 - [x] Inspect pinned UOGTO and Kairos APIs and prepare upstream-ready contracts
   (`ba22fd3`).
 - [x] Run automated review and the complete repository quality gate.
-- [ ] Record external ontology, Kairos, and extraction approval evidence; keep
-  these pending until supplied.
+- [x] Record UOGTO ontology, owner-approved Kairos contract, and research-only
+  extraction authorization evidence. TA1121 evidence remains outside this
+  runtime track and is still candidate-only.
