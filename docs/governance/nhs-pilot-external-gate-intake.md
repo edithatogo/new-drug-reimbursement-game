@@ -6,6 +6,9 @@ programme, or authorize a reimbursement decision. The current readiness receipt
 therefore remains candidate-only until every required field below has an
 accountable source and reviewer.
 
+For an owner-facing request form with receipt and hash requirements, use the
+[external-gate request template](./external-gate-request-template.md).
+
 ## Recommended decision
 
 Authorize one narrowly defined NHS decision context and one named independent
