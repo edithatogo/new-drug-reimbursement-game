@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "dossier_kind": "official_web_candidate_context",
+  "dossier_id": "nhs-england-ta1121-acoramidis-2026",
+  "context": {
+    "jurisdiction": "England",
+    "payer": "NHS England (national policy context; accountable local commissioner not identified)",
+    "service_line": "Secondary care cardiology (candidate classification; not confirmed for a local pathway)",
+    "decision_date": "2026-01-14",
+    "price_year": "2026/27",
+    "intervention": "Acoramidis",
+    "comparator": "Tafamidis",
+    "displaced_programme": null,
+    "stable_programme_id": "NICE:TA1121",
+    "approval_state": "candidate_only",
+    "approved_calibration_permitted": false
+  },
+  "sources": [
+    {
+      "source_id": "nice-ta1121-recommendations",
+      "uri": "https://www.nice.org.uk/guidance/ta1121/chapter/1-Recommendations",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "official_html",
+      "exact_location": "Recommendations 1.1-1.4",
+      "supports": ["decision_date", "intervention", "comparator", "stable_programme_id", "payer"]
+    },
+    {
+      "source_id": "nhs-payment-scheme-2026-27",
+      "uri": "https://www.england.nhs.uk/publication/2026-27-nhs-payment-scheme/",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "official_html_and_workbook",
+      "exact_location": "Publication landing page; Annex A initial 2026/27 prices",
+      "supports": ["price_year", "service_line"]
+    }
+  ],
+  "transformations": [],
+  "uncertainty": {
+    "status": "not_quantified",
+    "notes": [
+      "The NICE recommendation identifies a national recommendation and commercial arrangement, not a local displaced programme or confidential net price.",
+      "The NHS Payment Scheme establishes the price-year context but does not identify the programme displaced by this technology.",
+      "No Atlas-approved derived parameter packet or independent health-economist sign-off is attached."
+    ]
+  },
+  "limitations": [
+    "Candidate context only; it must not be used to claim calibrated or regulatory results.",
+    "Displaced programme, stable local programme identifier, service-line ownership, and local decision record remain unresolved.",
+    "NICE states that acoramidis and tafamidis costs are similar or lower under the recommendation; this is not a substitute for an approved price or budget-impact record."
+  ]
+}
