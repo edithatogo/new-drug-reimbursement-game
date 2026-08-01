@@ -28,6 +28,16 @@ from .application_games import (
     solve_game1_contract_enforcement,
     solve_game2,
 )
+from .research_extensions import (
+    AdaptiveEvidenceDecision,
+    EquityEvaluation,
+    ManagedEntrySettlement,
+    PortfolioSpillover,
+    choose_adaptive_evidence_action,
+    evaluate_distributional_equity,
+    evaluate_portfolio_spillover,
+    settle_managed_entry,
+)
 from .economics import (
     EconomicContext,
     OpportunitySet,
@@ -74,6 +84,14 @@ __all__ = [
     "solve_game1_net_rebate",
     "solve_game1_contract_enforcement",
     "solve_game2",
+    "AdaptiveEvidenceDecision",
+    "EquityEvaluation",
+    "ManagedEntrySettlement",
+    "PortfolioSpillover",
+    "choose_adaptive_evidence_action",
+    "evaluate_distributional_equity",
+    "evaluate_portfolio_spillover",
+    "settle_managed_entry",
 ]
 
 __version__ = "0.4.0"
