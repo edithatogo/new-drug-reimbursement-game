@@ -137,6 +137,8 @@ class AdapterTests(unittest.TestCase):
             HuggingFacePublicationContract("someone/data", "dataset", "apache-2.0", "derived", "r1").validate()
         with self.assertRaisesRegex(ValueError, "raw"):
             HuggingFacePublicationContract("edithatogo/data", "dataset", "other", "raw source", "r1").validate()
+        with self.assertRaisesRegex(ValueError, "edithatogo"):
+            HuggingFacePublicationContract("edithatogo/", "dataset", "other", "derived", "r1").validate()
 
     def test_voiage_handoff_receipt_is_deterministic_and_revision_bound(self) -> None:
         packet = ReimbursementAtlasParameterExport(

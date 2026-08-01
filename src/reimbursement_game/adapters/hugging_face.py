@@ -14,7 +14,8 @@ class HuggingFacePublicationContract:
     revision: str
 
     def validate(self) -> None:
-        if not self.repository_id.startswith("edithatogo/"):
+        owner, separator, name = self.repository_id.partition("/")
+        if owner != "edithatogo" or not separator or not name or "/" in name or any(char.isspace() for char in name):
             raise ValueError("Hugging Face repository must be in the edithatogo namespace")
         if self.kind not in {"dataset", "space"}:
             raise ValueError("Hugging Face publication kind must be dataset or space")
