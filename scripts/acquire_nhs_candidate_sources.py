@@ -15,7 +15,6 @@ import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
 
-
 SOURCES = {
     "nice-ta1121-recommendations": "https://www.nice.org.uk/guidance/ta1121/chapter/1-Recommendations",
     "nice-ta1121-resource-impact": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
@@ -49,7 +48,7 @@ SEARCH_PLAN = [
 
 def fetch(source_id: str, url: str, timeout: float) -> dict[str, object]:
     retrieved = datetime.now(UTC).replace(microsecond=0).isoformat()
-    request = urllib.request.Request(url, headers={"User-Agent": "new-drug-reimbursement-game/nhs-candidate-fetch"})
+    request = urllib.request.Request(url, headers={"User-Agent": "new-drug-reimbursement-game/nhs-candidate-fetch"})  # noqa: S310
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
             payload = response.read()
