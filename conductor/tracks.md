@@ -7,6 +7,8 @@
   *Link: [./tracks/t01_math_conformance_20260727/index.md](./tracks/t01_math_conformance_20260727/index.md)*
 - [x] **Track: T02 domain-neutral UOGTO-native Rust game runtime**
   *Link: [./tracks/t02_rust_runtime_20260727/index.md](./tracks/t02_rust_runtime_20260727/index.md)*
+- [~] **Track: T03 UOGTO reimbursement and execution semantics**
+  *Link: [./tracks/t03_uogto_semantics_20260801/index.md](./tracks/t03_uogto_semantics_20260801/index.md)*
 - [x] **Track: T09 governance, release, validation, and extraction readiness**
   *Link: [./tracks/t09_governance_release_20260727/index.md](./tracks/t09_governance_release_20260727/index.md)*
 - [x] **Track: T10 Chapter 7 all-scenario implementation**
