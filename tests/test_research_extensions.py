@@ -27,10 +27,15 @@ class ResearchExtensionTests(unittest.TestCase):
             choose_adaptive_evidence_action(state="uncertain", information_value=5, stop_threshold=10).action,
             "stop",
         )
+        self.assertEqual(
+            choose_adaptive_evidence_action(state="none", information_value=0, stop_threshold=1).action,
+            "stop",
+        )
 
     def test_portfolio_spillover_is_separate(self) -> None:
         result = evaluate_portfolio_spillover(local_value=5, global_value=20, payer_share=0.25)
         self.assertEqual(result.global_value, 20)
+        self.assertEqual(evaluate_portfolio_spillover(local_value=0, global_value=0, payer_share=0).global_value, 0)
 
     def test_extensions_fail_closed(self) -> None:
         with self.assertRaisesRegex(ValueError, "aligned"):

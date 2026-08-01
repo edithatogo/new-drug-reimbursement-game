@@ -17,6 +17,12 @@ def _positive(name: str, value: float) -> float:
     return value
 
 
+def _non_negative(name: str, value: float) -> float:
+    if not math.isfinite(value) or value < 0:
+        raise ValueError(f"{name} must be finite and non-negative")
+    return value
+
+
 @dataclass(frozen=True, slots=True)
 class EquityEvaluation:
     weighted_health: float
@@ -82,7 +88,7 @@ def choose_adaptive_evidence_action(*, state: str, information_value: float, sto
 
     if not state.strip():
         raise ValueError("evidence state must be non-empty")
-    _positive("information_value", information_value)
+    _non_negative("information_value", information_value)
     _positive("stop_threshold", stop_threshold)
     action: Literal["continue", "stop"] = "stop" if information_value < stop_threshold else "continue"
     return AdaptiveEvidenceDecision(action, information_value, stop_threshold, state)
@@ -99,8 +105,8 @@ class PortfolioSpillover:
 def evaluate_portfolio_spillover(*, local_value: float, global_value: float, payer_share: float) -> PortfolioSpillover:
     """Separate local value from globally distributed innovation spillovers."""
 
-    _positive("local_value", local_value)
-    _positive("global_value", global_value)
+    _non_negative("local_value", local_value)
+    _non_negative("global_value", global_value)
     if not math.isfinite(payer_share) or not 0 <= payer_share <= 1:
         raise ValueError("payer_share must be finite and between zero and one")
     return PortfolioSpillover(local_value, global_value, payer_share)
