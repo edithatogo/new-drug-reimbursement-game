@@ -22,7 +22,7 @@
     {
       "id": "voiage-licence-reconciliation",
       "kind": "licence_review",
-      "status": "pending",
+      "status": "passed",
       "scope": "external"
     }
   ]

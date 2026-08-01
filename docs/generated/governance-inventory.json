@@ -13,10 +13,10 @@
       "revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c"
     },
     {
-      "license_decision": "REVIEW_REQUIRED: README reports MIT while package metadata has historically contained an Apache classifier",
+      "license_decision": "Apache-2.0 (LICENSE, README, and package metadata aligned at pinned revision)",
       "name": "Voiage",
       "repository": "https://github.com/edithatogo/voiage",
-      "revision": "6141cc49a9ad41161756677840d6a61b25fd386a"
+      "revision": "4b93ee04231bedaeae7e24d39b2b6f2c6ff9b9d6"
     },
     {
       "license_decision": "Apache-2.0 for software; source-specific data licences retained",
@@ -25,12 +25,7 @@
       "revision": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca"
     }
   ],
-  "open_decisions": [
-    {
-      "component": "Voiage",
-      "decision": "REVIEW_REQUIRED: README reports MIT while package metadata has historically contained an Apache classifier"
-    }
-  ],
+  "open_decisions": [],
   "project": {
     "license": "Apache-2.0",
     "name": "new-drug-reimbursement-game",
