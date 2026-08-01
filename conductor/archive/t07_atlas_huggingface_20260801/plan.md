@@ -1,5 +1,10 @@
 # Implementation plan
 
+## Review fixes
+
+- [x] Require a non-empty, single-segment owner-scoped Hugging Face repository
+  name (`eb541af`).
+
 ## Phase 1 - Activate and establish the boundary
 
 - [x] Activate T07 and record the Atlas/Hugging Face ownership boundary.

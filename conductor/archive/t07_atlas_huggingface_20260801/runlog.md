@@ -6,3 +6,5 @@
 - Added Atlas receipts and owner-scoped Hugging Face contracts at `c480dbb`.
 - Full quality gate passed with 101 Python and 29 Rust tests.
 - Completed without uploading data or changing Atlas/Hugging Face state.
+- Review found and corrected acceptance of an empty owner-scoped repository
+  name.
