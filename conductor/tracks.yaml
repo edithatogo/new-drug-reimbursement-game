@@ -54,7 +54,7 @@ tracks:
   - id: T09
     title: Governance, release, validation, and extraction readiness
     priority: 1
-    status: in_progress
+    status: done
     depends_on: [T00]
   - id: T10
     title: Chapter 7 all-scenario implementation

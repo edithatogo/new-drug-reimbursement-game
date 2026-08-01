@@ -25,3 +25,6 @@
   fallbacks for the NHS context, Atlas evidence, source terms, independent
   review, discounting, upstream integration, extraction, and release gates.
   Repository scope validation passed; external gates remain pending.
+- `2026-08-01T10:30:00Z` — Reconciled the authoritative registry with the
+  completed metadata and plan. External evidence/release gates remain explicit
+  and fail-closed; no publication or empirical authorization is inferred.
