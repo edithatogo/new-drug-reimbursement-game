@@ -33,3 +33,9 @@ passed at `fae901558f07b7b717a676adbafbe2cdc78dea1c`. UOGTO checkout validation
 is pending an isolated environment with its declared RDF dependencies; the
 base environment does not provide `rdflib`. These local results do not replace
 upstream hosted acceptance or extraction authorization.
+
+An isolated UOGTO validation run at the refreshed pin completed `267 passed` and
+`1 skipped`. Three tests remain environment-blocked: two ontology-visual tests
+require an ImageMagick font unavailable on this host, and the wheel-install
+smoke test cannot build with the temporary environment's packaging toolchain.
+No ontology or contract assertion failed in the completed test set.
