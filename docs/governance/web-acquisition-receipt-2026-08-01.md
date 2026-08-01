@@ -24,6 +24,12 @@ states that implementation is expected to have an annual resource impact below
 Its inputs are amendable assumptions and the commercial discount is confidential,
 so it cannot supply a local displacement value or approved net price.
 
+The Oxfordshire Formulary provides the strongest local context found so far: it
+records acoramidis for secondary-care use under TA1121 and attributes the entry
+to the BOB Area Prescribing Committee in March 2026. It still does not identify
+what programme was displaced or provide a baseline cost, so it remains
+supporting-only evidence.
+
 Next automated acquisition pass: search ICB and trust formulary/medicines-
 optimisation records for an explicit acoramidis implementation or replacement
 decision. Promotion remains blocked until such a record names the displaced

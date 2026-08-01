@@ -67,6 +67,15 @@
       "exact_location": "Resource impact summary, page 3",
       "supports": ["comparator", "national_budget_impact_context", "price_year"],
       "negative_evidence": "The summary uses amendable NICE assumptions and confidential commercial pricing; it does not identify a local displaced programme or disclose the net price."
+    },
+    {
+      "source_id": "oxfordshire-formulary-ta1121-bob-apc",
+      "uri": "https://www.oxfordshireformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09.08.01",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "local_nhs_formulary_html",
+      "exact_location": "Metabolic disorders, Acoramidis (Beyonttra) entry",
+      "supports": ["service_line", "local_formulary_owner", "implementation_status"],
+      "negative_evidence": "The entry records secondary-care use under TA1121 and BOB APC March 2026, but does not identify a displaced programme, decision price year, or baseline cost."
     }
   ],
   "transformations": [],
