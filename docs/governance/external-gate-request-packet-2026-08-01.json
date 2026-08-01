@@ -1,0 +1,71 @@
+{
+  "schema": "external-gate-request-packet/v1",
+  "request_id": "ndr-ta1121-pilot-2026-08-01",
+  "repository_revision": "3d463a14e5e2099d7bb16ffa8f67eaec131d2aeb",
+  "intended_use": "research-only NHS methodological pilot",
+  "approval_state": "pending_external_receipts",
+  "requests": [
+    {
+      "gate": "specific-nhs-displacement-context",
+      "owner": "NHS payer or commissioner",
+      "required_fields": [
+        "payer_or_commissioner",
+        "budget_boundary",
+        "service_line",
+        "decision_date",
+        "price_year",
+        "intervention",
+        "comparator",
+        "displaced_programme",
+        "stable_programme_id",
+        "baseline_cost_and_unit",
+        "accountable_owner_receipt"
+      ],
+      "fallback": "retain national NICE context as candidate-only; leave d unresolved"
+    },
+    {
+      "gate": "atlas-derived-record-approval",
+      "owner": "Reimbursement Atlas owner or reviewer",
+      "required_fields": [
+        "packet_id",
+        "immutable_revision",
+        "n_m_d_role_mapping",
+        "source_hashes",
+        "licence_terms",
+        "transformations",
+        "units",
+        "uncertainty",
+        "atlas_reviewer",
+        "approval_date"
+      ],
+      "fallback": "retain candidate packet; do not promote calibration inputs"
+    },
+    {
+      "gate": "kairos-contract-review",
+      "owner": "Kairos maintainer or contract owner",
+      "required_fields": [
+        "released_contract_or_maintainer_acceptance",
+        "exact_revision",
+        "contract_version",
+        "compatibility_trace",
+        "native_integration_authorization"
+      ],
+      "fallback": "keep adapter isolated and describe compatibility as local-only"
+    },
+    {
+      "gate": "extraction-release-approval",
+      "owner": "extraction, legal, and release owner",
+      "required_fields": [
+        "allowed_sources",
+        "allowed_fields",
+        "transformations",
+        "destination",
+        "attribution",
+        "redistribution_terms",
+        "restricted_material_disposition",
+        "research_only_release_authorization"
+      ],
+      "fallback": "publish software, methodology, synthetic fixtures, and permitted derived-only artifacts"
+    }
+  ]
+}
