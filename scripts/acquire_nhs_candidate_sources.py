@@ -25,6 +25,27 @@ SOURCES = {
     "northwest-tag-acoramidis": "https://nwknowledgenow.nhs.uk/wp-content/uploads/2026/03/TAG-Agreements-March-2026.pdf",
 }
 
+# This is intentionally a bounded search plan rather than an open-ended web
+# crawler.  Search results are leads only; a local displacement receipt still
+# requires an authoritative document naming the payer, programme and baseline.
+SEARCH_PLAN = [
+    {
+        "family": "local_decision",
+        "terms": ["acoramidis", "tafamidis", "TA1121", "ATTR-CM", "commissioning"],
+        "required_evidence": ["accountable payer", "decision date", "displaced programme", "baseline unit"],
+    },
+    {
+        "family": "formulary_switch",
+        "terms": ["acoramidis", "tafamidis", "TA1121", "formulary", "replaced OR displaced OR switch"],
+        "required_evidence": ["local formulary owner", "intervention", "comparator", "replacement decision"],
+    },
+    {
+        "family": "budget_impact",
+        "terms": ["acoramidis", "tafamidis", "budget impact OR financial impact", "ICB OR trust"],
+        "required_evidence": ["payer budget boundary", "price basis", "affected programme"],
+    },
+]
+
 
 def fetch(source_id: str, url: str, timeout: float) -> dict[str, object]:
     retrieved = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -55,6 +76,8 @@ def main() -> int:
         "schema_version": 1,
         "kind": "nhs_candidate_source_acquisition",
         "approval_state": "candidate_only",
+        "search_plan": SEARCH_PLAN,
+        "search_result_policy": "Search results are leads; only an authoritative local record satisfying required_evidence can close displacement.",
         "sources": [fetch(source_id, url, args.timeout) for source_id, url in SOURCES.items()],
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

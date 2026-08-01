@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_nhs_displacement_search",
+  "run_date": "2026-08-01",
+  "target": "England TA1121 acoramidis versus tafamidis",
+  "approval_state": "candidate_only",
+  "search_scope": {
+    "domains": [
+      "england.nhs.uk",
+      "nice.org.uk",
+      "*.nhs.uk"
+    ],
+    "families": [
+      {
+        "name": "local_decision",
+        "terms": ["acoramidis", "tafamidis", "TA1121", "ATTR-CM", "commissioning"],
+        "required_evidence": ["accountable payer", "decision date", "displaced programme", "baseline unit"]
+      },
+      {
+        "name": "formulary_switch",
+        "terms": ["acoramidis", "tafamidis", "TA1121", "formulary", "replaced OR displaced OR switch"],
+        "required_evidence": ["local formulary owner", "intervention", "comparator", "replacement decision"]
+      },
+      {
+        "name": "budget_impact",
+        "terms": ["acoramidis", "tafamidis", "budget impact OR financial impact", "ICB OR trust"],
+        "required_evidence": ["payer budget boundary", "price basis", "affected programme"]
+      }
+    ]
+  },
+  "results": [
+    {
+      "source": "NICE TA1121 recommendation and resource-impact summary",
+      "status": "supporting_only",
+      "negative_receipt": "National recommendation and aggregate resource impact do not name a local displaced programme, payer budget boundary, or baseline unit."
+    },
+    {
+      "source": "Cheshire and Merseyside NHS NICE-adherence record",
+      "status": "supporting_only",
+      "negative_receipt": "Identifies NHS England as commissioner and hospital trusts as providers, but no displacement or baseline cost is stated."
+    },
+    {
+      "source": "Kent and Medway formulary",
+      "status": "supporting_only",
+      "negative_receipt": "Confirms tertiary-service formulary placement, but no replacement decision or baseline unit is stated."
+    },
+    {
+      "source": "North West TAG agreement",
+      "status": "unavailable_at_queried_uri",
+      "negative_receipt": "The queried PDF returned HTTP 404; this is not evidence of absence."
+    }
+  ],
+  "acceptance_rule": "Do not infer displacement. Close the gate only when an authoritative local record satisfies the required evidence for payer, decision date, displaced programme, and baseline unit.",
+  "next_action": "Repeat bounded searches against current ICB and trust medicines-optimisation pages; preserve each retrieval, checksum, and negative result."
+}
