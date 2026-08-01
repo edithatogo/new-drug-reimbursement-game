@@ -13,6 +13,8 @@
   *Link: [./archive/t04_application_games_20260801/index.md](./archive/t04_application_games_20260801/index.md)*
 - [x] **Track: T05 Voiage decision-uncertainty integration**
   *Link: [./archive/t05_voiage_integration_20260801/index.md](./archive/t05_voiage_integration_20260801/index.md)*
+- [~] **Track: T06 Kairos execution and trace integration**
+  *Link: [./tracks/t06_kairos_integration_20260801/index.md](./tracks/t06_kairos_integration_20260801/index.md)*
 - [x] **Track: T09 governance, release, validation, and extraction readiness**
   *Link: [./tracks/t09_governance_release_20260727/index.md](./tracks/t09_governance_release_20260727/index.md)*
 - [x] **Track: T10 Chapter 7 all-scenario implementation**

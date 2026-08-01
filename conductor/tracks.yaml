@@ -39,7 +39,7 @@ tracks:
   - id: T06
     title: Kairos execution and trace integration
     priority: 3
-    status: planned
+    status: in_progress
     depends_on: [T02, T03]
   - id: T07
     title: Reimbursement Atlas and owner-scoped Hugging Face integration
