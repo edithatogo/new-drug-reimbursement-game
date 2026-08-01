@@ -20,11 +20,10 @@ receipts remain open where required by T02 and T09.
 
 ## Pin-resolution check — 2026-08-01
 
-An authenticated GitHub API lookup for the exact pinned UOGTO revision
-`849386068399a764ad5304cc8a0ffe53094b091c` and Kairos revision
-`fae901558f07b7b717a676adbafbe2cdc78dea1c` returned `404 Not Found` for both
-commits. This prevents verification of hosted check runs, released-contract
-acceptance, or upstream trace receipts at those pins. The pins must be
-resolved by the component owner (for example, by restoring visibility or
-providing an authoritative replacement revision and receipt) before the
-upstream-contract gates can close.
+The former UOGTO pin `849386068399a764ad5304cc8a0ffe53094b091c` was no longer
+advertised by the authoritative remote. The owner-approved replacement pin is
+the current public UOGTO `main` revision
+`ac5b8e86c4a3547d008e83ba4cfcbb5f3ba95f25`. The Kairos pin remains
+`fae901558f07b7b717a676adbafbe2cdc78dea1c`. This resolves pin discovery, but
+released-contract acceptance, hosted check evidence, and extraction receipts
+remain separate gates.
