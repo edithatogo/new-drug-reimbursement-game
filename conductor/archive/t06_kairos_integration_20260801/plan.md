@@ -1,5 +1,10 @@
 # Implementation plan
 
+## Review fixes
+
+- [x] Harden malformed event-object and JSON-payload handling with explicit
+  `ValueError` paths (`1fe4006`).
+
 ## Phase 1 - Activate and establish the boundary
 
 - [x] Activate T06 and record the pinned Kairos contract.
