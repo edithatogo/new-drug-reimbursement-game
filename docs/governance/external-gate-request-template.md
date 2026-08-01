@@ -51,25 +51,28 @@ Request that Reimbursement Atlas provide:
 
 Raw or candidate records must not be promoted by this repository.
 
-## Independent review request
+## Independent relevant-subagent panel request
 
 | Field | Value |
 |---|---|
-| Lead health economist | |
-| Organization and role | |
-| Conflict declaration | |
-| Independent panel members | |
+| Panel ID and orchestrator | |
+| Required roles and quorum | Economics; NHS context; Atlas/licensing; runtime/reproducibility |
+| Agent identities/models | |
+| Independence/conflict declarations | |
 | Reviewed repository revision | |
 | Reviewed Atlas packet revision | |
 | Primary discounting convention | |
 | Sensitivities retained | DHSC 1.5% / NICE 3.5% |
 | Findings and required changes | |
-| Final disposition | |
+| Per-role receipt paths/hashes | |
+| Disagreements and abstentions | |
+| Final panel disposition | |
 | Sign-off date | |
 
-The reviewer must explicitly address role mappings, transformations, unit
+The panel must explicitly address role mappings, transformations, unit
 consistency, programme identity, uncertainty, discounting, and the boundary
-between methodological output and reimbursement advice.
+between methodological output and reimbursement advice. A human or owner
+sign-off remains separately required where the promotion gate calls for it.
 
 ## Acceptance and closure
 

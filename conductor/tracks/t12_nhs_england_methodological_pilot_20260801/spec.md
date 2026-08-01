@@ -69,8 +69,11 @@ receipts. It must not convert candidate evidence into an approved calibration.
 ## External gates
 
 - Reimbursement Atlas must approve any promoted derived records.
-- A health economist must approve role mappings, transformations, and
-  uncertainty.
+- An orchestrated panel of relevant subagents must review role mappings,
+  transformations, and uncertainty for research implementation. The minimum
+  roles are health economics/methods, NHS context/displacement, Atlas
+  provenance/licensing, and reproducibility/runtime. Any human or owner
+  approval required for empirical promotion remains separate.
 - A specific NHS payer/service line and displaced programme must be selected
   before Scenario 2-4 calibration.
 

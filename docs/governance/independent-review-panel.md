@@ -1,4 +1,38 @@
-# Independent technical review panel receipt
+# Independent relevant-subagent review panel receipt
+
+Independent review for research implementation may be satisfied by an
+orchestrated panel of relevant subagents rather than a single third-party
+reviewer. The panel is read-only and must freeze the exact repository commit,
+source revisions, and evidence-packet hashes before work begins.
+
+## Required panel
+
+The minimum quorum is four role receipts:
+
+1. health economics and methods (equations, `n/m/d`, discounting, Scenario 4);
+2. NHS context and displacement (payer, service line, dates, programme, `d`);
+3. Atlas provenance and licensing (revision, transformations, uncertainty,
+   source terms, destination); and
+4. reproducibility/runtime (schemas, deterministic tests, Rust/Python/Kairos
+   boundaries, and artifact integrity).
+
+An optional claims/governance or security subagent may be added when the scope
+requires it. Each receipt must record `panel_id`, role, agent identity/model,
+independence and conflict declaration, reviewed commit and artifact paths,
+source revisions/hashes, checks performed, findings/severity, disposition
+(`approve`, `approve-with-conditions`, `defer`, or `reject`), limitations,
+timestamp, and attestation.
+
+The orchestrator must publish a consensus receipt containing the quorum,
+receipt hashes, disagreements, abstentions, unresolved gates, final
+disposition, orchestrator identity, exact commit/packet hash, and date.
+
+The panel may close the research-implementation review gate when all required
+role receipts and the consensus receipt are complete. It cannot grant Atlas
+approval, create missing NHS displacement evidence, provide legal/licensing
+approval, substitute for upstream maintainer acceptance, or authorize
+regulatory/HTA claims. Empirical promotion still requires the applicable owner
+and human-review receipts.
 
 A read-only two-member Codex review panel examined the current implementation
 and returned conditional dispositions. The panel was orchestrated by the
