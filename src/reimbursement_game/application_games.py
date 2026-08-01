@@ -116,6 +116,8 @@ def solve_game1_contract_enforcement(*, threshold: float, incremental_effect: fl
                                      contract_price: float) -> Game1Result:
     """Extension that rejects a contract price above the health threshold."""
 
+    _finite("threshold", threshold, positive=True)
+    _finite("incremental_effect", incremental_effect, positive=True)
     _finite("contract_price", contract_price)
     if contract_price < 0:
         raise ValueError("contract_price must be non-negative")

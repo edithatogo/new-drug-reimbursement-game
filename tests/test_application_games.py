@@ -27,6 +27,8 @@ class ApplicationGamesTests(unittest.TestCase):
         self.assertEqual(solve_game1_bargaining(threshold=10, incremental_effect=2, bargaining_share=0.5).offered_price, 5)
         self.assertEqual(solve_game1_net_rebate(threshold=10, incremental_effect=2, confidential_rebate=2).firm_rent, 16)
         self.assertFalse(solve_game1_contract_enforcement(threshold=10, incremental_effect=2, contract_price=11).reimbursed)
+        with self.assertRaisesRegex(ValueError, "incremental_effect"):
+            solve_game1_contract_enforcement(threshold=10, incremental_effect=0, contract_price=5)
 
     def test_game2_deterministic_backward_choice(self) -> None:
         result = solve_game2(
