@@ -28,6 +28,8 @@ class KairosScenarioExporter:
         normalized = []
         previous_time = 0.0
         for index, event in enumerate(events):
+            if not isinstance(event, Mapping):
+                raise ValueError("Kairos events must be mappings")
             time = float(event.get("time", index))
             if not math.isfinite(time) or time < 0:
                 raise ValueError("Kairos event time must be finite and non-negative")
@@ -39,6 +41,12 @@ class KairosScenarioExporter:
             payload = event.get("payload", {})
             if not isinstance(payload, Mapping):
                 raise ValueError("Kairos event payload must be a mapping")
+            if any(not isinstance(key, str) for key in payload):
+                raise ValueError("Kairos event payload keys must be strings")
+            try:
+                json.dumps(dict(payload), sort_keys=True, separators=(",", ":"))
+            except (TypeError, ValueError) as exc:
+                raise ValueError("Kairos event payload must be JSON-serializable") from exc
             normalized.append(
                 {
                     "sequence": index,

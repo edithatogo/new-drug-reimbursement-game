@@ -42,6 +42,10 @@ class AdapterTests(unittest.TestCase):
             adapter.export_scenario([{"kind": "a", "payload": []}])
         with self.assertRaisesRegex(ValueError, "non-empty"):
             adapter.export_scenario([{"kind": " "}])
+        with self.assertRaisesRegex(ValueError, "mappings"):
+            adapter.export_scenario(["bad-event"])  # type: ignore[list-item]
+        with self.assertRaisesRegex(ValueError, "JSON-serializable"):
+            adapter.export_scenario([{"kind": "a", "payload": {"x": object()}}])
 
     def test_uogto_export(self) -> None:
         case = json.loads(Path("examples/cases/chapter8_example.json").read_text())
