@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "nhs_candidate_acquisition_receipt",
+  "receipt_id": "nhs-oxfordshire-formulary-ta1121-2026-08-01",
+  "retrieved_at": "2026-08-01T00:00:00Z",
+  "source": {
+    "url": "https://www.oxfordshireformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09.08.01",
+    "publisher": "Oxfordshire Formulary",
+    "domain_class": "official_nhs_formulary",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 127234,
+    "sha256": "f3a248e509a170e6769986e7bddd22482dba0e2e21b5d8a7e641d48343bb1141"
+  },
+  "target": {
+    "jurisdiction": "England",
+    "technology_appraisal": "NICE TA1121",
+    "intervention": "acoramidis",
+    "comparator": "tafamidis"
+  },
+  "extracted_evidence": {
+    "service_line": "specialist/tertiary cardiology (formulary context only)",
+    "formulary_presence": true,
+    "local_payer": null,
+    "decision_date": null,
+    "price_year": null,
+    "displaced_programme": null,
+    "stable_programme_id": null
+  },
+  "disposition": "supporting_only",
+  "negative_receipt": "The formulary page records acoramidis in an Oxfordshire formulary context, but does not identify an accountable payer decision, decision date, price basis, treatment displaced, or baseline unit. It cannot close the local displacement gate.",
+  "approval_state": "candidate_only",
+  "promotion_rule": "Do not infer displacement or parameter d from formulary presence. Promotion requires an authoritative local decision naming the displaced programme and baseline unit.",
+  "retrieval_method": "Codex web acquisition; metadata and hash recorded without redistributing source payload"
+}
