@@ -28,6 +28,21 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(value["target"], "edithatogo/kairos")
         self.assertEqual(value["events"][0]["sequence"], 0)
 
+    def test_kairos_trace_receipt_is_deterministic(self) -> None:
+        adapter = KairosScenarioExporter()
+        events = [{"kind": "move", "time": 0}, {"kind": "resolve", "time": 1}]
+        self.assertEqual(adapter.trace_receipt(events), adapter.trace_receipt(events))
+        self.assertEqual(adapter.trace_receipt(events).event_count, 2)
+
+    def test_kairos_rejects_invalid_event_boundaries(self) -> None:
+        adapter = KairosScenarioExporter()
+        with self.assertRaisesRegex(ValueError, "non-decreasing"):
+            adapter.export_scenario([{"kind": "a", "time": 1}, {"kind": "b", "time": 0}])
+        with self.assertRaisesRegex(ValueError, "payload"):
+            adapter.export_scenario([{"kind": "a", "payload": []}])
+        with self.assertRaisesRegex(ValueError, "non-empty"):
+            adapter.export_scenario([{"kind": " "}])
+
     def test_uogto_export(self) -> None:
         case = json.loads(Path("examples/cases/chapter8_example.json").read_text())
         value = UogtoExporter().export_game(case)
