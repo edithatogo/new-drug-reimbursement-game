@@ -21,9 +21,9 @@ integration = "adapter contract; no duplicated scheduler"
 [[component]]
 name = "Voiage"
 repository = "https://github.com/edithatogo/voiage"
-revision = "6141cc49a9ad41161756677840d6a61b25fd386a"
+revision = "4b93ee04231bedaeae7e24d39b2b6f2c6ff9b9d6"
 role = "authoritative VOI and decision-uncertainty capability"
-license = "REVIEW_REQUIRED: README reports MIT while package metadata has historically contained an Apache classifier"
+license = "Apache-2.0 (LICENSE, README, and package metadata aligned at pinned revision)"
 integration = "optional Python adapter, then shared Rust contract"
 
 [[component]]

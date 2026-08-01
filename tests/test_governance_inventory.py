@@ -29,19 +29,10 @@ class GovernanceInventoryTests(unittest.TestCase):
             (root / module.OUTPUT).read_text(encoding="utf-8"),
         )
 
-    def test_unresolved_licence_decisions_remain_visible(self) -> None:
+    def test_reconciled_voiage_licence_is_not_left_open(self) -> None:
         module = load_script()
         inventory = module.build_inventory(Path(__file__).parents[1])
 
-        self.assertEqual(
-            inventory["open_decisions"],
-            [
-                {
-                    "component": "Voiage",
-                    "decision": (
-                        "REVIEW_REQUIRED: README reports MIT while package metadata has "
-                        "historically contained an Apache classifier"
-                    ),
-                }
-            ],
-        )
+        self.assertEqual(inventory["open_decisions"], [])
+        voiage = next(item for item in inventory["ecosystem"] if item["name"] == "Voiage")
+        self.assertEqual(voiage["license_decision"], "Apache-2.0 (LICENSE, README, and package metadata aligned at pinned revision)")

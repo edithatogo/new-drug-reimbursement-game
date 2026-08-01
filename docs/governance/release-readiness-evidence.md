@@ -10,7 +10,7 @@ entries are intentionally open; no approval is inferred from a passing test.
 | UOGTO ontology | Validation against the pinned UOGTO revision and upstream disposition | Owner approval recorded; upstream disposition pending | Run pinned SHACL validation when toolchain is available |
 | Kairos execution | Pinned API compatibility and upstream execution/trace review | Owner approval recorded; native released integration pending | Adopt released DTO/code contract |
 | Extraction boundary | Approval that the game runtime can be extracted without application leakage | Local checks and panel review pass; transfer approval pending | Record extraction owner authorization |
-| Licences and provenance | Licence reconciliation for every dependency and derived artifact | Inventory packet complete; Voiage conflict is precisely recorded and adjudication remains pending | Resolve Voiage and source-specific terms; see `docs/governance/voiage-licence-adjudication.md` |
+| Licences and provenance | Licence reconciliation for every dependency and derived artifact | Voiage reconciled at its verified pin; source-specific Atlas/Hugging Face terms remain open | Resolve source-specific terms before publication; retain the Voiage evidence packet |
 | Release | Maintainer release decision after all preceding gates close | Pending | Maintainer decision |
 
 ## Evidence acceptance

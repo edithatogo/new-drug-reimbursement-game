@@ -45,3 +45,10 @@
   reconcile Conductor registry, status, run log, and external gates (75 Python
   tests, 29 Rust tests, Ruff, strict mypy, full ecosystem discovery, and actual
   pinned Voiage schema smoke passed; closeout commit).
+
+## Post-closeout reconciliation
+
+- [x] Advance the Voiage pin to `4b93ee04231b` after README, Apache-2.0
+  `LICENSE`, package metadata, and exact-head upstream CI aligned; regenerate
+  the governance inventory and append the licence receipt. Atlas source terms
+  and human evidence approval remain external.
