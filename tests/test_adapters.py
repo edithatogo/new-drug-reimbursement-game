@@ -6,6 +6,7 @@ from pathlib import Path
 from types import ModuleType
 from unittest.mock import patch
 
+from reimbursement_game.adapters.hugging_face import HuggingFacePublicationContract
 from reimbursement_game.adapters.kairos import KairosScenarioExporter
 from reimbursement_game.adapters.reimbursement_atlas import (
     ReimbursementAtlasExport,
@@ -119,6 +120,23 @@ class AdapterTests(unittest.TestCase):
         )
         self.assertEqual(sorted(parameters), ["n"])
         self.assertEqual(len(values["values"][0]), 2)
+
+    def test_atlas_packet_receipt_and_hugging_face_contract(self) -> None:
+        export = ReimbursementAtlasParameterExport(
+            "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
+        )
+        receipt = export.receipt()
+        self.assertTrue(receipt.digest.startswith("sha256:"))
+        self.assertEqual(receipt, export.receipt())
+        HuggingFacePublicationContract(
+            "edithatogo/reimbursement-atlas", "dataset", "other", "derived-only", "r1"
+        ).validate()
+
+    def test_hugging_face_contract_rejects_unsafe_destinations(self) -> None:
+        with self.assertRaisesRegex(ValueError, "edithatogo"):
+            HuggingFacePublicationContract("someone/data", "dataset", "apache-2.0", "derived", "r1").validate()
+        with self.assertRaisesRegex(ValueError, "raw"):
+            HuggingFacePublicationContract("edithatogo/data", "dataset", "other", "raw source", "r1").validate()
 
     def test_voiage_handoff_receipt_is_deterministic_and_revision_bound(self) -> None:
         packet = ReimbursementAtlasParameterExport(

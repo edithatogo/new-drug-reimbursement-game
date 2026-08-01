@@ -7,13 +7,24 @@ or human-review gates.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from ..evidence import EvidencePacket, evidence_packet_from_mapping
 
 _MAX_PARAMETER_EXPORT_BYTES = 10 * 1024 * 1024
+
+
+@dataclass(frozen=True, slots=True)
+class AtlasPacketReceipt:
+    digest: str
+    packet_id: str
+    packet_revision: str
+    record_count: int
+    licences: tuple[str, ...]
 
 
 class ReimbursementAtlasParameterExport:
@@ -33,6 +44,19 @@ class ReimbursementAtlasParameterExport:
         if not isinstance(value, dict):
             raise ValueError("Atlas parameter export must contain a JSON object")
         return evidence_packet_from_mapping(value)
+
+    def receipt(self) -> AtlasPacketReceipt:
+        """Return a content-addressed receipt for an approved-derived packet."""
+
+        packet = self.packet()
+        if any(record.approval_state != "approved" or not record.derived_only for record in packet.records):
+            raise ValueError("Atlas packet receipt requires approved-derived records")
+        payload = json.loads(self.path.read_text(encoding="utf-8"))
+        digest = hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+        licences = tuple(sorted({record.source_licence for record in packet.records}))
+        return AtlasPacketReceipt(f"sha256:{digest}", packet.packet_id, packet.packet_revision, len(packet.records), licences)
 
 
 class ReimbursementAtlasExport:
