@@ -1,0 +1,66 @@
+{
+  "schema": "relevant-subagent-panel-consensus/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-01",
+  "orchestrator": "codex-root",
+  "reviewed_commit": "1b7a1920dc98e25387cd64da4973543c52e297c8",
+  "reviewed_scope": [
+    "docs/governance/independent-review-panel.md",
+    "docs/governance/external-gate-resolution-plan.md",
+    "docs/governance/nhs-pilot-external-gate-intake.md",
+    "docs/governance/atlas-owner-negative-disposition-2026-08-01.md",
+    "docs/governance/nhs-context-negative-receipt-2026-08-01.md",
+    "docs/generated/nhs-england-pilot-readiness.json"
+  ],
+  "required_roles": [
+    "health_economics_methods",
+    "nhs_context_displacement",
+    "atlas_provenance_licensing",
+    "reproducibility_runtime"
+  ],
+  "quorum": {"required": 4, "received": 4},
+  "role_receipts": [
+    {
+      "role": "health_economics_methods",
+      "agent_id": "economics_panel",
+      "independence": "separate read-only subagent context",
+      "disposition": "approve-with-conditions",
+      "finding": "Research implementation and Chapter 7 equation boundaries are reviewable; empirical n/m/d promotion remains blocked.",
+      "limitations": ["No approved local displacement record", "Scenario 4 remains sensitivity-only"]
+    },
+    {
+      "role": "nhs_context_displacement",
+      "agent_id": "governance_panel",
+      "independence": "separate read-only subagent context",
+      "disposition": "defer",
+      "finding": "Public NICE/formulary sources establish candidate context but not local payer budget boundary, displaced programme, or baseline.",
+      "limitations": ["Negative search is not proof of non-existence"]
+    },
+    {
+      "role": "atlas_provenance_licensing",
+      "agent_id": "evidence_panel",
+      "independence": "separate read-only subagent context",
+      "disposition": "defer",
+      "finding": "Pinned Atlas licence machinery is valid, but no approved TA1121-specific parameter packet exists.",
+      "limitations": ["Candidate records cannot be promoted"]
+    },
+    {
+      "role": "reproducibility_runtime",
+      "agent_id": "runtime_panel",
+      "independence": "separate read-only subagent context",
+      "disposition": "approve-with-conditions",
+      "finding": "Repository boundaries, deterministic tests, and pinned runtime receipts remain reproducible at the reviewed commit.",
+      "limitations": ["Panel does not replace upstream or release authorization"]
+    }
+  ],
+  "disagreements": [],
+  "unresolved_gates": [
+    "specific-nhs-displacement-context",
+    "atlas-derived-record-approval"
+  ],
+  "final_disposition": "approve-research-only-defer-empirical-promotion",
+  "limitations": [
+    "This panel receipt is not human HTA, legal, regulatory, or payer approval.",
+    "It does not create missing evidence or authorize calibrated claims."
+  ],
+  "timestamp": "2026-08-01"
+}
