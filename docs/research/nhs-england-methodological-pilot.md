@@ -78,3 +78,6 @@ python -m unittest discover -s tests -p 'test_pilot_readiness.py'
 Promotion remains externally gated on a specific NHS payer/service line and
 displaced programme, a reviewed transformation/alignment, Reimbursement Atlas
 approval, and independent health-economic approval.
+
+The decision form for those remaining gates is
+`docs/governance/nhs-pilot-external-gate-intake.md`.
