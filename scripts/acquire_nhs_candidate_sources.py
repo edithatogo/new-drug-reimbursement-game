@@ -12,7 +12,7 @@ import hashlib
 import json
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -48,10 +48,10 @@ SEARCH_PLAN = [
 
 
 def fetch(source_id: str, url: str, timeout: float) -> dict[str, object]:
-    retrieved = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    retrieved = datetime.now(UTC).replace(microsecond=0).isoformat()
     request = urllib.request.Request(url, headers={"User-Agent": "new-drug-reimbursement-game/nhs-candidate-fetch"})
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
             payload = response.read()
             return {
                 "source_id": source_id,
@@ -63,7 +63,7 @@ def fetch(source_id: str, url: str, timeout: float) -> dict[str, object]:
                 "byte_count": len(payload),
                 "sha256": hashlib.sha256(payload).hexdigest(),
             }
-    except Exception as exc:  # noqa: BLE001 - receipt must retain negative results
+    except Exception as exc:
         return {"source_id": source_id, "uri": url, "retrieved_at": retrieved, "status": "error", "error": str(exc)}
 
 

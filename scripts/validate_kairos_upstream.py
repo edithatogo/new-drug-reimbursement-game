@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -33,7 +33,7 @@ def main() -> int:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.is_file() else {}
     receipt = {
         "schema_version": 1,
-        "checked_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "checked_at": datetime.now(UTC).replace(microsecond=0).isoformat(),
         "repository": "https://github.com/edithatogo/kairos",
         "pinned_revision": args.revision,
         "checkout_head": head,
