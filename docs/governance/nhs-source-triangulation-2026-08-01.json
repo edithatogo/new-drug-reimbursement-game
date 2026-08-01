@@ -1,0 +1,70 @@
+{
+  "schema": "nhs-source-triangulation/v1",
+  "target": "England TA1121 acoramidis versus tafamidis",
+  "status": "supporting_only",
+  "sources": [
+    {
+      "source_id": "nice-ta1121-resource-impact",
+      "uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-15554931517",
+      "role": "national_context",
+      "supports": ["commissioner", "providers", "pathway", "comparators", "national_assumptions"],
+      "missing": ["local_displaced_programme", "stable_programme_id", "local_baseline_unit"],
+      "redundancy_group": "national_policy"
+    },
+    {
+      "source_id": "nhs-england-payment-scheme-2026-27",
+      "uri": "https://www.england.nhs.uk/long-read/2026-27-nhs-payment-scheme/",
+      "role": "payment_framework",
+      "supports": ["price_year", "commissioner_provider_payment_boundary", "high_cost_drug_local_arrangements"],
+      "missing": ["ta1121_displaced_programme", "local_baseline_unit"],
+      "redundancy_group": "national_policy"
+    },
+    {
+      "source_id": "oxfordshire-formulary-ta1121",
+      "uri": "https://www.oxfordshireformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09.08.01",
+      "role": "local_formulary",
+      "supports": ["secondary_care_use", "BOB_APC_review", "local_implementation"],
+      "missing": ["displaced_programme", "baseline_cost_unit", "accountable_budget_boundary"],
+      "redundancy_group": "local_implementation"
+    },
+    {
+      "source_id": "dorset-formulary-ta1121",
+      "uri": "https://www.dorsetformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=4&SubSectionID=A100&SubSectionRef=04.12",
+      "role": "local_formulary",
+      "supports": ["NHSE_specialist_commissioning", "specialist_centre_routing", "not_available_locally"],
+      "missing": ["displaced_programme", "baseline_cost_unit"],
+      "redundancy_group": "specialist_routing"
+    },
+    {
+      "source_id": "somerset-formulary-ta1121",
+      "uri": "https://www.somersetformulary.nhs.uk/chaptersSubDetails.asp?FC=1&FormularySectionID=4&SubSectionID=A100&SubSectionRef=04",
+      "role": "local_formulary",
+      "supports": ["no_local_specialist_centre", "referral_to_national_amyloidosis_centre"],
+      "missing": ["displaced_programme", "baseline_cost_unit"],
+      "redundancy_group": "specialist_routing"
+    },
+    {
+      "source_id": "birmingham-solihull-imoc-ta1121",
+      "uri": "https://www.birminghamandsurroundsformulary.nhs.uk/docs/files/IMOC%20Minutes%20_12.02.26%20FINAL.pdf",
+      "role": "local_governance_minutes",
+      "supports": ["agreed_red_specialist_service", "local_implementation_governance"],
+      "missing": ["displaced_programme", "baseline_cost_unit"],
+      "redundancy_group": "local_implementation"
+    },
+    {
+      "source_id": "mft-ta-adherence-checklist",
+      "uri": "https://mft.nhs.uk/app/uploads/sites/7/2026/03/NICE-TA-Adherence-Checklist-Mar-26.pdf",
+      "role": "provider_adherence_record",
+      "supports": ["commissioned_centres", "Royal_Free", "UHB_Midlands", "specialist_pathway"],
+      "missing": ["displaced_programme", "baseline_cost_unit"],
+      "redundancy_group": "specialist_routing"
+    }
+  ],
+  "deduplication": {
+    "core_sources": ["nice-ta1121-resource-impact", "nhs-england-payment-scheme-2026-27", "oxfordshire-formulary-ta1121", "dorset-formulary-ta1121", "birmingham-solihull-imoc-ta1121"],
+    "corroborating_sources": ["somerset-formulary-ta1121", "mft-ta-adherence-checklist"],
+    "rule": "Retain one representative source per evidence role in the core packet; preserve corroborating sources as separate receipts. Do not treat repeated formulary listings as independent displacement evidence."
+  },
+  "next_request_targets": ["Royal Free National Amyloidosis Centre", "University Hospitals Birmingham Midlands Amyloidosis Service", "accountable specialised commissioner or medicines-optimisation committee"],
+  "promotion_rule": "No source closes the empirical gate until it identifies the accountable payer, actual displaced programme, stable programme ID, and baseline cost/unit."
+}
