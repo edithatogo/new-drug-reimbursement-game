@@ -13,7 +13,7 @@ The actionable closure sequence and fallback states are maintained in
 | UOGTO ontology | Validation against the pinned UOGTO revision and upstream disposition | Owner approval recorded; upstream disposition pending | Run pinned SHACL validation when toolchain is available |
 | Kairos execution | Pinned API compatibility and upstream execution/trace review | Owner approval recorded; native released integration pending | Adopt released DTO/code contract |
 | Extraction boundary | Approval that the game runtime can be extracted without application leakage | Local checks and panel review pass; transfer approval pending | Record extraction owner authorization |
-| Licences and provenance | Licence reconciliation for every dependency and derived artifact | Voiage reconciled at its verified pin; Atlas grouped derived-output approvals and Hugging Face destination metadata pass, but NHS-context source rows remain pending | Preserve the Atlas adjudication; resolve NHS source terms before publication; no raw-source redistribution |
+| Licences and provenance | Licence reconciliation for every dependency and derived artifact | Voiage reconciled at its verified pin; Atlas grouped derived-output approvals, checksum-matching NHS rows, and Hugging Face destination metadata pass | Preserve the Atlas adjudication and source-specific restrictions; no raw-source redistribution |
 | Release | Maintainer release decision after all preceding gates close | Pending | Maintainer decision |
 
 ## Evidence acceptance
