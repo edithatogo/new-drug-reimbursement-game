@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "receipt_type": "atlas_status",
+  "created_at": "2026-08-01",
+  "repository": "https://github.com/edithatogo/reimbursement-atlas",
+  "ecosystem_lock_revision": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca",
+  "resolved_checkout_revision": "5b0c2fe3e1b7d2d6c3c1975cf1a162f2787c67aa",
+  "revision_status": "resolved_checkout_differs_from_lock",
+  "licence_status": {
+    "software": "Apache-2.0",
+    "derived_ledger": "owner-approved grouped scope",
+    "approved_artefacts": 229,
+    "pending_artefacts": 0,
+    "nhs_payment_scheme_rows": "5/5 checksum-matching decisions approved",
+    "huggingface_destination_check": "pass",
+    "raw_payload_redistribution": "excluded"
+  },
+  "ta1121_nhs_parameter_status": {
+    "status": "pending",
+    "matching_programme_records": 0,
+    "missing_roles": ["n", "m", "d", "mu", "phi", "annual_programme_health_effect", "horizon"],
+    "calibration_permitted": false,
+    "reason": "No programme-aligned NHS records for TA1121/acoramidis/tafamidis/ATTR-CM were found at the resolved checkout; no approval is inferred from general licence validation."
+  },
+  "promotion_rule": "Do not promote the candidate intake packet until the lock/checkout revision is reconciled and an approved-derived, programme-aligned packet with provenance, transformations, uncertainty, and accountable review exists.",
+  "source_receipts": [
+    "docs/governance/atlas-licence-adjudication.md",
+    "docs/governance/atlas-derived-packet-intake-ta1121.md",
+    "fixtures/evidence/atlas-ta1121-derived-candidate-v1.json"
+  ]
+}
