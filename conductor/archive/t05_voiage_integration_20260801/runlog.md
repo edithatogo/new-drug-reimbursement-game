@@ -9,3 +9,5 @@
 - Full quality gate passed with 96 Python and 29 Rust tests.
 - Completed the repository-side integration without claiming Voiage runtime
   execution or empirical/policy authorization.
+- Review found and corrected direct-bundle validation gaps for parameter
+  finiteness, role uniqueness, and strategy names.

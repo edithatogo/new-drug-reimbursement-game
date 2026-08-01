@@ -1,5 +1,10 @@
 # Implementation plan
 
+## Review fixes
+
+- [x] Tightened direct-bundle validation for finite parameter samples, unique
+  roles, and non-empty strategy names (`9ebf993`).
+
 ## Phase 1 - Activate and inspect the boundary
 
 - [x] Activate T05 and record the pinned Voiage boundary.
