@@ -16,7 +16,7 @@
 - [x] **Track: T06 Kairos execution and trace integration**
   *Link: [./archive/t06_kairos_integration_20260801/index.md](./archive/t06_kairos_integration_20260801/index.md)*
 - [x] **Track: T07 Reimbursement Atlas and owner-scoped Hugging Face integration**
-  *Link: [./tracks/t07_atlas_huggingface_20260801/index.md](./tracks/t07_atlas_huggingface_20260801/index.md)*
+  *Link: [./archive/t07_atlas_huggingface_20260801/index.md](./archive/t07_atlas_huggingface_20260801/index.md)*
 - [x] **Track: T09 governance, release, validation, and extraction readiness**
   *Link: [./tracks/t09_governance_release_20260727/index.md](./tracks/t09_governance_release_20260727/index.md)*
 - [x] **Track: T10 Chapter 7 all-scenario implementation**
