@@ -90,11 +90,17 @@ class VoiageAdapter:
             raise ValueError("Voiage calibration bundle requires a sha256 evidence revision")
         if len(bundle.strategy_names) != len(rows[0]):
             raise ValueError("Voiage strategy names must align with sample columns")
+        if any(not name.strip() for name in bundle.strategy_names):
+            raise ValueError("Voiage strategy names must be non-empty")
         parameter_roles = tuple(item.role.value for item in bundle.parameter_samples)
         if not parameter_roles:
             raise ValueError("Voiage calibration bundle requires parameter samples")
+        if len(set(parameter_roles)) != len(parameter_roles):
+            raise ValueError("Voiage parameter roles must be unique")
         if any(len(item.values) != len(rows) for item in bundle.parameter_samples):
             raise ValueError("Voiage parameter samples must align with strategy samples")
+        if any(not math.isfinite(float(value)) for item in bundle.parameter_samples for value in item.values):
+            raise ValueError("Voiage parameter samples must contain only finite numbers")
         payload = {
             "evidence_revision": bundle.evidence_revision,
             "health_unit": bundle.health_unit,

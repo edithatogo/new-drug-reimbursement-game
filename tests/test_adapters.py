@@ -13,7 +13,11 @@ from reimbursement_game.adapters.reimbursement_atlas import (
 )
 from reimbursement_game.adapters.uogto import UogtoExporter
 from reimbursement_game.adapters.voiage import VoiageAdapter
-from reimbursement_game.calibration import calibrate_chapter7_scenario
+from reimbursement_game.calibration import (
+    ParameterSamples,
+    VoiageSampleBundle,
+    calibrate_chapter7_scenario,
+)
 from reimbursement_game.chapter7 import Chapter7Scenario
 from reimbursement_game.evidence import ParameterRole
 
@@ -115,6 +119,20 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertTrue(first.digest.startswith("sha256:"))
         self.assertEqual(first.sample_count, 2)
+
+    def test_voiage_handoff_receipt_rejects_invalid_parameter_samples(self) -> None:
+        bundle = VoiageSampleBundle(
+            strategy_names=("reimburse", "alternative"),
+            net_benefit_samples=((1.0, 2.0), (2.0, 1.0)),
+            parameter_samples=(
+                ParameterSamples(ParameterRole.EXPANSION_ICER, (1.0, float("nan"))),
+            ),
+            perspective="health",
+            health_unit="QALY",
+            evidence_revision="sha256:test",
+        )
+        with self.assertRaisesRegex(ValueError, "finite"):
+            VoiageAdapter().handoff_receipt(bundle)
 
     def test_atlas_parameter_export_rejects_legacy_and_symlink_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
