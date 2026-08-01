@@ -31,6 +31,15 @@
       "artifact_kind": "official_html_and_workbook",
       "exact_location": "Publication landing page; Annex A initial 2026/27 prices",
       "supports": ["price_year", "service_line"]
+    },
+    {
+      "source_id": "cheshire-merseyside-nice-adherence-2025-26",
+      "uri": "https://www.cheshireandmerseyside.nhs.uk/media/xaclztnz/nice_adherence_202504-202603.pdf",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "regional_nhs_official_pdf",
+      "exact_location": "PDF page 5, TA1121 row",
+      "supports": ["payer", "service_line", "implementation_status"],
+      "negative_evidence": "The row identifies NHS England as commissioner and hospital trusts as providers, but does not identify a displaced programme, local budget boundary, or baseline cost."
     }
   ],
   "transformations": [],
