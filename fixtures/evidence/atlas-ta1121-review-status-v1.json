@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "packet_id": "atlas-ta1121-review-status-v1",
+  "research_question_id": "rq_nhs_ta1121_context",
+  "atlas": {
+    "repository": "https://github.com/edithatogo/reimbursement-atlas",
+    "revision": "5b0c2fe3e1b7d2d6c3c1975cf1a162f2787c67aa",
+    "revision_binding": "git_commit",
+    "approved_derived_ledger": "data/licence_review/decisions.jsonl",
+    "licence_validation": "passed_at_pinned_checkout"
+  },
+  "status": "candidate_only",
+  "promotion_blocked": true,
+  "required_parameter_roles": {
+    "n": {"status": "missing", "reason": "No TA1121-aligned approved NHS record found."},
+    "m": {"status": "missing", "reason": "No TA1121-aligned approved NHS record found."},
+    "d": {"status": "missing", "reason": "Displaced local programme is not identified."},
+    "mu": {"status": "missing", "reason": "No approved Scenario 4 parameter record found."},
+    "phi": {"status": "missing", "reason": "No approved Scenario 4 parameter record found."},
+    "annual_program_health_effect": {"status": "missing", "reason": "No programme-specific effect record found."},
+    "horizon": {"status": "missing", "reason": "No approved programme-aligned horizon found."},
+    "discount_rate": {"status": "provisional", "value": 0.035, "unit": "annual_rate", "basis": "health_economist_approval", "not_an_Atlas_record": true}
+  },
+  "licensing": {
+    "derived_only": true,
+    "raw_payloads_permitted": false,
+    "restricted_descriptors_permitted": false,
+    "source_term_status": "approved_for_existing_ledger_scope",
+    "new_ta1121_derived_records": "require_checksum_bound_source_term_review",
+    "unclear_terms_disposition": "exclude_from_publication_and_keep_local"
+  },
+  "promotion_requirements": [
+    "Authoritative programme context identifies payer, service line, decision date, price year, intervention, comparator, displaced programme, and stable programme ID.",
+    "Atlas owner-approved derived records provide every enabled parameter role with provenance, transformation, uncertainty, source checksum, and exact revision.",
+    "Source terms are adjudicated for each new derived record and destination surface.",
+    "Independent review receipt covers mapping and uncertainty; no inferred values are accepted."
+  ],
+  "contingencies": {
+    "no_matching_atlas_records": "Keep packet candidate-only; enable only software and synthetic conformance fixtures.",
+    "partial_role_coverage": "Enable only scenarios whose required roles are complete; leave other roles blocked.",
+    "unclear_source_terms": "Exclude affected record from release and preserve a local hash-bound receipt.",
+    "programme_context_unresolved": "Retain national TA1121 scaffold; do not derive d or calibrated displacement claims."
+  },
+  "claims": {
+    "supported": ["Pinned Atlas revision and existing licence ledger are identified."],
+    "unsupported": ["Approved NHS parameter values", "local displacement", "calibrated reimbursement or policy claims"]
+  }
+}
