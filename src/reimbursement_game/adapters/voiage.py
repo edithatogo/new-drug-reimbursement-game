@@ -5,11 +5,27 @@ VOI algorithms are intentionally not reimplemented in this repository.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import math
 from collections.abc import Sequence
+from dataclasses import dataclass
 from typing import Any
 
 from ..calibration import VoiageSampleBundle
+
+
+@dataclass(frozen=True, slots=True)
+class VoiageHandoffReceipt:
+    """Deterministic, non-authorizing receipt for a Voiage input handoff."""
+
+    digest: str
+    sample_count: int
+    strategy_names: tuple[str, str]
+    parameter_roles: tuple[str, ...]
+    perspective: str
+    health_unit: str
+    evidence_revision: str
 
 
 class VoiageAdapter:
@@ -63,6 +79,49 @@ class VoiageAdapter:
             {name: np.asarray(samples, dtype=float) for name, samples in parameter_values.items()}
         )
         return values, parameters
+
+    def handoff_receipt(self, bundle: VoiageSampleBundle) -> VoiageHandoffReceipt:
+        """Return a hash-bound receipt without importing or running Voiage."""
+
+        rows = _validated_rows(bundle.net_benefit_samples)
+        if bundle.perspective != "health" or not bundle.health_unit.strip():
+            raise ValueError("Voiage calibration bundle requires an explicit health perspective")
+        if not bundle.evidence_revision.startswith("sha256:"):
+            raise ValueError("Voiage calibration bundle requires a sha256 evidence revision")
+        if len(bundle.strategy_names) != len(rows[0]):
+            raise ValueError("Voiage strategy names must align with sample columns")
+        if any(not name.strip() for name in bundle.strategy_names):
+            raise ValueError("Voiage strategy names must be non-empty")
+        parameter_roles = tuple(item.role.value for item in bundle.parameter_samples)
+        if not parameter_roles:
+            raise ValueError("Voiage calibration bundle requires parameter samples")
+        if len(set(parameter_roles)) != len(parameter_roles):
+            raise ValueError("Voiage parameter roles must be unique")
+        if any(len(item.values) != len(rows) for item in bundle.parameter_samples):
+            raise ValueError("Voiage parameter samples must align with strategy samples")
+        if any(not math.isfinite(float(value)) for item in bundle.parameter_samples for value in item.values):
+            raise ValueError("Voiage parameter samples must contain only finite numbers")
+        payload = {
+            "evidence_revision": bundle.evidence_revision,
+            "health_unit": bundle.health_unit,
+            "net_benefit_samples": rows,
+            "parameter_roles": parameter_roles,
+            "parameter_samples": [list(item.values) for item in bundle.parameter_samples],
+            "perspective": bundle.perspective,
+            "strategy_names": list(bundle.strategy_names),
+        }
+        digest = hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+        return VoiageHandoffReceipt(
+            digest=f"sha256:{digest}",
+            sample_count=len(rows),
+            strategy_names=bundle.strategy_names,
+            parameter_roles=parameter_roles,
+            perspective=bundle.perspective,
+            health_unit=bundle.health_unit,
+            evidence_revision=bundle.evidence_revision,
+        )
 
 
 def _validated_rows(samples: Sequence[Sequence[float]]) -> list[list[float]]:

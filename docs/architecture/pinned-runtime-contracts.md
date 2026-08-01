@@ -47,3 +47,7 @@ Kairos event kind is a numeric custom code, so stable allocation of game event
 codes and the DTO representation require upstream agreement. Until that
 contract is released, native compilation is an external compatibility gate and
 unsupported execution semantics must fail explicitly.
+
+The application adapter normalizes non-negative, non-decreasing event times and
+emits a SHA-256 trace receipt. The receipt identifies the handoff content; it
+does not claim that Kairos has scheduled or executed the events.

@@ -33,3 +33,9 @@
   dossier size, replaced Cartesian compatibility searches with grouped checks,
   corrected PDF locations and source hashes, and separated study periods from
   unknown monetary price years.
+- [x] In the T12 review remediation, applied Ruff's deterministic import and
+  `__all__` ordering fix in `src/reimbursement_game/__init__.py` after hosted
+  CI reported `I001` and `RUF022`.
+- [x] In the follow-up hosted review, annotated Game 2's action/payoff tuples
+  with the declared `Literal` action domain so strict mypy accepts the result
+  construction in `src/reimbursement_game/application_games.py`.

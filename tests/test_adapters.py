@@ -6,6 +6,7 @@ from pathlib import Path
 from types import ModuleType
 from unittest.mock import patch
 
+from reimbursement_game.adapters.hugging_face import HuggingFacePublicationContract
 from reimbursement_game.adapters.kairos import KairosScenarioExporter
 from reimbursement_game.adapters.reimbursement_atlas import (
     ReimbursementAtlasExport,
@@ -13,7 +14,11 @@ from reimbursement_game.adapters.reimbursement_atlas import (
 )
 from reimbursement_game.adapters.uogto import UogtoExporter
 from reimbursement_game.adapters.voiage import VoiageAdapter
-from reimbursement_game.calibration import calibrate_chapter7_scenario
+from reimbursement_game.calibration import (
+    ParameterSamples,
+    VoiageSampleBundle,
+    calibrate_chapter7_scenario,
+)
 from reimbursement_game.chapter7 import Chapter7Scenario
 from reimbursement_game.evidence import ParameterRole
 
@@ -24,10 +29,35 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(value["target"], "edithatogo/kairos")
         self.assertEqual(value["events"][0]["sequence"], 0)
 
+    def test_kairos_trace_receipt_is_deterministic(self) -> None:
+        adapter = KairosScenarioExporter()
+        events = [{"kind": "move", "time": 0}, {"kind": "resolve", "time": 1}]
+        self.assertEqual(adapter.trace_receipt(events), adapter.trace_receipt(events))
+        self.assertEqual(adapter.trace_receipt(events).event_count, 2)
+
+    def test_kairos_rejects_invalid_event_boundaries(self) -> None:
+        adapter = KairosScenarioExporter()
+        with self.assertRaisesRegex(ValueError, "non-decreasing"):
+            adapter.export_scenario([{"kind": "a", "time": 1}, {"kind": "b", "time": 0}])
+        with self.assertRaisesRegex(ValueError, "payload"):
+            adapter.export_scenario([{"kind": "a", "payload": []}])
+        with self.assertRaisesRegex(ValueError, "non-empty"):
+            adapter.export_scenario([{"kind": " "}])
+        with self.assertRaisesRegex(ValueError, "mappings"):
+            adapter.export_scenario(["bad-event"])  # type: ignore[list-item]
+        with self.assertRaisesRegex(ValueError, "JSON-serializable"):
+            adapter.export_scenario([{"kind": "a", "payload": {"x": object()}}])
+
     def test_uogto_export(self) -> None:
         case = json.loads(Path("examples/cases/chapter8_example.json").read_text())
         value = UogtoExporter().export_game(case)
         self.assertIn("uogto:GameInstance", value["@type"])
+        self.assertEqual(value["@id"], "urn:ndrg:synthetic-ch8-001:game")
+        self.assertEqual(value["hasPlayer"], [
+            "urn:ndrg:synthetic-ch8-001:firm",
+            "urn:ndrg:synthetic-ch8-001:institution",
+        ])
+        self.assertEqual(len(value["governedByRule"]), 2)
         self.assertEqual(value["ndrg:economicContext"], "fixed")
 
     def test_atlas_jsonl_reader(self) -> None:
@@ -90,6 +120,58 @@ class AdapterTests(unittest.TestCase):
         )
         self.assertEqual(sorted(parameters), ["n"])
         self.assertEqual(len(values["values"][0]), 2)
+
+    def test_atlas_packet_receipt_and_hugging_face_contract(self) -> None:
+        export = ReimbursementAtlasParameterExport(
+            "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
+        )
+        receipt = export.receipt()
+        self.assertTrue(receipt.digest.startswith("sha256:"))
+        self.assertEqual(receipt, export.receipt())
+        HuggingFacePublicationContract(
+            "edithatogo/reimbursement-atlas", "dataset", "other", "derived-only", "r1"
+        ).validate()
+
+    def test_hugging_face_contract_rejects_unsafe_destinations(self) -> None:
+        with self.assertRaisesRegex(ValueError, "edithatogo"):
+            HuggingFacePublicationContract("someone/data", "dataset", "apache-2.0", "derived", "r1").validate()
+        with self.assertRaisesRegex(ValueError, "raw"):
+            HuggingFacePublicationContract("edithatogo/data", "dataset", "other", "raw source", "r1").validate()
+        with self.assertRaisesRegex(ValueError, "edithatogo"):
+            HuggingFacePublicationContract("edithatogo/", "dataset", "other", "derived", "r1").validate()
+
+    def test_voiage_handoff_receipt_is_deterministic_and_revision_bound(self) -> None:
+        packet = ReimbursementAtlasParameterExport(
+            "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
+        ).packet()
+        calibrated = calibrate_chapter7_scenario(
+            case_id="receipt-s1",
+            scenario=Chapter7Scenario.EXPANDABLE_EFFICIENT,
+            incremental_cost=120,
+            incremental_health_effect=20,
+            packet=packet,
+            record_ids={ParameterRole.EXPANSION_ICER: "n-allocative"},
+        )
+        adapter = VoiageAdapter()
+        first = adapter.handoff_receipt(calibrated.voiage_samples)
+        second = adapter.handoff_receipt(calibrated.voiage_samples)
+        self.assertEqual(first, second)
+        self.assertTrue(first.digest.startswith("sha256:"))
+        self.assertEqual(first.sample_count, 2)
+
+    def test_voiage_handoff_receipt_rejects_invalid_parameter_samples(self) -> None:
+        bundle = VoiageSampleBundle(
+            strategy_names=("reimburse", "alternative"),
+            net_benefit_samples=((1.0, 2.0), (2.0, 1.0)),
+            parameter_samples=(
+                ParameterSamples(ParameterRole.EXPANSION_ICER, (1.0, float("nan"))),
+            ),
+            perspective="health",
+            health_unit="QALY",
+            evidence_revision="sha256:test",
+        )
+        with self.assertRaisesRegex(ValueError, "finite"):
+            VoiageAdapter().handoff_receipt(bundle)
 
     def test_atlas_parameter_export_rejects_legacy_and_symlink_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

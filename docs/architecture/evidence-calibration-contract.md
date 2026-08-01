@@ -63,6 +63,11 @@ The pinned Voiage API requires its optional NumPy numerical environment. A
 missing or broken optional runtime raises an explicit error after the
 dependency-free bundle has been validated.
 
+On the current macOS validation host, the pinned checkout is discoverable but
+NumPy cannot load `libcblas.3.dylib`. The adapter therefore remains dependency-
+free for receipt construction and fails closed with an explicit runtime error
+until the host supplies a compatible numerical runtime.
+
 ## Synthetic fixture
 
 `fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json` exists only for
