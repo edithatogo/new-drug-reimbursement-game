@@ -58,6 +58,15 @@
       "exact_location": "Acoramidis/Beyonttra entry, March 2026 TAG agreement",
       "supports": ["service_line", "implementation_status"],
       "negative_evidence": "The entry records restricted specialist prescribing, but does not identify a displaced programme, payer budget boundary, or cost."
+    },
+    {
+      "source_id": "nice-ta1121-resource-impact-summary",
+      "uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "retrieved": "2026-08-01",
+      "artifact_kind": "official_nice_pdf",
+      "exact_location": "Resource impact summary, page 3",
+      "supports": ["comparator", "national_budget_impact_context", "price_year"],
+      "negative_evidence": "The summary uses amendable NICE assumptions and confidential commercial pricing; it does not identify a local displaced programme or disclose the net price."
     }
   ],
   "transformations": [],

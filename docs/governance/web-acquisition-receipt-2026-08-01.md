@@ -18,6 +18,12 @@ tertiary services) and the North West TAG agreement (restricted specialist
 prescribing). Both strengthen the service-line and implementation context but
 neither names a displaced programme or supplies a baseline cost.
 
+The NICE resource-impact summary adds a national budget-impact context: it
+states that implementation is expected to have an annual resource impact below
+£5 million and that costs are similar to or lower than tafamidis and vutrisiran.
+Its inputs are amendable assumptions and the commercial discount is confidential,
+so it cannot supply a local displacement value or approved net price.
+
 Next automated acquisition pass: search ICB and trust formulary/medicines-
 optimisation records for an explicit acoramidis implementation or replacement
 decision. Promotion remains blocked until such a record names the displaced
