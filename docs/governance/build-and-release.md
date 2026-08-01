@@ -1,5 +1,8 @@
 # Build, schema, extraction, and release controls
 
+The current owner authorization is limited to a research-only release; see
+[research-only release authorization](./research-only-release-authorization.md).
+
 ## Deterministic inputs
 
 - Python build backends are exact pins in `pyproject.toml`.
