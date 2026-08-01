@@ -1,5 +1,10 @@
 # Implementation plan
 
+## Review fixes
+
+- [x] Permit valid zero-information and zero-spillover states while retaining
+  finite/non-negative validation (`0a0b6a3`).
+
 ## Phase 1 - Research extension models
 
 - [x] Activate T08 and record the post-2015 research boundary.
