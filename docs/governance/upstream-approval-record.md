@@ -27,3 +27,9 @@ the current public UOGTO `main` revision
 `fae901558f07b7b717a676adbafbe2cdc78dea1c`. This resolves pin discovery, but
 released-contract acceptance, hosted check evidence, and extraction receipts
 remain separate gates.
+
+The refreshed pins resolve to clean local checkouts. Kairos workspace tests
+passed at `fae901558f07b7b717a676adbafbe2cdc78dea1c`. UOGTO checkout validation
+is pending an isolated environment with its declared RDF dependencies; the
+base environment does not provide `rdflib`. These local results do not replace
+upstream hosted acceptance or extraction authorization.
