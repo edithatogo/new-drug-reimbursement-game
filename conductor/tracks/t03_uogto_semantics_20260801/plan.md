@@ -2,16 +2,16 @@
 
 ## Phase 1 - Activate and establish the boundary
 
-- [~] Activate T03 in the Conductor registry and metadata.
-- [ ] Record the pinned semantic and execution contracts.
-- [ ] Review the exporter and runtime against the no-fork boundary.
+- [x] Activate T03 in the Conductor registry and metadata (`f54e91d`).
+- [x] Record the pinned semantic and execution contracts.
+- [x] Review the exporter and runtime against the no-fork boundary.
 
 ## Phase 2 - Validate the application extension
 
-- [ ] Verify JSON-LD context, stable identifiers, players, rules, and finite
+- [x] Verify JSON-LD context, stable identifiers, players, rules, and finite
   economic values.
-- [ ] Run focused adapter and runtime tests.
-- [ ] Record an upstream-ready proposal and patch/PR plan.
+- [x] Run focused adapter and runtime tests.
+- [x] Record an upstream-ready proposal and patch/PR plan.
 
 ## Phase 3 - Completion
 

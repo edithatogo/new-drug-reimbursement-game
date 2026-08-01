@@ -28,6 +28,12 @@ class AdapterTests(unittest.TestCase):
         case = json.loads(Path("examples/cases/chapter8_example.json").read_text())
         value = UogtoExporter().export_game(case)
         self.assertIn("uogto:GameInstance", value["@type"])
+        self.assertEqual(value["@id"], "urn:ndrg:synthetic-ch8-001:game")
+        self.assertEqual(value["hasPlayer"], [
+            "urn:ndrg:synthetic-ch8-001:firm",
+            "urn:ndrg:synthetic-ch8-001:institution",
+        ])
+        self.assertEqual(len(value["governedByRule"]), 2)
         self.assertEqual(value["ndrg:economicContext"], "fixed")
 
     def test_atlas_jsonl_reader(self) -> None:
