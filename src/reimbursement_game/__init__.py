@@ -16,6 +16,15 @@ from .chapter7 import (
     evaluate_chapter7_scenario,
 )
 from .chapter8 import Chapter8Equilibrium, solve_pekarsky_game1, solve_revealed_threshold_game
+from .application_games import (
+    Game1Result,
+    Game2Result,
+    Game3Result,
+    evaluate_game3,
+    solve_game1_grid,
+    solve_game1_hidden_threshold,
+    solve_game2,
+)
 from .economics import (
     EconomicContext,
     OpportunitySet,
@@ -52,6 +61,13 @@ __all__ = [
     "incremental_price_effectiveness_ratio",
     "solve_pekarsky_game1",
     "solve_revealed_threshold_game",
+    "Game1Result",
+    "Game2Result",
+    "Game3Result",
+    "evaluate_game3",
+    "solve_game1_grid",
+    "solve_game1_hidden_threshold",
+    "solve_game2",
 ]
 
 __version__ = "0.4.0"
