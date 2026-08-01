@@ -52,6 +52,14 @@
       "redundancy_group": "local_implementation"
     },
     {
+      "source_id": "south-yorkshire-imoc-ta1121",
+      "uri": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20Minutes%20IMOC%20February%202026.pdf",
+      "role": "local_governance_minutes",
+      "supports": ["South_Yorkshire_ICB_payer", "Feb_2026_decision_period", "red_traffic_light_status"],
+      "missing": ["comparator", "displaced_programme", "baseline_cost_unit", "stable_programme_id"],
+      "redundancy_group": "local_implementation"
+    },
+    {
       "source_id": "mft-ta-adherence-checklist",
       "uri": "https://mft.nhs.uk/app/uploads/sites/7/2026/03/NICE-TA-Adherence-Checklist-Mar-26.pdf",
       "role": "provider_adherence_record",
@@ -61,7 +69,7 @@
     }
   ],
   "deduplication": {
-    "core_sources": ["nice-ta1121-resource-impact", "nhs-england-payment-scheme-2026-27", "oxfordshire-formulary-ta1121", "dorset-formulary-ta1121", "birmingham-solihull-imoc-ta1121"],
+    "core_sources": ["nice-ta1121-resource-impact", "nhs-england-payment-scheme-2026-27", "oxfordshire-formulary-ta1121", "dorset-formulary-ta1121", "birmingham-solihull-imoc-ta1121", "south-yorkshire-imoc-ta1121"],
     "corroborating_sources": ["somerset-formulary-ta1121", "mft-ta-adherence-checklist"],
     "rule": "Retain one representative source per evidence role in the core packet; preserve corroborating sources as separate receipts. Do not treat repeated formulary listings as independent displacement evidence."
   },

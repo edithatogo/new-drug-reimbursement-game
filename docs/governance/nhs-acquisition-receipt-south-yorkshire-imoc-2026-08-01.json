@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "nhs_candidate_acquisition_receipt",
+  "receipt_id": "nhs-south-yorkshire-imoc-ta1121-2026-08-01",
+  "retrieved_at": "2026-08-01T12:25:00Z",
+  "source": {
+    "url": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20Minutes%20IMOC%20February%202026.pdf",
+    "publisher": "South Yorkshire Integrated Care Board IMOC",
+    "domain_class": "official_nhs_governance_minutes",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 590530,
+    "sha256": "6474170bb9fbc2ce0da6333bd4279901ddd20cbb7321ee8992fdd3aa4458288f"
+  },
+  "target": {
+    "jurisdiction": "England",
+    "technology_appraisal": "NICE TA1121",
+    "intervention": "acoramidis",
+    "comparator": null
+  },
+  "extracted_evidence": {
+    "payer": "South Yorkshire ICB",
+    "service_line": "specialist treatment for transthyretin amyloidosis with cardiomyopathy",
+    "decision_date": "2026-02",
+    "traffic_light_status": "Red",
+    "price_year": null,
+    "displaced_programme": null,
+    "stable_programme_id": null,
+    "baseline_unit": null
+  },
+  "disposition": "supporting_only",
+  "negative_receipt": "The minutes record TA1121 acoramidis as Red traffic-lighted in February 2026, but do not identify a comparator, displaced programme, baseline unit, stable programme ID, or accountable budget decision for displacement.",
+  "approval_state": "candidate_only",
+  "promotion_rule": "Do not infer displacement or parameter d from traffic-light status. Promotion requires an authoritative local decision naming the displaced programme and baseline unit.",
+  "retrieval_method": "Codex web acquisition; immutable PDF bytes hashed and source payload not redistributed"
+}
