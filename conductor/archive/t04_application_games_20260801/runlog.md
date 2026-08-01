@@ -7,3 +7,5 @@
   `c96bb55`.
 - Full quality gate passed with 95 Python and 29 Rust tests.
 - Completed the track; no external evidence or authorization gate is claimed.
+- Review found and corrected missing positive finite validation for the
+  contract-enforcement effect input.

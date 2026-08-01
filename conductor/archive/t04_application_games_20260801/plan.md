@@ -27,3 +27,5 @@
 - [x] Added the explicitly named bargaining, net-price rebate, and contract
   enforcement Game 1 variants after review (`c96bb55`); focused tests and Ruff
   passed.
+- [x] Added fail-closed validation for contract-enforcement effect inputs and a
+  regression test (`6474c4b`).
