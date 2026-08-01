@@ -9,3 +9,5 @@
 - Hosted CI review found only Ruff `I001`/`RUF022` ordering errors in the
   package export module; the formatter fix is recorded as repository-owned
   remediation and will be revalidated before push.
+- The next hosted review exposed one strict-mypy literal widening in Game 2;
+  the action tuple is now explicitly typed to the declared action domain.

@@ -163,7 +163,11 @@ def solve_game2(
     do_nothing = baseline_firm_payoff
     lobby = baseline_firm_payoff + success_gain - rd_cost - lobby_cost
     borrowed = baseline_firm_payoff + success_gain - rd_cost * (1 + interest_rate) if borrow_limit >= rd_cost else float("-inf")
-    choices = (("do_nothing", do_nothing), ("lobby", lobby), ("borrow", borrowed))
+    choices: tuple[tuple[Literal["do_nothing", "lobby", "borrow"], float], ...] = (
+        ("do_nothing", do_nothing),
+        ("lobby", lobby),
+        ("borrow", borrowed),
+    )
     action, payoff = max(choices, key=lambda item: (item[1], -("do_nothing", "lobby", "borrow").index(item[0])))
     success = success_probability if action != "do_nothing" else 0.0
     institution = institution_benefit * success
