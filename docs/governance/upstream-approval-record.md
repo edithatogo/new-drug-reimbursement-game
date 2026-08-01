@@ -8,3 +8,12 @@ accepted a pull request.
 
 Evidence remains the pinned contracts, local validation, and the review packet
 in `docs/governance/release-readiness-evidence.md`.
+
+## Owner confirmation — 2026-08-01
+
+The repository owner reaffirmed approval to proceed with the pinned UOGTO and
+Kairos adapter scope and the planned extraction packet. This confirmation is
+authorization from the component owner, not evidence that UOGTO or Kairos has
+accepted an upstream change, that a released contract is available, or that
+the extraction boundary has received its separate transfer approval. Those
+receipts remain open where required by T02 and T09.
