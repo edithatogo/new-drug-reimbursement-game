@@ -11,7 +11,7 @@
   *Link: [./archive/t03_uogto_semantics_20260801/index.md](./archive/t03_uogto_semantics_20260801/index.md)*
 - [x] **Track: T04 Pekarsky application games 1 to 3**
   *Link: [./archive/t04_application_games_20260801/index.md](./archive/t04_application_games_20260801/index.md)*
-- [~] **Track: T05 Voiage decision-uncertainty integration**
+- [x] **Track: T05 Voiage decision-uncertainty integration**
   *Link: [./tracks/t05_voiage_integration_20260801/index.md](./tracks/t05_voiage_integration_20260801/index.md)*
 - [x] **Track: T09 governance, release, validation, and extraction readiness**
   *Link: [./tracks/t09_governance_release_20260727/index.md](./tracks/t09_governance_release_20260727/index.md)*

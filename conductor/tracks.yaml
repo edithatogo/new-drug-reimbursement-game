@@ -34,7 +34,7 @@ tracks:
   - id: T05
     title: Voiage decision-uncertainty integration
     priority: 3
-    status: in_progress
+    status: done
     depends_on: [T01, T03]
   - id: T06
     title: Kairos execution and trace integration
