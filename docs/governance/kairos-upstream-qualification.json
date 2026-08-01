@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-01T08:06:30+00:00",
+  "repository": "https://github.com/edithatogo/kairos",
+  "pinned_revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+  "checkout_head": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+  "revision_matches": true,
+  "tags_at_pinned_revision": [],
+  "release_stage": "r2-dry-run",
+  "production_publish_enabled": false,
+  "local_compatibility_evidence": "available; not equivalent to upstream acceptance",
+  "upstream_contract_status": "pending",
+  "upstream_maintainer_acceptance": "not_found",
+  "decision": "adapter_isolated_candidate_only",
+  "limitations": [
+    "No release tag or maintainer acceptance receipt was found at the pinned revision.",
+    "Local checkout and tests do not establish a released DTO/API contract.",
+    "Do not claim native Kairos integration or extraction authorization from this receipt."
+  ]
+}
