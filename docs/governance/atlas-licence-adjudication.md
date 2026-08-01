@@ -18,6 +18,13 @@
 The ledger records checksum-bound owner decisions and requires attribution and
 the applicable provider terms to remain attached to each derived artefact.
 
+At the pinned checkout, the isolated Python 3.14 validation command
+`reimburse_atlas.cli licence-review-validate` passed. The Atlas source-gate
+classifier also reports `uk_nhs_payment_scheme` as `green` with a
+`versioned_cache_allowed_after_citation_review` policy. The classifier is a
+screening result, not a substitute for the queue's explicit human/public-use
+review.
+
 ## Hugging Face destination check
 
 The pinned Atlas publication check reports `pass` with zero mismatches:
