@@ -97,6 +97,25 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(sorted(parameters), ["n"])
         self.assertEqual(len(values["values"][0]), 2)
 
+    def test_voiage_handoff_receipt_is_deterministic_and_revision_bound(self) -> None:
+        packet = ReimbursementAtlasParameterExport(
+            "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
+        ).packet()
+        calibrated = calibrate_chapter7_scenario(
+            case_id="receipt-s1",
+            scenario=Chapter7Scenario.EXPANDABLE_EFFICIENT,
+            incremental_cost=120,
+            incremental_health_effect=20,
+            packet=packet,
+            record_ids={ParameterRole.EXPANSION_ICER: "n-allocative"},
+        )
+        adapter = VoiageAdapter()
+        first = adapter.handoff_receipt(calibrated.voiage_samples)
+        second = adapter.handoff_receipt(calibrated.voiage_samples)
+        self.assertEqual(first, second)
+        self.assertTrue(first.digest.startswith("sha256:"))
+        self.assertEqual(first.sample_count, 2)
+
     def test_atlas_parameter_export_rejects_legacy_and_symlink_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             legacy = Path(directory) / "records.jsonl"
