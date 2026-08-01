@@ -25,7 +25,7 @@ source evidence remain out of scope until the applicable gates pass.
 | Displacement identity | One auditable displaced programme with baseline cost and unit | Programme identifier, source citation, baseline definition, and owner confirmation | Use a labelled synthetic comparator only |
 | Atlas evidence | Atlas-produced approved-derived packet for the selected context | Packet ID, revision, source/licence metadata, mapping review, and approval receipt | Candidate dossier remains non-promotable |
 | Source terms | Reconcile Atlas data terms and Hugging Face Hub metadata | Written owner/licence adjudication bound to exact revision and publication surface | Keep derived outputs private; do not publish source-derived data |
-| Health-economics review | Named independent health economist plus technical review panel | Reviewer identity/role, conflict declaration, reviewed revision, comments, disposition, and sign-off date | Internal review may improve code but cannot close the gate |
+| Independent review | Orchestrated panel of relevant subagents: health economics, NHS context/provenance, Atlas/licensing, and reproducibility/runtime | Per-role receipts plus consensus receipt, identities/models, conflict declarations, reviewed revision, findings, disagreements, disposition, and date | Panel may approve research implementation only; empirical promotion still needs accountable owner and human-review evidence |
 | Discounting convention | Report DHSC 1.5% and NICE 3.5% sensitivities, then select a primary convention | Decision record naming primary rate, perspective, horizon, and rationale | Keep both sensitivities and mark primary unresolved |
 | UOGTO/Kairos integration | Use exact released upstream contracts and acceptance evidence | Upstream revision, compatibility result, trace receipt, and owner disposition | Keep adapters isolated; make no native-integration claim |
 | Extraction/release authorization | Research-software release only until owner approvals exist | Extraction approval, legal/regulatory disposition, release commit, and maintainer authorization | Do not publish calibrated or regulator-facing outputs |
@@ -56,7 +56,7 @@ methodological release. That is a deliberate limitation, not a failed build.
 
 1. Record the NHS context and displaced-programme receipts.
 2. Request the Atlas approved-derived packet and source-term disposition.
-3. Bind the packet to named independent health-economics review.
+3. Bind the packet to the orchestrated relevant-subagent panel; obtain human/owner sign-off where empirical promotion requires it.
 4. Resolve discounting and interpretation choices in that review.
 5. Re-run calibration, uncertainty, and provenance validation at bound revisions.
 6. Record upstream, extraction, legal, and release dispositions separately.

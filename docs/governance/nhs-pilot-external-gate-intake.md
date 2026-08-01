@@ -11,11 +11,14 @@ For an owner-facing request form with receipt and hash requirements, use the
 
 ## Recommended decision
 
-Authorize one narrowly defined NHS decision context and one named independent
-health economist. Keep DHSC's 1.5% QALY discount convention and NICE's 3.5%
-reference-case convention as explicit sensitivity cases until that reviewer
-selects the applicable method. Ask Reimbursement Atlas to produce the approved,
-derived packet for that same context.
+Authorize one narrowly defined NHS decision context and an orchestrated panel
+of relevant subagents. The minimum panel includes health economics/methods,
+NHS context/displacement, Atlas provenance/licensing, and
+reproducibility/runtime roles. Keep DHSC's 1.5% QALY discount convention and
+NICE's 3.5% reference-case convention as explicit sensitivity cases until the
+panel consensus and any required owner sign-off select the applicable method.
+Ask Reimbursement Atlas to produce the approved-derived packet for that same
+context.
 
 ## Decision choices
 
@@ -42,12 +45,13 @@ derived packet for that same context.
 
 ### Review
 
-- **Named health economist (recommended minimum):** signs role mappings,
-  transformations, programme identity, uncertainty, and discounting.
-- **Independent review panel:** stronger assurance, with a lead reviewer and
-  adjudication receipt.
-- **Agent review only:** suitable for challenge testing, never sufficient for
-  approval.
+- **Four-role subagent panel (recommended):** economics/methods, NHS context,
+  Atlas/provenance, and reproducibility/runtime, with an orchestrator and
+  consensus receipt.
+- **Lean three-role panel:** economics, evidence/licensing, and runtime; use
+  only for research implementation when NHS-context review is not in scope.
+- **Panel plus named human economist:** strongest route for empirical
+  promotion; human sign-off remains separate from the panel consensus.
 
 ## Required context record
 
@@ -64,7 +68,7 @@ Provide these values before requesting promotion:
 | `intervention` / `comparator` | Decision technology and comparator |
 | `displaced_programme` | Programme and mechanism supplying actual `d` |
 | `programme_id` | Stable identity for Scenario 4 investment evidence |
-| `reviewer` | Named independent health economist and organization |
+| `reviewer` | Panel ID, role receipts, orchestrator, and any required human sign-off |
 | `discounting_method` | DHSC 1.5%, NICE 3.5%, or justified alternative |
 
 ## Promotion acceptance criteria
@@ -78,8 +82,8 @@ Promotion may be considered only when:
    investment-programme identity;
 5. uncertainty samples, transformations, and price-year treatment are
    reviewed and recorded; and
-6. the named reviewer signs the role mapping and the resulting calibration
-   receipt.
+6. the panel publishes role receipts and consensus; any required human reviewer
+   separately signs the role mapping and resulting calibration receipt.
 
 Until then, the canonical status remains Scenario 1 `candidate_only`, Scenarios
 2-4 `not_identifiable`, and `approved_calibration_permitted: false`.
