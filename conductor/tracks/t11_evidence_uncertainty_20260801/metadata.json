@@ -10,15 +10,15 @@
     {
       "id": "real-atlas-parameter-records",
       "kind": "external_evidence",
-      "status": "satisfied",
-      "scope": "external",
-      "evidence": "docs/governance/health-economist-approval.md; docs/governance/method-decisions.md"
+      "status": "pending",
+      "scope": "external"
     },
     {
       "id": "human-health-economics-review",
       "kind": "human_review",
-      "status": "pending",
-      "scope": "external"
+      "status": "satisfied",
+      "scope": "external",
+      "evidence": "docs/governance/health-economist-approval.md; docs/governance/method-decisions.md"
     },
     {
       "id": "voiage-licence-reconciliation",
