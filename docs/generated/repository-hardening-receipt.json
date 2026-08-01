@@ -21,17 +21,5 @@
     "concurrency": "cancel-in-progress",
     "job_timeouts_minutes": 30,
     "permissions": "contents: read"
-  },
-  "quality_frontier": {
-    "property_style": {
-      "path": "tests/test_quality_frontier.py",
-      "seed": 20260801,
-      "cases": 128,
-      "status": "implemented"
-    },
-    "contract": "implemented in deterministic suite and fixtures",
-    "mutation_testing": "deferred; no pinned runner in fast CI",
-    "dst": "deferred; no independent implementation or approved upstream contract",
-    "input_mutation": "deferred; bounded seeded sweep is current scope"
   }
 }
