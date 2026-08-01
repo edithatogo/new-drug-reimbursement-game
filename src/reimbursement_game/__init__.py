@@ -23,6 +23,9 @@ from .application_games import (
     evaluate_game3,
     solve_game1_grid,
     solve_game1_hidden_threshold,
+    solve_game1_bargaining,
+    solve_game1_net_rebate,
+    solve_game1_contract_enforcement,
     solve_game2,
 )
 from .economics import (
@@ -67,6 +70,9 @@ __all__ = [
     "evaluate_game3",
     "solve_game1_grid",
     "solve_game1_hidden_threshold",
+    "solve_game1_bargaining",
+    "solve_game1_net_rebate",
+    "solve_game1_contract_enforcement",
     "solve_game2",
 ]
 

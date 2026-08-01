@@ -82,6 +82,52 @@ def solve_game1_hidden_threshold(
                             tie_policy="reimburse")
 
 
+def solve_game1_bargaining(*, threshold: float, incremental_effect: float,
+                           bargaining_share: float) -> Game1Result:
+    """Extension in which the institution and firm split threshold surplus."""
+
+    _finite("bargaining_share", bargaining_share)
+    if not 0 <= bargaining_share <= 1:
+        raise ValueError("bargaining_share must be between zero and one")
+    result = solve_game1_grid(threshold=threshold, incremental_effect=incremental_effect,
+                              price_step=threshold, tie_policy="reimburse")
+    price = threshold * bargaining_share
+    return Game1Result(price, True, incremental_effect, price * incremental_effect,
+                       (threshold - price) * incremental_effect, threshold,
+                       (*result.assumptions, "bargained surplus share"), "extension")
+
+
+def solve_game1_net_rebate(*, threshold: float, incremental_effect: float,
+                           confidential_rebate: float) -> Game1Result:
+    """Extension reporting a list price and a lower net reimbursed price."""
+
+    _finite("confidential_rebate", confidential_rebate)
+    if confidential_rebate < 0 or confidential_rebate > threshold:
+        raise ValueError("confidential_rebate must be between zero and threshold")
+    result = solve_game1_grid(threshold=threshold, incremental_effect=incremental_effect,
+                              price_step=threshold, tie_policy="reimburse")
+    net_price = threshold - confidential_rebate
+    return Game1Result(threshold, True, incremental_effect, net_price * incremental_effect,
+                       confidential_rebate * incremental_effect, threshold,
+                       (*result.assumptions, "net price after confidential rebate"), "extension")
+
+
+def solve_game1_contract_enforcement(*, threshold: float, incremental_effect: float,
+                                     contract_price: float) -> Game1Result:
+    """Extension that rejects a contract price above the health threshold."""
+
+    _finite("contract_price", contract_price)
+    if contract_price < 0:
+        raise ValueError("contract_price must be non-negative")
+    if contract_price > threshold:
+        return Game1Result(None, False, 0.0, 0.0, 0.0, threshold,
+                           ("contract enforcement rejects price above threshold",), "extension")
+    return Game1Result(contract_price, True, incremental_effect,
+                       contract_price * incremental_effect,
+                       (threshold - contract_price) * incremental_effect, threshold,
+                       ("contract enforcement",), "extension")
+
+
 @dataclass(frozen=True, slots=True)
 class Game2Result:
     action: Literal["do_nothing", "lobby", "borrow"]

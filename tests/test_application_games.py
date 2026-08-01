@@ -2,8 +2,11 @@ import unittest
 
 from reimbursement_game.application_games import (
     evaluate_game3,
+    solve_game1_bargaining,
+    solve_game1_contract_enforcement,
     solve_game1_grid,
     solve_game1_hidden_threshold,
+    solve_game1_net_rebate,
     solve_game2,
 )
 
@@ -19,6 +22,11 @@ class ApplicationGamesTests(unittest.TestCase):
         self.assertEqual(rejected.offered_price, 9)
         hidden = solve_game1_hidden_threshold(thresholds=(10, 12), incremental_effect=2)
         self.assertEqual(hidden.offered_price, 10)
+
+    def test_game1_named_variants_are_explicit_extensions(self) -> None:
+        self.assertEqual(solve_game1_bargaining(threshold=10, incremental_effect=2, bargaining_share=0.5).offered_price, 5)
+        self.assertEqual(solve_game1_net_rebate(threshold=10, incremental_effect=2, confidential_rebate=2).firm_rent, 16)
+        self.assertFalse(solve_game1_contract_enforcement(threshold=10, incremental_effect=2, contract_price=11).reimbursed)
 
     def test_game2_deterministic_backward_choice(self) -> None:
         result = solve_game2(
