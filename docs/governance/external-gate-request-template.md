@@ -5,6 +5,9 @@ the NHS pilot beyond candidate-only readiness. Do not fill unknown fields with
 inferences. A blank or explicitly unavailable field keeps the corresponding
 gate pending.
 
+Unsent preparation language is available in the
+[external-gate outreach drafts](./external-gate-outreach-drafts.md).
+
 ## Request metadata
 
 | Field | Value |
