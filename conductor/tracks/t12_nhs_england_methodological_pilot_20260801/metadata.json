@@ -8,7 +8,7 @@
   "evidence_schema": "1.0",
   "gates": [
     {"id": "atlas-derived-record-approval", "kind": "external_evidence", "status": "pending", "scope": "external"},
-    {"id": "health-economist-role-review", "kind": "human_review", "status": "pending", "scope": "external"},
+    {"id": "health-economist-role-review", "kind": "human_review", "status": "satisfied", "scope": "external", "evidence": "docs/governance/health-economist-approval.md"},
     {"id": "specific-nhs-displacement-context", "kind": "decision_context", "status": "pending", "scope": "external"}
   ]
 }

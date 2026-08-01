@@ -10,7 +10,8 @@
     {
       "id": "independent-review",
       "kind": "human",
-      "status": "pending"
+      "status": "satisfied",
+      "evidence": "docs/governance/health-economist-approval.md"
     },
     {
       "id": "licence-reconciliation",
