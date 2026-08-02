@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "received_at": "2026-08-02T13:53:20Z",
+  "recipient_organisation": "NHS England",
+  "route": "england.contactus@nhs.net",
+  "subject": "Freedom of Information — TA1121 acoramidis specialised commissioning decision records",
+  "provider_status": "AUTO_ACKNOWLEDGED",
+  "substantive_response": false,
+  "coverage": {
+    "nhs_context": false,
+    "displaced_programme": false,
+    "decision_record": false,
+    "price_or_cost": false,
+    "atlas_packet": false
+  },
+  "normalized_content_sha256": "23c2731c22ca8e4a254a92b08e08a66c6ba8aa3f62ae07a3cb657e562585afb6",
+  "privacy": "Mailbox message identifiers, requester identity, correspondence, and full provider content are intentionally omitted from the repository receipt.",
+  "disposition": "negative_receipt_pending_substantive_response",
+  "next_action": "Keep the NHS context gate pending; a substantive disclosure or explicit no-records response may be recorded without enabling empirical calibration unless all packet and authorization gates are also satisfied."
+}
