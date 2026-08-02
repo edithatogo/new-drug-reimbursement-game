@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "enforce-claims-disabled",
+  "validated_at": "2026-08-03T09:30:00Z",
+  "artifacts": {
+    "readiness": "conductor/tracks/t13_empirical_calibration_20260802/research-readiness-receipt-2026-08-03.json",
+    "constrained_output": "conductor/tracks/t13_empirical_calibration_20260802/constrained-research-output-2026-08-03.json",
+    "release_authorization": "docs/governance/release-packet/research-only-release-authorization-2026-08-02.json"
+  },
+  "disabled_claim_classes": ["empirical", "payer", "HTA", "policy", "regulatory", "calibrated"],
+  "assertions": [
+    "decision_use_permitted is false",
+    "empirical_calibration_activated is false",
+    "empirical_output gate is disabled",
+    "research-only release authorization prohibits decision use, calibrated reimbursement, payer, HTA, policy, and regulatory claims",
+    "NHS displacement and Atlas-approved packet gates remain pending"
+  ],
+  "validation_commands": [
+    "python3 scripts/validate_empirical_readiness.py",
+    "python3 scripts/validate_claim_boundaries.py",
+    "python3 scripts/validate_confidential_boundaries.py",
+    "python3 scripts/validate_t13_closeout.py",
+    "python3 /Users/doughnut/.codex/skills/conductor/scripts/validate_conductor.py"
+  ],
+  "result": "passed_fail_closed_research_only",
+  "refresh_rule": "Any source, packet, method, licence, panel, authorization, purpose, audience, or destination change requires regeneration and revalidation before any claim class can be reconsidered."
+}
