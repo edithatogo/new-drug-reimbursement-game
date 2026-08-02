@@ -3,13 +3,13 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-02T10:36:18Z",
-  "updated_at": "2026-08-02T14:00:00Z",
+  "updated_at": "2026-08-03T00:15:00Z",
   "description": "Fail-closed empirical calibration and calibrated research-output controls",
   "evidence_schema": "1.0",
   "gates": [
-    {"id": "nhs-context", "kind": "external_evidence", "status": "pending", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/field-coverage-2026-08-02.json"},
+    {"id": "nhs-context", "kind": "external_evidence", "status": "pending", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/nhs-england-foi-submission-2026-08-02.json"},
     {"id": "atlas-approved-packet", "kind": "external_evidence", "status": "pending", "evidence": "docs/governance/atlas-packet-closure-checklist.md"},
-    {"id": "calibration-approval", "kind": "authorization", "status": "pending", "evidence": "docs/governance/health-economist-approval.md"},
+    {"id": "calibration-approval", "kind": "authorization", "status": "satisfied", "evidence": "docs/governance/health-economist-approval.md"},
     {"id": "source-receipt-coverage", "kind": "evidence", "status": "satisfied", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/field-coverage-2026-08-02.json"}
   ],
   "programme": "conductor/evidence-acquisition-programme.md"

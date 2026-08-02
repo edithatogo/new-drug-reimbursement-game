@@ -10,7 +10,7 @@
 
 ## Phase 1 — authorization and packet freeze
 
-- [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while restricted or confidential evidence remains gated. No outbound requests are in scope.
+- [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while restricted or confidential evidence remains gated. One bounded NHS England FOI request was submitted after explicit owner authorization.
 - [x] Run the repeatable official NHS/Atlas acquisition utility and preserve an exact run receipt. (`f5fe87d`, `7adf07b`, `3a0918b`)
 - [x] Search official committee, publication-scheme, procurement, finance, formulary, and service-routing sources for the complete NHS field set. (`3a0918b`)
 - [x] Emit a field-level coverage matrix and exact negative/deferred receipts for every unresolved role. (`3a0918b`)
@@ -38,3 +38,4 @@
 ## Review Fixes
 
 - [x] Normalize the programme document ending after `git diff --check` identified an extra EOF blank line. (`3f869d0`)
+- [x] Reconcile the authorized FOI submission and existing research-method approval with T13 lifecycle state.
