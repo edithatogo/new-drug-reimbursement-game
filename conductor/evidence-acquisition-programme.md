@@ -114,4 +114,3 @@ Atlas revision, source bytes or terms, transformations, units, uncertainty,
 code/model, sponsor, purpose, operator, environment, audience, destination, or
 repository commit changes. Reacquire sources, rerun the panel, and bind all
 approvals to the final commit before promotion or release.
-
