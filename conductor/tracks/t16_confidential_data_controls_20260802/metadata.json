@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-02T10:36:18Z",
-  "updated_at": "2026-08-02T12:00:00Z",
+  "updated_at": "2026-08-02T12:25:00Z",
   "description": "Confidential and commercially sensitive data handling, computation, and disclosure controls",
   "evidence_schema": "1.0",
   "gates": [
@@ -11,6 +11,6 @@
     {"id": "contract-and-nda", "kind": "legal", "status": "pending", "evidence": null},
     {"id": "controlled-environment", "kind": "security", "status": "pending", "evidence": "conductor/tracks/t15_raw_data_governance_20260802/index.md"},
     {"id": "disclosure-authorization", "kind": "authorization", "status": "pending", "evidence": null},
-    {"id": "public-control-evidence", "kind": "evidence", "status": "pending", "evidence": "conductor/tracks/t16_confidential_data_controls_20260802/sourcing.md"}
+    {"id": "public-control-evidence", "kind": "evidence", "status": "satisfied", "evidence": "conductor/tracks/t16_confidential_data_controls_20260802/source-inventory.json"}
   ]
 }
