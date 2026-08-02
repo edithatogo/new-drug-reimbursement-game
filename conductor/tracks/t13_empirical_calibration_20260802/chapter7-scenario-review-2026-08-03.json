@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "run-four-synthetic-scenarios",
+  "reviewed_artifact": "chapter7-scenario-run-2026-08-03.json",
+  "reviewed_output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061",
+  "findings": [],
+  "checks": {
+    "scenario_coverage": ["scenario_1", "scenario_2", "scenario_3", "scenario_4"],
+    "synthetic_labels": "pass",
+    "public_context_separation": "pass",
+    "frozen_input_binding": "pass",
+    "scenario_4_limitations": "pass",
+    "claim_boundary": "pass"
+  },
+  "disposition": "approved_research_only; empirical_promotion_deferred",
+  "reviewed_at": "2026-08-03T07:05:00Z"
+}
