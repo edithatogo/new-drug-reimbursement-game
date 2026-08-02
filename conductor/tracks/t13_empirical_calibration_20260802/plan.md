@@ -54,7 +54,7 @@
 - [x] Validate the future Atlas packet-ingestion, hash-binding, panel-review, and requalification path against exact target artifacts and commit. (`validate_t13_closeout.py`, `panel-review-target-2026-08-03.json`, `atlas-requalification-validation-2026-08-03.json`; `b9bdc35`)
 - [x] Review Atlas requalification bindings, panel completeness, stale handling, and external-gate visibility. (`atlas-requalification-review-2026-08-03.json`)
 - [x] Prepare negative/deferred receipts for inaccessible, incomplete, conflicting, and restricted evidence, with explicit fallback and stop conditions. (`contingency-register-2026-08-03.json`, `negative-deferred-receipts-2026-08-03.json`; `e22ed8e`)
-- [x] Test stale-source detection and invalidation when URLs, revisions, terms, transformations, or commits change; require reacquisition and requalification. (`stale-source-invalidation-2026-08-03.json`, `gate-resolution-plan-2026-08-03.json`, `validate_t13_closeout.py`; `cba9f19`)
+- [x] Test stale-source detection and invalidation when URLs, revisions, terms, transformations, or commits change; require reacquisition and requalification. (`stale-source-invalidation-2026-08-03.json`, `gate-resolution-plan-2026-08-03.json`, `validate_t13_closeout.py`; `71c3115`)
 - [x] Keep empirical, payer, HTA, policy, regulatory, and calibrated claims disabled until all external gates and packet-bound authorization pass. (`research-readiness-receipt-2026-08-03.json`)
 
 - [x] Normalize the programme document ending after `git diff --check` identified an extra EOF blank line. (`3f869d0`)
