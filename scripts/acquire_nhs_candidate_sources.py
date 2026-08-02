@@ -25,6 +25,11 @@ SOURCES = {
     "kent-medway-ta1121": "https://www.kentandmedwayformulary.nhs.uk/therapeutic-sections/cardiovascular-system/heart-failure/",
     "northwest-tag-acoramidis": "https://nwknowledgenow.nhs.uk/wp-content/uploads/2026/03/TAG-Agreements-March-2026.pdf",
     "south-yorkshire-imoc-february-2026": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20Minutes%20IMOC%20February%202026.pdf?_rsc=1suc1",
+    "mft-nice-adherence-march-2026": "https://mft.nhs.uk/app/uploads/sites/7/2026/03/NICE-TA-Adherence-Checklist-Mar-26.pdf",
+    "somerset-medicines-board-january-2026": "https://nhssomerset.nhs.uk/wp-content/uploads/sites/2/MPB-Minutes-Jan-2026.pdf",
+    "southwest-london-jfc-january-2026": "https://www.swljointmedicinesformulary.nhs.uk/docs/files/SWL%20JFC%20Bulletin%20January%202026.pdf",
+    "north-east-london-formulary": "https://nel-jointformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09",
+    "buckinghamshire-formulary": "https://bucksformulary.nhs.uk/reports/Archive/A0003.asp",
     "atlas-v0.1.1-release": "https://api.github.com/repos/edithatogo/reimbursement-atlas/releases/tags/v0.1.1",
 }
 
@@ -111,7 +116,7 @@ def field_coverage() -> dict[str, str]:
         "payer_or_commissioner": "candidate_south_yorkshire_icb",
         "budget_boundary": "missing",
         "service_line": "candidate_specialist_attr_cm",
-        "provider": "missing_authoritative_owner_mapping",
+        "provider": "candidate_nac_or_midlands_service_routing_not_owner",
         "decision_date": "candidate_february_2026",
         "price_year": "missing_programme_specific",
         "intervention": "supported_acoramidis",
