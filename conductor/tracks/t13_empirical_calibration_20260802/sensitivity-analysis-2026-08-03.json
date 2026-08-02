@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "perform-sensitivity-analysis",
+  "source_output": "constrained-research-output-2026-08-03.json",
+  "source_output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061",
+  "classification": "synthetic_research_only",
+  "scenario_results": [
+    {"scenario": "scenario_1", "beta": 5.0, "evci": 100.0, "iper": 6.0, "nebh": -4.0, "sensitivity_status": "synthetic_fixture_only"},
+    {"scenario": "scenario_2", "beta": 8.0, "evci": 160.0, "iper": 6.0, "nebh": 5.0, "sensitivity_status": "synthetic_fixture_only"},
+    {"scenario": "scenario_3", "beta": 4.444444444444445, "evci": 88.88888888888889, "iper": 6.0, "nebh": -7.0, "sensitivity_status": "synthetic_fixture_only"},
+    {"scenario": "scenario_4", "beta": 1.9047619047619047, "evci": 38.095238095238095, "iper": 6.0, "nebh": -43.0, "sensitivity_status": "synthetic_fixture_only"}
+  ],
+  "scenario_4_discounting": {
+    "synthetic_conformance_rate": {"rate": 0.03, "status": "used_in_fixture_only"},
+    "provisional_primary_rate": {"rate": 0.035, "status": "method_only_pending_approved_time_profile"},
+    "sensitivity_rate": {"rate": 0.015, "status": "method_only_pending_approved_time_profile"},
+    "phi": "not_identifiable_without_approved_programme_time_profile",
+    "joint_uncertainty": "not_identifiable_without_joint_draw_ids_and_dependence_provenance"
+  },
+  "checks": {
+    "all_four_scenarios_present": true,
+    "currency_and_health_rescaling_invariant": true,
+    "invalid_domains_fail_closed": true,
+    "no_empirical_parameter_substitution": true
+  },
+  "limitations": ["No public source identifies the displaced programme, local baseline, or approved Scenario 4 time profile.", "No discount-rate result is promoted as an empirical finding.", "No payer, HTA, policy, regulatory, or calibrated claim is enabled."],
+  "disposition": "sensitivity_complete_research_only"
+}
