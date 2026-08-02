@@ -1,0 +1,23 @@
+{
+  "schema": "relevant-subagent-panel-consensus/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-02",
+  "orchestrator": "codex-root",
+  "reviewed_commit": "7dbb6d16c7dcf99613139cdea8becb08b475bf3d",
+  "review_target_manifest": {
+    "path": "docs/governance/panel-review-target-2026-08-02.json",
+    "sha256": "0b31978061b08fffee62f5c850a1252baa5219c61e8c885a24afc425c30c2ed4"
+  },
+  "required_roles": ["health_economics_methods", "nhs_context_displacement", "atlas_provenance_licensing", "reproducibility_runtime"],
+  "quorum": {"required": 4, "received": 4},
+  "role_receipts": [
+    {"role": "health_economics_methods", "path": "docs/governance/panel-receipts/health-economics-methods-2026-08-02.json", "sha256": "3defc32dd4c3e7ee82fc7b29736b3e44ea35dd4459404981bf1199f01b778ec7"},
+    {"role": "nhs_context_displacement", "path": "docs/governance/panel-receipts/nhs-context-displacement-2026-08-02.json", "sha256": "62b380b2d0bfd8b8751c3ea86bf10e30c2194a7dfe08aa4ba2c7d81b86ecccc5"},
+    {"role": "atlas_provenance_licensing", "path": "docs/governance/panel-receipts/atlas-provenance-licensing-2026-08-02.json", "sha256": "56d348b360f8775e7e0c8b941c15b183e9223a5db2ec3fde6abd4ab052703b5b"},
+    {"role": "reproducibility_runtime", "path": "docs/governance/panel-receipts/reproducibility-runtime-2026-08-02.json", "sha256": "7405120e614b05fc5a4adae74f331cb8c6e7abcd8d31b60cdb4ea3e0b3deabf5"}
+  ],
+  "disagreements": [],
+  "unresolved_gates": ["specific-nhs-displacement-context", "atlas-derived-record-approval", "kairos-maintainer-contract-acceptance", "extraction-source-term-authorization"],
+  "final_disposition": "approve-research-only-defer-empirical-promotion",
+  "limitations": ["This is technical subagent evidence, not human HTA, legal, regulatory, payer, or upstream-maintainer approval."],
+  "created_at": "2026-08-02T00:00:00Z"
+}

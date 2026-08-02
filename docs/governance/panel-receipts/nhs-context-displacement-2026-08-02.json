@@ -1,0 +1,44 @@
+{
+  "schema": "relevant-subagent-panel-role-receipt/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-02",
+  "role": "nhs_context_displacement",
+  "agent_id": "evidence_role",
+  "review_mode": "read-only",
+  "reviewed_commit": "7dbb6d16c7dcf99613139cdea8becb08b475bf3d",
+  "review_target_manifest": "docs/governance/panel-review-target-2026-08-02.json",
+  "review_target_manifest_sha256": "0b31978061b08fffee62f5c850a1252baa5219c61e8c885a24afc425c30c2ed4",
+  "reviewed_packet_digest": "manifest-bound",
+  "reviewed_files": {
+    "docs/governance/nhs-acquisition-receipt-south-yorkshire-imoc-tldl-2026-08-02.json": "8bc06911d496dd283b77d4367454793f19663c8efe63ca15139f4b2fbd72c278",
+    "docs/governance/nhs-acquisition-receipt-south-yorkshire-imoc-2026-08-01.json": "8da44b0ca06c7bafe4070e1a7daf26e45e0d2ca3ccafdcad1d16caf1a3fa1720",
+    "docs/governance/nhs-context-negative-receipt-2026-08-01.md": "9d4fa2b56780b8a6393d552db121a6835bcb90192bbff93fce3b4d42d9afe45b",
+    "docs/governance/nhs-pilot-external-gate-intake.md": "0dcdfaad44b83d6c4e6d8f09399e1c046abd039de4730902627eeb3614e6f8d5"
+  },
+  "checks": [
+    "payer and local service context are present for South Yorkshire ICB",
+    "TA1121/acoramidis and February 2026 local decision locator are present",
+    "candidate receipt is immutable and source bytes are SHA-256 recorded",
+    "comparator, displaced programme, baseline unit, price year, stable programme ID, and accountable budget decision were checked"
+  ],
+  "verified": [
+    "South Yorkshire ICB is identified as payer",
+    "acoramidis and NICE TA1121 are identified",
+    "traffic-light status Red and local date February 2026 are recorded"
+  ],
+  "missing_or_unverified": [
+    "authoritative displaced programme",
+    "comparator",
+    "baseline unit",
+    "price year",
+    "stable programme ID",
+    "accountable budget decision and sign-off"
+  ],
+  "disposition": "defer",
+  "limitations": [
+    "A traffic-light list does not establish displacement or permit inference of model parameter d.",
+    "Negative search evidence is not proof that a local decision does not exist.",
+    "This receipt is not payer, HTA, legal, regulatory, or release authorization."
+  ],
+  "attestation": "The review is bound to the exact commit and packet digest above; no approval is inferred from candidate evidence.",
+  "timestamp": "2026-08-02"
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "relevant-subagent-panel-role-receipt/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-02",
+  "role": "atlas_provenance_licensing",
+  "agent_id": "evidence_role",
+  "review_mode": "read-only",
+  "reviewed_commit": "7dbb6d16c7dcf99613139cdea8becb08b475bf3d",
+  "review_target_manifest": "docs/governance/panel-review-target-2026-08-02.json",
+  "review_target_manifest_sha256": "0b31978061b08fffee62f5c850a1252baa5219c61e8c885a24afc425c30c2ed4",
+  "reviewed_packet_digest": "manifest-bound",
+  "reviewed_files": {
+    "docs/governance/atlas-status-receipt-2026-08-01.json": "3a948600e278ae2d8639b7d51d022c148471e9c3f8c1cfcc86484145baeb4e2b",
+    "docs/governance/atlas-derived-packet-intake-ta1121.md": "6615d2748a366c54bf376df6a750c1bbd5da56233ad4c4bfee76a623ac0b3de1",
+    "docs/governance/atlas-licence-adjudication.md": "62168aa8aa9af2ef54a2ad06f765f18487074fea0bcecdb27556264d6ed62218"
+  },
+  "checks": [
+    "Atlas software and derived-ledger licence dispositions were read",
+    "ecosystem lock and resolved checkout revisions were compared",
+    "TA1121-specific parameter coverage and promotion rule were checked",
+    "raw payload redistribution exclusion and provenance requirements were checked"
+  ],
+  "verified": [
+    "Atlas software licence is recorded as Apache-2.0",
+    "derived-ledger scope is owner-approved and raw payload redistribution is excluded",
+    "source receipts and candidate fixture are named",
+    "promotion rule requires reconciled revision and programme-aligned approved-derived packet"
+  ],
+  "missing_or_unverified": [
+    "lock/checkout revision reconciliation",
+    "approved TA1121-specific derived packet",
+    "provenance and transformation receipt for n, m, d, mu, phi, annual programme health effect, and horizon",
+    "uncertainty and accountable Atlas owner approval for promotion"
+  ],
+  "disposition": "defer",
+  "limitations": [
+    "General licence validation does not approve a TA1121 packet.",
+    "Candidate records cannot be promoted to calibrated or empirical claims.",
+    "This receipt is not Atlas maintainer authorization or release approval."
+  ],
+  "attestation": "The review is bound to the exact commit and packet digest above; no Atlas approval or source-term authorization is inferred.",
+  "timestamp": "2026-08-02"
+}
