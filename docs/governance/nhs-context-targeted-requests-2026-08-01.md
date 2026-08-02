@@ -4,6 +4,54 @@ These drafts are based on the triangulated evidence matrix and request only
 non-patient-level information needed to identify the displacement opportunity
 cost for the TA1121 methodological pilot.
 
+## Recommended first request — NHS England FOI route
+
+Official route: `england.contactus@nhs.net`, with `Freedom of Information` in
+the subject line. NHS England requires a real requester name, an address for
+correspondence (an email address may be used), and a specific description of
+the recorded information requested. The request below is complete except for
+those identity/sending-account fields and has not been sent.
+
+**Subject:** Freedom of Information — TA1121 acoramidis specialised commissioning decision records
+
+**Body:**
+
+> Requester: `[REAL REQUESTER NAME]`
+> Address for correspondence: `[REQUESTER EMAIL OR POSTAL ADDRESS]`
+>
+> Please provide recorded information held by or on behalf of NHS England
+> concerning implementation or specialised commissioning of NICE TA1121,
+> acoramidis for transthyretin amyloidosis with cardiomyopathy, from
+> 14 January 2026 to the date of this request.
+>
+> For one commissioning or implementation context, please provide any decision
+> paper, minute, implementation record, finance/resource-impact record, service
+> specification, or redacted extract that records:
+>
+> 1. the accountable commissioner and funding or budget boundary;
+> 2. the commissioned provider/service line and stable programme, service, or
+>    decision identifier;
+> 3. the implementation/decision date and applicable price year;
+> 4. whether acoramidis replaced, supplemented, or was offered alongside
+>    tafamidis or another explicitly named comparator;
+> 5. any programme or service treated as displaced or reallocated for the
+>    implementation decision;
+> 6. any recorded baseline cost and unit for that displaced/reallocated
+>    programme; and
+> 7. the team or role accountable for the decision record.
+>
+> Please provide existing recorded information only; no new analysis is
+> requested. No patient-level data or confidential commercial/net-price value
+> is requested. Redaction of exempt information is acceptable where the listed
+> non-confidential context remains visible. If NHS England does not hold some
+> or all of this information, please confirm that and, if recorded, identify
+> the body or team to which the request should be directed. Electronic format
+> is preferred.
+
+Submitting this request is an external communication and remains blocked until
+the requester identity, correspondence address, and sending account are
+explicitly authorized.
+
 ## Royal Free National Amyloidosis Centre
 
 The public implementation records identify Royal Free as a commissioned

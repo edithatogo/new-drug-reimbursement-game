@@ -11,18 +11,18 @@
 ## Phase 1 — authorization and packet freeze
 
 - [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while external requests and restricted access remain gated.
-- [ ] Run the repeatable official NHS/Atlas acquisition utility and preserve an exact run receipt.
-- [ ] Search official committee, publication-scheme, procurement, finance, formulary, and service-routing sources for the complete NHS field set.
-- [ ] Emit a field-level coverage matrix and exact negative/deferred receipts for every unresolved role.
+- [x] Run the repeatable official NHS/Atlas acquisition utility and preserve an exact run receipt. (`f5fe87d`, `7adf07b`, `3a0918b`)
+- [x] Search official committee, publication-scheme, procurement, finance, formulary, and service-routing sources for the complete NHS field set. (`3a0918b`)
+- [x] Emit a field-level coverage matrix and exact negative/deferred receipts for every unresolved role. (`3a0918b`)
 - [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals, sourcing all public components before requesting external action. Public components are complete; authoritative displacement and approved Atlas packet remain external.
 - [ ] Freeze the repository commit, packet digest, parameter-role mapping, and price-year conversions.
 - [ ] Review checkpoint: verify every external gate and fail closed on missing evidence.
 
 ## Phase 2 — calibration validation
 
-- [ ] Add failing tests for packet alignment, uncertainty, discounting, and promotion controls.
-- [ ] Implement any missing deterministic validation and receipt generation.
-- [ ] Run cross-language, property, provenance, and packaging checks.
+- [x] Add failing tests for acquisition binding, packet completeness, source integrity, payload retention, and promotion controls. Existing calibration tests retain role, programme, uncertainty, and Scenario 4 checks. (`2a80c09`, `8492c76`)
+- [x] Implement deterministic acquisition and empirical-readiness validation with exact run-digest binding. (`2a80c09`, `8492c76`, `b0956af`)
+- [x] Run cross-language, property, provenance, packaging, and Conductor checks: 127 Python and 29 Rust tests pass. (`b0956af`)
 - [ ] Review checkpoint: reconcile equations, assumptions, heuristics, and parameters with authoritative sources.
 
 ## Phase 3 — constrained output

@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t13-nhs-england-foi-route-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "NHS England", "title": "Freedom of Information Act and Environmental Information Regulations", "url_or_repository": "https://www.england.nhs.uk/contact-us/foi/", "revision_or_effective_date": "page retrieved 2026-08-02", "locator": "How do I request information; validity and response route"},
+  "retrieval": {"retrieved_at": "2026-08-02T12:52:00Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "46f01a0fb3411e232e78f5a1965b34bed2dbc70f1c53b0deca2a57f8dad2c405", "content_length": 42454},
+  "rights": {"terms": "Official public NHS England request guidance; no request or personal information is stored in this receipt.", "permitted_destination": "request-routing metadata, citation, and unsent request preparation"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Identifies the official written FOI route and the requirement for a real requester name, correspondence address, and specific description of recorded information.", "contingency": "Keep the request unsent until the requester identity/address and sending account are explicitly selected.", "refresh_or_retry_condition": "Refresh immediately before submission or if NHS England changes its contact route or validity requirements."}
+}
