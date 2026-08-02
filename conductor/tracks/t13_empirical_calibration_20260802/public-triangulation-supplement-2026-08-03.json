@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "purpose": "Supplemental public examples for triangulation; not part of the frozen empirical packet.",
+  "retrieved_at": "2026-08-03T05:20:00Z",
+  "sources": [
+    {
+      "id": "nice-ta1121-overview",
+      "publisher": "National Institute for Health and Care Excellence",
+      "uri": "https://www.nice.org.uk/guidance/ta1121",
+      "http_status": 200,
+      "mime_type": "text/html",
+      "bytes": 18613,
+      "sha256": "187a3b5ee1e540f1956ee1298896030dd06c8f4b584642c09900d3e39b733408",
+      "supports": ["stable TA1121 identifier", "acoramidis indication and recommendation context"],
+      "limitations": ["no local displacement, baseline cost, or confidential net price"]
+    },
+    {
+      "id": "nhs-england-tafamidis-announcement",
+      "publisher": "NHS England",
+      "uri": "https://www.england.nhs.uk/2024/05/first-ever-life-saving-treatment-for-rare-heart-condition-available-on-the-nhs/",
+      "http_status": 200,
+      "mime_type": "text/html",
+      "bytes": 45128,
+      "sha256": "caeee0da3947d8ee52108b1bb31badac3b90a867a5d8a767ac7ff425e224353c",
+      "supports": ["NHS England national adoption context", "tafamidis as an earlier ATTR-CM comparator"],
+      "limitations": ["does not establish tafamidis displacement or a local budget baseline"]
+    }
+  ],
+  "triangulation": {
+    "result": "supports_comparator_and_national_context_only",
+    "does_not_close": ["displaced_programme", "baseline_cost", "stable_local_decision_id", "Atlas_packet"],
+    "recommended_use": "Use as independent context corroboration and sensitivity framing; keep empirical calibration disabled."
+  }
+}
