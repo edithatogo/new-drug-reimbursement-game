@@ -18,7 +18,7 @@
 - [x] Submit the bounded, non-patient-level NHS England FOI request after explicit owner authorization; retain only non-personal delivery metadata in Git. (`nhs-england-foi-submission-2026-08-02.json`)
 - [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals. Public commissioner, provider class, programme category, pathway, comparator, implementation timing, horizon, and market-share context are supported; actual displacement, confidential prices, and an approved Atlas packet remain unavailable.
 - [x] Freeze the repository commit, packet digest, parameter-role mapping, and price-year disposition. (`packet-freeze-2026-08-03.json`)
-- [ ] Review checkpoint: verify every external gate and fail closed on missing evidence.
+- [x] Review checkpoint: verify every external gate and fail closed on missing evidence; NHS displacement and Atlas packet remain pending without blocking synthetic research outputs. (`research-readiness-receipt-2026-08-03.json`)
 
 ## Phase 2 — calibration validation
 
@@ -32,8 +32,8 @@
 - [x] Generate synthetic research-only outputs and limitation metadata; empirical calibration remains disabled. (`constrained-research-output-2026-08-03.json`)
 - [x] Obtain exact-target economics, NHS/Atlas provenance, reproducibility/security, and runtime/governance role receipts. (`panel-review-target-2026-08-03.json`, `panel-receipts/`)
 - [x] Regenerate exact-target panel consensus and research-only readiness receipt. (`panel-consensus-2026-08-03.json`, `research-readiness-receipt-2026-08-03.json`)
-- [ ] Completion checkpoint: run full repository and Conductor validation.
-- [ ] Completion checkpoint: reacquire or revalidate every receipt invalidated by the final commit or release freeze.
+- [x] Completion checkpoint: run full repository and Conductor validation: 129 Python and 29 Rust tests pass with all scope, provenance, claim, privacy, lint, type, and build gates.
+- [x] Completion checkpoint: revalidate every frozen input, artifact, role receipt, consensus, and readiness binding with `scripts/validate_t13_closeout.py`.
 
 ## Review Fixes
 
