@@ -2,7 +2,7 @@
   "schema": "research-only-release-evidence-manifest/v1",
   "release_candidate": "v0.4.0-research-only",
   "repository": "edithatogo/new-drug-reimbursement-game",
-  "commit": "5f8b1ec300ef9683b246f063ad2c7753cd34677a",
+  "commit": "2b023e7c3f0cb5ff5f56c2b45a8c807c71a6c62b",
   "included_surface": "code, methodology, documentation, synthetic fixtures, candidate-only metadata, and validation receipts",
   "excluded_surface": ["raw or confidential source data", "unresolved source-derived payloads", "calibrated reimbursement claims", "HTA, policy, or regulatory claims"],
   "artifacts": [
