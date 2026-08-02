@@ -10,11 +10,12 @@
 
 ## Phase 1 — authorization and packet freeze
 
-- [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while external requests and restricted access remain gated.
+- [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while restricted or confidential evidence remains gated. No outbound requests are in scope.
 - [x] Run the repeatable official NHS/Atlas acquisition utility and preserve an exact run receipt. (`f5fe87d`, `7adf07b`, `3a0918b`)
 - [x] Search official committee, publication-scheme, procurement, finance, formulary, and service-routing sources for the complete NHS field set. (`3a0918b`)
 - [x] Emit a field-level coverage matrix and exact negative/deferred receipts for every unresolved role. (`3a0918b`)
-- [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals, sourcing all public components before requesting external action. Public components are complete; authoritative displacement and approved Atlas packet remain external.
+- [x] Search public grey literature, including indexed FOI holdings, NHS disclosure-log policy, committee minutes, formularies, board material, and official implementation documents; preserve hashes and access failures. (`grey-literature-receipt-2026-08-02.json`)
+- [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals. Public commissioner, provider class, programme category, pathway, comparator, implementation timing, horizon, and market-share context are supported; actual displacement, confidential prices, and an approved Atlas packet remain unavailable.
 - [ ] Freeze the repository commit, packet digest, parameter-role mapping, and price-year conversions.
 - [ ] Review checkpoint: verify every external gate and fail closed on missing evidence.
 
