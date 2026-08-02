@@ -44,7 +44,7 @@
 
 ## While-waiting implementation tasks
 
-- [x] Harvest and hash public NICE, NHS England, ICB, specialist-centre, committee, and publication-scheme records; preserve source status, MIME, byte length, SHA-256, locators, and limitations. (`grey-literature-receipt-2026-08-02.json`, `public-triangulation-supplement-2026-08-03.json`)
+- [x] Harvest and hash public NICE, NHS England, ICB, specialist-centre, committee, and publication-scheme records; preserve source status, MIME, byte length, SHA-256, locators, and limitations. (`grey-literature-receipt-2026-08-02.json`, `public-triangulation-supplement-2026-08-03.json`, `public-source-refresh-2026-08-03.json`)
 - [x] Triangulate comparator and national implementation context using independent official publishers or accountable custodians; reject mirrors as corroboration. (`public-triangulation-supplement-2026-08-03.json`, `conductor/triangulation-contingency-protocol.md`)
 - [x] Run all four Chapter 7 scenarios using synthetic or explicitly labelled public-context assumptions; keep empirical calibration disabled. (`constrained-research-output-2026-08-03.json`)
 - [x] Perform sensitivity analyses, including Scenario 4 limitation demonstrations and missing time-profile/joint-uncertainty handling. (`method-reconciliation-2026-08-03.md`, `constrained-research-output-2026-08-03.json`)

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "purpose": "Bounded public-source refresh for context triangulation; not an empirical packet.",
+  "retrieved_at": "2026-08-03T05:45:00Z",
+  "method": "Programmatic HTTPS retrieval with a stable User-Agent; response bytes hashed before interpretation.",
+  "sources": [
+    {"id": "nice-ta1121-overview-refresh", "publisher": "NICE", "uri": "https://www.nice.org.uk/guidance/ta1121", "http_status": 200, "mime_type": "text/html", "bytes": 18613, "sha256": "187a3b5ee1e540f1956ee1298896030dd06c8f4b584642c09900d3e39b733408", "etag": "W/6FC0E80364893DC1F1012B7BA206180C", "supports": ["TA1121 identity and indication context"], "limitations": ["no local displacement or baseline"]},
+    {"id": "nice-ta1121-committee-refresh", "publisher": "NICE", "uri": "https://www.nice.org.uk/guidance/ta1121/evidence/committee-papers-pdf-15554934109", "http_status": 200, "mime_type": "application/pdf", "bytes": 16537210, "sha256": "d3355492983a2d439c2d812259c20b77a480c6fd5b1e7e1ac85bc09ea75cc355", "etag": "A10E9833C1F7242B3507E4EEDF324D06", "supports": ["committee appraisal context and comparator framing"], "limitations": ["does not identify an attributable local displaced programme or confidential price"]},
+    {"id": "nhs-england-tafamidis-refresh", "publisher": "NHS England", "uri": "https://www.england.nhs.uk/2024/05/first-ever-life-saving-treatment-for-rare-heart-condition-available-on-the-nhs/", "http_status": 200, "mime_type": "text/html", "bytes": 45128, "sha256": "caeee0da3947d8ee52108b1bb31badac3b90a867a5d8a767ac7ff425e224353c", "supports": ["national ATTR-CM treatment adoption context"], "limitations": ["does not establish acoramidis displacement"]},
+    {"id": "nhs-service-specifications-refresh", "publisher": "NHS England", "uri": "https://www.england.nhs.uk/specialised-commissioning-document-library/service-specifications/", "http_status": 200, "mime_type": "text/html", "bytes": 81108, "sha256": "a3acc26aadf611e5fe8edc23ea1d1e0259731ff859b75cb69af8034b8aac3fd2", "supports": ["specialised service and diagnostic-provider routing context"], "limitations": ["service specification index is not a budget displacement decision"]},
+    {"id": "nhs-foi-policy-refresh", "publisher": "NHS England", "uri": "https://www.england.nhs.uk/long-read/freedom-of-information-and-environmental-information-regulations-policy/", "http_status": 200, "mime_type": "text/html", "bytes": 143280, "sha256": "0e616600521ba3fa4480655d865911f0a01ca8ea3b9ac5e71b7467309dbc9bb1", "supports": ["FOI route and disclosure-policy context"], "limitations": ["policy is not evidence that responsive records exist"]}
+  ],
+  "triangulation": {"independent_publishers": ["NICE", "NHS England"], "result": "context_reinforced_only", "does_not_close": ["displaced_programme", "local_baseline", "Atlas_packet", "empirical_authorization"]},
+  "disposition": "retain_as_non_frozen_public_context; keep_empirical_claims_disabled",
+  "refresh_rule": "Reacquire when ETag, bytes, revision, programme context, or intended use changes; invalidate dependent derived outputs."
+}
