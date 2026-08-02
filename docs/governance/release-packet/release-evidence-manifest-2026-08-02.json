@@ -1,0 +1,17 @@
+{
+  "schema": "research-only-release-evidence-manifest/v1",
+  "release_candidate": "v0.4.0-research-only",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "commit": "5f8b1ec300ef9683b246f063ad2c7753cd34677a",
+  "included_surface": "code, methodology, documentation, synthetic fixtures, candidate-only metadata, and validation receipts",
+  "excluded_surface": ["raw or confidential source data", "unresolved source-derived payloads", "calibrated reimbursement claims", "HTA, policy, or regulatory claims"],
+  "artifacts": [
+    {"path": "docs/releases/v0.4.0-research-only.md", "sha256": "659af586f3d4b86c395413c8468935fc56453f6c60787b08c73f40cda2c2cfd8"},
+    {"path": "docs/governance/release-packet/release-licence-disposition.json", "sha256": "0aec16768f0ac05fdaf5fd0ef404bc097d86a7122bca1707c8b2e2d258d6fa01"},
+    {"path": "docs/governance/release-packet/reproducibility-validation-receipt-2026-08-02.json", "sha256": "56bc73d95506bcda1a86fe77af51c6399cd8a13a0edf110c45f16cbb75c0ba17"},
+    {"path": "docs/governance/release-packet/security-privacy-scope-receipt-2026-08-02.json", "sha256": "5acbd9a6248bdac205044fbe6bd9718afd895c4c60180de9ad6d22d692d09737"}
+  ],
+  "authorization_status": "pending_final_owner_attestation",
+  "promotion_rule": "Any changed commit, artifact hash, source term, or release surface invalidates this manifest and requires regeneration.",
+  "created_at": "2026-08-02T00:00:00Z"
+}

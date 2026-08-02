@@ -1,0 +1,38 @@
+{
+  "schema": "https://github.com/edithatogo/new-drug-reimbursement-game/governance/reproducibility-validation-receipt/v1",
+  "receiptId": "reproducibility-validation-2026-08-02",
+  "reviewTarget": {
+    "repository": "edithatogo/new-drug-reimbursement-game",
+    "commit": "5f8b1ec300ef9683b246f063ad2c7753cd34677a",
+    "workingTree": "clean-at-start"
+  },
+  "scope": "research-only release candidate; code and synthetic fixtures only",
+  "checks": [
+    {"name": "scope validation", "command": "python scripts/validate_scope.py", "status": "pass"},
+    {"name": "Python unit tests", "command": "python -m unittest discover -s tests -p test_*.py", "status": "pass", "details": "106 tests"},
+    {"name": "compileall", "command": "python -m compileall -q src scripts tests", "status": "pass"},
+    {"name": "ecosystem contract", "command": "python scripts/discover_ecosystem.py --offline-fixture-mode", "status": "pass", "details": "4 components"},
+    {"name": "governance inventory", "command": "python scripts/governance_inventory.py --check", "status": "pass"},
+    {"name": "extraction validation", "command": "python scripts/validate_extraction.py", "status": "pass", "details": "2 crates"},
+    {"name": "repository hardening", "command": "python scripts/repository_hardening.py --check", "status": "pass"},
+    {"name": "Python/Rust quality gate", "command": "python scripts/run_quality_gate.py", "status": "pass"},
+    {"name": "packaging reproducibility", "command": "python scripts/validate_packaging.py", "status": "pass", "details": "clean-environment packaging validation passed"},
+    {"name": "Rust formatting", "command": "cargo fmt --all -- --check", "status": "pass"},
+    {"name": "Rust clippy", "command": "cargo clippy --workspace --all-targets -- -D warnings", "status": "pass"},
+    {"name": "Rust tests", "command": "cargo test --workspace", "status": "pass", "details": "29 tests passed"}
+  ],
+  "releaseArtifacts": [
+    {"path": "dist/release-assets-manifest.json", "sha256": "777667f551443284e8491fe18fe70401c9d61827d4b317a4f8113a2ea1e57e26"},
+    {"path": "dist/SHA256SUMS", "sha256": "d35931a9da6aff881335d7600137e89d1194739d0ebfa958ff38b1834a4f3605"},
+    {"path": "dist/publication-status.json", "sha256": "852c8bce264d893055985321cbdddd1f85c0ff0687009283ab55c048313208ea"},
+    {"path": "dist/zenodo-handoff.json", "sha256": "8f5fca7d679374774fda99d5f54b41c4b6acb8725ddd1e02e2eeeb39c5762ea7"},
+    {"path": "dist/registry-handoff.json", "sha256": "63272b5c1802e48aa55f44a55e038980d74d300abb61159bc1d22a47111c4e37"}
+  ],
+  "disposition": "pass-with-external-gates-deferred",
+  "limitations": [
+    "No external maintainer, Atlas, Kairos, or source-term authorization is inferred.",
+    "No calibrated, regulatory, policy, raw-data, or confidential-data release is authorized.",
+    "Hosted CI status is recorded separately and must be green for publication."
+  ],
+  "recordedAt": "2026-08-02T00:00:00Z"
+}
