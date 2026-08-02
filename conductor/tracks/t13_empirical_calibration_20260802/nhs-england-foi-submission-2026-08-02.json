@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "submitted_at": "2026-08-02",
+  "recipient_organisation": "NHS England",
+  "recipient_route": "england.contactus@nhs.net",
+  "subject": "Freedom of Information — TA1121 acoramidis specialised commissioning decision records",
+  "provider": "Gmail",
+  "provider_message_id": "19fc2c00f49e5f85",
+  "provider_thread_id": "19fc2c00f49e5f85",
+  "provider_status": "SENT",
+  "scope": [
+    "accountable commissioner and budget boundary",
+    "provider, service line, and stable identifier",
+    "decision date and price year",
+    "intervention and comparator relationship",
+    "recorded displacement or reallocation",
+    "baseline cost and unit",
+    "accountable team or role"
+  ],
+  "exclusions": [
+    "patient-level data",
+    "confidential commercial or net-price values",
+    "new analysis"
+  ],
+  "privacy": "Requester identity and correspondence address are held in the sent message and are intentionally omitted from the repository receipt.",
+  "status": "awaiting_response",
+  "closure_rule": "On response, preserve the original message externally, record a content hash and factual coverage without personal data, and retain a negative receipt if NHS England does not hold or disclose the requested records."
+}

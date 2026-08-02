@@ -1,30 +1,27 @@
-# Targeted NHS context requests (superseded; do not send)
+# Targeted NHS context requests
 
-**Disposition:** These drafts are retained only as historical scope definitions.
-The project owner has directed that no email or outbound FOI request be sent.
-T13 instead searches public grey literature, existing FOI repositories,
-disclosure logs, NHS websites, committee papers, formularies, and archived
-official material. See
-`conductor/tracks/t13_empirical_calibration_20260802/grey-literature-receipt-2026-08-02.json`.
+**Disposition:** Public grey-literature acquisition was completed first. After
+explicit owner authorization, the recommended bounded NHS England request was
+sent on 2 August 2026. Personal requester details remain only in the external
+mail record; the repository contains a non-personal submission receipt at
+`conductor/tracks/t13_empirical_calibration_20260802/nhs-england-foi-submission-2026-08-02.json`.
 
 These drafts are based on the triangulated evidence matrix and request only
 non-patient-level information needed to identify the displacement opportunity
 cost for the TA1121 methodological pilot.
 
-## Recommended first request — NHS England FOI route
+## Submitted request — NHS England FOI route
 
 Official route: `england.contactus@nhs.net`, with `Freedom of Information` in
-the subject line. NHS England requires a real requester name, an address for
-correspondence (an email address may be used), and a specific description of
-the recorded information requested. The request below is complete except for
-those identity/sending-account fields and has not been sent.
+the subject line. The request below was sent with valid requester and
+correspondence details, which are redacted from this repository projection.
 
 **Subject:** Freedom of Information — TA1121 acoramidis specialised commissioning decision records
 
 **Body:**
 
-> Requester: `[REAL REQUESTER NAME]`
-> Address for correspondence: `[REQUESTER EMAIL OR POSTAL ADDRESS]`
+> Requester: `[REDACTED — HELD IN EXTERNAL SENT MESSAGE]`
+> Address for correspondence: `[REDACTED — HELD IN EXTERNAL SENT MESSAGE]`
 >
 > Please provide recorded information held by or on behalf of NHS England
 > concerning implementation or specialised commissioning of NICE TA1121,
@@ -55,9 +52,7 @@ those identity/sending-account fields and has not been sent.
 > the body or team to which the request should be directed. Electronic format
 > is preferred.
 
-Submitting this request is an external communication and remains blocked until
-the requester identity, correspondence address, and sending account are
-explicitly authorized.
+Submission succeeded; the project is awaiting NHS England's response.
 
 ## Royal Free National Amyloidosis Centre
 
