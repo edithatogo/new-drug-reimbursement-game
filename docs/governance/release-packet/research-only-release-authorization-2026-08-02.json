@@ -2,13 +2,20 @@
   "schema": "research-only-release-authorization/v1",
   "release_candidate": "v0.4.0-research-only",
   "repository": "edithatogo/new-drug-reimbursement-game",
-  "commit": "5f8b1ec300ef9683b246f063ad2c7753cd34677a",
+  "commit": "2b023e7c3f0cb5ff5f56c2b45a8c807c71a6c62b",
   "manifest": "docs/governance/release-packet/release-evidence-manifest-2026-08-02.json",
   "scope": "research software and methodology only",
   "permitted": ["reproducible code", "synthetic scenarios", "documentation", "validation artifacts", "candidate-only metadata"],
   "prohibited": ["calibrated reimbursement recommendation", "HTA, policy, or regulatory claims", "raw/confidential data redistribution", "promotion of candidate evidence", "unresolved source-derived payload publication"],
   "required_final_attestation": ["accountable owner identity", "authorization date", "exact release commit", "manifest hash", "permitted destinations", "restriction acknowledgement"],
-  "status": "prepared_pending_owner_attestation",
+  "status": "owner_attested_research_only",
+  "owner_attestation": {
+    "attestor": "repository owner (user-attested)",
+    "authorization_date": "2026-08-02",
+    "manifest_sha256": "bb7a822d32ad86bf27018464473c2c04fabcf7401b62250de9334e96d1461228",
+    "permitted_destinations": ["this repository", "research-only software release surface"],
+    "restriction_acknowledgement": "I approve and attest only to the stated research-only scope and exclusions. This does not approve unresolved upstream, source-term, calibrated, HTA, policy, or regulatory claims."
+  },
   "fallback": "If any licence, extraction, privacy, or source-term gate remains unresolved, publish only code and synthetic fixtures and retain affected evidence private.",
   "created_at": "2026-08-02T00:00:00Z"
 }
