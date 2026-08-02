@@ -74,7 +74,7 @@ tracks:
   - id: T13
     title: Empirical calibration and calibrated research outputs
     priority: 2
-    status: new
+    status: in_progress
     depends_on: [T11, T12]
   - id: T14
     title: Regulatory and HTA validation boundary
