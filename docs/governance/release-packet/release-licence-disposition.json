@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "research_only_release_licence_disposition",
+  "created_at": "2026-08-02",
+  "status": "conditional_research_only",
+  "purpose": "Record licence, provenance, source-term, and destination dispositions for a constrained code-and-synthetic release. This receipt does not grant missing upstream authorization.",
+  "review_target": {
+    "repository": "https://github.com/edithatogo/new-drug-reimbursement-game",
+    "revision": "TO_BE_BOUND_AT_RELEASE_FREEZE",
+    "binding_rule": "Replace revision only at the final release freeze and recompute all manifest hashes; a changed revision supersedes this receipt."
+  },
+  "components": [
+    {
+      "name": "voiage",
+      "repository": "https://github.com/edithatogo/voiage",
+      "revision": "4b93ee04231bedaeae7e24d39b2b6f2c6ff9b9d6",
+      "declared_terms": "Apache-2.0 aligned across LICENSE, README, and package metadata",
+      "evidence": "docs/governance/voiage-licence-adjudication.md",
+      "evidence_sha256": "286535f30b051eccf9e9512d2cdab362e9527ecd707d1a72a0aba445b60fce5a",
+      "disposition": "permitted_for_code_and_documentation_with_attribution",
+      "limitations": ["source-specific data terms remain separate", "do not infer Atlas or Hugging Face permission"]
+    },
+    {
+      "name": "reimbursement_atlas",
+      "repository": "https://github.com/edithatogo/reimbursement-atlas",
+      "revision": "5b0c2fe3e1b7d2d6c3c1975cf1a162f2787c67aa",
+      "declared_terms": "Apache-2.0 for project software; source-specific derived-data terms retained",
+      "evidence": "docs/governance/atlas-licence-adjudication.md",
+      "evidence_sha256": "62168aa8aa9af2ef54a2ad06f765f18487074fea0bcecdb27556264d6ed62218",
+      "disposition": "derived_only_and_scope_limited",
+      "permitted_destinations": ["this research repository for approved derived records only"],
+      "excluded": ["raw source payloads", "restricted descriptors", "confidential values", "unsupported coverage or net-price claims", "calibrated reimbursement outputs"],
+      "limitations": ["TA1121 programme-aligned packet remains pending", "general ledger validation is not programme approval"]
+    },
+    {
+      "name": "kairos",
+      "repository": "https://github.com/edithatogo/kairos",
+      "revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+      "declared_terms": "Apache-2.0 declared in ecosystem lock; upstream contract/source-term verification pending",
+      "evidence": "docs/governance/kairos-contract-manifest-2026-08-02.json",
+      "evidence_sha256": "771240cac4dbff9ab8fdfc30a2f3bfc2807eb36b85b55aeb3c8c4322b6b3a634",
+      "disposition": "local_compatibility_only_deferred",
+      "permitted_destinations": ["local adapter code, synthetic fixtures, and methodology documentation"],
+      "excluded": ["Kairos source redistribution", "native released-contract claims", "external transfer of extracted payloads"],
+      "limitations": ["no dedicated checkout metadata", "no tagged release or maintainer acceptance receipt", "native DTO compatibility unverified"]
+    },
+    {
+      "name": "hugging_face_and_source_specific_datasets",
+      "revision": "SEE_ATLAS_DESTINATION_METADATA_AND_DATASET_CARD",
+      "declared_terms": "Dataset-specific terms; software Space Apache-2.0 where verified",
+      "evidence": "docs/governance/atlas-licence-adjudication.md",
+      "disposition": "deferred_unless_exact_dataset_card_and_source_terms_are_frozen",
+      "permitted_destinations": ["link-only or approved derived metadata surface"],
+      "excluded": ["automated consumption when Hub metadata and dataset card disagree", "raw or restricted source redistribution"],
+      "limitations": ["dataset terms must be rechecked at release freeze", "no blanket permission inferred from Atlas software licence"]
+    }
+  ],
+  "release_boundary": {
+    "permitted": ["software", "methodology documentation", "synthetic scenarios and fixtures", "validation receipts", "approved derived metadata whose terms are explicit"],
+    "prohibited": ["raw or confidential source data", "undisclosed prices", "calibrated reimbursement recommendations", "HTA, policy, or regulatory claims", "promotion of candidate evidence"],
+    "research_only_authorization": "See docs/governance/research-only-release-authorization.md; final owner attestation and release revision binding are still required."
+  },
+  "unresolved_gates": [
+    "Kairos maintainer acceptance of a released contract",
+    "Kairos extraction/source-term authorization",
+    "Atlas-approved programme-aligned evidence packet",
+    "Exact Hugging Face dataset-card/source-term reconciliation at release freeze",
+    "Final accountable owner attestation bound to the release commit"
+  ],
+  "promotion_rule": "If any component has ambiguous terms or a missing authorization, exclude it from the public release and record a deferred disposition. Do not infer authorization from local ownership, a software licence, or panel review."
+}

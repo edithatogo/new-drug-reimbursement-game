@@ -1,0 +1,71 @@
+{
+  "schema": "research-only-release-scope-review/v1",
+  "receipt_id": "security-privacy-scope-2026-08-02",
+  "review_role": "security_privacy_release_scope",
+  "reviewer": {
+    "agent_id": "release_security",
+    "agent_type": "Codex subagent",
+    "independence": "read-only repository audit; no source or release mutation",
+    "conflict_declaration": "No financial, patient, commercial, or release-authority conflict declared; this is a technical scope receipt only."
+  },
+  "review_target": {
+    "repository": "edithatogo/new-drug-reimbursement-game",
+    "commit": "5f8b1ec300ef9683b246f063ad2c7753cd34677a",
+    "scope": "candidate research-only release: code, methodology, documentation, synthetic fixtures, candidate-only derived evidence, and validation artifacts",
+    "release_boundary": "docs/releases/v0.4.0-research-only.md",
+    "boundary_sha256": "to-be-computed-at-release-freeze"
+  },
+  "checks": [
+    {
+      "id": "restricted_payload_inventory",
+      "status": "pass",
+      "evidence": "Tracked files contain no raw restricted source payloads, identifiable patient data, confidential price tables, or undisclosed commercial agreements; source-derived material is represented by candidate/derived metadata and negative receipts."
+    },
+    {
+      "id": "credential_and_secret_inventory",
+      "status": "pass",
+      "evidence": "No tracked environment files, private keys, certificates, credential files, API keys, passwords, or access tokens were found in the release inventory."
+    },
+    {
+      "id": "claim_boundary",
+      "status": "pass",
+      "evidence": "Release notes and readiness artifacts explicitly set approved_calibration_permitted=false, keep Scenario 1 candidate_only and Scenarios 2-4 not_identifiable, and exclude calibrated reimbursement, HTA, policy, and regulator-facing claims."
+    },
+    {
+      "id": "source_terms_boundary",
+      "status": "conditional",
+      "evidence": "Atlas, Kairos, and other upstream terms remain separately adjudicated gates. Unresolved or source-restricted material must be excluded from the public artifact; this receipt does not grant redistribution or extraction authorization."
+    },
+    {
+      "id": "publication_destination",
+      "status": "conditional",
+      "evidence": "The repository owner authorization covers research software and methodology only. A final release freeze must recompute artifact hashes and confirm destination-specific licence/source-term dispositions."
+    }
+  ],
+  "excluded_from_release": [
+    "raw source payloads",
+    "confidential prices and agreements",
+    "identifiable patient or personal data",
+    "credentials, secrets, and private access material",
+    "unreviewed model output presented as evidence",
+    "calibrated reimbursement recommendations",
+    "HTA, policy, or regulator-facing claims",
+    "Atlas/Kairos artifacts lacking explicit source-term and extraction authorization"
+  ],
+  "disposition": "approve-with-conditions",
+  "conditions": [
+    "Recompute the release boundary hash and all artifact hashes at final tag freeze.",
+    "Exclude any artifact whose licence, extraction, or destination terms remain unresolved.",
+    "Retain the research-only claim restrictions in release notes and package metadata.",
+    "Do not treat this technical receipt as legal, payer, regulator, Atlas, or Kairos maintainer approval."
+  ],
+  "limitations": [
+    "This audit is repository-local and cannot verify undisclosed external material.",
+    "A changed commit, packet, dependency revision, or release destination supersedes this receipt.",
+    "Final publication still requires the owner release authorization and hosted qualification evidence."
+  ],
+  "attestation": {
+    "statement": "I audited the frozen repository scope for restricted data, credentials, privacy exposure, and prohibited claims without modifying implementation files.",
+    "recorded_at": "2026-08-02T12:00:00Z"
+  }
+}

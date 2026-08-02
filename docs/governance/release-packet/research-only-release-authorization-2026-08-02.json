@@ -1,0 +1,14 @@
+{
+  "schema": "research-only-release-authorization/v1",
+  "release_candidate": "v0.4.0-research-only",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "commit": "5f8b1ec300ef9683b246f063ad2c7753cd34677a",
+  "manifest": "docs/governance/release-packet/release-evidence-manifest-2026-08-02.json",
+  "scope": "research software and methodology only",
+  "permitted": ["reproducible code", "synthetic scenarios", "documentation", "validation artifacts", "candidate-only metadata"],
+  "prohibited": ["calibrated reimbursement recommendation", "HTA, policy, or regulatory claims", "raw/confidential data redistribution", "promotion of candidate evidence", "unresolved source-derived payload publication"],
+  "required_final_attestation": ["accountable owner identity", "authorization date", "exact release commit", "manifest hash", "permitted destinations", "restriction acknowledgement"],
+  "status": "prepared_pending_owner_attestation",
+  "fallback": "If any licence, extraction, privacy, or source-term gate remains unresolved, publish only code and synthetic fixtures and retain affected evidence private.",
+  "created_at": "2026-08-02T00:00:00Z"
+}
