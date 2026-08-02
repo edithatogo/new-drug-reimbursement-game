@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t16-nhs-five-data-safes-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "NHS England", "title": "Security and privacy: NHS Federated Data Platform", "url_or_repository": "https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/security-privacy/", "revision_or_effective_date": "retrieved 2026-08-02", "locator": "Five Data Safes and secure data environments"},
+  "retrieval": {"retrieved_at": "2026-08-02T12:10:00Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "3a42ee7b1525eed1306241111350eccc378af633427eff0a1d7f502140738eca", "content_length": 48239},
+  "rights": {"terms": "Official public NHS information; not accreditation, data-owner permission, or platform access.", "permitted_destination": "control model, citation, and synthetic tests"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports safe people, projects, settings, outputs, and data as a coherent control model.", "contingency": "Use aggregate/public-only outputs until an exact environment, project, operator, and output review are approved.", "refresh_or_retry_condition": "Refresh on NHS policy update, platform/environment change, or project/output change."}
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t16-ons-disclosure-control-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "Office for National Statistics", "title": "Statistical disclosure control", "url_or_repository": "https://www.ons.gov.uk/aboutus/transparencyandgovernance/datastrategy/datapolicies/statisticaldisclosurecontrol", "revision_or_effective_date": "retrieved 2026-08-02", "locator": "output risk, controller conditions, audit trail"},
+  "retrieval": {"retrieved_at": "2026-08-02T12:10:00Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "5de9820527ba913b72290f261f8d66632ab5e82a6da23dc332a66ee9773d1fd7", "content_length": 38798},
+  "rights": {"terms": "Official public ONS policy; OGL applies unless otherwise stated; not an output-release approval.", "permitted_destination": "disclosure-control requirements, citation, and synthetic tests"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports case-specific disclosure-risk review, controller conditions, output checks, and an audit trail for release decisions.", "contingency": "Suppress or withhold outputs when risk cannot be reduced to an approved level.", "refresh_or_retry_condition": "Refresh on ONS policy update, controller condition, recipient, dataset, method, or destination change."}
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t16-dhsc-secure-data-environment-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "Department of Health and Social Care", "title": "Secure data environment for NHS health and social care data: policy guidelines", "url_or_repository": "https://www.gov.uk/government/publications/secure-data-environment-policy-guidelines/secure-data-environment-for-nhs-health-and-social-care-data-policy-guidelines", "revision_or_effective_date": "updated 2022-12-23; retrieved 2026-08-02", "locator": "controlled access, Five Safes, safe outputs"},
+  "retrieval": {"retrieved_at": "2026-08-02T12:15:00Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "1bf08ed512bb8b4ddf51f755493fd515c9b67051e714cb8bbb8623b0d82bd3f6", "content_length": 144055},
+  "rights": {"terms": "Crown copyright 2022 under the Open Government Licence v3.0 except identified third-party material; not data access, project, or output authorization.", "permitted_destination": "control requirements, citation, and synthetic tests"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Primary sector policy supports data-owner control, verified users, approved public-good projects, controlled analysis, and checked outputs.", "contingency": "Keep all confidential execution and export disabled when an approved environment, project, user, or output checker is unavailable.", "refresh_or_retry_condition": "Refresh on DHSC/NHS policy update, environment/project/operator change, or before restricted execution or release."}
+}

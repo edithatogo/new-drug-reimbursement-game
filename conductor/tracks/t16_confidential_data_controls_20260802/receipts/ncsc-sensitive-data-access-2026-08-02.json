@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t16-ncsc-sensitive-data-access-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "National Cyber Security Centre", "title": "Principle 3: Ensure you know who is accessing data which contains SPI", "url_or_repository": "https://www.ncsc.gov.uk/collection/security-principles-protecting-most-sensitive-personal-information-in-datasets/principle-3-ensure-you-know-who-is-accessing-data-which-contains-spi", "revision_or_effective_date": "version 1.0, reviewed 2025-06-10; retrieved 2026-08-02", "locator": "data access logging and log access"},
+  "retrieval": {"retrieved_at": "2026-08-02T12:10:00Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "887924ff4825ba981535a92c19205b2d6dafdf8e76ab45336048adbe5b61b7a3", "content_length": 127301},
+  "rights": {"terms": "Official public UK cyber-security guidance; not environment accreditation.", "permitted_destination": "security control requirements, citation, and synthetic tests"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports persistent actual/attempted access records, monitoring, alerting, log minimisation, and restricted log access.", "contingency": "No restricted processing until an environment proves equivalent controls and accountable operation.", "refresh_or_retry_condition": "Refresh on NCSC version change, environment change, access-policy change, or incident."}
+}
