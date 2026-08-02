@@ -1,0 +1,15 @@
+{
+  "track_id": "t15_raw_data_governance_20260802",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-08-02T10:36:18Z",
+  "updated_at": "2026-08-02T10:36:18Z",
+  "description": "Controlled raw-data acquisition, minimization, derivation, and deletion governance",
+  "evidence_schema": "1.0",
+  "gates": [
+    {"id": "custodian-permission", "kind": "authorization", "status": "pending", "evidence": null},
+    {"id": "legal-privacy-basis", "kind": "authorization", "status": "pending", "evidence": null},
+    {"id": "controlled-environment", "kind": "security", "status": "pending", "evidence": null},
+    {"id": "atlas-extraction", "kind": "authorization", "status": "pending", "evidence": "docs/governance/atlas-packet-closure-checklist.md"}
+  ]
+}
