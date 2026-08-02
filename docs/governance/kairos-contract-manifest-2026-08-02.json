@@ -42,7 +42,8 @@
     "sha256": "99d0a6b597c9f2b9889dc300015ed45dc4817784a5dd2221f5c93e5af9459ddf",
     "pinned_revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c"
   },
-  "negative_receipt": "The accessible local kairos path is a foi-process export and contains no dedicated checkout metadata. The repository adapter emits a provisional JSON event envelope whose fields differ from the pinned Kairos Arrow event-log DTO. Native integration, release, and maintainer approval remain unverified.",
-  "approval_state": "candidate_only",
-  "promotion_rule": "Do not claim Kairos contract acceptance or release compatibility until the pinned checkout, native adapter implementation, conformance run, and maintainer approval are bound to this manifest."
+  "maintainer_acceptance": "docs/governance/kairos-maintainer-acceptance-receipt-2026-08-02.json",
+  "negative_receipt": "The repository adapter emits a provisional JSON event envelope whose fields differ from the pinned Kairos Arrow event-log DTO. No GitHub release exists and exact-revision fuzz-smoke is failing; native integration and release compatibility remain unverified.",
+  "approval_state": "public_contract_boundary_accepted; native_promotion_deferred",
+  "promotion_rule": "Use only public contract metadata and synthetic conformance under the maintainer receipt. Do not claim native or released Kairos compatibility until a frozen DTO mapping, native adapter, exact-head green compatibility run, and new revision-bound receipt exist."
 }
