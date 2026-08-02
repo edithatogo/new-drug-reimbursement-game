@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t15-nhs-england-public-data-terms-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "NHS England", "title": "Public data gateway terms and conditions", "url_or_repository": "https://data.england.nhs.uk/terms-conditions", "revision_or_effective_date": "retrieved 2026-08-02", "locator": "Licence and terms of use"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:06:39Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "d14bf20a2d2875361d8d0281b65c0fb9f03e552b2bf4111b8003d97c0eb44b28", "content_length": 46702},
+  "rights": {"terms": "Gateway website content states Open Government Licence v3.0; linked datasets retain their own terms", "permitted_destination": "research-only metadata, links, and terms receipt"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Authorizes reuse of gateway content but is not blanket permission for every linked payload.", "contingency": "Review the exact dataset licence before any payload retrieval.", "refresh_or_retry_condition": "Refresh before access/release and whenever displayed terms change."}
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t15-nhsbsa-prescription-metadata-2026-08-02", "status": "incomplete",
+  "source": {"authority_rank": 1, "publisher": "NHS Business Services Authority", "title": "Prescription data", "url_or_repository": "https://www.nhsbsa.nhs.uk/prescription-data", "revision_or_effective_date": "retrieved 2026-08-02", "locator": "Open Data API and glossary links"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:06:39Z", "method": "HTTPS GET metadata page only", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "903147cb9f7ce9345e59fe01fd727bc29fdb1fb89a2d58cb3b40b41205935cdc", "content_length": 53460},
+  "rights": {"terms": "Public catalogue page; endpoint-specific API and dataset terms require separate review", "permitted_destination": "metadata inventory only"},
+  "disposition": {"decision": "defer", "rationale": "Identifies an official prescription-data API and glossary but does not by itself establish the relevance, field scope, or redistribution terms for a TA1121 packet.", "contingency": "Use metadata for source discovery; do not retrieve payloads until an exact endpoint and purpose are approved.", "refresh_or_retry_condition": "Retry after selecting an exact endpoint, fields, purpose, and terms."}
+}

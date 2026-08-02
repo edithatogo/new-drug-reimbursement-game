@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t15-atlas-evidence-schema-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 2, "publisher": "edithatogo/Reimbursement Atlas", "title": "EvidenceReadinessRecord schema", "url_or_repository": "https://github.com/edithatogo/reimbursement-atlas", "revision_or_effective_date": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca", "locator": "schema/EvidenceReadinessRecord.schema.json"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:06:39Z", "method": "HTTPS GET raw file at immutable Git revision", "http_status": 200, "media_type": "application/json", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "29e6d8346fb11338682bcc10b8cda5b32877802073a8cfd67771ddf2429ae6d8", "content_length": 2661},
+  "rights": {"terms": "Apache-2.0 project schema; source payload terms remain separate", "permitted_destination": "schema alignment and synthetic validation"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Provides an immutable derived-evidence readiness contract without authorizing raw acquisition.", "contingency": "Use synthetic fixtures until an approved source-specific record is available.", "refresh_or_retry_condition": "Refresh on Atlas pin or schema-major change."}
+}
