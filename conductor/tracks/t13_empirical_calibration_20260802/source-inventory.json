@@ -5,6 +5,7 @@
   "context": "TA1121 acoramidis versus tafamidis, England, research-only",
   "recommended_route": "Atlas-approved same-programme packet plus authoritative NHS displacement context",
   "sources": [
+    {"receipt": "receipts/atlas-v0.1.1-ta1121-negative-2026-08-02.json", "rank": 2, "roles": ["immutable_atlas_release", "negative_ta1121_disposition", "terminology_only"]},
     {"receipt": "receipts/nice-economic-evaluation-2026-08-02.json", "rank": 3, "roles": ["discounting", "time_horizon", "reference_case"]},
     {"receipt": "receipts/nice-ta1121-2026-08-02.json", "rank": 1, "roles": ["intervention", "comparator", "population", "decision_date", "commercial_confidentiality"]},
     {"receipt": "receipts/nice-resource-impact-2026-08-02.json", "rank": 3, "roles": ["resource_impact", "commissioner", "editable_local_assumptions"]},
