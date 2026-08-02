@@ -1,0 +1,19 @@
+{
+  "schema": "t13-research-readiness/v1",
+  "generation_base_commit": "56f9a078cd5c261174c62330def770ffe20f57bb",
+  "enclosing_artifact_commit": "1e80e1f7688be5e81d303d850ccbf6a2ee87d699",
+  "packet_freeze_sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90",
+  "constrained_output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061",
+  "panel_consensus": "conductor/tracks/t13_empirical_calibration_20260802/panel-consensus-2026-08-03.json",
+  "health_economist_approval": "docs/governance/health-economist-approval.md",
+  "owner_research_release_authorization": {"path": "docs/governance/release-packet/research-only-release-authorization-2026-08-02.json", "sha256": "f7ef03a76a7aae626dfeadd82a6095f426aaeda06fb80396c4dba23d0d382773"},
+  "permitted": ["research software", "methodology", "synthetic scenarios", "public candidate context", "validation and panel receipts"],
+  "prohibited": ["empirical calibration", "decision use", "reimbursement recommendation", "payer claim", "HTA claim", "policy claim", "regulatory claim", "raw or confidential evidence redistribution"],
+  "external_gates": {
+    "nhs_displacement_context": "pending_response",
+    "atlas_approved_packet": "not_available",
+    "empirical_output": "disabled"
+  },
+  "status": "repository_research_scope_ready_empirical_promotion_deferred",
+  "refresh_rule": "Regenerate after any target, source, packet, method, licence, panel, or authorization change."
+}

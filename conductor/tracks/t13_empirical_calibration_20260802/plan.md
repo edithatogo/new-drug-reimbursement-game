@@ -31,7 +31,7 @@
 
 - [x] Generate synthetic research-only outputs and limitation metadata; empirical calibration remains disabled. (`constrained-research-output-2026-08-03.json`)
 - [x] Obtain exact-target economics, NHS/Atlas provenance, reproducibility/security, and runtime/governance role receipts. (`panel-review-target-2026-08-03.json`, `panel-receipts/`)
-- [ ] Regenerate readiness and release receipts.
+- [x] Regenerate exact-target panel consensus and research-only readiness receipt. (`panel-consensus-2026-08-03.json`, `research-readiness-receipt-2026-08-03.json`)
 - [ ] Completion checkpoint: run full repository and Conductor validation.
 - [ ] Completion checkpoint: reacquire or revalidate every receipt invalidated by the final commit or release freeze.
 
