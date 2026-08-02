@@ -1,0 +1,13 @@
+{
+  "schema": "t13-main-integration-receipt/v1",
+  "pull_request": "https://github.com/edithatogo/new-drug-reimbursement-game/pull/60",
+  "reviewed_pr_head": "cd0f031f85b3bebaea6808aba2a8343a4defc669",
+  "main_squash_commit": "8ce1590b2a839e99d4df241a25b26a86390ab669",
+  "hosted_checks": {"python": "pass", "rust": "pass", "amazon_q_developer": "pass"},
+  "unchanged_reviewed_artifacts": [
+    {"path": "conductor/tracks/t13_empirical_calibration_20260802/packet-freeze-2026-08-03.json", "sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90"},
+    {"path": "conductor/tracks/t13_empirical_calibration_20260802/constrained-research-output-2026-08-03.json", "sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061"},
+    {"path": "conductor/tracks/t13_empirical_calibration_20260802/panel-consensus-2026-08-03.json", "sha256": "7ed550290007b0a14ebc4ab94dfad21c01f602a9e375f6f6d9c4cd4caddca3c1"}
+  ],
+  "disposition": "integrated_research_only_external_empirical_gates_pending"
+}

@@ -42,17 +42,20 @@ def closeout_violations() -> list[str]:
     target_path = TRACK / "panel-review-target-2026-08-03.json"
     consensus_path = TRACK / "panel-consensus-2026-08-03.json"
     readiness_path = TRACK / "research-readiness-receipt-2026-08-03.json"
+    integration_path = TRACK / "main-integration-receipt-2026-08-03.json"
     freeze = _load(freeze_path)
     output = _load(output_path)
     target = _load(target_path)
     consensus = _load(consensus_path)
     readiness = _load(readiness_path)
+    integration = _load(integration_path)
 
     _check_references(freeze.get("inputs", []), violations)
     _check_references(target.get("artifacts", []), violations)
     review_target = consensus.get("review_target", {})
     _check_references([review_target], violations)
     _check_references(consensus.get("receipts", []), violations)
+    _check_references(integration.get("unchanged_reviewed_artifacts", []), violations)
 
     freeze_digest = _sha256(freeze_path)
     if output.get("packet_freeze_sha256") != freeze_digest:
@@ -76,6 +79,8 @@ def closeout_violations() -> list[str]:
         violations.append("panel consensus does not retain the research-only disposition")
     if readiness.get("external_gates", {}).get("empirical_output") != "disabled":
         violations.append("readiness receipt must keep empirical output disabled")
+    if integration.get("disposition") != "integrated_research_only_external_empirical_gates_pending":
+        violations.append("main integration receipt does not retain pending empirical gates")
     return violations
 
 
