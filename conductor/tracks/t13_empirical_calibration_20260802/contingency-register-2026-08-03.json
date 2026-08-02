@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "track_id": "t13_empirical_calibration_20260802",
+  "purpose": "Fail-closed routing for evidence failure modes and triangulation.",
+  "default_disposition": "research_only_deferred",
+  "triangulation": {
+    "minimum_material_claim_sources": 2,
+    "independence_rule": "Sources must have distinct publisher systems or accountable custodians; mirrors do not count.",
+    "authority_override": "A signed or attributable custodian record outranks secondary corroboration, but cannot fill fields it does not state.",
+    "conflict_rule": "Preserve every receipt, select the narrower/stricter interpretation, and defer the affected role pending owner disposition.",
+    "reconciliation": "Compare programme identity, payer, decision date, price year, units, transformations, uncertainty, and rights before combining sources."
+  },
+  "failure_modes": [
+    {
+      "id": "inaccessible",
+      "autonomous_actions": ["retry the official endpoint with bounded backoff", "query the publisher API or official archive", "record URI, status, timestamp, and failure hash"],
+      "fallback": "Use an independent authoritative source for context only; retain the role as not_identifiable.",
+      "stop_condition": "Stop before promotion when the missing field is payer, displacement, baseline, price, programme identity, or an Atlas role.",
+      "human_external_decision": "Only the custodian can restore access or authorize a restricted copy."
+    },
+    {
+      "id": "conflicting",
+      "autonomous_actions": ["preserve all source receipts", "compare revision/date/authority and run unit and programme-identity checks", "mark the role conflicted"],
+      "fallback": "Use the narrower value only for sensitivity metadata; do not combine values or calibrate.",
+      "stop_condition": "Stop empirical promotion until an accountable owner resolves the conflict in a signed receipt.",
+      "human_external_decision": "Owner/custodian adjudication is required; panel consensus cannot substitute."
+    },
+    {
+      "id": "incomplete",
+      "autonomous_actions": ["emit field-level missing receipts", "evaluate each scenario-role set independently", "keep incomplete roles not_identifiable"],
+      "fallback": "Run synthetic conformance scenarios and public-context-only analysis.",
+      "stop_condition": "Do not impute displacement, net price, mu, phi, covariance, or stable programme ID.",
+      "human_external_decision": "Accountable payer/Atlas owner must supply or attest the missing fields."
+    },
+    {
+      "id": "restricted",
+      "autonomous_actions": ["retain metadata and terms only", "record a restricted-source receipt", "verify that no payload entered tracked outputs"],
+      "fallback": "Use public aggregate or Atlas-derived evidence where rights permit.",
+      "stop_condition": "Stop before authentication, acceptance of terms, transfer, storage, or release.",
+      "human_external_decision": "Custodian must authorize access, lawful basis, operators, environment, and destination."
+    }
+  ],
+  "refresh_and_invalidation": {
+    "invalidate_on": ["source bytes or terms", "programme or decision date", "price year or units", "Atlas revision", "transformation or uncertainty", "repository commit", "purpose, audience, operator, environment, or destination"],
+    "required_after_invalidation": ["reacquire and hash", "rerun triangulation and panel", "regenerate packet freeze", "requalify before promotion"]
+  },
+  "human_stop_conditions": ["NHS displacement response", "Atlas-approved immutable packet", "source-term adjudication", "confidential or raw-data permission", "empirical release authorization"],
+  "status": "active_fail_closed"
+}

@@ -43,12 +43,26 @@ def closeout_violations() -> list[str]:
     consensus_path = TRACK / "panel-consensus-2026-08-03.json"
     readiness_path = TRACK / "research-readiness-receipt-2026-08-03.json"
     integration_path = TRACK / "main-integration-receipt-2026-08-03.json"
+    contingency_path = TRACK / "contingency-register-2026-08-03.json"
     freeze = _load(freeze_path)
     output = _load(output_path)
     target = _load(target_path)
     consensus = _load(consensus_path)
     readiness = _load(readiness_path)
     integration = _load(integration_path)
+    contingency = _load(contingency_path)
+
+    required_modes = {"inaccessible", "conflicting", "incomplete", "restricted"}
+    modes = {item.get("id") for item in contingency.get("failure_modes", []) if isinstance(item, dict)}
+    if contingency.get("status") != "active_fail_closed":
+        violations.append("contingency register is not active fail-closed")
+    if not required_modes.issubset(modes):
+        violations.append("contingency register lacks required evidence failure modes")
+    triangulation = contingency.get("triangulation", {})
+    if triangulation.get("minimum_material_claim_sources") != 2:
+        violations.append("triangulation must require two independent sources")
+    if not contingency.get("human_stop_conditions"):
+        violations.append("contingency register lacks explicit human stop conditions")
 
     _check_references(freeze.get("inputs", []), violations)
     _check_references(target.get("artifacts", []), violations)
