@@ -14,6 +14,10 @@ Raw data remains prohibited from this repository and its public release surface.
 4. Maintain deletion, incident, audit, and data-subject/privacy procedures where applicable.
 5. Prevent raw payloads, credentials, identifiers, and restricted descriptors from
    entering commits, logs, fixtures, packages, or public artifacts.
+6. Follow `sourcing.md` and the shared evidence-sourcing policy: agents must
+   autonomously acquire public metadata, schemas, dictionaries, licences, and
+   control evidence, while stopping before raw access until every applicable
+   custodian, legal/privacy, security, storage, and operator gate passes.
 
 ## Acceptance criteria
 
@@ -45,3 +49,6 @@ Raw data remains prohibited from this repository and its public release surface.
 - `docs/governance/extraction-review.md`
 - `docs/governance/research-only-extraction-owner-authorization-2026-08-01.md`
 - `docs/governance/release-packet/security-privacy-scope-receipt-2026-08-02.json`
+- `conductor/evidence-sourcing-policy.md`
+- `conductor/source-receipt-schema.json`
+- `conductor/tracks/t15_raw_data_governance_20260802/sourcing.md`

@@ -3,12 +3,13 @@
   "type": "feature",
   "status": "new",
   "created_at": "2026-08-02T10:36:18Z",
-  "updated_at": "2026-08-02T10:36:18Z",
+  "updated_at": "2026-08-02T10:45:00Z",
   "description": "Regulatory, HTA, policy, and payer-facing validation boundary",
   "evidence_schema": "1.0",
   "gates": [
     {"id": "calibrated-evidence", "kind": "dependency", "status": "pending", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/index.md"},
     {"id": "regulatory-owner", "kind": "authorization", "status": "pending", "evidence": null},
-    {"id": "submission-authorization", "kind": "authorization", "status": "pending", "evidence": null}
+    {"id": "submission-authorization", "kind": "authorization", "status": "pending", "evidence": null},
+    {"id": "regulatory-source-coverage", "kind": "evidence", "status": "pending", "evidence": "conductor/tracks/t14_regulatory_validation_20260802/sourcing.md"}
   ]
 }

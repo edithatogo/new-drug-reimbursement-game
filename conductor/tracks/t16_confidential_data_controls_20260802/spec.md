@@ -17,6 +17,10 @@ data is authorized for this repository by creating this track.
 4. Separate confidential analyses from public research outputs and regulatory
    claims unless each destination is explicitly authorized.
 5. Provide breach, revocation, key rotation, deletion, and disclosure-review procedures.
+6. Follow `sourcing.md` and the shared evidence-sourcing policy: agents must
+   autonomously acquire public standards, policies, redacted templates, and
+   aggregate evidence, but may not acquire confidential values without exact
+   owner, contract, environment, operator, purpose, and destination approvals.
 
 ## Acceptance criteria
 
@@ -47,3 +51,6 @@ data is authorized for this repository by creating this track.
 - `docs/governance/model-risk.md`
 - `docs/governance/release-packet/security-privacy-scope-receipt-2026-08-02.json`
 - T15 controlled-data environment and receipts when applicable.
+- `conductor/evidence-sourcing-policy.md`
+- `conductor/source-receipt-schema.json`
+- `conductor/tracks/t16_confidential_data_controls_20260802/sourcing.md`

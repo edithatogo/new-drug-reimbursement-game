@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/new-drug-reimbursement-game/conductor/source-receipt-schema/v1",
+  "title": "Conductor source acquisition receipt",
+  "type": "object",
+  "required": ["schema_version", "receipt_id", "status", "source", "retrieval", "integrity", "rights", "disposition"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["acquired", "not_found", "inaccessible", "conflicting", "incomplete", "restricted", "declined"]},
+    "source": {
+      "type": "object",
+      "required": ["authority_rank", "publisher", "title", "url_or_repository", "revision_or_effective_date"],
+      "properties": {
+        "authority_rank": {"type": "integer", "minimum": 1, "maximum": 5},
+        "publisher": {"type": "string"},
+        "title": {"type": "string"},
+        "url_or_repository": {"type": "string"},
+        "revision_or_effective_date": {"type": "string"},
+        "locator": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "retrieval": {
+      "type": "object",
+      "required": ["retrieved_at", "method"],
+      "properties": {
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "method": {"type": "string"},
+        "http_status": {"type": ["integer", "null"]},
+        "media_type": {"type": ["string", "null"]},
+        "etag": {"type": ["string", "null"]},
+        "last_modified": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["sha256"],
+      "properties": {"sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}},
+      "additionalProperties": true
+    },
+    "rights": {
+      "type": "object",
+      "required": ["terms", "permitted_destination"],
+      "properties": {"terms": {"type": "string"}, "permitted_destination": {"type": "string"}},
+      "additionalProperties": true
+    },
+    "disposition": {
+      "type": "object",
+      "required": ["decision", "rationale", "contingency", "refresh_or_retry_condition"],
+      "properties": {
+        "decision": {"enum": ["approve", "approve_with_conditions", "defer", "reject"]},
+        "rationale": {"type": "string"},
+        "contingency": {"type": "string"},
+        "refresh_or_retry_condition": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -18,6 +18,10 @@ owner approvals are complete.
    incompatible price years, or unapproved records.
 5. Keep calibrated outputs separate from regulatory, HTA, policy, and payer
    claims.
+6. Follow `sourcing.md` and the shared evidence-sourcing policy: agents must
+   actively acquire eligible official public evidence, emit schema-valid
+   positive or negative receipts, triangulate material claims, and stop only at
+   the documented external boundaries.
 
 ## Acceptance criteria
 
@@ -56,3 +60,6 @@ owner approvals are complete.
 - `docs/governance/health-economist-approval.md`
 - `docs/governance/subagent-panel-consensus-2026-08-02.json`
 - `ecosystem.lock.toml`
+- `conductor/evidence-sourcing-policy.md`
+- `conductor/source-receipt-schema.json`
+- `conductor/tracks/t13_empirical_calibration_20260802/sourcing.md`
