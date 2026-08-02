@@ -32,3 +32,7 @@
 - [ ] Regenerate readiness and release receipts.
 - [ ] Completion checkpoint: run full repository and Conductor validation.
 - [ ] Completion checkpoint: reacquire or revalidate every receipt invalidated by the final commit or release freeze.
+
+## Review Fixes
+
+- [x] Normalize the programme document ending after `git diff --check` identified an extra EOF blank line. (`3f869d0`)
