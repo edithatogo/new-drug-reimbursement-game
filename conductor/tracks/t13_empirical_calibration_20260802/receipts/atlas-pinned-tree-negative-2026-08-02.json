@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-atlas-pinned-tree-negative-2026-08-02",
+  "status": "not_found",
+  "source": {"authority_rank": 2, "publisher": "edithatogo/Reimbursement Atlas", "title": "Git tree at pinned Atlas revision", "url_or_repository": "https://github.com/edithatogo/reimbursement-atlas", "revision_or_effective_date": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca", "locator": "recursive Git tree search for TA1121, acoramidis, tafamidis, and programme-aligned evidence"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:00:21Z", "method": "GitHub REST API recursive tree query", "http_status": 200, "media_type": "application/json", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "cfd066fef0222f1ba04b110f5529391f6ae396fc93330b173b672e0c4cd24f5a", "content_length": 414530},
+  "rights": {"terms": "Apache-2.0 software; source-specific data terms remain controlling; tree metadata only", "permitted_destination": "research-only provenance and negative receipt"},
+  "disposition": {"decision": "defer", "rationale": "The pinned tree contains generic evidence-readiness machinery but no identifiable TA1121/acoramidis/tafamidis same-programme approved-derived packet. This scoped search does not prove that no later or private approved packet exists.", "contingency": "Use synthetic fixtures and request an immutable Atlas-approved packet; do not promote candidates.", "refresh_or_retry_condition": "Retry when Atlas supplies a packet ID/revision or the ecosystem pin changes."}
+}

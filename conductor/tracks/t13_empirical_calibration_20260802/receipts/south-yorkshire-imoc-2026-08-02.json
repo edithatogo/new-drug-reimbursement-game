@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-south-yorkshire-imoc-2026-08-02",
+  "status": "incomplete",
+  "source": {"authority_rank": 1, "publisher": "NHS South Yorkshire Integrated Care Board", "title": "Integrated Medicines Optimisation Committee minutes, February 2026", "url_or_repository": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20Minutes%20IMOC%20February%202026.pdf?_rsc=1suc1", "revision_or_effective_date": "February 2026", "locator": "TA1121 acoramidis agenda/decision entry"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:00:21Z", "method": "HTTPS GET", "http_status": 200, "media_type": "application/pdf", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "6474170bb9fbc2ce0da6333bd4279901ddd20cbb7321ee8992fdd3aa4458288f", "content_length": 591588},
+  "rights": {"terms": "Official public NHS committee minutes; retain attribution; no confidential appendices included", "permitted_destination": "candidate context metadata and negative receipt"},
+  "disposition": {"decision": "defer", "rationale": "Confirms a South Yorkshire TA1121 committee context but not comparator displacement, baseline, price year, stable programme ID, or accountable budget decision.", "contingency": "Preserve the receipt and keep `d` and empirical calibration not identifiable.", "refresh_or_retry_condition": "Retry on publication of fuller minutes, formulary decision documentation, or an attributable owner response."}
+}

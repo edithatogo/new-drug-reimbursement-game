@@ -1,15 +1,15 @@
 {
   "track_id": "t13_empirical_calibration_20260802",
   "type": "feature",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-08-02T10:36:18Z",
-  "updated_at": "2026-08-02T10:45:00Z",
+  "updated_at": "2026-08-02T10:58:07Z",
   "description": "Fail-closed empirical calibration and calibrated research-output controls",
   "evidence_schema": "1.0",
   "gates": [
     {"id": "nhs-context", "kind": "external_evidence", "status": "pending", "evidence": "docs/governance/nhs-displacement-acquisition-plan-2026-08-02.md"},
     {"id": "atlas-approved-packet", "kind": "external_evidence", "status": "pending", "evidence": "docs/governance/atlas-packet-closure-checklist.md"},
     {"id": "calibration-approval", "kind": "authorization", "status": "pending", "evidence": "docs/governance/health-economist-approval.md"},
-    {"id": "source-receipt-coverage", "kind": "evidence", "status": "pending", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/sourcing.md"}
+    {"id": "source-receipt-coverage", "kind": "evidence", "status": "satisfied", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/source-inventory.json"}
   ]
 }

@@ -27,7 +27,7 @@
   *Link: [./archive/t11_evidence_uncertainty_20260801/index.md](./archive/t11_evidence_uncertainty_20260801/index.md)*
 - [x] **Track: T12 NHS England methodological evidence pilot**
   *Link: [./archive/t12_nhs_england_methodological_pilot_20260801/index.md](./archive/t12_nhs_england_methodological_pilot_20260801/index.md)*
-- [ ] **Track: T13 empirical calibration and calibrated research outputs**
+- [~] **Track: T13 empirical calibration and calibrated research outputs**
   *Link: [./tracks/t13_empirical_calibration_20260802/index.md](./tracks/t13_empirical_calibration_20260802/index.md)*
 - [ ] **Track: T14 regulatory and HTA validation boundary**
   *Link: [./tracks/t14_regulatory_validation_20260802/index.md](./tracks/t14_regulatory_validation_20260802/index.md)*

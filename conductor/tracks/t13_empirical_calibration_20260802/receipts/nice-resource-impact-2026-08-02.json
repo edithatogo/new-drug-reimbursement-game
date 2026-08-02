@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-nice-resource-impact-2026-08-02",
+  "status": "incomplete",
+  "source": {"authority_rank": 3, "publisher": "National Institute for Health and Care Excellence", "title": "TA1121 resource impact summary report", "url_or_repository": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-15554931517", "revision_or_effective_date": "published 2026-01-14", "locator": "financial and capacity resource impact"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:00:21Z", "method": "HTTPS GET following redirect", "http_status": 200, "media_type": "text/html; charset=utf-8", "etag": "W/C27B1499C7BE29795C8125A38D4A7CAF", "last_modified": null},
+  "integrity": {"sha256": "d989403cc60bfb954a51814b1c1e59a4c40506d39e343bde7e959a6dacb7bb31", "content_length": 24819},
+  "rights": {"terms": "Official public NICE summary; confidential prices must not be inferred or redistributed", "permitted_destination": "research-only resource-impact metadata and negative receipt"},
+  "disposition": {"decision": "defer", "rationale": "Confirms editable local assumptions, confidential price input, and commissioner dependence but supplies no authoritative displaced programme or approved baseline.", "contingency": "Retain candidate metadata and request an accountable local decision packet.", "refresh_or_retry_condition": "Retry when an official local template or signed decision record is available."}
+}

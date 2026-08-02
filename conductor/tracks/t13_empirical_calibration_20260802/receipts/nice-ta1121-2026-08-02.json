@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-nice-ta1121-2026-08-02",
+  "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "National Institute for Health and Care Excellence", "title": "Acoramidis for treating transthyretin amyloidosis with cardiomyopathy, recommendations", "url_or_repository": "https://www.nice.org.uk/guidance/ta1121/chapter/1-Recommendations", "revision_or_effective_date": "published 2026-01-14", "locator": "recommendations 1.1-1.2 and rationale"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:00:21Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html; charset=utf-8", "etag": "W/38DCC136E01CD936F08303FF74F5B3FF", "last_modified": null},
+  "integrity": {"sha256": "303e62b62bc13168311a633a664d5bfd40a2a4f74a2189702f8f8987657a744a", "content_length": 21159},
+  "rights": {"terms": "Official public NICE guidance; commercial arrangement values remain confidential", "permitted_destination": "research-only context metadata, citation, and negative receipts"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Authoritatively identifies TA1121, intervention, tafamidis comparator, population, date, cost-comparison framing, and confidential commercial arrangement, but not local displacement or net price.", "contingency": "Use as context only and keep calibrated values disabled.", "refresh_or_retry_condition": "Reacquire if NICE reviews or supersedes TA1121."}
+}

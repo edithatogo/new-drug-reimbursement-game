@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-dhsc-final-impact-assessment-2026-08-02",
+  "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "Department of Health and Social Care", "title": "Final stage impact assessment: proposed 2026 changes to the statutory scheme for branded medicines pricing", "url_or_repository": "https://assets.publishing.service.gov.uk/media/6a283bb3db0592d809052b31/final-stage-impact-assessment-proposed-2026-changes-to-statutory-scheme-for-branded-medicines-pricing.pdf", "revision_or_effective_date": "last modified 2026-06-09", "locator": "QALY discount assumptions and Annex C"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:00:21Z", "method": "HTTPS GET", "http_status": 200, "media_type": "application/pdf", "etag": "6a283bb3-90a9c", "last_modified": "Tue, 09 Jun 2026 16:13:39 GMT"},
+  "integrity": {"sha256": "5fb1abf578f6a71a7057b31a7666c100a30624087b647e390243d4c421db36a5", "content_length": 592540},
+  "rights": {"terms": "Official GOV.UK publication; attribution and source citation retained", "permitted_destination": "research-only discounting sensitivity ledger"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports a 1.5% QALY discount sensitivity in DHSC appraisal context and provides a 3.5% comparator, but does not override NICE reference-case guidance for TA1121.", "contingency": "Retain NICE 3.5% primary and DHSC 1.5% sensitivity.", "refresh_or_retry_condition": "Reacquire if the assessment or governing appraisal guidance changes."}
+}
