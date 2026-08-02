@@ -1,0 +1,42 @@
+{
+  "receiptId": "atlas-scenario4-negative-disposition-2026-08-02",
+  "status": "deferred",
+  "request": "atlas-scenario4-packet-request-2026-08-02",
+  "requestSent": false,
+  "scope": "research-only derived Scenario 4 evidence",
+  "reviewedRevision": "5b0c2fe3e1b7d2d6c3c1975cf1a162f2787c67aa",
+  "programmeId": null,
+  "missingRequiredFields": [
+    "stable programme ID",
+    "payer and decision context",
+    "displaced programme and d",
+    "m",
+    "mu",
+    "phi",
+    "annual programme effect and investment cost",
+    "horizon and primary discounting convention",
+    "uncertainty distributions and covariance",
+    "source transformation ledger",
+    "immutable approved-derived export",
+    "licence/source-term disposition",
+    "named Atlas owner approval"
+  ],
+  "disposition": "Scenario 4 remains tested sensitivity-only; no empirical calibration or release promotion",
+  "prohibitedInference": [
+    "cross-programme substitution",
+    "invented displacement or investment parameters",
+    "promotion from local compatibility or public candidate sources",
+    "calibrated or regulatory claims"
+  ],
+  "promotionCriteria": [
+    "complete same-programme packet",
+    "immutable Atlas revision and SHA-256",
+    "field-level provenance and transformations",
+    "uncertainty and covariance specification",
+    "source terms permit intended research destination",
+    "panel receipts bound to packet and repository commit",
+    "reproducible domain and identity checks pass"
+  ],
+  "nextAction": "Re-request only when Atlas can provide the complete approved-derived packet",
+  "recordedAt": "2026-08-02T00:00:00Z"
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "new-drug-reimbursement-game/discounting-evidence-ledger/v1",
+  "status": "candidate-evidence-not-approval",
+  "scope": "TA1121 research pilot; public methodological evidence for discount-rate selection",
+  "proposed_decision": {
+    "primary": {
+      "label": "NICE reference case",
+      "rate": 0.035,
+      "applies_to": ["costs", "health effects"],
+      "role": "provisional-primary"
+    },
+    "sensitivity": {
+      "label": "DHSC consultation-stage example",
+      "rate": 0.015,
+      "applies_to": ["QALYs in the cited example"],
+      "role": "sensitivity-only"
+    }
+  },
+  "sources": [
+    {
+      "id": "nice-economic-evaluation-manual",
+      "publisher": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+      "location": "sections 4.2 and 4.5",
+      "claim": "Use a horizon long enough to capture important differences; the standard reference case discounts costs and health effects at 3.5% annually.",
+      "snapshot_sha256": "20b1111fc52b846dcb1e3ce4c705af4592472bbc13369f7d74ac2fb578de40b5",
+      "applicability": "NICE reference-case methodology; candidate primary for this research pilot, subject to context-specific owner decision",
+      "price_year": null,
+      "transformations": "None; rate transcribed as an annual decimal",
+      "limitations": ["Does not identify a local NHS displacement programme or Scenario 4 parameters", "Web page may change; retain the recorded snapshot hash"]
+    },
+    {
+      "id": "dhsc-2026-statutory-scheme-impact-assessment",
+      "publisher": "Department of Health and Social Care",
+      "url": "https://assets.publishing.service.gov.uk/media/6989d4b14cff1c70a3b6e4fd/consultation-stage-impact-assessment-proposed-2026-changes-to-statutory-scheme-for-branded-medicines-pricing.pdf",
+      "location": "PDF pp. 11-12 and 14 (discount calculation); Annex C, pp. 22-23",
+      "claim": "The worked example discounts QALYs at 1.5%; GBP 15,000/QALY is described as a pragmatic simplifying marginal-health-opportunity-cost assumption, not a firm threshold.",
+      "snapshot_sha256": "da2f3bb1ae21e65cd0aac668f1e21f35e5c1685c69aa6f76f0048e9eea90c60e",
+      "applicability": "DHSC consultation-stage example; sensitivity only unless the selected decision context explicitly adopts it",
+      "price_year": null,
+      "transformations": "None; rate transcribed as an annual decimal",
+      "limitations": ["Not a NICE reference case or binding NHS threshold", "Consultation-stage material and example assumptions are not programme-specific", "Retain source terms and do not infer a general 1.5% mandate"]
+    },
+    {
+      "id": "che-research-summary-9",
+      "publisher": "Centre for Health Economics, University of York",
+      "url": "https://www.york.ac.uk/media/che/documents/papers/researchsummaries/Summary%209.pdf",
+      "location": "July 2023 research summary",
+      "claim": "Marginal NHS cost per QALY is likely below GBP 15,000 and varies by geography and programme; supports caution rather than a new numeric discount rate.",
+      "snapshot_sha256": "4b1814572e363dcb2e722a4fb43b1a6e04ef5c6b278bc6f6130fdf375fdaad02",
+      "applicability": "Contextual triangulation only; not used to set the discount rate",
+      "price_year": null,
+      "transformations": "None",
+      "limitations": ["Qualitative context and heterogeneous estimates; no direct rate recommendation"]
+    }
+  ],
+  "cross_reference_controls": {
+    "same_rate_for_costs_and_effects": "Use only for the NICE reference-case primary; report DHSC example separately because its cited scope is QALYs.",
+    "timing": "Annual discounting; timing convention and partial-year treatment must be fixed in the final method receipt.",
+    "horizon": "Must be long enough to capture important differences; no universal numeric horizon is supplied by NICE.",
+    "price_year": "Unknown in reviewed passages; do not inflate or deflate the candidate monetary values.",
+    "scenario4": "Neither source supplies same-programme m, d, mu, phi, annual effect, investment cost, or joint uncertainty. Scenario 4 remains sensitivity-only."
+  },
+  "contingencies": [
+    "If the selected NHS decision context mandates a different convention, supersede this candidate ledger with an authority-bound receipt and retain both rates as sensitivities.",
+    "If an official source is inaccessible or materially revised, preserve the prior snapshot hash and record the replacement source and revision; do not silently substitute a secondary source.",
+    "If no accountable owner signs the method decision, keep the NICE rate provisional and do not claim methodological approval."
+  ],
+  "approval": {
+    "status": "pending-accountable-method-decision",
+    "approved_by": null,
+    "decision_receipt": null
+  },
+  "provenance": {
+    "assembled_from": "docs/research/nhs-england-methodological-pilot.md",
+    "assembled_on": "2026-08-02",
+    "repository_commit_binding": "To be filled after commit; this file is a draft ledger and does not itself approve the decision."
+  }
+}
