@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "nhs_candidate_acquisition_receipt",
   "receipt_id": "nhs-south-yorkshire-imoc-tldl-ta1121-2026-08-02",
-  "retrieved_at": "2026-08-02T00:00:00Z",
+  "retrieved_at": "2026-08-02T10:05:27Z",
   "source": {
     "url": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20IMOC%20TLDL.pdf?_rsc=ysg01",
     "publisher": "South Yorkshire Integrated Care Board IMOC",
