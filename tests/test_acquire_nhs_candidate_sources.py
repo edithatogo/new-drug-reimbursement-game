@@ -48,6 +48,27 @@ class AcquisitionTests(unittest.TestCase):
         self.assertFalse(result["payload_retained"])
         self.assertNotIn("payload", result)
 
+    def test_atlas_latest_release_records_immutable_identity(self) -> None:
+        payload = b'{"tag_name":"v1.2.3","published_at":"2026-08-02T00:00:00Z","target_commitish":"main","id":123}'
+        with patch(
+            "scripts.acquire_nhs_candidate_sources.urllib.request.urlopen",
+            return_value=FakeResponse(payload, "https://api.github.com/releases/123"),
+        ):
+            result = fetch(
+                "atlas-latest-release",
+                "https://api.github.com/repos/edithatogo/reimbursement-atlas/releases/latest",
+                1,
+            )
+        self.assertEqual(
+            result["immutable_release_identity"],
+            {
+                "tag_name": "v1.2.3",
+                "published_at": "2026-08-02T00:00:00Z",
+                "target_commitish": "main",
+                "release_id": 123,
+            },
+        )
+
     def test_fetch_fails_closed_on_oversize_source(self) -> None:
         with patch(
             "scripts.acquire_nhs_candidate_sources.urllib.request.urlopen",

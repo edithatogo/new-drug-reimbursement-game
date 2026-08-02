@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -70,11 +71,18 @@ def readiness_violations(run: dict[str, Any], coverage: dict[str, Any], release:
     return violations
 
 
+def run_digest_violation(run_bytes: bytes, coverage: dict[str, Any]) -> list[str]:
+    expected = coverage.get("acquisition_run_sha256")
+    actual = hashlib.sha256(run_bytes).hexdigest()
+    return [] if expected == actual else ["field coverage is not bound to the current acquisition run"]
+
+
 def main() -> int:
-    run = json.loads(RUN.read_text(encoding="utf-8"))
+    run_bytes = RUN.read_bytes()
+    run = json.loads(run_bytes)
     coverage = json.loads(COVERAGE.read_text(encoding="utf-8"))
     release = json.loads(RELEASE.read_text(encoding="utf-8"))
-    violations = readiness_violations(run, coverage, release)
+    violations = readiness_violations(run, coverage, release) + run_digest_violation(run_bytes, coverage)
     if violations:
         print("empirical-readiness validation failed:")
         for violation in violations:

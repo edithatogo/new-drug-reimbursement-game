@@ -2,7 +2,13 @@ import copy
 import json
 import unittest
 
-from scripts.validate_empirical_readiness import COVERAGE, RELEASE, RUN, readiness_violations
+from scripts.validate_empirical_readiness import (
+    COVERAGE,
+    RELEASE,
+    RUN,
+    readiness_violations,
+    run_digest_violation,
+)
 
 
 def load(path):  # type: ignore[no-untyped-def]
@@ -17,6 +23,7 @@ class EmpiricalReadinessTests(unittest.TestCase):
 
     def test_committed_negative_coverage_is_consistent(self) -> None:
         self.assertEqual(readiness_violations(self.run, self.coverage, self.release), [])
+        self.assertEqual(run_digest_violation(RUN.read_bytes(), self.coverage), [])
 
     def test_incomplete_evidence_cannot_promote(self) -> None:
         coverage = copy.deepcopy(self.coverage)
@@ -47,6 +54,9 @@ class EmpiricalReadinessTests(unittest.TestCase):
         release = copy.deepcopy(self.release)
         release["prohibited"] = ["regulatory claims"]
         self.assertTrue(any("must prohibit" in item for item in readiness_violations(self.run, self.coverage, release)))
+
+    def test_coverage_digest_detects_acquisition_refresh(self) -> None:
+        self.assertTrue(run_digest_violation(b"changed", self.coverage))
 
 
 if __name__ == "__main__":

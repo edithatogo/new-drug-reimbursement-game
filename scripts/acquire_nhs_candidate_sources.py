@@ -30,7 +30,7 @@ SOURCES = {
     "southwest-london-jfc-january-2026": "https://www.swljointmedicinesformulary.nhs.uk/docs/files/SWL%20JFC%20Bulletin%20January%202026.pdf",
     "north-east-london-formulary": "https://nel-jointformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09",
     "buckinghamshire-formulary": "https://bucksformulary.nhs.uk/reports/Archive/A0003.asp",
-    "atlas-v0.1.1-release": "https://api.github.com/repos/edithatogo/reimbursement-atlas/releases/tags/v0.1.1",
+    "atlas-latest-release": "https://api.github.com/repos/edithatogo/reimbursement-atlas/releases/latest",
 }
 
 ALLOWED_HOST_SUFFIXES = (
@@ -85,7 +85,7 @@ def fetch(source_id: str, url: str, timeout: float, *, max_bytes: int = MAX_BYTE
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
             payload = _read_bounded(response, max_bytes)
-            return {
+            receipt: dict[str, object] = {
                 "source_id": source_id,
                 "requested_uri": url,
                 "final_uri": response.geturl(),
@@ -99,6 +99,15 @@ def fetch(source_id: str, url: str, timeout: float, *, max_bytes: int = MAX_BYTE
                 "last_modified": response.headers.get("Last-Modified"),
                 "payload_retained": False,
             }
+            if source_id == "atlas-latest-release":
+                release = json.loads(payload)
+                receipt["immutable_release_identity"] = {
+                    "tag_name": release.get("tag_name"),
+                    "published_at": release.get("published_at"),
+                    "target_commitish": release.get("target_commitish"),
+                    "release_id": release.get("id"),
+                }
+            return receipt
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError) as exc:
         return {
             "source_id": source_id,
