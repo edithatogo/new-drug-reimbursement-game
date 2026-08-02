@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "kind": "nhs_candidate_acquisition_receipt",
+  "receipt_id": "nhs-south-yorkshire-imoc-tldl-ta1121-2026-08-02",
+  "retrieved_at": "2026-08-02T00:00:00Z",
+  "source": {
+    "url": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20IMOC%20TLDL.pdf?_rsc=ysg01",
+    "publisher": "South Yorkshire Integrated Care Board IMOC",
+    "domain_class": "official_nhs_formulary_traffic_light_list",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 2591753,
+    "sha256": "9c23b2899ab81a7e40c3a4bff7d07629e12232c91afb3aa50695a8295993d877"
+  },
+  "target": {
+    "jurisdiction": "England",
+    "technology_appraisal": "NICE TA1121",
+    "intervention": "acoramidis",
+    "comparator": null
+  },
+  "extracted_evidence": {
+    "payer": "South Yorkshire ICB",
+    "service_line": "treating transthyretin amyloidosis with cardiomyopathy",
+    "decision_date": "2026-02",
+    "traffic_light_status": "Red",
+    "price_year": null,
+    "displaced_programme": null,
+    "stable_programme_id": null,
+    "baseline_unit": null,
+    "record_locator": "PDF text row Acoramidis; NICE TA 1121; local date Feb-26"
+  },
+  "disposition": "supporting_only",
+  "negative_receipt": "The traffic-light list confirms a South Yorkshire ICB Red classification and February 2026 local date for acoramidis under TA1121, but provides no comparator, displaced programme, baseline unit, stable programme ID, price year, or accountable budget decision.",
+  "approval_state": "candidate_only",
+  "promotion_rule": "Do not infer displacement or parameter d from a traffic-light list. Promotion requires an authoritative local decision naming the displaced programme and baseline unit.",
+  "retrieval_method": "Codex web acquisition; immutable PDF bytes hashed and source payload not redistributed"
+}
