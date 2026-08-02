@@ -4,9 +4,9 @@
   "task": "enforce-claims-disabled",
   "validated_at": "2026-08-03T09:30:00Z",
   "artifacts": {
-    "readiness": "conductor/tracks/t13_empirical_calibration_20260802/research-readiness-receipt-2026-08-03.json",
-    "constrained_output": "conductor/tracks/t13_empirical_calibration_20260802/constrained-research-output-2026-08-03.json",
-    "release_authorization": "docs/governance/release-packet/research-only-release-authorization-2026-08-02.json"
+    "readiness": {"path": "conductor/tracks/t13_empirical_calibration_20260802/research-readiness-receipt-2026-08-03.json", "sha256": "a9483ed93d91a0efb1499c6129f4dea85db931510126d1025281d2ba25dbc9ea"},
+    "constrained_output": {"path": "conductor/tracks/t13_empirical_calibration_20260802/constrained-research-output-2026-08-03.json", "sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061"},
+    "release_authorization": {"path": "docs/governance/release-packet/research-only-release-authorization-2026-08-02.json", "sha256": "f7ef03a76a7aae626dfeadd82a6095f426aaeda06fb80396c4dba23d0d382773"}
   },
   "disabled_claim_classes": ["empirical", "payer", "HTA", "policy", "regulatory", "calibrated"],
   "assertions": [
