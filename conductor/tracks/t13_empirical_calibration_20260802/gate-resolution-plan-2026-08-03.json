@@ -44,6 +44,17 @@
       "human_stop_condition": "Named accountable owner must authorize empirical intended use and exact packet-bound release."
     }
   ],
+  "while_waiting_workstream": {
+    "status": "autonomous_research_only",
+    "tasks": [
+      {"id": "refresh-public-sources", "action": "Re-query official NICE, NHS England, ICB, specialist-centre, committee, and publication-scheme sources; hash new bytes and preserve stale receipts.", "does_not_close": ["displacement", "Atlas approval"]},
+      {"id": "expand-independent-context", "action": "Add only genuinely independent custodians or records to the non-frozen triangulation supplement; reject mirrors as corroboration.", "does_not_close": ["local baseline", "confidential price"]},
+      {"id": "prepare-sensitivity", "action": "Run synthetic and public-context sensitivity demonstrations for all four Chapter 7 scenarios, including Scenario 4 uncertainty limitations.", "does_not_close": ["empirical calibration"]},
+      {"id": "prepare-ingestion", "action": "Pre-validate the packet-ingestion, hash-binding, panel rerun, and qualification path against a future NHS/Atlas response.", "does_not_close": ["owner authorization"]}
+    ],
+    "refresh_trigger": "New official publication, amended source bytes, substantive NHS response, Atlas revision, or change to intended use.",
+    "stop_conditions": ["Do not infer displacement from comparator adoption", "Do not use public context to fill confidential or missing parameters", "Do not promote empirical or regulatory claims"]
+  },
   "refresh_rule": "Any source byte, revision, terms, programme context, transformation, uncertainty, code commit, purpose, audience, or destination change invalidates dependent receipts and requires reacquisition, panel review, and requalification.",
   "completion_rule": "Do not mark T13 complete or enable empirical promotion until all three gates have authoritative evidence and packet-bound authorization."
 }

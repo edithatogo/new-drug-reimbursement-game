@@ -62,6 +62,11 @@ def closeout_violations() -> list[str]:
         violations.append("gate-resolution plan lacks required blocker sequence")
     if not gate_plan.get("completion_rule"):
         violations.append("gate-resolution plan lacks completion rule")
+    waiting = gate_plan.get("while_waiting_workstream", {})
+    waiting_ids = {item.get("id") for item in waiting.get("tasks", []) if isinstance(item, dict)}
+    required_waiting = {"refresh-public-sources", "expand-independent-context", "prepare-sensitivity", "prepare-ingestion"}
+    if waiting.get("status") != "autonomous_research_only" or not required_waiting.issubset(waiting_ids):
+        violations.append("while-waiting workstream is incomplete or not research-only")
 
     required_modes = {"inaccessible", "conflicting", "incomplete", "restricted"}
     modes = {item.get("id") for item in contingency.get("failure_modes", []) if isinstance(item, dict)}

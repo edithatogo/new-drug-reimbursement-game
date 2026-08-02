@@ -19,6 +19,16 @@ immutable Atlas packet. Public reconstruction and synthetic fixtures remain
 useful fallbacks for research-only work, but cannot close displacement,
 confidential price, source-term, or empirical-release gates.
 
+## While the external response is pending
+
+The orchestrator may continue four repository-safe activities: refresh official
+NICE/NHS/ICB and specialist-centre sources; add genuinely independent context
+records to the non-frozen triangulation supplement; run synthetic/public-context
+sensitivity demonstrations for all four Chapter 7 scenarios; and pre-validate
+packet ingestion, hash binding, panel rerun, and qualification. These activities
+must not infer displacement from comparator adoption, substitute public context
+for confidential or missing parameters, or enable empirical/regulatory claims.
+
 ## Stop and fallback behavior
 
 Every acquisition records a hash, authority, locator, rights, and disposition.
