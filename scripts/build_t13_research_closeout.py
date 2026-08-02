@@ -29,6 +29,7 @@ INPUT_PATHS = (
     "conductor/tracks/t13_empirical_calibration_20260802/grey-literature-receipt-2026-08-02.json",
     "conductor/tracks/t13_empirical_calibration_20260802/nhs-england-foi-submission-2026-08-02.json",
     "conductor/tracks/t13_empirical_calibration_20260802/source-inventory.json",
+    "conductor/tracks/t13_empirical_calibration_20260802/receipts/atlas-pinned-tree-negative-2026-08-02.json",
     "conductor/tracks/t13_empirical_calibration_20260802/receipts/atlas-v0.1.1-ta1121-negative-2026-08-02.json",
     "docs/governance/health-economist-approval.md",
     "docs/research/source-conformance-audit.md",
@@ -157,6 +158,8 @@ def build_artifacts(reviewed_revision: str) -> dict[str, bytes]:
             "No authoritative separately displaced NHS programme or baseline unit is available.",
             "Commercial net prices are neither requested nor used.",
             "Scenario 4 remains a mathematical sensitivity and conformance case only.",
+            "The synthetic Scenario 4 fixture uses 3.0% solely for conformance; empirical use requires a 3.5% primary and 1.5% sensitivity transformation from an approved time profile.",
+            "Synthetic samples are positionally aligned; empirical use requires joint-draw identifiers and dependence or covariance provenance.",
         ],
     }
     return {

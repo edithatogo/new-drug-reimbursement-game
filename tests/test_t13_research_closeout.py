@@ -33,6 +33,13 @@ class T13ResearchCloseoutTests(unittest.TestCase):
                 self.assertEqual(scenario["classification"], "synthetic_conformance_only")
                 self.assertFalse(scenario["calibration_receipt"]["decision_use_permitted"])
                 self.assertTrue(scenario["calibration_receipt"]["synthetic"])
+            freeze = json.loads(first["packet-freeze-2026-08-03.json"])
+            frozen_paths = {item["path"] for item in freeze["inputs"]}
+            self.assertIn(
+                "conductor/tracks/t13_empirical_calibration_20260802/receipts/atlas-pinned-tree-negative-2026-08-02.json",
+                frozen_paths,
+            )
+            self.assertTrue(any("joint-draw" in item for item in result["limitations"]))
 
     def test_builder_rejects_non_commit_revision(self) -> None:
         result = subprocess.run(

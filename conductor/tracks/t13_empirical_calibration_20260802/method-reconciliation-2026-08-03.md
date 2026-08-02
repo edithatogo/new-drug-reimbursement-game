@@ -42,6 +42,14 @@ are covered by automated tests.
 - NICE 3.5% is the provisional primary health-economic discount convention;
   DHSC 1.5% remains a sensitivity. Neither rate identifies `phi` without a
   programme-specific time profile.
+- The synthetic conformance fixture uses 3.0%. This is not the approved primary
+  method convention and cannot be promoted. Any empirical Scenario 4 packet
+  must derive `phi` reproducibly from an approved time profile using 3.5% as
+  primary and 1.5% as sensitivity.
+- Synthetic uncertainty samples are aligned positionally for arithmetic
+  conformance. Any empirical packet must supply joint-draw identifiers and
+  dependence or covariance provenance; equal array length alone is
+  insufficient evidence of a justified joint uncertainty model.
 - The NICE TA1121 three-year resource-impact horizon and national market shares
   describe public treatment-substitution context. They do not identify an
   actual displaced programme or parameter `d`.
