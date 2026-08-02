@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "kairos_candidate_contract_manifest",
+  "recorded_at": "2026-08-02T00:00:00Z",
+  "repository": "https://github.com/edithatogo/kairos",
+  "pinned_revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+  "local_checkout_status": "no_dedicated_kairos_checkout_found; /Volumes/PortableSSD/GitHub/foi-process/repo-exports/kairos is an export within foi-process and is not a Kairos checkout",
+  "contract_source": {
+    "path": "schemas/arrow/event_log_v1.schema.json",
+    "sha256": "2e8025a5997f1e056956d47db3b18d3e01e3b0fd865d7235803811ae2aab9dcc",
+    "stream": "kairo_ecs.event_log.v1",
+    "schema_version": 1,
+    "compatibility": "additive nullable fields compatible within major 1; removals or type changes require a new major stream"
+  },
+  "dto_fields": [
+    {"name": "schema_version", "type": "UInt16", "nullable": false},
+    {"name": "run_id", "type": "Utf8", "nullable": false},
+    {"name": "event_id", "type": "FixedSizeBinary(12)", "nullable": false, "encoding": "u64 index little-endian followed by u32 generation little-endian"},
+    {"name": "entity_id", "type": "FixedSizeBinary(12)", "nullable": true, "encoding": "u64 index little-endian followed by u32 generation little-endian"},
+    {"name": "time_ticks", "type": "FixedSizeBinary(16)", "nullable": false, "encoding": "u128 little-endian"},
+    {"name": "time_scale", "type": "Utf8", "nullable": false, "allowed": ["ticks"]},
+    {"name": "priority", "type": "Int32", "nullable": false},
+    {"name": "sequence", "type": "UInt64", "nullable": false},
+    {"name": "event_kind", "type": "Utf8", "nullable": false},
+    {"name": "status", "type": "Utf8", "nullable": false, "allowed": ["dispatched", "cancelled", "skipped", "error"]},
+    {"name": "payload_ref", "type": "Utf8", "nullable": true}
+  ],
+  "ordering_contract": {
+    "fixture_path": "conformance/fixtures/deterministic_ordering.json",
+    "fixture_sha256": "3c61ecf1abe708b055f52803be13e830194c902fdda246d9363bf25265c83fc9",
+    "ordering": ["time", "priority", "sequence"]
+  },
+  "local_adapter": {
+    "path": "src/reimbursement_game/adapters/kairos.py",
+    "sha256": "e25302403b875163c8569b7ad39ffcc4ed20107b0b29a5e240226a988d8163d9",
+    "schema": "https://github.com/edithatogo/kairos/conformance/game-events/v0",
+    "export_shape": "schema,target,events; event fields sequence,time,kind,payload",
+    "status": "candidate_only; adapter shape is not evidence of native Kairos DTO compatibility"
+  },
+  "lock_binding": {
+    "path": "ecosystem.lock.toml",
+    "sha256": "99d0a6b597c9f2b9889dc300015ed45dc4817784a5dd2221f5c93e5af9459ddf",
+    "pinned_revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c"
+  },
+  "negative_receipt": "The accessible local kairos path is a foi-process export and contains no dedicated checkout metadata. The repository adapter emits a provisional JSON event envelope whose fields differ from the pinned Kairos Arrow event-log DTO. Native integration, release, and maintainer approval remain unverified.",
+  "approval_state": "candidate_only",
+  "promotion_rule": "Do not claim Kairos contract acceptance or release compatibility until the pinned checkout, native adapter implementation, conformance run, and maintainer approval are bound to this manifest."
+}
