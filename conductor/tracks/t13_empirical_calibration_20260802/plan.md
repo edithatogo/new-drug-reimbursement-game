@@ -50,6 +50,7 @@
 - [x] Run all four Chapter 7 scenarios using synthetic or explicitly labelled public-context assumptions; keep empirical calibration disabled. (`constrained-research-output-2026-08-03.json`, `chapter7-scenario-run-2026-08-03.json`; `3634fd1`)
 - [x] Review scenario completeness, synthetic labelling, frozen-input binding, Scenario 4 limitations, and claim boundaries. (`chapter7-scenario-review-2026-08-03.json`)
 - [x] Perform sensitivity analyses, including Scenario 4 limitation demonstrations and missing time-profile/joint-uncertainty handling. (`method-reconciliation-2026-08-03.md`, `constrained-research-output-2026-08-03.json`, `sensitivity-analysis-2026-08-03.json`; `bfffaa0`)
+- [x] Review sensitivity numerical consistency, Scenario 4 discount-rate separation, uncertainty limitations, and claim boundaries. (`sensitivity-review-2026-08-03.json`)
 - [x] Validate the future Atlas packet-ingestion, hash-binding, panel-review, and requalification path against exact target artifacts and commit. (`validate_t13_closeout.py`, `panel-review-target-2026-08-03.json`)
 - [x] Prepare negative/deferred receipts for inaccessible, incomplete, conflicting, and restricted evidence, with explicit fallback and stop conditions. (`contingency-register-2026-08-03.json`)
 - [x] Test stale-source detection and invalidation when URLs, revisions, terms, transformations, or commits change; require reacquisition and requalification. (`gate-resolution-plan-2026-08-03.json`, `validate_t13_closeout.py`)

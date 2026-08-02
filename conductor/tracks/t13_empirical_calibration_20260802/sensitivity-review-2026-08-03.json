@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "perform-sensitivity-analysis",
+  "reviewed_artifact": "sensitivity-analysis-2026-08-03.json",
+  "findings": [],
+  "checks": {
+    "four_scenario_consistency": "pass",
+    "scenario_4_rate_separation": "pass",
+    "scenario_4_phi_limitation": "pass",
+    "joint_uncertainty_limitation": "pass",
+    "frozen_output_binding": "pass",
+    "claim_boundaries": "pass"
+  },
+  "disposition": "approved_research_only; empirical_promotion_deferred",
+  "reviewed_at": "2026-08-03T07:35:00Z"
+}
