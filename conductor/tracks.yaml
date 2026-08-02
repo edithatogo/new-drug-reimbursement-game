@@ -19,7 +19,7 @@ tracks:
   - id: T02
     title: Domain-neutral UOGTO-native Rust game runtime
     priority: 1
-    status: in_progress
+    status: done
     depends_on: [T00]
   - id: T03
     title: UOGTO reimbursement and execution semantics

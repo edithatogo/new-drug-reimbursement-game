@@ -10,6 +10,10 @@
 
 ## Phase 1 — authorization and packet freeze
 
+- [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while external requests and restricted access remain gated.
+- [ ] Run the repeatable official NHS/Atlas acquisition utility and preserve an exact run receipt.
+- [ ] Search official committee, publication-scheme, procurement, finance, formulary, and service-routing sources for the complete NHS field set.
+- [ ] Emit a field-level coverage matrix and exact negative/deferred receipts for every unresolved role.
 - [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals, sourcing all public components before requesting external action. Public components are complete; authoritative displacement and approved Atlas packet remain external.
 - [ ] Freeze the repository commit, packet digest, parameter-role mapping, and price-year conversions.
 - [ ] Review checkpoint: verify every external gate and fail closed on missing evidence.

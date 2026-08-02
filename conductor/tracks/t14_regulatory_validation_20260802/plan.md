@@ -10,6 +10,8 @@
 
 ## Phase 1 — intended use and framework
 
+- [ ] Consume the exact T13 freeze and panel receipts; do not build a regulatory candidate from candidate or negative evidence.
+- [ ] Source sponsor, intended purpose, jurisdiction, submission route, classification, and claims only after T13 is evidence-complete.
 - [~] Source the public framework evidence, then select jurisdiction, submission type, sponsor, intended audience, and governing framework. UK public sources are complete; sponsor, intended purpose, classification, and submission route remain external decisions.
 - [ ] Build the claims, evidence, model-risk, and regulatory-gap inventories.
 - [ ] Review checkpoint: obtain legal/regulatory approval of the validation plan.
