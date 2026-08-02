@@ -2,7 +2,7 @@
 
 ## Phase 0 — autonomous framework acquisition
 
-- [ ] Build a jurisdiction/submission source inventory and ranked requirements worklist from `sourcing.md`.
+- [~] Build a jurisdiction/submission source inventory and ranked requirements worklist from `sourcing.md`.
 - [ ] Programmatically retrieve, hash, receipt, and triangulate official legislation, guidance, templates, schemas, registers, and change logs.
 - [ ] Emit negative/deferred receipts for superseded, inaccessible, conflicting, incomplete, or restricted requirements.
 - [ ] Present framework options with recommendation, rationale, consequences, fallback, and genuine owner/sponsor stop conditions.

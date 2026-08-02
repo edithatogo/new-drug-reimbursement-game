@@ -79,7 +79,7 @@ tracks:
   - id: T14
     title: Regulatory and HTA validation boundary
     priority: 4
-    status: new
+    status: in_progress
     depends_on: [T09, T13]
   - id: T15
     title: Raw-data acquisition and governance
