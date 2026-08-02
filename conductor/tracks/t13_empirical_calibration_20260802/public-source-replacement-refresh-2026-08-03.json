@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "replace-stale-public-source-endpoints",
+  "retrieved_at": "2026-08-03T16:45:00Z",
+  "method": "Targeted official-domain search followed by standard-library HTTPS retrieval; indexed-only records are not treated as retrieved evidence.",
+  "sources": [
+    {"id": "nw-tag-governance", "publisher": "Knowledge NoW NHS", "uri": "https://nwknowledgenow.nhs.uk/content-category/prescribing-pharmacy-and-medicines-optimisation/therapeutic-advisory-group-tag/tag-governance/tag-reports-and-horizon-scanning/", "status": 200, "mime": "text/html", "bytes": 90052, "sha256": "0ea1120690fdfe187d2b8f8d296036801b5cf89da94e0a2dc05f29316d95f563", "supports": ["TAG report index and replacement-source discovery"], "limitations": ["index does not itself establish local displacement or baseline"]},
+    {"id": "gmmmg-acoramidis", "publisher": "Greater Manchester Medicines Management Group", "uri": "https://gmmmg.nhs.uk/new-consultation-crg-actions-february-2026/", "status": 200, "mime": "text/html", "bytes": 53038, "sha256": "f8a45560853d4d6b32e68b47d466e453b60018ef710c63d50b2da04d435fca8a", "supports": ["local red/specialist-only consultation context"], "limitations": ["consultation and traffic-light status are not an attributable displaced-programme or budget decision"]},
+    {"id": "mft-formulary-apr-2026-indexed-lead", "publisher": "Manchester University NHS Foundation Trust", "uri": "https://mft.nhs.uk/app/uploads/sites/7/2026/04/FORMULARY-v10.16-April-2026.pdf", "status": 404, "mime": null, "bytes": null, "sha256": null, "supports": [], "limitations": ["official search index describes the record, but direct retrieval returned 404; retain as inaccessible lead and do not promote indexed text"]}
+  ],
+  "triangulation": {"result": "context_reinforced_only", "supports": ["specialist-only/red routing", "replacement-source discovery"], "does_not_close": ["actual displaced programme", "local baseline cost/unit", "confidential net price", "approved Atlas packet", "empirical authorization"]},
+  "disposition": "retain_non_frozen_public_context_and_negative_receipt",
+  "refresh_rule": "Reacquire indexed-only or 404 records if a canonical replacement appears; invalidate dependent context receipts when URL, bytes, revision, or terms change."
+}
