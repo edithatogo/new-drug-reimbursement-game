@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t14-nice-hte-manual-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "National Institute for Health and Care Excellence", "title": "Technology appraisal and highly specialised technologies guidance: the manual", "url_or_repository": "https://www.nice.org.uk/process/pmg36", "revision_or_effective_date": "last updated 2026-03-31", "locator": "overview and linked methods/process chapters"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:14:05Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "b2c4e2d0f6d5f2a89549ee4b05b7eddf2bcf9b24bfbbba91ca494eba4ab889f8", "content_length": 17398},
+  "rights": {"terms": "Official public NICE process guidance; private submission evidence and commercial arrangements remain separate", "permitted_destination": "research-to-HTA gap matrix and citations"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Controlling public NICE methods/process source for an NHS England HTA use, but it does not convert research software into an HTA submission.", "contingency": "Maintain a gap assessment and research-only claims until a sponsor and submission type exist.", "refresh_or_retry_condition": "Refresh on NICE update or submission-scope change."}
+}

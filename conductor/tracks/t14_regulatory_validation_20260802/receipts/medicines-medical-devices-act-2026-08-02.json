@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t14-medicines-medical-devices-act-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "The National Archives / UK legislation", "title": "Medicines and Medical Devices Act 2021 explanatory notes", "url_or_repository": "https://www.legislation.gov.uk/ukpga/2021/3/notes/division/3/index.htm", "revision_or_effective_date": "current public legislation page retrieved 2026-08-02", "locator": "medical-device software definition and MHRA remit"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:14:05Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "0cbd26a7f10dd8e00bab61c6a13fda5bc0187e138bbbe7b6b362815b2eb09ef2", "content_length": 44261},
+  "rights": {"terms": "Official legislation publication; explanatory notes are not a substitute for legal advice", "permitted_destination": "authority mapping and legal-review checklist"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Establishes the statutory context and MHRA role but not whether this research software is a medical device or compliant.", "contingency": "Require accountable legal/regulatory classification before product claims or deployment.", "refresh_or_retry_condition": "Refresh on legislative amendment, jurisdiction, or intended-purpose change."}
+}

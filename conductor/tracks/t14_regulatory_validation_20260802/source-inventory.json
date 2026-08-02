@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "track_id": "t14_regulatory_validation_20260802",
+  "reviewed_commit": "a4132c31798b2ba83efdb1f280fa7fbdd30983d5",
+  "assumed_jurisdiction_for_gap_assessment": "Great Britain and NHS England",
+  "intended_use": "research software and methodology only",
+  "recommended_option": "research-to-regulatory gap assessment until intended use, sponsor, product classification, and submission type are fixed",
+  "sources": [
+    {"receipt": "receipts/nice-hte-manual-2026-08-02.json", "role": "HTA methods and process"},
+    {"receipt": "receipts/hm-treasury-green-book-2026-08-02.json", "role": "public appraisal and evaluation"},
+    {"receipt": "receipts/mhra-standalone-software-2026-08-02.json", "role": "conditional medical-device software classification"},
+    {"receipt": "receipts/better-regulation-framework-2026-08-02.json", "role": "government regulatory-policy assessment"},
+    {"receipt": "receipts/medicines-medical-devices-act-2026-08-02.json", "role": "legislative authority and regulator remit"}
+  ],
+  "applicability": {
+    "NICE_HTA": "relevant only to an HTA evidence/submission use",
+    "MHRA_medical_device": "unresolved because research-only intended use does not establish medical-device status",
+    "Green_Book": "relevant to public-sector appraisal, not product approval",
+    "Better_Regulation_Framework": "relevant only to government regulatory-policy proposals",
+    "formal_submission": "blocked_without_named_sponsor_and_submission_type"
+  },
+  "disposition": "gap_assessment_only_research_boundary_preserved",
+  "refresh_rule": "Refresh on intended-use, jurisdiction, sponsor, product classification, submission type, governing source, claim, model/evidence, or commit change and at every submission freeze."
+}

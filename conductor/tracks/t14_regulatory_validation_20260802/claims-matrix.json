@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "reviewed_commit": "a4132c31798b2ba83efdb1f280fa7fbdd30983d5",
+  "claims": [
+    {"claim": "research software and methodology", "status": "permitted", "authority": "docs/governance/release-packet/research-only-release-authorization-2026-08-02.json"},
+    {"claim": "synthetic scenario conformance", "status": "permitted", "authority": "tests and versioned synthetic fixtures"},
+    {"claim": "empirically calibrated reimbursement result", "status": "prohibited_pending_T13", "authority": "conductor/tracks/t13_empirical_calibration_20260802/metadata.json"},
+    {"claim": "NICE HTA submission or recommendation", "status": "prohibited", "authority": "NICE manual receipt; no sponsor/submission"},
+    {"claim": "MHRA compliant or medical-device approved", "status": "prohibited", "authority": "MHRA receipt; intended purpose/classification unresolved"},
+    {"claim": "payer, policy, or regulatory recommendation", "status": "prohibited", "authority": "research-only release authorization"}
+  ],
+  "recommended_next_decision": "Fix intended use, sponsor, jurisdiction, product classification question, and submission type before selecting a regulatory validation framework."
+}
