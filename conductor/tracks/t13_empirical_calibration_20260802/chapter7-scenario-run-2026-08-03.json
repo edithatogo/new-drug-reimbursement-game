@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "run-four-synthetic-scenarios",
+  "output": "constrained-research-output-2026-08-03.json",
+  "output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061",
+  "packet_freeze_sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90",
+  "scenarios": ["scenario_1", "scenario_2", "scenario_3", "scenario_4"],
+  "assumption_classification": "synthetic_conformance_only",
+  "all_calibration_receipts_synthetic": true,
+  "decision_use_permitted": false,
+  "empirical_calibration_activated": false,
+  "public_context": ["NICE TA1121", "NHS England commissioner context", "tafamidis and vutrisiran comparator context"],
+  "limitations": ["Synthetic inputs are not NHS or Atlas observations.", "Scenario 4 is a mathematical sensitivity/conformance case only.", "No payer, HTA, policy, regulatory, or calibrated claims are enabled."],
+  "disposition": "passed_research_only"
+}
