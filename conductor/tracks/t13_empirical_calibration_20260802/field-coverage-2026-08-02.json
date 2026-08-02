@@ -3,7 +3,7 @@
   "track": "T13",
   "programme_context": "TA1121 acoramidis versus tafamidis, England",
   "acquisition_run": "acquisition-run-2026-08-02.json",
-  "acquisition_run_sha256": "7deafa172015c7bd6a80c3916e9843da88dbeb1f83259492a1f4eec5e07b1c2a",
+  "acquisition_run_sha256": "aff21a904dec2884621bfbff71217620d4eea2f58a0fe009a1c6c20d9644a7a8",
   "source_counts": {"attempted": 13, "fetched": 11, "error": 2},
   "fields": [
     {"field": "payer_or_commissioner", "status": "candidate", "value": "NHS England specialised commissioning and local ICB implementation context", "sources": ["somerset-medicines-board-january-2026", "north-east-london-formulary", "south-yorkshire-imoc-february-2026"], "promotion_blocker": "no attributable programme owner confirmation"},
@@ -19,7 +19,7 @@
     {"field": "baseline_cost_and_unit", "status": "missing", "sources": [], "promotion_blocker": "no attributable baseline"},
     {"field": "horizon", "status": "missing_programme_specific", "sources": ["nice-ta1121-resource-impact"], "promotion_blocker": "method/resource context cannot substitute for the decision horizon"},
     {"field": "accountable_owner_confirmation", "status": "missing", "sources": [], "promotion_blocker": "no signed or attributable confirmation"},
-    {"field": "atlas_approved_n_m_d_packet", "status": "not_found", "sources": ["atlas-v0.1.1-release"], "promotion_blocker": "immutable v0.1.1 has terminology only and no approved TA1121 packet"}
+    {"field": "atlas_approved_n_m_d_packet", "status": "not_found", "sources": ["atlas-latest-release"], "promotion_blocker": "latest immutable release v0.1.1 has terminology only and no approved TA1121 packet"}
   ],
   "decision": "defer_empirical_promotion",
   "next_route": "bounded public-record request to NHS England specialised commissioning or the accountable TA1121 implementation owner",
