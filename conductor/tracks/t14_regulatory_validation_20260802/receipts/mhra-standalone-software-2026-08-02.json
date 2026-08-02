@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t14-mhra-standalone-software-2026-08-02", "status": "incomplete",
+  "source": {"authority_rank": 1, "publisher": "Medicines and Healthcare products Regulatory Agency", "title": "Medical device stand-alone software including apps", "url_or_repository": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1168485/Medical_device_stand-alone_software_including_apps__including_IVDMDs_.pdf", "revision_or_effective_date": "v1.10f; retrieved 2026-08-02", "locator": "qualification and classification flowcharts"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:14:05Z", "method": "HTTPS GET", "http_status": 200, "media_type": "application/pdf", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "4aa0c040ae8e0d473aa48761d9fffd8ff099f96483ef307357403892fda6022e", "content_length": 1557769},
+  "rights": {"terms": "Official public Crown/MHRA guidance; classification depends on intended purpose and applicable law", "permitted_destination": "regulatory gap assessment and classification checklist"},
+  "disposition": {"decision": "defer", "rationale": "Medical-device applicability cannot be decided without a product owner, marketed intended purpose, users, claims, and deployment context. Current research-only software makes no clinical decision claim.", "contingency": "Preserve research-only status and complete only a conditional classification checklist.", "refresh_or_retry_condition": "Retry when intended purpose/deployment is proposed or MHRA guidance/law changes."}
+}

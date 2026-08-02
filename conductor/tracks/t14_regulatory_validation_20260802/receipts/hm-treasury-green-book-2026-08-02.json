@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t14-hm-treasury-green-book-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "HM Treasury", "title": "The Green Book 2026", "url_or_repository": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026", "revision_or_effective_date": "updated 2026-02-05", "locator": "appraisal, options, uncertainty, presentation, monitoring and evaluation"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:14:05Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "a0239f86cc4ae9aedce2238faa75bf536bbc688c12738790b5bd0ebaefb91bf7", "content_length": 557759},
+  "rights": {"terms": "Open Government Licence v3.0 except identified third-party material", "permitted_destination": "public appraisal gap matrix and citations"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports options, evidence, uncertainty, proportionality, and evaluation planning for public-resource proposals; it is not product or submission approval.", "contingency": "Use as research governance guidance only until a public-sector proposal is selected.", "refresh_or_retry_condition": "Refresh on Green Book update or proposal/intended-use change."}
+}

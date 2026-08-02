@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t14-better-regulation-framework-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 1, "publisher": "Department for Business and Trade", "title": "Better Regulation Framework", "url_or_repository": "https://www.gov.uk/government/publications/better-regulation-framework", "revision_or_effective_date": "last updated 2025-09-05", "locator": "objectives and assessment routes"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:14:05Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "20f17c0c7b5c5fe8767f7bd5c467fe95c62ab0365c2d062517d860f0c7d2fde0", "content_length": 83489},
+  "rights": {"terms": "Official GOV.UK guidance under Crown/Open Government terms as stated on the publication", "permitted_destination": "regulatory-policy gap assessment"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Relevant if government policy regulates business or civil society; not directly applicable to a software product or HTA submission without an identified proposal.", "contingency": "Retain as a conditional branch in the requirements matrix.", "refresh_or_retry_condition": "Refresh on framework or proposal change."}
+}

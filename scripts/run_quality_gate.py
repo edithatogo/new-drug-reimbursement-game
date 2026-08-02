@@ -24,6 +24,7 @@ def main() -> int:
     commands = [
         [sys.executable, "scripts/validate_scope.py"],
         [sys.executable, "scripts/validate_data_boundaries.py"],
+        [sys.executable, "scripts/validate_claim_boundaries.py"],
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
         [sys.executable, "-m", "compileall", "-q", "src", "scripts", "tests"],
         [sys.executable, "scripts/discover_ecosystem.py", "--offline-fixture-mode"],
