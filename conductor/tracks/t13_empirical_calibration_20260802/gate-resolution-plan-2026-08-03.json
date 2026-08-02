@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "status": "active_fail_closed",
+  "objective": "Resolve remaining evidence and authorization gates without enabling unsupported empirical or regulatory claims.",
+  "sequence": [
+    {
+      "id": "nhs-context",
+      "blocker": "No attributable NHS record identifies the actual displaced programme and complete payer/service-line context.",
+      "recommended_option": "Continue public-source and disclosure-log triangulation, then record either a substantive attributable response or an explicit not-held/refused receipt.",
+      "options": [
+        {"id": "official-triangulation", "disposition": "preferred", "rationale": "Highest authority and reproducibility; independently corroborate identity, decision date, price year, and displacement."},
+        {"id": "bounded-public-record-request", "disposition": "fallback", "rationale": "Can obtain a definitive negative or positive response without requesting patient-level or confidential data."},
+        {"id": "public-reconstruction", "disposition": "research_only", "rationale": "Supports context and sensitivity analysis but cannot establish displacement or payer authorization."}
+      ],
+      "contingencies": ["inaccessible: use official archive/API and emit failure receipt", "conflicting: preserve all values and defer field to owner adjudication", "incomplete: keep role not_identifiable"],
+      "autonomous_actions": ["query official sources", "hash and cross-reference receipts", "refresh stale sources", "retain negative receipt"],
+      "human_stop_condition": "NHS custodian response or accountable owner attestation is required before empirical promotion."
+    },
+    {
+      "id": "atlas-packet",
+      "blocker": "No immutable, same-programme Atlas-approved derived packet with source terms and transformations is available.",
+      "recommended_option": "Use an owner-approved immutable Atlas revision with exact packet digest and source-term adjudication.",
+      "options": [
+        {"id": "owner_packet", "disposition": "preferred", "rationale": "Preserves provenance, rights, parameter identity, and reproducibility."},
+        {"id": "hybrid_public_context_derived_parameters", "disposition": "fallback", "rationale": "Permits bounded research sensitivity only when Atlas owner accepts residual gaps."},
+        {"id": "synthetic_fixture", "disposition": "available", "rationale": "Maintains deterministic conformance and demonstrations while all empirical claims remain disabled."}
+      ],
+      "contingencies": ["restricted: metadata only until terms and destination are authorized", "mutable: reject and request pinned revision", "incomplete: do not impute mu, phi, covariance, or price"],
+      "autonomous_actions": ["poll approved release manifests", "verify revision and SHA-256", "validate role/unit/uncertainty mapping"],
+      "human_stop_condition": "Atlas owner must approve the exact revision, derived transformations, rights, and intended use."
+    },
+    {
+      "id": "calibration-approval",
+      "blocker": "Empirical calibration and Scenario 4 time-profile/joint-uncertainty inputs are not authorized.",
+      "recommended_option": "Retain synthetic research-only operation until packet-bound health-economist approval covers the primary discounting convention and Scenario 4 inputs.",
+      "options": [
+        {"id": "research_only", "disposition": "current", "rationale": "Safest option; preserves executable methodology without unsupported claims."},
+        {"id": "packet_bound_empirical", "disposition": "future", "rationale": "Enables calibration only after all evidence, provenance, and authorization gates pass."},
+        {"id": "regulatory_or_policy", "disposition": "deferred", "rationale": "Requires a distinct sponsor, purpose, jurisdiction, validation, and release authorization."}
+      ],
+      "contingencies": ["missing time profile: keep Scenario 4 not_identifiable", "missing covariance: do not combine marginal draws", "changed purpose/audience: invalidate approvals and rerun panel"],
+      "autonomous_actions": ["run equation/unit/property validation", "rerun panel on changed inputs", "invalidate stale receipts", "keep claims disabled"],
+      "human_stop_condition": "Named accountable owner must authorize empirical intended use and exact packet-bound release."
+    }
+  ],
+  "refresh_rule": "Any source byte, revision, terms, programme context, transformation, uncertainty, code commit, purpose, audience, or destination change invalidates dependent receipts and requires reacquisition, panel review, and requalification.",
+  "completion_rule": "Do not mark T13 complete or enable empirical promotion until all three gates have authoritative evidence and packet-bound authorization."
+}

@@ -21,6 +21,7 @@
 - [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals. Public commissioner, provider class, programme category, pathway, comparator, implementation timing, horizon, and market-share context are supported; actual displacement, confidential prices, and an approved Atlas packet remain unavailable.
 - [x] Freeze the repository commit, packet digest, parameter-role mapping, and price-year disposition. (`packet-freeze-2026-08-03.json`)
 - [x] Review checkpoint: verify every external gate and fail closed on missing evidence; NHS displacement and Atlas packet remain pending without blocking synthetic research outputs. (`research-readiness-receipt-2026-08-03.json`)
+- [x] Encode the ordered blocker-resolution plan, options, contingencies, autonomous actions, and human stop conditions. (`gate-resolution-plan-2026-08-03.json`, `gate-resolution-plan-2026-08-03.md`)
 
 ## Phase 2 — calibration validation
 

@@ -44,6 +44,7 @@ def closeout_violations() -> list[str]:
     readiness_path = TRACK / "research-readiness-receipt-2026-08-03.json"
     integration_path = TRACK / "main-integration-receipt-2026-08-03.json"
     contingency_path = TRACK / "contingency-register-2026-08-03.json"
+    gate_plan_path = TRACK / "gate-resolution-plan-2026-08-03.json"
     freeze = _load(freeze_path)
     output = _load(output_path)
     target = _load(target_path)
@@ -51,6 +52,16 @@ def closeout_violations() -> list[str]:
     readiness = _load(readiness_path)
     integration = _load(integration_path)
     contingency = _load(contingency_path)
+    gate_plan = _load(gate_plan_path)
+
+    required_gates = {"nhs-context", "atlas-packet", "calibration-approval"}
+    planned_gates = {item.get("id") for item in gate_plan.get("sequence", []) if isinstance(item, dict)}
+    if gate_plan.get("status") != "active_fail_closed":
+        violations.append("gate-resolution plan is not active fail-closed")
+    if not required_gates.issubset(planned_gates):
+        violations.append("gate-resolution plan lacks required blocker sequence")
+    if not gate_plan.get("completion_rule"):
+        violations.append("gate-resolution plan lacks completion rule")
 
     required_modes = {"inaccessible", "conflicting", "incomplete", "restricted"}
     modes = {item.get("id") for item in contingency.get("failure_modes", []) if isinstance(item, dict)}
