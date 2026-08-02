@@ -2,21 +2,23 @@
 
 This is a least-privilege handoff for the candidate Kairos adapter. It
 documents what this repository can verify locally and what an upstream
-maintainer or extraction owner must still authorize. It does not assert that a
-released Kairos contract or extraction permission exists.
+maintainer or extraction owner must still authorize. It distinguishes the
+accepted public-contract boundary from native integration and restricted-data
+permissions that do not yet exist.
 
 ## Pinned contract identity
 
 - Repository: `https://github.com/edithatogo/kairos`
 - Pinned revision: `fae901558f07b7b717a676adbafbe2cdc78dea1c`
-- Contract status at this revision: candidate-only; no release tag or
-  maintainer acceptance receipt is currently recorded.
+- Contract status at this revision: the maintainer accepts the versioned public
+  contract boundary for research-only and synthetic conformance work; there is
+  no release tag or native adapter compatibility acceptance.
 - Downstream adapter schema:
   `https://github.com/edithatogo/kairos/conformance/game-events/v0`
 
 Any replacement revision, tag, or schema requires a new compatibility and
-owner receipt. The downstream owner acceptance at the pinned revision is not
-upstream maintainer acceptance.
+owner receipt. The bounded maintainer disposition is recorded in
+`kairos-maintainer-acceptance-receipt-2026-08-02.json`.
 
 ## DTO and field boundary
 
@@ -35,31 +37,31 @@ semantics must fail explicitly.
 
 ## Allowed transformations and destinations
 
-- [ ] Normalize event ordering and validate time/payload constraints as
+- [x] Normalize event ordering and validate time/payload constraints as
   implemented by `KairosScenarioExporter`.
-- [ ] Compute a SHA-256 trace receipt over canonical JSON; record the digest
+- [x] Compute a SHA-256 trace receipt over canonical JSON; record the digest
   and event count.
-- [ ] Send only the domain-neutral event envelope to a maintainer-approved
+- [x] Send only the domain-neutral event envelope to a maintainer-approved
   Kairos contract endpoint or a local conformance fixture.
-- [ ] Store schema, trace digest, and validation logs in this repository's
+- [x] Store schema, trace digest, and validation logs in this repository's
   research-only evidence surface.
-- [ ] Exclude raw NHS/Atlas payloads, patient or confidential data,
+- [x] Exclude raw NHS/Atlas payloads, patient or confidential data,
   undisclosed prices, and Kairos source from the repository and public
   destinations.
 
-No external transfer, publication, or redistribution is authorized until an
-extraction owner records permitted sources, fields, transformations,
-destination, attribution, and terms.
+Only the hashed public contract documents, synthetic fixtures, and associated
+metadata are authorized for this public repository. Raw, restricted, or
+confidential transfer remains prohibited.
 
 ## Required external receipts
 
 ### Kairos maintainer/contract owner
 
-- [ ] Exact revision or release tag and contract version.
-- [ ] DTO/schema artifact and stable event-kind allocation.
-- [ ] Exact-head CI or compatibility trace for the proposed envelope.
-- [ ] Explicit native-integration disposition and scope.
-- [ ] Maintainer identity, date, and receipt digest.
+- [x] Exact revision and versioned public contract documents.
+- [~] DTO/schema artifact identified; native downstream mapping and stable event-kind allocation remain unapproved.
+- [~] Exact-revision core/cross-platform checks pass; fuzz-smoke and native-envelope compatibility remain unresolved.
+- [x] Explicit disposition: public/synthetic contract work accepted; native promotion deferred.
+- [x] Maintainer identity, date, scope, source hashes, and refresh rule.
 
 ### Extraction, legal, and release owner
 
@@ -72,8 +74,7 @@ destination, attribution, and terms.
 
 ## Current disposition and fallback
 
-As of 2026-08-02, local compatibility and trace-receipt tests are available,
-but released-contract, extraction, and publication gates remain pending. Keep
-the adapter isolated and describe it as local compatibility only. If the
-receipts cannot be obtained, publish only software, methodology, synthetic
-fixtures, and permitted derived-only artifacts.
+As of 2026-08-02, public contract-metadata extraction and synthetic conformance
+are maintainer-authorized. Native DTO mapping, exact-head green compatibility,
+a registry release, and any raw/confidential extraction remain pending. Keep
+the adapter isolated and describe it as local compatibility only.

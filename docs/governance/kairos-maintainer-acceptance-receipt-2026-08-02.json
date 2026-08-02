@@ -1,0 +1,38 @@
+{
+  "schema": "kairos-maintainer-acceptance/v1",
+  "repository": "https://github.com/edithatogo/kairos",
+  "revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+  "attestor": "repository and Kairos maintainer (user-attested)",
+  "attestation_date": "2026-08-02",
+  "disposition": "accept-versioned-contract-boundary-with-conditions",
+  "accepted_scope": [
+    "domain-neutral event and state contract boundary",
+    "research-only downstream adapter and conformance work",
+    "public code, methodology, synthetic fixtures, hashes, and validation receipts"
+  ],
+  "authoritative_contract_artifacts": [
+    {"path": "conductor/contracts/core-contract.md", "git_blob_sha1": "d88d88a0f00ebbc7ee2c54fe3b762cdd6cb18f69", "sha256": "6ad1804b8a5cbc1d7cd4ae5888b2527cc2864ce9b13b972f3e58fbc64622bf60", "bytes": 1413},
+    {"path": "conductor/contracts/conformance-contract.md", "git_blob_sha1": "b9929877e9c1be21f1ea3eeac64b3cfb94e6fecc", "sha256": "16272c7d1b72f7c5ffa8c7f1e377898aadd47be4da6d2b0153fe6d962ed3b29f", "bytes": 818},
+    {"path": "conductor/contracts/versioning-compatibility.md", "git_blob_sha1": "a1849f5439be92690f7ff94d7d837540a30723cb", "sha256": "7099dfefa5a369a39f1bdc62091cc50348560c6337d07812cf1b42298c23188a", "bytes": 6072}
+  ],
+  "hosted_evidence": {
+    "heavy_rust_checks": "passed at the exact revision",
+    "cross_platform_validate": "passed at the exact revision",
+    "fuzz_smoke": "failed at the exact revision; native promotion remains blocked",
+    "release": "no GitHub release exists"
+  },
+  "conditions": [
+    "The local JSON game-events/v0 envelope remains a downstream candidate and is not declared native Kairos DTO compatibility.",
+    "No scheduler, RNG, ECS, event-code allocation, or time-advance ownership transfers downstream.",
+    "No raw NHS, Atlas, confidential, or source-derived data transfer is authorized.",
+    "Native integration requires a released or explicitly frozen DTO mapping, exact-head green compatibility evidence, and a new revision-bound receipt."
+  ],
+  "extraction_authorization": {
+    "status": "approved_for_public_contract_metadata_and_synthetic_conformance_only",
+    "permitted_sources": ["the three hashed public Kairos contract documents at the pinned revision"],
+    "permitted_transformations": ["citation", "field mapping", "compatibility analysis", "synthetic conformance fixtures", "hash receipts"],
+    "permitted_destinations": ["this public research-only repository"],
+    "prohibited": ["Kairos source redistribution", "raw or confidential data", "native/released compatibility claims", "registry publication claims"]
+  },
+  "refresh_and_invalidation": "Invalidate when the Kairos revision, contract artifacts, downstream adapter, destination, release status, or hosted compatibility result changes."
+}
