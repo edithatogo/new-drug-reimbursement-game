@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "kind": "nhs_candidate_source_acquisition",
+  "approval_state": "candidate_only",
+  "search_plan": [
+    {
+      "family": "local_decision",
+      "terms": [
+        "acoramidis",
+        "tafamidis",
+        "TA1121",
+        "ATTR-CM",
+        "commissioning"
+      ],
+      "required_evidence": [
+        "accountable payer",
+        "decision date",
+        "displaced programme",
+        "baseline unit"
+      ]
+    },
+    {
+      "family": "formulary_switch",
+      "terms": [
+        "acoramidis",
+        "tafamidis",
+        "TA1121",
+        "formulary",
+        "replaced OR displaced OR switch"
+      ],
+      "required_evidence": [
+        "local formulary owner",
+        "intervention",
+        "comparator",
+        "replacement decision"
+      ]
+    },
+    {
+      "family": "budget_impact",
+      "terms": [
+        "acoramidis",
+        "tafamidis",
+        "budget impact OR financial impact",
+        "ICB OR trust"
+      ],
+      "required_evidence": [
+        "payer budget boundary",
+        "price basis",
+        "affected programme"
+      ]
+    }
+  ],
+  "search_result_policy": "Search results are leads; only an authoritative local record satisfying required_evidence can close displacement.",
+  "source_policy": "Official allow-listed HTTPS sources only; hash receipts are retained but payload bytes are not.",
+  "field_coverage": {
+    "payer_or_commissioner": "candidate_south_yorkshire_icb",
+    "budget_boundary": "missing",
+    "service_line": "candidate_specialist_attr_cm",
+    "provider": "candidate_nac_or_midlands_service_routing_not_owner",
+    "decision_date": "candidate_february_2026",
+    "price_year": "missing_programme_specific",
+    "intervention": "supported_acoramidis",
+    "comparator": "supported_national_tafamidis_not_local_displacement",
+    "displaced_programme": "missing",
+    "stable_programme_id": "missing",
+    "baseline_cost_and_unit": "missing",
+    "horizon": "missing_programme_specific",
+    "accountable_owner_confirmation": "missing",
+    "atlas_approved_n_m_d_packet": "not_found_v0.1.1"
+  },
+  "sources": [
+    {
+      "source_id": "nice-ta1121-recommendations",
+      "requested_uri": "https://www.nice.org.uk/guidance/ta1121/chapter/1-Recommendations",
+      "final_uri": "https://www.nice.org.uk/guidance/ta1121/chapter/1-Recommendations",
+      "retrieved_at": "2026-08-02T16:15:48+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 21159,
+      "sha256": "303e62b62bc13168311a633a664d5bfd40a2a4f74a2189702f8f8987657a744a",
+      "etag": "W/38DCC136E01CD936F08303FF74F5B3FF",
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "nice-ta1121-resource-impact",
+      "requested_uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "final_uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "retrieved_at": "2026-08-02T16:15:50+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 56531,
+      "sha256": "002ed229eb53c18c502ab5c290b7e3613052e7448518ecd619071d7146cf1213",
+      "etag": "DD1EE3B9AA018BD77CC992DC0389B5AE",
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "nhs-payment-scheme-2026-27",
+      "requested_uri": "https://www.england.nhs.uk/publication/2026-27-nhs-payment-scheme/",
+      "final_uri": "https://www.england.nhs.uk/publication/2026-27-nhs-payment-scheme/",
+      "retrieved_at": "2026-08-02T16:15:52+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 59678,
+      "sha256": "94c532a68a24a654febee24f0592a10785a65709656bcc2c54a02c59efdcaf8d",
+      "etag": null,
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "cheshire-merseyside-ta1121",
+      "requested_uri": "https://www.cheshireandmerseyside.nhs.uk/media/xaclztnz/nice_adherence_202504-202603.pdf",
+      "final_uri": "https://www.cheshireandmerseyside.nhs.uk/media/xaclztnz/nice_adherence_202504-202603.pdf",
+      "retrieved_at": "2026-08-02T16:15:53+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 427995,
+      "sha256": "2aeecd61aeaf843f50697ab028779fa5cdcf712b2bbf7f945496f89144772c1b",
+      "etag": "\"1dced1cb96d70db\"",
+      "last_modified": "Tue, 26 May 2026 14:34:14 GMT",
+      "payload_retained": false
+    },
+    {
+      "source_id": "kent-medway-ta1121",
+      "requested_uri": "https://www.kentandmedwayformulary.nhs.uk/therapeutic-sections/cardiovascular-system/heart-failure/",
+      "final_uri": "https://www.kentandmedwayformulary.nhs.uk/therapeutic-sections/cardiovascular-system/heart-failure/",
+      "retrieved_at": "2026-08-02T16:15:55+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 37525,
+      "sha256": "4f9ebce3f69ef49aca016df4c738eb25912629cf2ecaa43b3d2a8475e7be18b9",
+      "etag": null,
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "northwest-tag-acoramidis",
+      "requested_uri": "https://nwknowledgenow.nhs.uk/wp-content/uploads/2026/03/TAG-Agreements-March-2026.pdf",
+      "retrieved_at": "2026-08-02T16:15:57+00:00",
+      "status": "error",
+      "error_type": "HTTPError",
+      "error": "HTTP Error 404: Not Found",
+      "payload_retained": false
+    },
+    {
+      "source_id": "south-yorkshire-imoc-february-2026",
+      "requested_uri": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20Minutes%20IMOC%20February%202026.pdf?_rsc=1suc1",
+      "final_uri": "https://mot.southyorkshire.icb.nhs.uk/south-yorkshire/files/South%20Yorkshire%20Minutes%20IMOC%20February%202026.pdf?_rsc=1suc1",
+      "retrieved_at": "2026-08-02T16:15:58+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 591588,
+      "sha256": "6474170bb9fbc2ce0da6333bd4279901ddd20cbb7321ee8992fdd3aa4458288f",
+      "etag": null,
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "mft-nice-adherence-march-2026",
+      "requested_uri": "https://mft.nhs.uk/app/uploads/sites/7/2026/03/NICE-TA-Adherence-Checklist-Mar-26.pdf",
+      "retrieved_at": "2026-08-02T16:16:01+00:00",
+      "status": "error",
+      "error_type": "HTTPError",
+      "error": "HTTP Error 404: Not Found",
+      "payload_retained": false
+    },
+    {
+      "source_id": "somerset-medicines-board-january-2026",
+      "requested_uri": "https://nhssomerset.nhs.uk/wp-content/uploads/sites/2/MPB-Minutes-Jan-2026.pdf",
+      "final_uri": "https://nhssomerset.nhs.uk/wp-content/uploads/sites/2/MPB-Minutes-Jan-2026.pdf",
+      "retrieved_at": "2026-08-02T16:16:02+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 247236,
+      "sha256": "e59dddf819a45222805bc8073f07c0528f8827b2631149f2aa4b68c964f4a78e",
+      "etag": "\"6a030bee-3c5c4\"",
+      "last_modified": "Tue, 12 May 2026 11:15:58 GMT",
+      "payload_retained": false
+    },
+    {
+      "source_id": "southwest-london-jfc-january-2026",
+      "requested_uri": "https://www.swljointmedicinesformulary.nhs.uk/docs/files/SWL%20JFC%20Bulletin%20January%202026.pdf",
+      "final_uri": "https://www.swljointmedicinesformulary.nhs.uk/docs/files/SWL%20JFC%20Bulletin%20January%202026.pdf",
+      "retrieved_at": "2026-08-02T16:16:02+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 204454,
+      "sha256": "7d99cf2d3a9a9214b2676c222152815d617bee3416506024a151cd8ed68c8413",
+      "etag": "\"8e14aabd2ba0dc1:0\"",
+      "last_modified": "Tue, 17 Feb 2026 16:37:44 GMT",
+      "payload_retained": false
+    },
+    {
+      "source_id": "north-east-london-formulary",
+      "requested_uri": "https://nel-jointformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09",
+      "final_uri": "https://nel-jointformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=9&SubSectionID=A100&SubSectionRef=09",
+      "retrieved_at": "2026-08-02T16:16:04+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 609901,
+      "sha256": "bf1b2dbca1d9b488ecb0cf735bef8f3b229139d3f013edaa71f11976daa24c04",
+      "etag": null,
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "buckinghamshire-formulary",
+      "requested_uri": "https://bucksformulary.nhs.uk/reports/Archive/A0003.asp",
+      "final_uri": "https://bucksformulary.nhs.uk/reports/Archive/A0003.asp",
+      "retrieved_at": "2026-08-02T16:16:10+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 2667038,
+      "sha256": "1df3306fe7c6863322e99eef08c5113c6b9157a2bbb88744a63cc4f89d8873e2",
+      "etag": null,
+      "last_modified": null,
+      "payload_retained": false
+    },
+    {
+      "source_id": "atlas-latest-release",
+      "requested_uri": "https://api.github.com/repos/edithatogo/reimbursement-atlas/releases/latest",
+      "final_uri": "https://api.github.com/repos/edithatogo/reimbursement-atlas/releases/latest",
+      "retrieved_at": "2026-08-02T16:16:24+00:00",
+      "status": "fetched",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 22183,
+      "sha256": "1699fff29fdf382f3fb6b1061ede615ef7cde67294d814401f71f20cddd73250",
+      "etag": "W/\"1699fff29fdf382f3fb6b1061ede615ef7cde67294d814401f71f20cddd73250\"",
+      "last_modified": "Sun, 02 Aug 2026 11:57:07 GMT",
+      "payload_retained": false,
+      "immutable_release_identity": {
+        "tag_name": "v0.1.1",
+        "published_at": "2026-08-02T11:34:03Z",
+        "target_commitish": "main",
+        "release_id": 363770976
+      }
+    }
+  ]
+}
