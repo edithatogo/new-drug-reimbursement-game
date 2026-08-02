@@ -1,7 +1,7 @@
 {
   "schema": "external-gate-request-packet/v1",
   "request_id": "ndr-ta1121-pilot-2026-08-01",
-  "repository_revision": "3d463a14e5e2099d7bb16ffa8f67eaec131d2aeb",
+  "repository_revision": "1f189cb8469baee78aa456a602efe96ad90da1ff",
   "intended_use": "research-only NHS methodological pilot",
   "approval_state": "pending_external_receipts",
   "requests": [
