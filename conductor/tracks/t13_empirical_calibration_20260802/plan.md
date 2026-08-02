@@ -17,7 +17,7 @@
 - [x] Search public grey literature, including indexed FOI holdings, NHS disclosure-log policy, committee minutes, formularies, board material, and official implementation documents; preserve hashes and access failures. (`grey-literature-receipt-2026-08-02.json`)
 - [x] Submit the bounded, non-patient-level NHS England FOI request after explicit owner authorization; retain only non-personal delivery metadata in Git. (`nhs-england-foi-submission-2026-08-02.json`)
 - [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals. Public commissioner, provider class, programme category, pathway, comparator, implementation timing, horizon, and market-share context are supported; actual displacement, confidential prices, and an approved Atlas packet remain unavailable.
-- [ ] Freeze the repository commit, packet digest, parameter-role mapping, and price-year conversions.
+- [x] Freeze the repository commit, packet digest, parameter-role mapping, and price-year disposition. (`packet-freeze-2026-08-03.json`)
 - [ ] Review checkpoint: verify every external gate and fail closed on missing evidence.
 
 ## Phase 2 — calibration validation
@@ -25,11 +25,11 @@
 - [x] Add failing tests for acquisition binding, packet completeness, source integrity, payload retention, and promotion controls. Existing calibration tests retain role, programme, uncertainty, and Scenario 4 checks. (`2a80c09`, `8492c76`)
 - [x] Implement deterministic acquisition and empirical-readiness validation with exact run-digest binding. (`2a80c09`, `8492c76`, `b0956af`)
 - [x] Run cross-language, property, provenance, packaging, and Conductor checks: 127 Python and 29 Rust tests pass. (`b0956af`)
-- [ ] Review checkpoint: reconcile equations, assumptions, heuristics, and parameters with authoritative sources.
+- [x] Review checkpoint: reconcile equations, assumptions, heuristics, and parameters with authoritative sources. (`method-reconciliation-2026-08-03.md`)
 
 ## Phase 3 — constrained output
 
-- [ ] Generate calibrated research-only outputs and limitation metadata.
+- [x] Generate synthetic research-only outputs and limitation metadata; empirical calibration remains disabled. (`constrained-research-output-2026-08-03.json`)
 - [ ] Obtain exact-target economics and reproducibility role receipts.
 - [ ] Regenerate readiness and release receipts.
 - [ ] Completion checkpoint: run full repository and Conductor validation.

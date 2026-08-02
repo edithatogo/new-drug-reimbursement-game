@@ -1,0 +1,486 @@
+{
+  "decision_use_permitted": false,
+  "empirical_calibration_activated": false,
+  "limitations": [
+    "All numeric scenario inputs are synthetic fixtures.",
+    "No approved Atlas TA1121 parameter packet is available.",
+    "No authoritative separately displaced NHS programme or baseline unit is available.",
+    "Commercial net prices are neither requested nor used.",
+    "Scenario 4 remains a mathematical sensitivity and conformance case only."
+  ],
+  "packet_freeze_sha256": "928d374dec02566d7fbe7357a99c9e0ecd87878761a466bf64d79171ab72e2e6",
+  "prohibited_claims": [
+    "calibrated reimbursement result",
+    "identified NHS displacement parameter",
+    "payer recommendation",
+    "HTA conclusion",
+    "policy conclusion",
+    "regulatory validation"
+  ],
+  "public_context": {
+    "commissioner": "NHS England",
+    "comparators": [
+      "tafamidis",
+      "vutrisiran"
+    ],
+    "intervention": "acoramidis",
+    "pathway_position": "first line",
+    "programme_budgeting_category": "PBC 10X Problems of circulation",
+    "technology_appraisal": "NICE TA1121"
+  },
+  "release_label": "synthetic_research_only",
+  "reviewed_revision": "2fa2948378f8c1e5c313bfb36f2c280e4b423a66",
+  "scenarios": [
+    {
+      "calibration_receipt": {
+        "case_id": "t13-synthetic-scenario_1",
+        "context": {
+          "budget_boundary": "synthetic-health-budget",
+          "currency_unit": "AUD_2026",
+          "decision_date": "2026-08-01",
+          "health_unit": "QALY",
+          "implementation_horizon_years": 5,
+          "jurisdiction": "SYNTHETIC-NOT-FOR-DECISIONS",
+          "payer": "synthetic-payer",
+          "price_year": 2026,
+          "service_line": "synthetic-service"
+        },
+        "decision_use_permitted": false,
+        "evidence": [
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+            "record_id": "n-allocative",
+            "role": "n",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "evidence_revision": "sha256:9d24fe7fefba81c05d1dc4f8e4e1d3b0e1ede7c737d84e649a2d039636d2cadf",
+        "packet_id": "synthetic-chapter7-non-empirical",
+        "packet_revision": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "sample_count": 2,
+        "scenario": "scenario_1",
+        "synthetic": true
+      },
+      "classification": "synthetic_conformance_only",
+      "evaluation": {
+        "adoption_required": true,
+        "alternative_health_gain": 24.0,
+        "beta": 5.0,
+        "budget_shadow_price_contraction": null,
+        "budget_shadow_price_expansion": 5.0,
+        "conditional_expansion_shadow_price": null,
+        "economically_preferred": false,
+        "evci": 100.0,
+        "evidence_revision": "sha256:9d24fe7fefba81c05d1dc4f8e4e1d3b0e1ede7c737d84e649a2d039636d2cadf",
+        "iper": 6.0,
+        "nebh": -4.0,
+        "net_financial_cost": 120.0,
+        "parameterization": "exact",
+        "reimbursement_health_effect": 20.0,
+        "scenario": "scenario_1",
+        "source_location": "Pekarsky 2015, equation 7.1, printed p. 110/PDF p. 120",
+        "tolerance": 2.4e-11
+      },
+      "scenario": "scenario_1",
+      "voiage_sample_bundle": {
+        "evidence_revision": "sha256:9d24fe7fefba81c05d1dc4f8e4e1d3b0e1ede7c737d84e649a2d039636d2cadf",
+        "health_unit": "QALY",
+        "net_benefit_samples": [
+          [
+            20.0,
+            24.0
+          ],
+          [
+            20.0,
+            20.0
+          ]
+        ],
+        "parameter_samples": [
+          {
+            "role": "n",
+            "values": [
+              5.0,
+              6.0
+            ]
+          }
+        ],
+        "perspective": "health",
+        "strategy_names": [
+          "reimburse",
+          "best_available_alternative"
+        ]
+      }
+    },
+    {
+      "calibration_receipt": {
+        "case_id": "t13-synthetic-scenario_2",
+        "context": {
+          "budget_boundary": "synthetic-health-budget",
+          "currency_unit": "AUD_2026",
+          "decision_date": "2026-08-01",
+          "health_unit": "QALY",
+          "implementation_horizon_years": 5,
+          "jurisdiction": "SYNTHETIC-NOT-FOR-DECISIONS",
+          "payer": "synthetic-payer",
+          "price_year": 2026,
+          "service_line": "synthetic-service"
+        },
+        "decision_use_permitted": false,
+        "evidence": [
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000004",
+            "record_id": "d-displacement",
+            "role": "d",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000003",
+            "record_id": "m-contraction",
+            "role": "m",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000002",
+            "record_id": "n-efficient",
+            "role": "n",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "evidence_revision": "sha256:3d32cfcbf513c39e3a794a260636f0e9a555ecac7e53ed9f40eda14c8c4b722a",
+        "packet_id": "synthetic-chapter7-non-empirical",
+        "packet_revision": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "sample_count": 2,
+        "scenario": "scenario_2",
+        "synthetic": true
+      },
+      "classification": "synthetic_conformance_only",
+      "evaluation": {
+        "adoption_required": true,
+        "alternative_health_gain": 0.0,
+        "beta": 8.0,
+        "budget_shadow_price_contraction": 10.0,
+        "budget_shadow_price_expansion": null,
+        "conditional_expansion_shadow_price": 10.0,
+        "economically_preferred": true,
+        "evci": 160.0,
+        "evidence_revision": "sha256:3d32cfcbf513c39e3a794a260636f0e9a555ecac7e53ed9f40eda14c8c4b722a",
+        "iper": 6.0,
+        "nebh": 5.0,
+        "net_financial_cost": 0.0,
+        "parameterization": "exact",
+        "reimbursement_health_effect": 5.0,
+        "scenario": "scenario_2",
+        "source_location": "Pekarsky 2015, Scenario 2, printed pp. 110-114/PDF pp. 120-124",
+        "tolerance": 2e-11
+      },
+      "scenario": "scenario_2",
+      "voiage_sample_bundle": {
+        "evidence_revision": "sha256:3d32cfcbf513c39e3a794a260636f0e9a555ecac7e53ed9f40eda14c8c4b722a",
+        "health_unit": "QALY",
+        "net_benefit_samples": [
+          [
+            5.0,
+            0.0
+          ],
+          [
+            6.666666666666666,
+            0.0
+          ]
+        ],
+        "parameter_samples": [
+          {
+            "role": "d",
+            "values": [
+              8.0,
+              9.0
+            ]
+          },
+          {
+            "role": "m",
+            "values": [
+              10.0,
+              12.0
+            ]
+          },
+          {
+            "role": "n",
+            "values": [
+              10.0,
+              12.0
+            ]
+          }
+        ],
+        "perspective": "health",
+        "strategy_names": [
+          "reimburse",
+          "best_available_alternative"
+        ]
+      }
+    },
+    {
+      "calibration_receipt": {
+        "case_id": "t13-synthetic-scenario_3",
+        "context": {
+          "budget_boundary": "synthetic-health-budget",
+          "currency_unit": "AUD_2026",
+          "decision_date": "2026-08-01",
+          "health_unit": "QALY",
+          "implementation_horizon_years": 5,
+          "jurisdiction": "SYNTHETIC-NOT-FOR-DECISIONS",
+          "payer": "synthetic-payer",
+          "price_year": 2026,
+          "service_line": "synthetic-service"
+        },
+        "decision_use_permitted": false,
+        "evidence": [
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000004",
+            "record_id": "d-displacement",
+            "role": "d",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000003",
+            "record_id": "m-contraction",
+            "role": "m",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+            "record_id": "n-allocative",
+            "role": "n",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "evidence_revision": "sha256:670a718160d7928d24ec4d6e0a29bd3ee778664f3e0246272e454b65a906fdea",
+        "packet_id": "synthetic-chapter7-non-empirical",
+        "packet_revision": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "sample_count": 2,
+        "scenario": "scenario_3",
+        "synthetic": true
+      },
+      "classification": "synthetic_conformance_only",
+      "evaluation": {
+        "adoption_required": true,
+        "alternative_health_gain": 12.0,
+        "beta": 4.444444444444445,
+        "budget_shadow_price_contraction": null,
+        "budget_shadow_price_expansion": null,
+        "conditional_expansion_shadow_price": null,
+        "economically_preferred": false,
+        "evci": 88.88888888888889,
+        "evidence_revision": "sha256:670a718160d7928d24ec4d6e0a29bd3ee778664f3e0246272e454b65a906fdea",
+        "iper": 6.0,
+        "nebh": -7.0,
+        "net_financial_cost": 0.0,
+        "parameterization": "exact",
+        "reimbursement_health_effect": 5.0,
+        "scenario": "scenario_3",
+        "source_location": "Pekarsky 2015, equations 7.2-7.5, printed pp. 116-119/PDF pp. 126-129",
+        "tolerance": 2e-11
+      },
+      "scenario": "scenario_3",
+      "voiage_sample_bundle": {
+        "evidence_revision": "sha256:670a718160d7928d24ec4d6e0a29bd3ee778664f3e0246272e454b65a906fdea",
+        "health_unit": "QALY",
+        "net_benefit_samples": [
+          [
+            5.0,
+            12.0
+          ],
+          [
+            6.666666666666666,
+            10.0
+          ]
+        ],
+        "parameter_samples": [
+          {
+            "role": "d",
+            "values": [
+              8.0,
+              9.0
+            ]
+          },
+          {
+            "role": "m",
+            "values": [
+              10.0,
+              12.0
+            ]
+          },
+          {
+            "role": "n",
+            "values": [
+              5.0,
+              6.0
+            ]
+          }
+        ],
+        "perspective": "health",
+        "strategy_names": [
+          "reimburse",
+          "best_available_alternative"
+        ]
+      }
+    },
+    {
+      "calibration_receipt": {
+        "case_id": "t13-synthetic-scenario_4",
+        "context": {
+          "budget_boundary": "synthetic-health-budget",
+          "currency_unit": "AUD_2026",
+          "decision_date": "2026-08-01",
+          "health_unit": "QALY",
+          "implementation_horizon_years": 5,
+          "jurisdiction": "SYNTHETIC-NOT-FOR-DECISIONS",
+          "payer": "synthetic-payer",
+          "price_year": 2026,
+          "service_line": "synthetic-service"
+        },
+        "decision_use_permitted": false,
+        "evidence": [
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000007",
+            "record_id": "annual-program-effect",
+            "role": "annual_program_health_effect",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000004",
+            "record_id": "d-displacement",
+            "role": "d",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000009",
+            "record_id": "discount-rate",
+            "role": "discount_rate",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000008",
+            "record_id": "horizon",
+            "role": "horizon",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000003",
+            "record_id": "m-contraction",
+            "role": "m",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000005",
+            "record_id": "mu-investment",
+            "role": "mu",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          {
+            "evidence_revision": "sha256:0000000000000000000000000000000000000000000000000000000000000006",
+            "record_id": "phi-present-value",
+            "role": "phi",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "evidence_revision": "sha256:f297453c7a35c7637fccc9156adbd569c0c02ab1bb25ff88dbcf9a24ed55b050",
+        "packet_id": "synthetic-chapter7-non-empirical",
+        "packet_revision": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "sample_count": 2,
+        "scenario": "scenario_4",
+        "synthetic": true
+      },
+      "classification": "synthetic_conformance_only",
+      "evaluation": {
+        "adoption_required": true,
+        "alternative_health_gain": 48.0,
+        "beta": 1.9047619047619047,
+        "budget_shadow_price_contraction": null,
+        "budget_shadow_price_expansion": null,
+        "conditional_expansion_shadow_price": null,
+        "economically_preferred": false,
+        "evci": 38.095238095238095,
+        "evidence_revision": "sha256:f297453c7a35c7637fccc9156adbd569c0c02ab1bb25ff88dbcf9a24ed55b050",
+        "iper": 6.0,
+        "nebh": -43.0,
+        "net_financial_cost": 0.0,
+        "parameterization": "source-backed-exogenous-mu",
+        "reimbursement_health_effect": 5.0,
+        "scenario": "scenario_4",
+        "source_location": "Pekarsky 2012, Appendix 5, pp. 231-234; Pekarsky 2015, Table 7.2",
+        "tolerance": 4.8e-11
+      },
+      "scenario": "scenario_4",
+      "voiage_sample_bundle": {
+        "evidence_revision": "sha256:f297453c7a35c7637fccc9156adbd569c0c02ab1bb25ff88dbcf9a24ed55b050",
+        "health_unit": "QALY",
+        "net_benefit_samples": [
+          [
+            5.0,
+            48.0
+          ],
+          [
+            6.666666666666666,
+            40.00000000000001
+          ]
+        ],
+        "parameter_samples": [
+          {
+            "role": "annual_program_health_effect",
+            "values": [
+              20.0,
+              20.0
+            ]
+          },
+          {
+            "role": "d",
+            "values": [
+              8.0,
+              9.0
+            ]
+          },
+          {
+            "role": "discount_rate",
+            "values": [
+              0.03,
+              0.03
+            ]
+          },
+          {
+            "role": "horizon",
+            "values": [
+              5.0,
+              5.0
+            ]
+          },
+          {
+            "role": "m",
+            "values": [
+              10.0,
+              12.0
+            ]
+          },
+          {
+            "role": "mu",
+            "values": [
+              2.0,
+              2.4
+            ]
+          },
+          {
+            "role": "phi",
+            "values": [
+              3.0,
+              2.5
+            ]
+          }
+        ],
+        "perspective": "health",
+        "strategy_names": [
+          "reimburse",
+          "best_available_alternative"
+        ]
+      }
+    }
+  ],
+  "schema": "t13-constrained-research-output/v1"
+}

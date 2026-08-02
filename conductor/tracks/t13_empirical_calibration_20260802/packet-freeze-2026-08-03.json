@@ -1,0 +1,76 @@
+{
+  "external_gates": {
+    "atlas_approved_packet": "not_available_at_v0.1.1",
+    "empirical_promotion": "prohibited",
+    "health_economist_research_methods": "satisfied",
+    "nhs_displacement_context": "pending_response"
+  },
+  "inputs": [
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/acquisition-run-2026-08-02.json",
+      "sha256": "aff21a904dec2884621bfbff71217620d4eea2f58a0fe009a1c6c20d9644a7a8"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/field-coverage-2026-08-02.json",
+      "sha256": "b98b80cb7a39f39b6b93bb7c03160c3873e35b0d8313b2901d6edea08bb14eef"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/grey-literature-receipt-2026-08-02.json",
+      "sha256": "6e2d850f7612ce17041776418f84f13831ef6a57525e64964d08384ee202611c"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/nhs-england-foi-submission-2026-08-02.json",
+      "sha256": "1eb45d76392c1f8d2e8c4930dc9540f6ff1f62cab39d64c151ad34b7691aa3a0"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/source-inventory.json",
+      "sha256": "973275f49daae1aa7ae7fca44cf1c314a9e76241c1c41222132e7de7d8f5b93f"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/receipts/atlas-v0.1.1-ta1121-negative-2026-08-02.json",
+      "sha256": "1ed36a1bc50c7643b2e83415fc8c62cecec136546c4e9618ab65b8c18a7b8a83"
+    },
+    {
+      "path": "docs/governance/health-economist-approval.md",
+      "sha256": "630931217e84f65fd7eb042df92f2e1c83ac21f76e889b2333f7141eb6257e48"
+    },
+    {
+      "path": "docs/research/source-conformance-audit.md",
+      "sha256": "519481bca980bd029d62b4d6b3b9f5a47d40796a828e2ce53276afa99482aeb3"
+    },
+    {
+      "path": "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json",
+      "sha256": "1b0ffcbe9e5647084fd37788d2fc338e2b58d32b7c92a99efdb91a560a88df3f"
+    }
+  ],
+  "invalidation": "Any changed input hash, evidence revision, source term, method decision, or repository target requires regeneration and review.",
+  "parameter_roles": {
+    "method_only": [
+      "discount_rate",
+      "horizon"
+    ],
+    "not_identifiable": [
+      "n",
+      "m",
+      "d",
+      "mu",
+      "phi",
+      "annual_program_health_effect"
+    ],
+    "publicly_supported_context": [
+      "commissioner",
+      "provider class",
+      "programme budgeting category",
+      "pathway position",
+      "comparators",
+      "implementation timing",
+      "three-year national resource-impact horizon",
+      "market-share assumptions"
+    ]
+  },
+  "price_year_disposition": "No programme-specific price year or confidential net price is available; no conversion is performed.",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "reviewed_revision": "2fa2948378f8c1e5c313bfb36f2c280e4b423a66",
+  "schema": "t13-research-packet-freeze/v1",
+  "scope": "public context, synthetic conformance, and research-method controls only"
+}
