@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "track_id": "t13_empirical_calibration_20260802",
-  "reviewed_commit": "f2d93e956a57a1e28b8c24ada4e3bb72d2aa8fb8",
+  "inventory_started_from_commit": "f2d93e956a57a1e28b8c24ada4e3bb72d2aa8fb8",
   "context": "TA1121 acoramidis versus tafamidis, England, research-only",
   "recommended_route": "Atlas-approved same-programme packet plus authoritative NHS displacement context",
   "sources": [

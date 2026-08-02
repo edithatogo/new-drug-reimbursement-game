@@ -1,0 +1,18 @@
+{
+  "schema": "t13-panel-consensus/v1",
+  "generation_base_commit": "56f9a078cd5c261174c62330def770ffe20f57bb",
+  "enclosing_artifact_commit": "1e80e1f7688be5e81d303d850ccbf6a2ee87d699",
+  "review_target": {"path": "conductor/tracks/t13_empirical_calibration_20260802/panel-review-target-2026-08-03.json", "sha256": "4205dc8ecbffed362bc5bb99d5e0743bc8875be58a98f09713610308c2672acb"},
+  "quorum": {"required": 4, "received": 4},
+  "receipts": [
+    {"role": "health_economics_methods", "path": "conductor/tracks/t13_empirical_calibration_20260802/panel-receipts/health-economics-methods-2026-08-03.json", "sha256": "91a4df100babe772bbb13932f446e64b35f54ccea23c6c50e6c7a9ab25e8696e"},
+    {"role": "nhs_atlas_provenance", "path": "conductor/tracks/t13_empirical_calibration_20260802/panel-receipts/nhs-atlas-provenance-2026-08-03.json", "sha256": "28b7b6e079fdd239828452c86fed89c2b342c14fbb9be55da66e932d37ceb113"},
+    {"role": "reproducibility_security_release", "path": "conductor/tracks/t13_empirical_calibration_20260802/panel-receipts/reproducibility-security-release-2026-08-03.json", "sha256": "727f78965d7918efc01f3297c501c3bd8aecc2729ed9f508234fa74475e7797c"},
+    {"role": "runtime_governance", "path": "conductor/tracks/t13_empirical_calibration_20260802/panel-receipts/runtime-governance-2026-08-03.json", "sha256": "6da0ec2d677bf30d49c1cef3c5b885bffae5a0c9a813a68c148c1bccb99961af"}
+  ],
+  "disagreements": [],
+  "disposition": "pass_synthetic_research_only_defer_empirical_promotion",
+  "closed_findings": ["direct Atlas pinned-tree receipt binding", "source-inventory provenance clarity", "FOI metadata minimization", "synthetic discounting limitation", "joint-draw empirical requirement"],
+  "unresolved_external_gates": ["authoritative NHS displacement context", "immutable Atlas-approved same-programme packet"],
+  "limitations": ["A relevant-subagent panel is technical review, not payer, HTA, policy, legal, regulatory, or empirical source approval."]
+}

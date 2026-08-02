@@ -1,0 +1,19 @@
+{
+  "schema": "t13-panel-review-target/v1",
+  "generation_base_commit": "56f9a078cd5c261174c62330def770ffe20f57bb",
+  "enclosing_artifact_commit": "1e80e1f7688be5e81d303d850ccbf6a2ee87d699",
+  "artifacts": [
+    {"path": "conductor/tracks/t13_empirical_calibration_20260802/packet-freeze-2026-08-03.json", "sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90"},
+    {"path": "conductor/tracks/t13_empirical_calibration_20260802/constrained-research-output-2026-08-03.json", "sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061"},
+    {"path": "conductor/tracks/t13_empirical_calibration_20260802/method-reconciliation-2026-08-03.md", "sha256": "ff6306523b0150cde1e0ae0ad3db7046c3fa0892ec0a2b0ef38810294668b7b4"},
+    {"path": "scripts/build_t13_research_closeout.py", "sha256": "2349a5c17266d3de303bdf1d991f288e1fa1de02921991abd61b91c1f15a0b0c"},
+    {"path": "tests/test_t13_research_closeout.py", "sha256": "114e578c06c7668db226c2531d5e2e2e89cae5cb93a47fe0f8519a89865a71b4"}
+  ],
+  "scope": "synthetic research-only closeout; empirical and decision-use promotion excluded",
+  "required_roles": [
+    "health_economics_methods",
+    "nhs_atlas_provenance",
+    "reproducibility_security_release",
+    "runtime_governance"
+  ]
+}

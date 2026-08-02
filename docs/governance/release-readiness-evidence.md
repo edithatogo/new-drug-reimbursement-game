@@ -9,16 +9,16 @@ The actionable closure sequence and fallback states are maintained in
 
 | Gate | Required evidence | Current state | Owner/action |
 |---|---|---|---|
-| Chapter 7 interpretation | Exact source location, dimensional derivation, and independent economics review | Source and executable conformance cover Scenarios 1–4; human health-economics review remains external | Preserve both source hashes/pages and empirical-parameter boundary |
+| Chapter 7 interpretation | Exact source location, dimensional derivation, and relevant-subagent economics review | Source and executable conformance cover Scenarios 1–4; the exact-target panel passes synthetic research-only use while empirical promotion remains deferred | Preserve source hashes/pages, panel receipts, and the empirical-parameter boundary |
 | UOGTO ontology | Validation against the pinned UOGTO revision and upstream disposition | Owner approval recorded; upstream disposition pending | Run pinned SHACL validation when toolchain is available |
 | Kairos execution | Pinned API compatibility and upstream execution/trace review | Owner approval recorded; native released integration pending | Adopt released DTO/code contract |
 | Extraction boundary | Approval that the game runtime can be extracted without application leakage | Local checks and panel review pass; transfer approval pending | Record extraction owner authorization |
 | Licences and provenance | Licence reconciliation for every dependency and derived artifact | Voiage reconciled at its verified pin; Atlas grouped derived-output approvals, checksum-matching NHS rows, and Hugging Face destination metadata pass | Preserve the Atlas adjudication and source-specific restrictions; no raw-source redistribution |
-| Release | Maintainer release decision after all preceding gates close | Pending | Maintainer decision |
+| Release | Maintainer release decision for the bounded surface | Owner-attested for research software, methodology, synthetic scenarios, and candidate-only metadata; calibrated and regulatory surfaces remain prohibited | Revalidate exact release commit and hosted checks before publishing a new tag |
 
 ## Evidence acceptance
 
-Each gate closes only with an artifact path, reviewer or owner identity,
+Each gate closes only with an artifact path, reviewer role or owner identity,
 revision/hash, date, and an explicit disposition. CI output proves automated
 validation only; it does not close independent review, legal, provenance, or
 upstream-approval gates.

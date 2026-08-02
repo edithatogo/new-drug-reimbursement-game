@@ -27,6 +27,7 @@ def main() -> int:
         [sys.executable, "scripts/validate_claim_boundaries.py"],
         [sys.executable, "scripts/validate_confidential_boundaries.py"],
         [sys.executable, "scripts/validate_empirical_readiness.py"],
+        [sys.executable, "scripts/validate_t13_closeout.py"],
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
         [sys.executable, "-m", "compileall", "-q", "src", "scripts", "tests"],
         [sys.executable, "scripts/discover_ecosystem.py", "--offline-fixture-mode"],
