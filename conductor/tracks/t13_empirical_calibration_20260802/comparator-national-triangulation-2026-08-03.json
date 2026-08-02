@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "purpose": "Field-level triangulation of comparator and national implementation context.",
+  "target": "TA1121 acoramidis ATTR-CM implementation in England",
+  "as_of": "2026-08-03",
+  "source_receipts": [
+    "public-source-refresh-2026-08-03.json",
+    "grey-literature-receipt-2026-08-02.json",
+    "public-triangulation-supplement-2026-08-03.json"
+  ],
+  "independence_rule": "NICE and NHS England are distinct official publishers; ICB records are an independent local custodian. Mirrors and training reproductions do not count as independent corroboration.",
+  "fields": [
+    {"field": "stable_nice_identifier", "status": "agreed", "value": "TA1121", "sources": ["NICE overview", "NICE committee papers"], "disposition": "context_supported"},
+    {"field": "national_commissioner", "status": "single_source_authority", "value": "NHS England", "sources": ["NICE resource impact", "NHS England implementation context"], "disposition": "context_supported_not_local_budget_evidence"},
+    {"field": "provider_and_specialist_pathway", "status": "corroborated", "value": "NHS hospital trusts through specialist amyloidosis services", "sources": ["NHS service specifications", "South Yorkshire ICB records", "NICE resource impact"], "disposition": "context_supported"},
+    {"field": "comparators", "status": "corroborated", "value": ["tafamidis", "vutrisiran"], "sources": ["NICE committee/resource-impact material", "NHS England tafamidis announcement", "NHS innovative-medicines context"], "disposition": "comparator_context_only"},
+    {"field": "implementation_timing", "status": "corroborated", "value": "national TA1121 publication followed by local 2026 implementation records", "sources": ["NICE TA1121", "South Yorkshire ICB records"], "disposition": "timing_context_only"},
+    {"field": "displaced_programme", "status": "unresolved", "value": null, "sources": [], "disposition": "deferred_external_nhs_evidence"},
+    {"field": "local_baseline_cost_and_unit", "status": "unresolved", "value": null, "sources": [], "disposition": "deferred_external_nhs_or_atlas_evidence"},
+    {"field": "confidential_net_price", "status": "restricted", "value": null, "sources": [], "disposition": "not_requested_or_inferred"}
+  ],
+  "conflicts": [],
+  "limitations": ["Comparator adoption does not prove displacement.", "National resource-impact estimates cannot be mapped to local parameter d without an attributable decision record.", "Public sources do not provide the approved Atlas n/m/d/mu/phi packet or joint uncertainty."],
+  "recommendation": "Use the agreed fields for labelled public-context and synthetic sensitivity analysis only; keep empirical, payer, HTA, policy, regulatory, and calibrated claims disabled.",
+  "refresh_rule": "Re-run field reconciliation when any source hash, revision, programme context, or intended use changes.",
+  "disposition": "triangulated_context_only"
+}
