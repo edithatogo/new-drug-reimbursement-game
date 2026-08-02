@@ -1,0 +1,59 @@
+{
+  "schema": "relevant-subagent-panel-role-receipt/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-02",
+  "role": "health_economics_methods",
+  "agent_id": "economics_role",
+  "independence": "separate read-only subagent context",
+  "reviewed_commit": "7dbb6d16c7dcf99613139cdea8becb08b475bf3d",
+  "review_target": {
+    "manifest": {
+      "path": "docs/governance/panel-review-target-2026-08-02.json",
+      "sha256": "0b31978061b08fffee62f5c850a1252baa5219c61e8c885a24afc425c30c2ed4"
+    },
+    "packet_files": [
+      {"path": "docs/governance/method-decisions.md", "sha256": "c0b88a58e705f08e6f06af69875f12d75040f7c9b53328b081a652a0372cc791"},
+      {"path": "docs/governance/model-risk.md", "sha256": "7605938bbf10e89fdb9a05c15c89c7efdb9da03c7a1a57b0111e9b8198a7628e"},
+      {"path": "docs/governance/health-economist-approval.md", "sha256": "630931217e84f65fd7eb042df92f2e1c83ac21f76e889b2333f7141eb6257e48"},
+      {"path": "src/reimbursement_game/chapter7.py", "sha256": "183270ce3519a2770379a528c6e31b81006fe4158dad683f21c4404cefc0f9f5"},
+      {"path": "src/reimbursement_game/calibration.py", "sha256": "84985ca317d86128acf5ff1aedad064b6f47a1ebcb698a8cbdd59b6b6b40508c"},
+      {"path": "tests/test_calibration.py", "sha256": "0142bcc1723d0ae4bb80763b21ba839e115c629f9fc46ebd13839df31d7cbf8b"}
+    ]
+  },
+  "pinned_revisions": {
+    "kairos": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+    "atlas": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca"
+  },
+  "checks": [
+    {
+      "area": "Chapter 7 equations",
+      "result": "pass",
+      "detail": "Scenario 1-3 source locations and identities are explicit; Scenario 4 enforces phi*DeltaE_G = incremental_cost/mu, mu < m, d <= m, and positive net investment gain."
+    },
+    {
+      "area": "discounting",
+      "result": "conditional",
+      "detail": "NICE-style 3.5% is recorded as provisional primary convention and DHSC 1.5% as sensitivity; no programme-specific approval is present."
+    },
+    {
+      "area": "Scenario 4",
+      "result": "deferred",
+      "detail": "Identity checks and same-programme evidence selection are implemented, but mu, phi, annual effect, horizon, discount rate, and joint uncertainty are not approved for calibration."
+    },
+    {
+      "area": "parameter roles and units",
+      "result": "pass",
+      "detail": "Calibration requires exact role sets, positive finite values, one programme for Scenario 4, aligned samples, and immutable evidence references."
+    }
+  ],
+  "disposition": "approve-with-conditions",
+  "finding": "Research implementation and Chapter 7 equation boundaries are reviewable at the frozen commit; empirical n/m/d promotion and Scenario 4 calibration remain fail-closed.",
+  "limitations": [
+    "No approved local NHS displacement record was available for this review.",
+    "This is a technical subagent receipt, not human HTA, payer, legal, regulatory, or release approval.",
+    "External Atlas and Kairos authorization gates remain unresolved."
+  ],
+  "attestation": {
+    "reviewed_at": "2026-08-02T00:00:00Z",
+    "method": "read-only repository and packet inspection; no source or working-tree mutation"
+  }
+}

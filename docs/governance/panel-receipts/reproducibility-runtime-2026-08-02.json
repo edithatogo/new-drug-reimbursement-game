@@ -1,0 +1,50 @@
+{
+  "schema": "relevant-subagent-panel-role-receipt/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-02",
+  "role": "reproducibility_runtime",
+  "agent_id": "runtime_role",
+  "agent_model": "Codex subagent",
+  "independence": "separate read-only subagent context; no source edits",
+  "conflict_declaration": "No financial, ownership, or release-authority conflict declared; this receipt is technical evidence only.",
+  "review_target": {
+    "repository": "edithatogo/new-drug-reimbursement-game",
+    "commit": "7dbb6d16c7dcf99613139cdea8becb08b475bf3d",
+    "manifest_path": "docs/governance/panel-review-target-2026-08-02.json",
+    "manifest_sha256": "0b31978061b08fffee62f5c850a1252baa5219c61e8c885a24afc425c30c2ed4",
+    "pinned_revisions": {
+      "kairos": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+      "atlas": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca"
+    }
+  },
+  "packet_hashes": [
+    {"path": "docs/governance/independent-review-panel.md", "sha256": "394876cd0d758626bbb4544ae2daba8ecccf6e66727b3aadf90a6fe5d0fc5457"},
+    {"path": "docs/governance/subagent-panel-consensus-2026-08-01.json", "sha256": "7a9c03db25880249ff1dabc9e1d41474acd06cd54297b6291fee145f2fe38a7c"},
+    {"path": "docs/governance/kairos-contract-manifest-2026-08-02.json", "sha256": "771240cac4dbff9ab8fdfc30a2f3bfc2807eb36b85b55aeb3c8c4322b6b3a634"},
+    {"path": "docs/governance/kairos-contract-extraction-checklist.md", "sha256": "1d50dc52787c4481b0ca0a42893459e298f75965d91d1fef11f022acdcd13c33"},
+    {"path": "docs/governance/kairos-maintainer-acceptance-request-2026-08-02.md", "sha256": "de9564fe0aefb7ba020c08c7196a98cb2b5c34bba410dfdb5403cf9c52404a04"}
+  ],
+  "checks": [
+    {"name": "python_quality_gate", "command": "python scripts/run_quality_gate.py", "status": "pass", "evidence": "106 Python tests, scope, governance, extraction, and hardening checks passed"},
+    {"name": "rust_format", "command": "cargo fmt --all -- --check", "status": "pass"},
+    {"name": "rust_clippy", "command": "cargo clippy --workspace --all-targets -- -D warnings", "status": "pass"},
+    {"name": "rust_tests", "command": "cargo test --workspace", "status": "pass", "evidence": "29 workspace tests passed"},
+    {"name": "adapter_boundary", "target": "src/reimbursement_game/adapters/kairos.py", "status": "pass", "evidence": "deterministic validation and JSON-safe event export; no released upstream contract inferred"},
+    {"name": "artifact_integrity", "status": "pass", "evidence": "review target manifest packet hashes matched on disk before receipt creation"}
+  ],
+  "findings": [
+    {"severity": "info", "finding": "Python and Rust implementations are deterministic and cross-language tests pass."},
+    {"severity": "info", "finding": "Extraction validation and governance inventory pass with pinned revisions recorded."},
+    {"severity": "medium", "finding": "Native Kairos integration and released DTO/API contract remain unavailable; local compatibility adapter is not upstream maintainer acceptance."},
+    {"severity": "medium", "finding": "Extraction transfer/publication authorization remains pending and must stay fail-closed."}
+  ],
+  "disposition": "approve-with-conditions",
+  "limitations": [
+    "This is a technical subagent receipt, not human HTA, legal, regulatory, payer, or upstream maintainer approval.",
+    "It does not authorize calibrated or regulatory claims, raw-data redistribution, or publication.",
+    "Any packet, pinned revision, or repository commit change supersedes this receipt and requires re-review."
+  ],
+  "attestation": {
+    "statement": "I reviewed the frozen target and recorded reproducibility/runtime evidence without modifying source code.",
+    "timestamp": "2026-08-02T00:00:00Z"
+  }
+}

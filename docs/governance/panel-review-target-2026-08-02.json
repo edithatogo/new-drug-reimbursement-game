@@ -1,0 +1,19 @@
+{
+  "schema": "relevant-subagent-panel-review-target/v1",
+  "panel_id": "ndr-research-gates-panel-2026-08-02",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "reviewed_commit": "7dbb6d16c7dcf99613139cdea8becb08b475bf3d",
+  "packet_files": [
+    {"path": "docs/governance/independent-review-panel.md", "sha256": "394876cd0d758626bbb4544ae2daba8ecccf6e66727b3aadf90a6fe5d0fc5457"},
+    {"path": "docs/governance/subagent-panel-consensus-2026-08-01.json", "sha256": "7a9c03db25880249ff1dabc9e1d41474acd06cd54297b6291fee145f2fe38a7c"},
+    {"path": "docs/governance/kairos-contract-manifest-2026-08-02.json", "sha256": "771240cac4dbff9ab8fdfc30a2f3bfc2807eb36b85b55aeb3c8c4322b6b3a634"},
+    {"path": "docs/governance/kairos-contract-extraction-checklist.md", "sha256": "1d50dc52787c4481b0ca0a42893459e298f75965d91d1fef11f022acdcd13c33"},
+    {"path": "docs/governance/kairos-maintainer-acceptance-request-2026-08-02.md", "sha256": "de9564fe0aefb7ba020c08c7196a98cb2b5c34bba410dfdb5403cf9c52404a04"}
+  ],
+  "pinned_revisions": {
+    "kairos": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+    "atlas": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca"
+  },
+  "scope": "technical research implementation review; empirical promotion and external authorization remain fail-closed",
+  "created_at": "2026-08-02T00:00:00Z"
+}
