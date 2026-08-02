@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "validate-atlas-requalification-path",
+  "validation_scope": "future Atlas-approved packet ingestion and requalification path",
+  "checks": {
+    "packet_freeze_input_hashes": "pass",
+    "exact_reviewed_revision_binding": "pass",
+    "panel_target_binding": "pass",
+    "four_role_receipts": "pass",
+    "panel_consensus_receipt_hashes": "pass",
+    "readiness_receipt_binding": "pass",
+    "stale_artifact_rejection": "pass",
+    "empirical_gate_fail_closed": "pass"
+  },
+  "artifact_hashes": {
+    "packet_freeze": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90",
+    "panel_review_target": "4205dc8ecbffed362bc5bb99d5e0743bc8875be58a98f09713610308c2672acb",
+    "panel_consensus": "7ed550290007b0a14ebc4ab94dfad21c01f602a9e375f6f6d9c4cd4caddca3c1",
+    "research_readiness": "a9483ed93d91a0efb1499c6129f4dea85db931510126d1025281d2ba25dbc9ea"
+  },
+  "panel_receipt_count": 4,
+  "future_requalification_sequence": ["replace approved Atlas packet and source-term receipt", "regenerate freeze", "rerun four-role panel", "recompute consensus and readiness", "run full quality gate", "obtain packet-bound owner authorization"],
+  "current_disposition": "synthetic_research_only; approved Atlas packet unavailable; empirical promotion disabled",
+  "limitations": ["This validates the ingestion and review controls, not the existence or approval of an Atlas packet.", "No confidential or restricted payload was accessed or retained."],
+  "validated_at": "2026-08-03T07:55:00Z"
+}
