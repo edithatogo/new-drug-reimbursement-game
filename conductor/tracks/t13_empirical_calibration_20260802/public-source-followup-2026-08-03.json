@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "public-source-followup-refresh",
+  "retrieved_at": "2026-08-03T10:15:00Z",
+  "method": "Standard-library HTTPS retrieval with a stable user agent; response bytes hashed before interpretation.",
+  "sources": [
+    {"id": "nice-resource-impact", "publisher": "NICE", "uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021", "status": 200, "mime": "application/pdf", "bytes": 56531, "sha256": "002ed229eb53c18c502ab5c290b7e3613052e7448518ecd619071d7146cf1213", "etag": "DD1EE3B9AA018BD77CC992DC0389B5AE", "supports": ["acoramidis/tafamidis/vutrisiran comparator context", "NICE resource-impact assumptions", "confidential-price limitation"]},
+    {"id": "nice-resource-template", "publisher": "NICE", "uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-template-information-15548303773", "status": 200, "mime": "text/html", "bytes": 13386, "sha256": "5cfae4744ec3552b819a98d27c0d61684c8906a662b35044accd667896401758", "etag": "W/2344B92B8FAEF0F1CB24DAEAB6AEFB5D", "supports": ["linked-appraisal context"]},
+    {"id": "nhs-service-specifications", "publisher": "NHS England", "uri": "https://www.england.nhs.uk/specialised-commissioning-%20document-library/service-specifications/", "status": 200, "mime": "text/html", "bytes": 81108, "sha256": "a3acc26aadf611e5fe8edc23ea1d1e0259731ff859b75cb69af8034b8aac3fd2", "supports": ["national specialist-service routing context"]},
+    {"id": "royal-free-amyloidosis", "publisher": "Royal Free London NHS Foundation Trust", "uri": "https://www.royalfree.nhs.uk/services/amyloidosis", "status": 403, "mime": null, "bytes": null, "sha256": null, "supports": [], "limitations": ["automated retrieval denied; retain inaccessible receipt and do not infer page contents"]},
+    {"id": "coventry-formulary", "publisher": "Coventry and Warwickshire Area Prescribing Committee", "uri": "https://www.covwarkformulary.nhs.uk/chaptersSubDetails.asp?FormularySectionID=4&SubSectionID=A100&SubSectionRef=04.12", "status": 200, "mime": "text/html", "bytes": 39247, "sha256": "37e2460541101feaf1dba0bb965ff547df8f5c85cae05fd78b86589e0828010e", "supports": ["specialist-centre-only routing context"]},
+    {"id": "cheshire-adherence", "publisher": "Cheshire and Merseyside NHS", "uri": "https://www.cheshireandmerseyside.nhs.uk/media/xaclztnz/nice_adherence_202504-202603.pdf", "status": 200, "mime": "application/pdf", "bytes": 427995, "sha256": "2aeecd61aeaf843f50697ab028779fa5cdcf712b2bbf7f945496f89144772c1b", "etag": "1dced1cb96d70db", "supports": ["TA1121 implementation/adherence and NHS England commissioner context"]}
+  ],
+  "triangulation": {"result": "context_reinforced_only", "independent_publishers": ["NICE", "NHS England", "Coventry and Warwickshire APC", "Cheshire and Merseyside NHS"], "does_not_close": ["actual displaced programme", "local baseline cost/unit", "confidential net price", "approved Atlas packet", "empirical authorization"]},
+  "disposition": "retain_non_frozen_public_context; keep_empirical_claims_disabled",
+  "refresh_rule": "Reacquire and invalidate dependent receipts when URL, bytes, ETag, revision, programme context, intended use, or destination changes."
+}
