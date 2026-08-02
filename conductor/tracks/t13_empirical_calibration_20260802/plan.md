@@ -7,6 +7,8 @@
 - [x] Emit distinct negative/deferred receipts for unavailable, inaccessible, conflicting, incomplete, or restricted evidence. (`c5c826a`)
 - [x] Record options, recommendation, rationale, fallback, stop condition, freshness, and invalidation triggers for every unresolved role. (`c5c826a`)
 - [x] Review checkpoint: validate receipt structures, rights, redundant-source independence, and source-to-claim coverage with the standard library because optional `jsonschema` is not installed. (`c5c826a`)
+- [x] Adopt the reusable triangulation/contingency protocol, including field-level outcomes, ranked-source fallback, panel quorum binding, and refresh/invalidation rules. (`triangulation-contingency-protocol.md`)
+- [x] Bind an executable contingency register with triangulation rules, fallback dispositions, refresh/invalidation triggers, and explicit human stop conditions. (`contingency-register-2026-08-03.json`)
 
 ## Phase 1 — authorization and packet freeze
 

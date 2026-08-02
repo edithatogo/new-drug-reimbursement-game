@@ -1,6 +1,8 @@
 # Evidence sourcing policy for T13-T16
 
-This policy is mandatory for the restricted-scope tracks. Agents must actively
+This policy is mandatory for the restricted-scope tracks. The reusable
+execution matrix is in `conductor/triangulation-contingency-protocol.md`.
+Agents must actively
 acquire eligible public evidence; drafting a request is not completion when an
 official public source can be retrieved safely. Acquisition never expands
 permission to access restricted, raw, personal, confidential, paid, or
