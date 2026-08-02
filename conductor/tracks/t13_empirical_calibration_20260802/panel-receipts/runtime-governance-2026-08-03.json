@@ -1,0 +1,18 @@
+{
+  "schema": "t13-panel-role-receipt/v1",
+  "role": "runtime_governance",
+  "reviewer": "Codex orchestrator",
+  "generation_base_commit": "56f9a078cd5c261174c62330def770ffe20f57bb",
+  "enclosing_artifact_commit": "1e80e1f7688be5e81d303d850ccbf6a2ee87d699",
+  "packet_freeze_sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90",
+  "constrained_output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061",
+  "checks": [
+    "129 Python and 29 Rust tests passed",
+    "Ruff, strict mypy, compile, scope, data, claim, confidential, empirical, governance, extraction, and hardening gates passed",
+    "Rust formatting and Clippy passed",
+    "packet-to-output digest linkage recomputes",
+    "Conductor lifecycle retains pending external gates"
+  ],
+  "disposition": "pass_repository_owned_research_scope",
+  "unresolved_external_gates": ["NHS displacement context", "Atlas-approved parameter packet"]
+}

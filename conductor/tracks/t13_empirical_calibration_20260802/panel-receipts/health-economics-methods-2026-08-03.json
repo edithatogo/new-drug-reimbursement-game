@@ -1,0 +1,19 @@
+{
+  "schema": "t13-panel-role-receipt/v1",
+  "role": "health_economics_methods",
+  "reviewer": "independent relevant subagent",
+  "generation_base_commit": "56f9a078cd5c261174c62330def770ffe20f57bb",
+  "enclosing_artifact_commit": "1e80e1f7688be5e81d303d850ccbf6a2ee87d699",
+  "packet_freeze_sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90",
+  "constrained_output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061",
+  "checks": [
+    "Scenario 1 through 4 equations and special cases reconcile with the cited source locations",
+    "units, marginality, domains, sign identities, and scaling invariants pass",
+    "Scenario 4 is synthetic only and the 3.0 percent fixture is distinguished from 3.5 percent primary and 1.5 percent sensitivity",
+    "future empirical uncertainty requires joint-draw and dependence provenance",
+    "claim boundaries prohibit empirical and decision-use promotion"
+  ],
+  "validation": ["2 focused closeout tests passed", "empirical readiness passed with promotion deferred", "claim-boundary validation passed"],
+  "disposition": "pass_synthetic_research_only",
+  "unresolved_external_gates": ["approved empirical time profile and transformation", "joint empirical uncertainty provenance", "Atlas-approved packet", "authoritative NHS displacement context"]
+}
