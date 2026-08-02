@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "prepare-negative-deferred-receipts",
+  "source_receipts": ["field-coverage-2026-08-02.json", "grey-literature-receipt-2026-08-02.json", "contingency-register-2026-08-03.json"],
+  "receipts": [
+    {"failure_mode": "inaccessible", "evidence": ["WhatDoTheyKnow automated search HTTP 403"], "disposition": "deferred_inaccessible", "fallback": "Use official publisher/API/archive routes and retain context-only sources", "stop_condition": "Do not promote missing payer, displacement, baseline, price, programme ID, or Atlas roles."},
+    {"failure_mode": "incomplete", "evidence": ["displaced_programme", "price_year", "baseline_cost_and_unit", "accountable_owner_confirmation"], "disposition": "not_identifiable", "fallback": "Synthetic conformance and public-context analysis only", "stop_condition": "Do not impute missing roles."},
+    {"failure_mode": "conflicting", "evidence": [], "disposition": "no_conflict_observed; conflict_protocol_armed", "fallback": "Preserve all values, choose no value, and defer pending custodian adjudication", "stop_condition": "Do not average or silently select conflicting records."},
+    {"failure_mode": "restricted", "evidence": ["confidential net prices", "Atlas source-term and approved-derived packet"], "disposition": "restricted_pending_terms", "fallback": "Use public aggregate context where rights permit", "stop_condition": "No authentication, transfer, storage, or release without named permission and terms adjudication."}
+  ],
+  "negative_receipt_policy": "A negative, not-held, refused, redacted, inaccessible, or restricted result is evidence about search/availability scope only; it is never converted into zero, absence of a programme, or an empirical parameter.",
+  "refresh_rule": "Reacquire when a source becomes accessible, a new publication appears, a custodian responds, or terms/revisions change.",
+  "disposition": "active_fail_closed_research_only"
+}
