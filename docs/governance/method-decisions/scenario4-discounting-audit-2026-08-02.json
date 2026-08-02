@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "receipt_type": "method_implementation_audit",
+  "created_at": "2026-08-02",
+  "reviewer_role": "health_economics_methods_subagent",
+  "review_target": {
+    "repository": "https://github.com/edithatogo/new-drug-reimbursement-game",
+    "commit": "656c80b64abffa64736cb7a2930b32dd14843303",
+    "files": [
+      {"path": "docs/governance/method-decisions.md", "sha256": "c0b88a58e705f08e6f06af69875f12d75040f7c9b53328b081a652a0372cc791"},
+      {"path": "src/reimbursement_game/chapter7.py", "sha256": "183270ce3519a2770379a528c6e31b81006fe4158dad683f21c4404cefc0f9f5"},
+      {"path": "src/reimbursement_game/calibration.py", "sha256": "84985ca317d86128acf5ff1aedad064b6f47a1ebcb698a8cbdd59b6b6b40508c"},
+      {"path": "tests/test_chapter7_scenarios.py", "sha256": "fbed3b330c0155a299b6045e2033ee4afed6f20b30c835c47847f1325ae307fb"},
+      {"path": "tests/test_calibration.py", "sha256": "0142bcc1723d0ae4bb80763b21ba839e115c629f9fc46ebd13839df31d7cbf8b"}
+    ]
+  },
+  "discounting": {
+    "primary": {"convention": "NICE reference-case", "rate": 0.035, "scope": "costs and health outcomes"},
+    "sensitivity": {"convention": "DHSC", "rate": 0.015, "scope": "explicit sensitivity only"},
+    "implementation_status": "documented_governance_decision; no rate is silently inferred by Chapter 7 evaluators",
+    "closure_requirements": [
+      "authoritative source URL/version and hash for the selected NHS context",
+      "price year, currency, horizon, timing convention, and cost/effect scope",
+      "accountable health-economist approval bound to the evidence packet and commit"
+    ]
+  },
+  "scenario4": {
+    "implementation": "strict evaluator and calibration path",
+    "required_invariants": [
+      "phi > 1",
+      "0 < mu < m",
+      "d <= m",
+      "phi * annual_program_health_effect = incremental_cost / mu",
+      "positive net investment health gain",
+      "1 / beta_c^v = 1 / d + 1 / mu - 1 / m"
+    ],
+    "alignment_requirements": [
+      "mu, phi, annual effect, horizon, and discount rate share one stable programme_id",
+      "n, m, d and Scenario 4 records share the reviewed NHS decision context",
+      "all values have provenance, transformations, units, uncertainty, source terms, and immutable packet revision"
+    ],
+    "status": "sensitivity_only",
+    "promotion_rule": "Do not permit empirical calibration or decision claims until an Atlas-approved-derived, same-programme packet and accountable approval receipt satisfy every alignment and provenance requirement."
+  },
+  "audit_disposition": "implementation_validated_research_only_promotion_deferred",
+  "limitations": [
+    "The evaluator validates mathematical domains and identities; it cannot establish NHS displacement or source authorization.",
+    "Synthetic fixtures exercise Scenario 4 but are explicitly not decision evidence.",
+    "This receipt does not approve NICE or DHSC use for a particular payer or decision."
+  ]
+}
