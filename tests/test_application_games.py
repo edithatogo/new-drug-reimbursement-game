@@ -25,7 +25,9 @@ class ApplicationGamesTests(unittest.TestCase):
 
     def test_game1_named_variants_are_explicit_extensions(self) -> None:
         self.assertEqual(solve_game1_bargaining(threshold=10, incremental_effect=2, bargaining_share=0.5).offered_price, 5)
-        self.assertEqual(solve_game1_net_rebate(threshold=10, incremental_effect=2, confidential_rebate=2).firm_rent, 16)
+        rebate = solve_game1_net_rebate(threshold=10, incremental_effect=2, synthetic_rebate=2)
+        self.assertEqual(rebate.firm_rent, 16)
+        self.assertIn("synthetic rebate; reconstructable public demonstration", rebate.assumptions)
         self.assertFalse(solve_game1_contract_enforcement(threshold=10, incremental_effect=2, contract_price=11).reimbursed)
         with self.assertRaisesRegex(ValueError, "incremental_effect"):
             solve_game1_contract_enforcement(threshold=10, incremental_effect=0, contract_price=5)

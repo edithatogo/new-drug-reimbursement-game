@@ -98,18 +98,23 @@ def solve_game1_bargaining(*, threshold: float, incremental_effect: float,
 
 
 def solve_game1_net_rebate(*, threshold: float, incremental_effect: float,
-                           confidential_rebate: float) -> Game1Result:
-    """Extension reporting a list price and a lower net reimbursed price."""
+                           synthetic_rebate: float) -> Game1Result:
+    """Synthetic extension reporting a list price and a lower net price.
 
-    _finite("confidential_rebate", confidential_rebate)
-    if confidential_rebate < 0 or confidential_rebate > threshold:
-        raise ValueError("confidential_rebate must be between zero and threshold")
+    This transparent result is reconstructable by design and must never receive
+    an actual confidential rebate. Restricted computation requires a separately
+    approved environment and disclosure-reviewed output path.
+    """
+
+    _finite("synthetic_rebate", synthetic_rebate)
+    if synthetic_rebate < 0 or synthetic_rebate > threshold:
+        raise ValueError("synthetic_rebate must be between zero and threshold")
     result = solve_game1_grid(threshold=threshold, incremental_effect=incremental_effect,
                               price_step=threshold, tie_policy="reimburse")
-    net_price = threshold - confidential_rebate
+    net_price = threshold - synthetic_rebate
     return Game1Result(threshold, True, incremental_effect, net_price * incremental_effect,
-                       confidential_rebate * incremental_effect, threshold,
-                       (*result.assumptions, "net price after confidential rebate"), "extension")
+                       synthetic_rebate * incremental_effect, threshold,
+                       (*result.assumptions, "synthetic rebate; reconstructable public demonstration"), "extension")
 
 
 def solve_game1_contract_enforcement(*, threshold: float, incremental_effect: float,

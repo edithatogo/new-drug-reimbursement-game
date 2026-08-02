@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t16-ico-pseudonymisation-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "Information Commissioner's Office", "title": "Pseudonymisation", "url_or_repository": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/pseudonymisation/", "revision_or_effective_date": "retrieved 2026-08-02", "locator": "risk reduction, separation, re-identification"},
+  "retrieval": {"retrieved_at": "2026-08-02T12:10:00Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "866c1d6a9bc0d81e55c98b3b8fb4af00bbdbaed6de4e943ddfc78912d30887f8", "content_length": 107578},
+  "rights": {"terms": "Official public regulatory guidance; not authorization to re-identify or process personal data.", "permitted_destination": "control requirements, citation, and synthetic tests"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports separation of additional information, robust techniques, minimisation, and a prohibition on unauthorized re-identification.", "contingency": "Prefer anonymous or aggregate data; keep pseudonymous data within the restricted boundary.", "refresh_or_retry_condition": "Refresh on ICO update, technique change, threat change, or controller instruction."}
+}

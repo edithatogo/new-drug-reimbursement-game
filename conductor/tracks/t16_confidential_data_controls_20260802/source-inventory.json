@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "track": "T16",
+  "retrieved_at": "2026-08-02T12:10:00Z",
+  "policy": "Public control evidence only; no confidential values were sought or acquired.",
+  "sources": [
+    {"receipt": "receipts/dhsc-secure-data-environment-2026-08-02.json", "rank": 3, "roles": ["secure_environment", "five_safes", "output_review"]},
+    {"receipt": "receipts/ico-anonymisation-2026-08-02.json", "rank": 3, "roles": ["identifiability", "motivated_intruder", "release_review"]},
+    {"receipt": "receipts/ico-pseudonymisation-2026-08-02.json", "rank": 3, "roles": ["pseudonymisation", "reidentification", "data_minimisation"]},
+    {"receipt": "receipts/ncsc-sensitive-data-access-2026-08-02.json", "rank": 3, "roles": ["least_privilege", "access_logging", "monitoring"]},
+    {"receipt": "receipts/nhs-five-data-safes-2026-08-02.json", "rank": 3, "roles": ["safe_people", "safe_projects", "safe_settings", "safe_outputs", "safe_data"]},
+    {"receipt": "receipts/ons-disclosure-control-2026-08-02.json", "rank": 3, "roles": ["output_review", "disclosure_risk", "audit_trail"]}
+  ],
+  "triangulation": {
+    "output_disclosure": ["DHSC secure data environment", "ICO anonymisation", "ONS disclosure control", "NHS Five Data Safes"],
+    "controlled_access": ["NCSC sensitive-data access", "NHS Five Data Safes", "ICO pseudonymisation"],
+    "rule": "A public control claim needs two independent official authorities unless it is explicitly labelled authority-specific."
+  }
+}

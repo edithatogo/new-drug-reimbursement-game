@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "default": {"audience": "none", "disclosure_status": "prohibited", "export_permitted": false},
+  "outputs": [
+    {"id": "public-code-and-methodology", "audience": "public", "disclosure_status": "approved", "synthetic_only": true, "export_permitted": true, "authorizer": "research-only-release-authorization-2026-08-02", "destination": "public repository", "review_triggers": ["source", "code", "model", "schema", "destination", "commit"]},
+    {"id": "synthetic-demonstration", "audience": "public", "disclosure_status": "approved", "synthetic_only": true, "export_permitted": true, "minimum_group_size": 5, "rounding_base": 5, "complementary_suppression": true, "dominance_review": true, "authorizer": "research-only-release-authorization-2026-08-02", "destination": "public repository", "review_triggers": ["source", "code", "model", "schema", "destination", "commit"]},
+    {"id": "aggregate-confidential-derived", "audience": "restricted", "disclosure_status": "deferred", "synthetic_only": false, "export_permitted": false, "minimum_group_size": 5, "rounding_base": 5, "complementary_suppression": true, "dominance_review": true, "authorizer": null, "destination": null, "review_triggers": ["owner", "contract", "field_set", "purpose", "operator", "environment", "aggregation", "destination", "code", "commit"]},
+    {"id": "row-level-or-reconstructable", "audience": "none", "disclosure_status": "prohibited", "synthetic_only": false, "export_permitted": false, "authorizer": null, "destination": null, "review_triggers": ["always"]}
+  ]
+}
