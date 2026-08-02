@@ -10,6 +10,8 @@
 
 ## Phase 1 — classification and authority
 
+- [ ] Select confidential-data use only when aggregate/redacted, approved-derived, and local no-export alternatives cannot satisfy the named purpose.
+- [ ] Bind the complete field schedule, owner, contract, purpose, operators, environment, audience, destination, disclosure rule, and deletion obligation before value access.
 - [~] Source public control evidence first, then inventory confidential fields, owners, contracts, purposes, destinations, and disclosure risks without accessing values. Public controls are complete; an exact owner field schedule remains external.
 - [ ] Approve the controlled environment, operators, access, retention, revocation, and incident plan.
 - [ ] Review checkpoint: verify authorization before any confidential value is accessed.

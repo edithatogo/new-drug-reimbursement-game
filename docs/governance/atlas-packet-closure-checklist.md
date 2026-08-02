@@ -55,6 +55,9 @@ Atlas, NHS, licensing, or release approval.
 
 ## Current disposition
 
-As of 2026-08-02, the lock/checkout mismatch and absence of programme-aligned
-TA1121 records remain open. The current candidate packet is not promotable;
-synthetic and methodology-only paths remain the safe fallback.
+As of 2026-08-02, immutable Atlas release `v0.1.1` has been reconciled and
+receipted. It contains terminology-only acoramidis/tafamidis material but no
+programme-aligned TA1121 `n/m/d` packet, NHS displacement/baseline, aligned
+uncertainty, or approval receipt. The release is not promotable; synthetic and
+methodology-only paths remain the safe fallback. Retry only against a newer
+immutable release or a separately attached approved-derived packet.

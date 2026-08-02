@@ -10,6 +10,8 @@
 
 ## Phase 1 — authority and environment
 
+- [ ] Select raw acquisition only when the T13/Atlas coverage matrix proves an approved-derived or public aggregate route insufficient.
+- [ ] For every selected source, bind exact fields, custodian, lawful basis, terms, operators, environment, retention, deletion, transformation, and destination.
 - [~] Source all public metadata first, then identify each source, custodian, purpose, classification, terms, and legal/privacy basis. Public metadata is complete; source-specific lawful basis and custodian permission remain external.
 - [ ] Approve controlled storage, access roles, retention, deletion, and incident procedures.
 - [ ] Review checkpoint: verify no acquisition begins before every applicable gate passes.
