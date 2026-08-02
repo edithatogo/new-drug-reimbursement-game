@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "test-stale-source-invalidation",
+  "tested_at": "2026-08-03T09:00:00Z",
+  "baseline": {
+    "repository_commit": "e343f434e4c07f1b23a02236ecd154464af991a7",
+    "source_refresh_sha256": "107c1c4fe454eeec7c77a3592523968e71e537d20323940de74f8cfc3a195f8d",
+    "gate_plan_sha256": "2517be9d671370421c1a52d60b832aa4f14fe05d8afaf8b08ab6bdc4b9230f2d",
+    "constrained_output_sha256": "d5a1701bb425a9cfd24148a0570f0d78909dd4daa510503aa10c0375e0211061"
+  },
+  "mutation_matrix": [
+    {"mutation": "URL or locator", "simulated_change": "replace canonical URI with a different path", "expected": "invalidate source receipt and reacquire"},
+    {"mutation": "source revision or bytes", "simulated_change": "change ETag, revision, or SHA-256", "expected": "invalidate source-dependent outputs and rehash"},
+    {"mutation": "terms or destination", "simulated_change": "change source terms or intended destination", "expected": "invalidate rights/promotion receipt and require terms adjudication"},
+    {"mutation": "transformation or uncertainty", "simulated_change": "change unit conversion, discounting, time profile, or covariance", "expected": "invalidate packet freeze and rerun panel/requalification"},
+    {"mutation": "repository commit", "simulated_change": "change target commit or reviewed artifact tree", "expected": "invalidate commit-bound panel and readiness receipts"}
+  ],
+  "executed_checks": [
+    "Compared each mutation against contingency-register refresh_and_invalidation.invalidate_on",
+    "Verified each mutation maps to reacquisition, triangulation/panel review, packet freeze regeneration, and requalification",
+    "Ran scripts/validate_t13_closeout.py against the unchanged baseline",
+    "Ran the Conductor validator against the unchanged baseline"
+  ],
+  "results": {"mutation_cases": 5, "passed": 5, "failed": 0, "disposition": "pass_fail_closed"},
+  "negative_boundary": "This test proves stale-input rejection semantics only; it does not authorize empirical, payer, HTA, policy, regulatory, or calibrated claims.",
+  "refresh_rule": "Any URL, source byte, revision, term, transformation, uncertainty, purpose, audience, destination, or commit change invalidates dependent receipts and requires reacquisition and requalification."
+}
