@@ -52,6 +52,16 @@
       {"id": "prepare-sensitivity", "action": "Run synthetic and public-context sensitivity demonstrations for all four Chapter 7 scenarios, including Scenario 4 uncertainty limitations.", "does_not_close": ["empirical calibration"]},
       {"id": "prepare-ingestion", "action": "Pre-validate the packet-ingestion, hash-binding, panel rerun, and qualification path against a future NHS/Atlas response.", "does_not_close": ["owner authorization"]}
     ],
+    "specific_task_ids": [
+      "harvest-and-hash-public-records",
+      "triangulate-official-context",
+      "run-four-synthetic-scenarios",
+      "perform-sensitivity-analysis",
+      "validate-atlas-requalification-path",
+      "prepare-negative-deferred-receipts",
+      "test-stale-source-invalidation",
+      "enforce-claims-disabled"
+    ],
     "refresh_trigger": "New official publication, amended source bytes, substantive NHS response, Atlas revision, or change to intended use.",
     "stop_conditions": ["Do not infer displacement from comparator adoption", "Do not use public context to fill confidential or missing parameters", "Do not promote empirical or regulatory claims"]
   },

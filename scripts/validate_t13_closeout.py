@@ -67,6 +67,14 @@ def closeout_violations() -> list[str]:
     required_waiting = {"refresh-public-sources", "expand-independent-context", "prepare-sensitivity", "prepare-ingestion"}
     if waiting.get("status") != "autonomous_research_only" or not required_waiting.issubset(waiting_ids):
         violations.append("while-waiting workstream is incomplete or not research-only")
+    required_specific = {
+        "harvest-and-hash-public-records", "triangulate-official-context",
+        "run-four-synthetic-scenarios", "perform-sensitivity-analysis",
+        "validate-atlas-requalification-path", "prepare-negative-deferred-receipts",
+        "test-stale-source-invalidation", "enforce-claims-disabled",
+    }
+    if not required_specific.issubset(set(gate_plan.get("while_waiting_workstream", {}).get("specific_task_ids", []))):
+        violations.append("while-waiting workstream lacks specific requested tasks")
 
     required_modes = {"inaccessible", "conflicting", "incomplete", "restricted"}
     modes = {item.get("id") for item in contingency.get("failure_modes", []) if isinstance(item, dict)}

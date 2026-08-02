@@ -42,6 +42,17 @@
 
 ## Review Fixes
 
+## While-waiting implementation tasks
+
+- [x] Harvest and hash public NICE, NHS England, ICB, specialist-centre, committee, and publication-scheme records; preserve source status, MIME, byte length, SHA-256, locators, and limitations. (`grey-literature-receipt-2026-08-02.json`, `public-triangulation-supplement-2026-08-03.json`)
+- [x] Triangulate comparator and national implementation context using independent official publishers or accountable custodians; reject mirrors as corroboration. (`public-triangulation-supplement-2026-08-03.json`, `conductor/triangulation-contingency-protocol.md`)
+- [x] Run all four Chapter 7 scenarios using synthetic or explicitly labelled public-context assumptions; keep empirical calibration disabled. (`constrained-research-output-2026-08-03.json`)
+- [x] Perform sensitivity analyses, including Scenario 4 limitation demonstrations and missing time-profile/joint-uncertainty handling. (`method-reconciliation-2026-08-03.md`, `constrained-research-output-2026-08-03.json`)
+- [x] Validate the future Atlas packet-ingestion, hash-binding, panel-review, and requalification path against exact target artifacts and commit. (`validate_t13_closeout.py`, `panel-review-target-2026-08-03.json`)
+- [x] Prepare negative/deferred receipts for inaccessible, incomplete, conflicting, and restricted evidence, with explicit fallback and stop conditions. (`contingency-register-2026-08-03.json`)
+- [x] Test stale-source detection and invalidation when URLs, revisions, terms, transformations, or commits change; require reacquisition and requalification. (`gate-resolution-plan-2026-08-03.json`, `validate_t13_closeout.py`)
+- [x] Keep empirical, payer, HTA, policy, regulatory, and calibrated claims disabled until all external gates and packet-bound authorization pass. (`research-readiness-receipt-2026-08-03.json`)
+
 - [x] Normalize the programme document ending after `git diff --check` identified an extra EOF blank line. (`3f869d0`)
 - [x] Reconcile the authorized FOI submission and existing research-method approval with T13 lifecycle state.
 - [x] Bind the reviewed PR head and unchanged artifact hashes to the squash commit integrated into `main`. (`main-integration-receipt-2026-08-03.json`)
