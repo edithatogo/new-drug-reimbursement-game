@@ -21,3 +21,13 @@ deferred; synthetic and candidate-only operation remains the safe contingency.
 
 No public source was treated as permission to access the confidential commercial
 arrangement, and no request was sent externally.
+
+## Immutable Atlas v0.1.1 refresh
+
+The newly published annotated `v0.1.1` release was downloaded through the
+GitHub release API and checked by release-asset SHA-256. Its 1,973-member
+research archive contains public RxNorm terminology rows for acoramidis and
+tafamidis and an Australian PBS tafamidis schedule row. It contains no TA1121
+record, UK approved-derived `n/m/d` packet, NHS displaced programme or baseline,
+aligned uncertainty, or promotion approval. No source payload was copied into
+this repository; the result is an exact-release negative receipt.
