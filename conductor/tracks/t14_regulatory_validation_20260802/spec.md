@@ -16,6 +16,10 @@ Creation of this track is not regulatory authorization.
 4. Establish independent human review, change control, auditability, incident
    handling, and post-release monitoring requirements.
 5. Prevent research-only outputs from being represented as regulator-ready.
+6. Follow `sourcing.md` and the shared evidence-sourcing policy: agents must
+   actively retrieve current official public rules, registers, templates, and
+   validation guidance, with exact receipts, triangulation, options,
+   contingencies, and invalidation rules.
 
 ## Acceptance criteria
 
@@ -49,3 +53,6 @@ Creation of this track is not regulatory authorization.
 - `docs/governance/research-only-release-authorization.md`
 - `docs/releases/v0.4.0-research-only.md`
 - T13 completed evidence when available.
+- `conductor/evidence-sourcing-policy.md`
+- `conductor/source-receipt-schema.json`
+- `conductor/tracks/t14_regulatory_validation_20260802/sourcing.md`
