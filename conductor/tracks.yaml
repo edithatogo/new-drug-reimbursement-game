@@ -84,7 +84,7 @@ tracks:
   - id: T15
     title: Raw-data acquisition and governance
     priority: 3
-    status: new
+    status: in_progress
     depends_on: [T07, T09]
   - id: T16
     title: Confidential and commercially sensitive data controls
