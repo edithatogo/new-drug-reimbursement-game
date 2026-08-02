@@ -6,9 +6,11 @@
     "No approved Atlas TA1121 parameter packet is available.",
     "No authoritative separately displaced NHS programme or baseline unit is available.",
     "Commercial net prices are neither requested nor used.",
-    "Scenario 4 remains a mathematical sensitivity and conformance case only."
+    "Scenario 4 remains a mathematical sensitivity and conformance case only.",
+    "The synthetic Scenario 4 fixture uses 3.0% solely for conformance; empirical use requires a 3.5% primary and 1.5% sensitivity transformation from an approved time profile.",
+    "Synthetic samples are positionally aligned; empirical use requires joint-draw identifiers and dependence or covariance provenance."
   ],
-  "packet_freeze_sha256": "928d374dec02566d7fbe7357a99c9e0ecd87878761a466bf64d79171ab72e2e6",
+  "packet_freeze_sha256": "bddf4c1b882d3f62a3e1c48a7e632e2a9333cc60426d5419cc8c058c24b2cc90",
   "prohibited_claims": [
     "calibrated reimbursement result",
     "identified NHS displacement parameter",
@@ -29,7 +31,7 @@
     "technology_appraisal": "NICE TA1121"
   },
   "release_label": "synthetic_research_only",
-  "reviewed_revision": "2fa2948378f8c1e5c313bfb36f2c280e4b423a66",
+  "reviewed_revision": "56f9a078cd5c261174c62330def770ffe20f57bb",
   "scenarios": [
     {
       "calibration_receipt": {

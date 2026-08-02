@@ -20,11 +20,15 @@
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/nhs-england-foi-submission-2026-08-02.json",
-      "sha256": "1eb45d76392c1f8d2e8c4930dc9540f6ff1f62cab39d64c151ad34b7691aa3a0"
+      "sha256": "9d8b5ec661de46809bd594ded2f0b58f031fb448df9aed925a5657f2fea69515"
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/source-inventory.json",
-      "sha256": "973275f49daae1aa7ae7fca44cf1c314a9e76241c1c41222132e7de7d8f5b93f"
+      "sha256": "9be37a5565466d7158660cd4484228ff81b5a138aab83041c83053981628be61"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/receipts/atlas-pinned-tree-negative-2026-08-02.json",
+      "sha256": "c57db68432b7e4f16de1dcefe9f0ec5bb4574fbdf036e966b468262e29318c98"
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/receipts/atlas-v0.1.1-ta1121-negative-2026-08-02.json",
@@ -70,7 +74,7 @@
   },
   "price_year_disposition": "No programme-specific price year or confidential net price is available; no conversion is performed.",
   "repository": "edithatogo/new-drug-reimbursement-game",
-  "reviewed_revision": "2fa2948378f8c1e5c313bfb36f2c280e4b423a66",
+  "reviewed_revision": "56f9a078cd5c261174c62330def770ffe20f57bb",
   "schema": "t13-research-packet-freeze/v1",
   "scope": "public context, synthetic conformance, and research-method controls only"
 }
