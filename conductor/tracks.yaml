@@ -71,3 +71,23 @@ tracks:
     priority: 2
     status: done
     depends_on: [T11]
+  - id: T13
+    title: Empirical calibration and calibrated research outputs
+    priority: 2
+    status: new
+    depends_on: [T11, T12]
+  - id: T14
+    title: Regulatory and HTA validation boundary
+    priority: 4
+    status: new
+    depends_on: [T09, T13]
+  - id: T15
+    title: Raw-data acquisition and governance
+    priority: 3
+    status: new
+    depends_on: [T07, T09]
+  - id: T16
+    title: Confidential and commercially sensitive data controls
+    priority: 4
+    status: new
+    depends_on: [T09, T15]
