@@ -33,7 +33,7 @@
   *Link: [./tracks/t14_regulatory_validation_20260802/index.md](./tracks/t14_regulatory_validation_20260802/index.md)*
 - [~] **Track: T15 raw-data acquisition and governance**
   *Link: [./tracks/t15_raw_data_governance_20260802/index.md](./tracks/t15_raw_data_governance_20260802/index.md)*
-- [ ] **Track: T16 confidential and commercially sensitive data controls**
+- [~] **Track: T16 confidential and commercially sensitive data controls**
   *Link: [./tracks/t16_confidential_data_controls_20260802/index.md](./tracks/t16_confidential_data_controls_20260802/index.md)*
 
 The remaining implementation programme T03-T08 remains authoritative in
