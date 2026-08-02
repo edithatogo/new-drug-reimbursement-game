@@ -39,3 +39,4 @@
 
 - [x] Normalize the programme document ending after `git diff --check` identified an extra EOF blank line. (`3f869d0`)
 - [x] Reconcile the authorized FOI submission and existing research-method approval with T13 lifecycle state.
+- [x] Bind the reviewed PR head and unchanged artifact hashes to the squash commit integrated into `main`. (`main-integration-receipt-2026-08-03.json`)
