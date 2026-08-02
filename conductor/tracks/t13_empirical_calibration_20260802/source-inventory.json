@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "track_id": "t13_empirical_calibration_20260802",
+  "reviewed_commit": "f2d93e956a57a1e28b8c24ada4e3bb72d2aa8fb8",
+  "context": "TA1121 acoramidis versus tafamidis, England, research-only",
+  "recommended_route": "Atlas-approved same-programme packet plus authoritative NHS displacement context",
+  "sources": [
+    {"receipt": "receipts/nice-economic-evaluation-2026-08-02.json", "rank": 3, "roles": ["discounting", "time_horizon", "reference_case"]},
+    {"receipt": "receipts/nice-ta1121-2026-08-02.json", "rank": 1, "roles": ["intervention", "comparator", "population", "decision_date", "commercial_confidentiality"]},
+    {"receipt": "receipts/nice-resource-impact-2026-08-02.json", "rank": 3, "roles": ["resource_impact", "commissioner", "editable_local_assumptions"]},
+    {"receipt": "receipts/dhsc-impact-assessment-2026-08-02.json", "rank": 3, "roles": ["discounting_sensitivity", "marginal_productivity_context"]},
+    {"receipt": "receipts/south-yorkshire-imoc-2026-08-02.json", "rank": 1, "roles": ["payer_candidate", "local_decision_candidate"]},
+    {"receipt": "receipts/atlas-pinned-tree-negative-2026-08-02.json", "rank": 2, "roles": ["n", "m", "d", "mu", "phi", "annual_effect", "horizon", "uncertainty", "source_terms"]}
+  ],
+  "parameter_coverage": {
+    "n": "missing_approved_derived_record",
+    "m": "missing_approved_derived_record",
+    "d": "missing_authoritative_displaced_programme_and_baseline",
+    "mu": "missing_same_programme_investment_record",
+    "phi": "missing_same_programme_investment_record",
+    "annual_programme_effect": "missing_same_programme_record",
+    "horizon": "method_guidance_only_not_programme_specific",
+    "discounting": "NICE_3.5_primary_DHSC_1.5_sensitivity_supported",
+    "joint_uncertainty": "missing_approved_aligned_samples"
+  },
+  "disposition": "defer_empirical_calibration_keep_synthetic_and_candidate_only",
+  "refresh_rule": "Reacquire all sources and rebuild this inventory when the source ETag/revision, programme, price year, Atlas packet, transformation, or release commit changes."
+}

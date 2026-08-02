@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-nice-economic-evaluation-2026-08-02",
+  "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "National Institute for Health and Care Excellence", "title": "Technology appraisal and highly specialised technologies guidance: the manual, economic evaluation", "url_or_repository": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/", "revision_or_effective_date": "last updated 2026-03-31", "locator": "sections 4.2, 4.5 and 4.10"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:00:21Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html; charset=utf-8", "etag": "W/03827DE50CA4E09F6FD06A6C2CCB9002", "last_modified": null},
+  "integrity": {"sha256": "20b1111fc52b846dcb1e3ce4c705af4592472bbc13369f7d74ac2fb578de40b5", "content_length": 358036},
+  "rights": {"terms": "Official public NICE guidance; retain attribution and link; no private submission material included", "permitted_destination": "research-only method ledger and source citation"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports 3.5% for costs and health effects as the NICE reference case and 1.5% only in specified circumstances; it does not supply programme parameters.", "contingency": "Use 3.5% primary and test 1.5% as sensitivity while programme evidence remains incomplete.", "refresh_or_retry_condition": "Reacquire at every release/calibration freeze or NICE update."}
+}
