@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "track_id": "t15_raw_data_governance_20260802",
+  "reviewed_commit": "6fc13d2e1a7b65834ed5f084fe396153719ec22d",
+  "recommended_mode": "metadata-first Atlas-derived-only pipeline",
+  "sources": [
+    {"receipt": "receipts/nhs-england-public-data-terms-2026-08-02.json", "classification": "public_terms"},
+    {"receipt": "receipts/nhsbsa-prescription-metadata-2026-08-02.json", "classification": "public_catalogue_metadata"},
+    {"receipt": "receipts/ico-data-principles-2026-08-02.json", "classification": "public_control_guidance"},
+    {"receipt": "receipts/atlas-source-licence-2026-08-02.json", "classification": "owner_controlled_source_terms"},
+    {"receipt": "receipts/atlas-evidence-schema-2026-08-02.json", "classification": "owner_controlled_schema"},
+    {"receipt": "receipts/huggingface-atlas-metadata-2026-08-02.json", "classification": "public_destination_metadata"}
+  ],
+  "classification_worklist": [
+    {"class": "public_open_metadata", "autonomous_action": "retrieve, hash, analyse, and receipt", "destination": "Git metadata/receipts only"},
+    {"class": "public_dataset_with_source_specific_terms", "autonomous_action": "retrieve metadata and terms only", "destination": "Atlas review queue"},
+    {"class": "restricted_or_authenticated_raw", "autonomous_action": "stop before payload access", "destination": "approved controlled environment only"},
+    {"class": "personal_or_confidential", "autonomous_action": "no access", "destination": "T16 and external authorization"}
+  ],
+  "disposition": "public_metadata_satisfied_raw_access_deferred",
+  "refresh_rule": "Reacquire terms and metadata before access or release and on dataset, schema, owner, purpose, destination, Atlas/Hugging Face revision, or repository commit change."
+}

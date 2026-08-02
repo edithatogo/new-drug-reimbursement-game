@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t15-atlas-source-licence-2026-08-02", "status": "restricted",
+  "source": {"authority_rank": 2, "publisher": "edithatogo/Reimbursement Atlas", "title": "Source licence evidence", "url_or_repository": "https://github.com/edithatogo/reimbursement-atlas", "revision_or_effective_date": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca", "locator": "docs/SOURCE_LICENCE_EVIDENCE.md"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:06:39Z", "method": "HTTPS GET raw file at immutable Git revision", "http_status": 200, "media_type": "text/markdown", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "7f8fbce74e4daad1b1cf850be8b8a866468614a6575ae4c1a9e8457a0011ce86", "content_length": 3303},
+  "rights": {"terms": "Software licence does not grant source-data redistribution; source-specific terms and accountable review control every derived field", "permitted_destination": "metadata and approved derived records only"},
+  "disposition": {"decision": "defer", "rationale": "The ledger expressly keeps raw MBS/PBS material local/restricted and requires field- and destination-specific review.", "contingency": "Use Atlas-approved derived records or public metadata only.", "refresh_or_retry_condition": "Retry when the exact source, fields, attribution, redistribution decision, reviewer, date, and destination are approved."}
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t15-ico-data-principles-2026-08-02", "status": "acquired",
+  "source": {"authority_rank": 3, "publisher": "Information Commissioner's Office", "title": "A guide to the data protection principles", "url_or_repository": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/", "revision_or_effective_date": "guidance under review following the Data (Use and Access) Act; page retrieved 2026-08-02", "locator": "Article 5 principles"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:06:39Z", "method": "HTTPS GET", "http_status": 200, "media_type": "text/html", "etag": null, "last_modified": null},
+  "integrity": {"sha256": "180e771c5c2f5149a9b1f4a08298fc7819066c2c03302c91d6df1e19a3e078c2", "content_length": 44004},
+  "rights": {"terms": "Official public regulatory guidance; not legal advice or a processing authorization", "permitted_destination": "control requirements and citation"},
+  "disposition": {"decision": "approve_with_conditions", "rationale": "Supports lawfulness, purpose limitation, minimisation, accuracy, storage limitation, security, and accountability controls.", "contingency": "Keep personal-data processing blocked until an exact lawful basis and applicable updated guidance are approved.", "refresh_or_retry_condition": "Refresh on ICO guidance update or legal/purpose change."}
+}

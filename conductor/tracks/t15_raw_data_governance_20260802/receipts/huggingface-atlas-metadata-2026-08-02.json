@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0", "receipt_id": "t15-huggingface-atlas-metadata-2026-08-02", "status": "incomplete",
+  "source": {"authority_rank": 2, "publisher": "edithatogo on Hugging Face", "title": "reimbursement-atlas dataset repository metadata", "url_or_repository": "https://huggingface.co/api/datasets/edithatogo/reimbursement-atlas", "revision_or_effective_date": "a2b3682b1fd4dc5910a154c15abdc6e9c4199442", "locator": "API metadata and cardData"},
+  "retrieval": {"retrieved_at": "2026-08-02T11:06:39Z", "method": "Hugging Face public REST API metadata only", "http_status": 200, "media_type": "application/json", "etag": null, "last_modified": "2026-08-01T11:59:40.000Z"},
+  "integrity": {"sha256": "91a94e2af39a9c631a7d873ade4bb06fa76704aea2195dfae09a5adefc85ac0a", "content_length": 3942},
+  "rights": {"terms": "Dataset card metadata declares license `other`; exact source-specific terms must be reconciled before consumption or publication", "permitted_destination": "link-only metadata and deferred licence receipt"},
+  "disposition": {"decision": "defer", "rationale": "The public, ungated dataset metadata is reachable, but `license:other` is not a sufficient field- or destination-specific grant.", "contingency": "Do not download dataset payloads; retain link-only metadata until the card and Atlas source ledger agree.", "refresh_or_retry_condition": "Retry on dataset revision/card/terms change or receipt of an accountable licence disposition."}
+}
