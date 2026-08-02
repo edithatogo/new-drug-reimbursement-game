@@ -1,4 +1,11 @@
-# Targeted NHS context requests (not sent)
+# Targeted NHS context requests (superseded; do not send)
+
+**Disposition:** These drafts are retained only as historical scope definitions.
+The project owner has directed that no email or outbound FOI request be sent.
+T13 instead searches public grey literature, existing FOI repositories,
+disclosure logs, NHS websites, committee papers, formularies, and archived
+official material. See
+`conductor/tracks/t13_empirical_calibration_20260802/grey-literature-receipt-2026-08-02.json`.
 
 These drafts are based on the triangulated evidence matrix and request only
 non-patient-level information needed to identify the displacement opportunity

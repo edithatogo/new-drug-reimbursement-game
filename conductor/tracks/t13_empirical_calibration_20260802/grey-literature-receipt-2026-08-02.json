@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "target": "TA1121 acoramidis implementation and displacement context in England",
+  "acquired_at": "2026-08-02T13:20:00Z",
+  "method": "Public web search of official NHS/NICE pages, committee papers, formularies, board material, disclosure-log documentation, and indexed FOI repositories; no outbound contact was made.",
+  "sources": [
+    {
+      "id": "nice-ta1121-resource-impact-pdf",
+      "publisher": "National Institute for Health and Care Excellence",
+      "uri": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "http_status": 200,
+      "mime_type": "application/pdf",
+      "bytes": 56531,
+      "sha256": "002ed229eb53c18c502ab5c290b7e3613052e7448518ecd619071d7146cf1213",
+      "supports": [
+        "NHS England is the commissioner",
+        "NHS hospital trusts are providers",
+        "programme budgeting category PBC 10X Problems of circulation",
+        "first-line pathway position",
+        "tafamidis and vutrisiran comparators",
+        "three-year horizon and 12.5%, 15.0%, and 17.5% acoramidis market shares",
+        "resource impact below GBP 5 million per year using confidential discounted prices"
+      ],
+      "limitations": [
+        "payment mechanism depends on the responsible commissioner and high-cost classification",
+        "commercial prices are confidential",
+        "does not identify a separately displaced NHS programme or attributable baseline unit"
+      ]
+    },
+    {
+      "id": "south-yorkshire-doncaster-pmoc-february-2026",
+      "publisher": "NHS South Yorkshire Integrated Care Board",
+      "uri": "https://mot.southyorkshire.icb.nhs.uk/doncaster/files/Doncaster%20Minutes%20PMOC%20Section%201%262%20February%202026%20V1.0.pdf?_rsc=15ziz",
+      "http_status": 200,
+      "mime_type": "application/pdf",
+      "bytes": 432621,
+      "sha256": "b94df50f6336ec1a7ce183f34c26dfb3a8596a51505d885184c34cab511c02e5",
+      "supports": ["local February 2026 implementation record", "red specialist classification"],
+      "limitations": ["no budget displacement, net price, stable programme identifier, or baseline unit"]
+    },
+    {
+      "id": "south-yorkshire-doncaster-pmoc-march-2026",
+      "publisher": "NHS South Yorkshire Integrated Care Board",
+      "uri": "https://mot.southyorkshire.icb.nhs.uk/doncaster/files/Doncaster%20Minutes%20PMOC%20March%202026%20Section%201%262%20.pdf?_rsc=4g3x8",
+      "http_status": 200,
+      "mime_type": "application/pdf",
+      "bytes": 560425,
+      "sha256": "1358f5eb178bef0ac3cf42b38b8b1454d76b3af34bd109d704eb142f1c76d36a",
+      "supports": ["continued local red specialist classification in March 2026"],
+      "limitations": ["no budget displacement, net price, stable programme identifier, or baseline unit"]
+    },
+    {
+      "id": "south-yorkshire-sheffield-learning-march-2026",
+      "publisher": "NHS South Yorkshire Integrated Care Board",
+      "uri": "https://mot.southyorkshire.icb.nhs.uk/sheffield/files/Sheffield%20Communication%20APG%20Learning%20Lunch%20-%20March%202026%20slides.pdf?_rsc=1hmvm",
+      "http_status": 200,
+      "mime_type": "application/pdf",
+      "bytes": 605201,
+      "sha256": "599bab1d117a54e37988a99316f5c214ba15a355738a0c511e568a58bc0a25f7",
+      "supports": ["independent local corroboration of TA1121 red specialist status"],
+      "limitations": ["training slides are implementation corroboration, not a commissioning budget decision"]
+    },
+    {
+      "id": "nhs-england-foi-policy",
+      "publisher": "NHS England",
+      "uri": "https://www.england.nhs.uk/long-read/freedom-of-information-and-environmental-information-regulations-policy/",
+      "http_status": 200,
+      "mime_type": "text/html",
+      "bytes": 143280,
+      "sha256": "0e616600521ba3fa4480655d865911f0a01ca8ea3b9ac5e71b7467309dbc9bb1",
+      "supports": ["NHS England states that it does not currently publish a disclosure log"],
+      "limitations": ["absence of a central disclosure log is not evidence that no responsive record exists"]
+    },
+    {
+      "id": "whatdotheyknow-direct-search-acoramidis",
+      "publisher": "WhatDoTheyKnow",
+      "uri": "https://www.whatdotheyknow.com/search/acoramidis/all",
+      "http_status": 403,
+      "mime_type": "text/html",
+      "bytes": 5454,
+      "sha256": "7cb02c2719fd955bd0f869a452869679e24ba515acd8a8b7224c378579ac2ba5",
+      "supports": [],
+      "limitations": ["direct automated search was blocked by a Cloudflare challenge; general web indexing returned no attributable acoramidis FOI response"]
+    },
+    {
+      "id": "whatdotheyknow-direct-search-tafamidis",
+      "publisher": "WhatDoTheyKnow",
+      "uri": "https://www.whatdotheyknow.com/search/tafamidis/all",
+      "http_status": 403,
+      "mime_type": "text/html",
+      "bytes": 5451,
+      "sha256": "c8711cc94f1f97ab8ff24b066123a29b42532bb80239af7345ae9740ec7c120b",
+      "supports": [],
+      "limitations": ["direct automated search was blocked by a Cloudflare challenge; general web indexing returned no attributable tafamidis NHS England FOI response"]
+    }
+  ],
+  "triangulated_findings": {
+    "commissioner": "NHS England",
+    "provider_class": "NHS hospital trusts through commissioned specialist centres",
+    "named_provider_route": "Royal Free London National Amyloidosis Centre is independently identified by multiple local formularies",
+    "programme_budgeting_category": "PBC 10X Problems of circulation",
+    "pathway_position": "first line",
+    "comparators": ["tafamidis", "vutrisiran"],
+    "implementation_period": "national publication 14 January 2026; routine funding within 30 days; local records February and March 2026",
+    "forecast_horizon_years": 3,
+    "acoramidis_market_share_percent": [12.5, 15.0, 17.5]
+  },
+  "unresolved": [
+    "confidential net treatment prices",
+    "an actual separately displaced programme outside the treatment mix",
+    "an attributable programme baseline cost and unit",
+    "a programme-specific price year",
+    "a decision record that maps the national resource-impact estimate to model parameter d"
+  ],
+  "disposition": {
+    "decision": "approve_context_defer_displacement_calibration",
+    "rationale": "The public record is sufficient for commissioner, provider class, programme category, pathway, comparator, timing, horizon, and market-share context. It is not sufficient to invent an actual displaced programme or confidential net-price baseline.",
+    "fallback": "Use the public NICE treatment-substitution assumptions as a labelled research scenario and keep parameter d synthetic or unidentifiable.",
+    "refresh_rule": "Repeat the grey-literature search when TA1121, NHS England specialised-commissioning publications, local implementation records, or indexed FOI holdings change. Invalidate downstream calibrated outputs if any price, programme, comparator, horizon, or source hash changes."
+  }
+}
