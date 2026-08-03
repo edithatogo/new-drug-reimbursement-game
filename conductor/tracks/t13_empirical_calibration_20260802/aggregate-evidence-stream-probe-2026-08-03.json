@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-08-03T02:28:22+00:00",
+  "requested_uri": "https://opendata.nhsbsa.net/dataset/52423b6a-9605-4620-a425-2d4f9c323873/resource/72fa5515-4740-40fe-8ee7-5cbc390720a0/download/pca_icb_snomed_2025_2026.csv",
+  "payload_retained": false,
+  "terms": [
+    "acoramidis",
+    "tafamidis",
+    "vutrisiran"
+  ],
+  "http_status": 200,
+  "content_type": "application/octet-stream",
+  "etag": "\"e205fe9c045604d19f73bdccb0097feb\"",
+  "byte_count": 352749211,
+  "status": "scanned",
+  "row_count": 761883,
+  "match_counts": {
+    "acoramidis": 0,
+    "tafamidis": 0,
+    "vutrisiran": 0
+  },
+  "sha256": "e2d8fd66e3bdaa220096d64215502183087ab7faffd59461829dfac972afa640"
+}
