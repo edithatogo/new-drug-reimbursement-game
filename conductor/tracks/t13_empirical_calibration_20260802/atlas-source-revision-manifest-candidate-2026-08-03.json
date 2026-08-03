@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate_manifest_only",
+  "programme": "NICE TA1121 acoramidis versus tafamidis, England",
+  "sources": [
+    {"source_id":"nice-ta1121-recommendations","publisher":"NICE","effective_or_revision":"published 2026-01-14","uri":"https://www.nice.org.uk/guidance/ta1121/chapter/1-Recommendations","sha256":"303e62b62bc13168311a633a664d5bfd40a2a4f74a2189702f8f8987657a744a","access":"hashed_receipt"},
+    {"source_id":"nhs-somerset-mpb-january-2026","publisher":"NHS Somerset ICB","effective_or_revision":"meeting 2026-01-21","uri":"https://nhssomerset.nhs.uk/news/document/mpb-minutes-january-2026/","sha256":"e59dddf819a45222805bc8073f07c0528f8827b2631149f2aa4b68c964f4a78e","access":"hashed_curl_receipt"},
+    {"source_id":"swl-jfc-january-2026","publisher":"South West London Joint Formulary Committee","effective_or_revision":"January 2026 bulletin","uri":"https://www.swljointmedicinesformulary.nhs.uk/docs/files/SWL%20JFC%20Bulletin%20January%202026.pdf","sha256":"7d99cf2d3a9a9214b2676c222152815d617bee3416506024a151cd8ed68c8413","access":"hashed_curl_receipt"},
+    {"source_id":"buckinghamshire-formulary-acoramidis","publisher":"Buckinghamshire formulary","effective_or_revision":"BOB APC March 2026 entry","uri":"https://bucksformulary.nhs.uk/reports/Archive/A0003.asp","sha256":"c5b6c01d529accad60c9a73002cee08f4c16a672423ad17cef881b35ad6a3921","access":"hashed_curl_receipt"},
+    {"source_id":"nhsbsa-finalised-scmd","publisher":"NHSBSA on behalf of NHS England","effective_or_revision":"catalogue modified 2026-07-29; SCMD_FINAL_202603","uri":"https://opendata.nhsbsa.net/dataset/finalised-secondary-care-medicines-data-scmd-with-indicative-price","sha256":"be6aa27d94f240f3af4167ada65d6ea61ed18eb7aaaea040163d9f90e7160b68","access":"catalogue_resource_hash"}
+  ],
+  "qualification": "These are candidate provenance inputs for a future Atlas packet; Atlas must issue the authoritative source manifest and bind it to packet transformations and approval.",
+  "does_not_close": ["Atlas packet ID", "Atlas packet digest", "source-term adjudication", "owner approval", "empirical calibration"]
+}

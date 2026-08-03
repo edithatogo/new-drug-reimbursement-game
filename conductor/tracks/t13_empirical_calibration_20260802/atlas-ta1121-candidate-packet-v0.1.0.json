@@ -1,0 +1,15 @@
+{
+  "packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "packet_status": "candidate_public_context_only",
+  "authority": "not_Atlas_approved",
+  "programme": "NICE TA1121 acoramidis versus tafamidis, England",
+  "source_revision_manifest": "atlas-source-revision-manifest-candidate-2026-08-03.json",
+  "parameter_roles": {},
+  "transformations": [],
+  "uncertainty": {"status": "not_supplied; no calibration parameters included"},
+  "source_terms": {"status": "candidate_only; Atlas adjudication required"},
+  "intended_use": "research-only contextual triangulation",
+  "permitted_destination": "edithatogo/new-drug-reimbursement-game",
+  "promotion": "forbidden until Atlas owner approval binds exact bytes, terms, transformations, uncertainty, and destination",
+  "negative_scope": ["no displacement", "no baseline cost/unit", "no confidential price", "no payer/HTA/policy/regulatory claim", "no empirical calibration"]
+}

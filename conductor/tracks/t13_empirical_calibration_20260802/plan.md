@@ -80,5 +80,7 @@
 - [x] Prepare a prefilled, fail-closed Atlas owner-approval draft from the verified pinned revision; retain missing packet-specific fields and signature as explicit pending blockers. (`atlas-owner-approval-draft-2026-08-03.md`)
 - [x] Assign a deterministic candidate identifier for future Atlas packet coordination without treating it as an authoritative packet ID. (`atlas-packet-candidate-id-2026-08-03.json`)
 - [x] Compute and label the candidate request-manifest digest while preserving the authoritative packet digest as pending. (`atlas-packet-candidate-id-2026-08-03.json`)
+- [x] Assemble a candidate source-revision manifest from verified national, local, and NHSBSA receipts; retain Atlas re-issuance as a gate. (`atlas-source-revision-manifest-candidate-2026-08-03.json`)
+- [x] Build and hash a deterministic candidate public-context packet to exercise the digest-binding path; retain the authoritative Atlas digest as pending. (`atlas-ta1121-candidate-packet-v0.1.0.json`)
 - [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
 - [ ] Obtain final research-only release authorization; calibrated and regulatory claims remain disabled. (`external-gate-status-2026-08-03.json`)
