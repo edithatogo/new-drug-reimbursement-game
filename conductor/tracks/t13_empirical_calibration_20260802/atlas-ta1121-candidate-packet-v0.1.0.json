@@ -6,7 +6,7 @@
   "source_revision_manifest": "atlas-source-revision-manifest-candidate-2026-08-03.json",
   "parameter_roles": {},
   "transformations": "atlas-candidate-transformations-2026-08-03.json",
-  "uncertainty": {"status": "not_supplied; no calibration parameters included"},
+  "uncertainty": "atlas-candidate-uncertainty-2026-08-03.json",
   "source_terms": {"status": "candidate_only; Atlas adjudication required"},
   "intended_use": "research-only contextual triangulation",
   "permitted_destination": "edithatogo/new-drug-reimbursement-game",

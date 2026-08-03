@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate_uncertainty_specification_only",
+  "packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "uncertainty_classes": {
+    "provenance": {"status":"bounded", "treatment":"retain source URL, revision/effective date, access status, byte count, and SHA-256; invalidate on change"},
+    "coverage": {"status":"incomplete", "treatment":"record missing local displacement, baseline, price, and stable programme ID as deferred; do not infer absence"},
+    "parameter": {"status":"not_available", "treatment":"no n, m, d, mu, phi, annual effect, price, or aligned samples are supplied"},
+    "structural": {"status":"not_quantified", "treatment":"retain alternative pathway and comparator interpretations as qualitative scenario branches only"},
+    "synthetic_sensitivity": {"status":"separate_from_evidence", "treatment":"use only clearly labelled Chapter 7 synthetic/public-context scenarios and sensitivity analyses; never promote as empirical"}
+  },
+  "correlation_and_joint_uncertainty": "not estimable from available public context; no independence assumption is permitted",
+  "missingness_policy": "unknown and deferred, not zero",
+  "calibration_policy": "disabled until Atlas-approved same-programme packet and NHS displacement evidence are bound",
+  "authority": "Atlas owner adjudication required before promotion",
+  "promotion": "candidate public-context only"
+}
