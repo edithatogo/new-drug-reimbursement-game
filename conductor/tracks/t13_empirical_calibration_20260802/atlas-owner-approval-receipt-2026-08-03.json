@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "status": "received_but_target_binding_requires_reapproval",
+  "owner_name": "Dylan Mordaunt",
+  "owner_role": "Atlas owner/maintainer",
+  "approved_packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "approved_packet_sha256": "be127cdf5e3386e9da912aadd0e71392ae7c44cdaf541a5bf0bcff51f0dfc7d0",
+  "approval_scope": "research-only contextual use; excludes empirical calibration, payer, HTA, policy, regulatory, raw-data, and confidential-data claims",
+  "approval_text_received": true,
+  "verification": {
+    "packet_digest_matches_current_candidate_file": true,
+    "candidate_packet_declared_target_commit": "fea743077a87e72e79582748089da61969e04fff",
+    "current_repository_head": "215fac9e5fceeb8c62ea116e24a41ec364f54273",
+    "target_commit_matches_current_head": false,
+    "disposition": "do_not_promote_until_owner_rebinds_approval_to_current_target_commit_or_target_checkout"
+  },
+  "invalidation_rule": "Any packet, source, transformation, terms, destination, or commit change invalidates the approval.",
+  "next_required_action": "Obtain the same approval wording with target commit 215fac9e5fceeb8c62ea116e24a41ec364f54273, or reset the candidate target to the approved checkout and requalify."
+}
