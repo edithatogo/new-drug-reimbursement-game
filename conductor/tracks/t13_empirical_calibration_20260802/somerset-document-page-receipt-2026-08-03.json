@@ -18,11 +18,14 @@
     ]
   },
   "payload": {
-    "direct_download_status": "timed_out_after_bounded_curl_and_browser_attempts",
-    "sha256": null,
+    "direct_download_status": "fetched_via_curl_with_redirects_and_retry",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "byte_count": 247236,
+    "sha256": "e59dddf819a45222805bc8073f07c0528f8827b2631149f2aa4b68c964f4a78e",
     "payload_retained": false
   },
-  "status": "web_verified_context_unhashable",
+  "status": "direct_bytes_hashed_context_only",
   "promotion": "context_only",
   "does_not_close": ["actual displaced programme", "local baseline unit", "stable programme ID", "empirical or calibrated authorization"],
   "contingency": "Retry direct download and hash the PDF when the NHS Somerset document route responds; invalidate this observation if the page or document revision changes."

@@ -74,7 +74,7 @@
 
 ## External closure gates (pending authoritative inputs)
 
-- [ ] Retrieve and hash the Somerset January 2026 MPB PDF from the stable document page; retain the current web-verified null-hash receipt until direct bytes are available. (`somerset-document-page-receipt-2026-08-03.json`)
+- [x] Retrieve and hash the Somerset January 2026 MPB PDF from the stable document page; retain the source as context-only pending displacement evidence. (`somerset-document-page-receipt-2026-08-03.json`)
 - [ ] Bind an attributable NHS displacement record containing payer, service line, decision date, price year, intervention/comparator, displaced programme, stable programme ID, and baseline unit. (`external-gate-status-2026-08-03.json`)
 - [ ] Admit an owner-approved immutable Atlas packet with exact digest, source terms, transformations, uncertainty, destination, and packet-bound approval. (`docs/governance/atlas-packet-closure-checklist.md`)
 - [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
