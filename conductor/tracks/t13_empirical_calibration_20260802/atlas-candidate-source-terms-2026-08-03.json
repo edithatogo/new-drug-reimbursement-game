@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate_terms_adjudication_only",
+  "packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "terms": [
+    {"source_id":"nice-ta1121-recommendations","terms_status":"official_web_publication; reuse_scope_requires_NICE_terms_review","decision":"context citation permitted; derived packet reuse pending Atlas adjudication"},
+    {"source_id":"nhs-somerset-mpb-january-2026","terms_status":"official_NHS_publication; source-specific terms not independently confirmed","decision":"context citation only; no redistribution or derived promotion until terms confirmed"},
+    {"source_id":"swl-jfc-january-2026","terms_status":"official_NHS_publication; source-specific terms not independently confirmed","decision":"context citation only; no redistribution or derived promotion until terms confirmed"},
+    {"source_id":"buckinghamshire-formulary-acoramidis","terms_status":"official_NHS_publication; source-specific terms not independently confirmed","decision":"context citation only; no redistribution or derived promotion until terms confirmed"},
+    {"source_id":"nhsbsa-finalised-scmd","terms_status":"OGL-UK-3.0_catalogue; resource-specific terms controlling","decision":"metadata and licensed aggregate route may be referenced; payload reuse remains subject to resource terms"}
+  ],
+  "global_rules": ["No raw payload redistribution", "Retain provenance and source URLs", "Do not infer permission from public accessibility", "Invalidate on terms or destination change"],
+  "authority": "Atlas owner and source custodians must adjudicate before packet promotion",
+  "promotion": "candidate public-context only"
+}

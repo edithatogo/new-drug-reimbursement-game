@@ -8,6 +8,7 @@
   "transformations": "atlas-candidate-transformations-2026-08-03.json",
   "uncertainty": "atlas-candidate-uncertainty-2026-08-03.json",
   "source_terms": {"status": "candidate_only; Atlas adjudication required"},
+  "source_terms_manifest": "atlas-candidate-source-terms-2026-08-03.json",
   "intended_use": "research-only contextual triangulation",
   "permitted_destination": "edithatogo/new-drug-reimbursement-game",
   "promotion": "forbidden until Atlas owner approval binds exact bytes, terms, transformations, uncertainty, and destination",

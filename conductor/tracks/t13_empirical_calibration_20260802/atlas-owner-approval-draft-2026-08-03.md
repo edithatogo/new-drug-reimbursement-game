@@ -8,12 +8,12 @@ I, the owner and maintainer of Atlas, approve the derived evidence packet identi
 - Immutable Atlas revision/commit: `c73d34dacae2f907a0eac399da8e6f43ce8d00ca`
 - Pinned Atlas tree metadata SHA-256: `cfd066fef0222f1ba04b110f5529391f6ae396fc93330b173b672e0c4cd24f5a`
 - Packet SHA-256: **PENDING — the pinned tree contains no qualifying packet.**
-- Candidate packet SHA-256 (not authoritative): `f9b96dcb5fce21924031532d6cf861e87c2b404d1cdcdb31007c1b79603c71d1`
+- Candidate packet SHA-256 (not authoritative): `b5dc24fc4868946e1cf6f94de0170b5e6fea5906bd3b464e4252448bf283aadf`
 - Candidate request-manifest SHA-256 (not a packet digest; canonical fields excluding digest metadata): `cf21c81ff8bdd34eccc53d8d7450d5044d1789420f6f7fce9f81b84bc019c66d`
 - Candidate source-revision manifest: `atlas-source-revision-manifest-candidate-2026-08-03.json` (not Atlas-issued; Atlas must re-issue and bind it to the packet).
 - Candidate transformations: `atlas-candidate-transformations-2026-08-03.json` (deterministic, context-only; Atlas must adjudicate and bind the authoritative manifest).
 - Candidate uncertainty specification: `atlas-candidate-uncertainty-2026-08-03.json` (no empirical distributions; Atlas must adjudicate and bind the authoritative specification).
-- Source-term/licence adjudication: **PENDING — source-specific terms must be adjudicated.**
+- Candidate source-term adjudication: `atlas-candidate-source-terms-2026-08-03.json` (Atlas and source custodians must confirm before promotion).
 - Intended use: research-only reimbursement-game analysis.
 - Permitted destination: `edithatogo/new-drug-reimbursement-game`, target commit **PENDING until packet admission**.
 

@@ -84,5 +84,6 @@
 - [x] Build and hash a deterministic candidate public-context packet to exercise the digest-binding path; retain the authoritative Atlas digest as pending. (`atlas-ta1121-candidate-packet-v0.1.0.json`)
 - [x] Specify deterministic candidate transformations and explicit non-transformations; retain Atlas adjudication as a gate. (`atlas-candidate-transformations-2026-08-03.json`)
 - [x] Specify candidate uncertainty classes, missingness policy, and synthetic-only sensitivity boundaries without inventing empirical distributions. (`atlas-candidate-uncertainty-2026-08-03.json`)
+- [x] Record candidate source-term decisions, reuse limits, and custodial adjudication requirements. (`atlas-candidate-source-terms-2026-08-03.json`)
 - [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
 - [ ] Obtain final research-only release authorization; calibrated and regulatory claims remain disabled. (`external-gate-status-2026-08-03.json`)
