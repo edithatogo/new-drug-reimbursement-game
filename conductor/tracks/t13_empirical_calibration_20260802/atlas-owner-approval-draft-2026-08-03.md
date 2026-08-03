@@ -8,10 +8,10 @@ I, the owner and maintainer of Atlas, approve the derived evidence packet identi
 - Immutable Atlas revision/commit: `c73d34dacae2f907a0eac399da8e6f43ce8d00ca`
 - Pinned Atlas tree metadata SHA-256: `cfd066fef0222f1ba04b110f5529391f6ae396fc93330b173b672e0c4cd24f5a`
 - Packet SHA-256: **PENDING — the pinned tree contains no qualifying packet.**
-- Candidate packet SHA-256 (not authoritative): `54e649cb24c002c29651bf7c78d701c110a40244567fa8ee556765180e890bec`
+- Candidate packet SHA-256 (not authoritative): `1fb0a52c0dd4b218a8ed9082bb8b3c7f5fe2e38966326c7899ed11754504b796`
 - Candidate request-manifest SHA-256 (not a packet digest; canonical fields excluding digest metadata): `cf21c81ff8bdd34eccc53d8d7450d5044d1789420f6f7fce9f81b84bc019c66d`
 - Candidate source-revision manifest: `atlas-source-revision-manifest-candidate-2026-08-03.json` (not Atlas-issued; Atlas must re-issue and bind it to the packet).
-- Transformations: **PENDING — must be supplied with the packet.**
+- Candidate transformations: `atlas-candidate-transformations-2026-08-03.json` (deterministic, context-only; Atlas must adjudicate and bind the authoritative manifest).
 - Uncertainty representation: **PENDING — must be supplied with the packet.**
 - Source-term/licence adjudication: **PENDING — source-specific terms must be adjudicated.**
 - Intended use: research-only reimbursement-game analysis.

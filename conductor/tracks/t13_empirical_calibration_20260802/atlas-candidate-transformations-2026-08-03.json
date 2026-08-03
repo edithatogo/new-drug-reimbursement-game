@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate_transformations_only",
+  "packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "transformations": [
+    {"id":"T01-source-normalization","operation":"normalize source identifiers, URLs, effective dates, MIME types, and publisher labels","inputs":"source revision manifest","output":"canonical provenance records","deterministic":true},
+    {"id":"T02-integrity-binding","operation":"bind each retained source receipt to its recorded SHA-256, byte count, and retrieval status","inputs":"hashed source receipts","output":"integrity metadata only","deterministic":true},
+    {"id":"T03-context-extraction","operation":"retain explicit public statements about commissioning, specialist routing, committee decision date, and implementation context","inputs":"official source records","output":"context observations","deterministic":true},
+    {"id":"T04-claim-boundary-filter","operation":"exclude displacement, baseline costs, confidential prices, payer/HTA/policy/regulatory claims, and calibration parameters","inputs":"candidate observations","output":"fail-closed context packet","deterministic":true},
+    {"id":"T05-no-economic-imputation","operation":"do not impute missing n, m, d, mu, phi, annual effects, prices, or uncertainty distributions","inputs":"missing fields","output":"explicit missing/deferred fields","deterministic":true}
+  ],
+  "not_performed": ["currency conversion", "discounting", "parameter estimation", "causal attribution", "missing-value imputation", "cross-source averaging"],
+  "authority": "Atlas owner adjudication required before any transformation can be promoted",
+  "promotion": "candidate public-context only"
+}

@@ -5,7 +5,7 @@
   "programme": "NICE TA1121 acoramidis versus tafamidis, England",
   "source_revision_manifest": "atlas-source-revision-manifest-candidate-2026-08-03.json",
   "parameter_roles": {},
-  "transformations": [],
+  "transformations": "atlas-candidate-transformations-2026-08-03.json",
   "uncertainty": {"status": "not_supplied; no calibration parameters included"},
   "source_terms": {"status": "candidate_only; Atlas adjudication required"},
   "intended_use": "research-only contextual triangulation",
