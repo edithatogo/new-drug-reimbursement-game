@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-08-03T02:35:00Z",
+  "status": "public_aggregate_route_confirmed",
+  "publisher": "NHS Business Services Authority (NHSBSA), on behalf of NHS England",
+  "dataset": "Finalised Secondary Care Medicines Data (SCMD) with indicative price",
+  "catalogue_uri": "https://opendata.nhsbsa.net/dataset/finalised-secondary-care-medicines-data-scmd-with-indicative-price",
+  "catalogue_api": "https://opendata.nhsbsa.net/api/3/action/package_show?id=finalised-secondary-care-medicines-data-scmd-with-indicative-price",
+  "catalogue_metadata_modified": "2026-07-29T11:42:47.349852",
+  "licence": "OGL-UK-3.0",
+  "resource": {
+    "name": "SCMD_FINAL_202603",
+    "uri": "https://opendata.nhsbsa.net/dataset/b63be82b-8764-484a-82a1-155b050586da/resource/2359dce2-6c9a-4a49-9760-6a14dc3048a5/download/scmd_final_202603.csv",
+    "resource_id": "2359dce2-6c9a-4a49-9760-6a14dc3048a5",
+    "catalogue_sha256": "be6aa27d94f240f3af4167ada65d6ea61ed18eb7aaaea040163d9f90e7160b68",
+    "catalogue_size_bytes": 36060683,
+    "payload_retained": false
+  },
+  "acquisition": {
+    "method": "CKAN package_show metadata retrieval; resource bytes are not retained",
+    "verification": ["publisher metadata", "resource SHA-256 and size from catalogue", "OGL licence"],
+    "refresh_rule": "Re-fetch package metadata and compare catalogue metadata_modified, resource id, size, and SHA-256 before each use; invalidate downstream receipts on any change."
+  },
+  "scope_and_limitations": {
+    "supports": ["public secondary-care medicines context", "NHS Trust-level aggregate product/time observations where present", "method and comparator triangulation"],
+    "does_not_support": ["patient-level data", "confidential prices or discounts", "causal displacement", "payer approval", "HTA, policy, regulatory, empirical, or calibrated claims"],
+    "promotion": "research_only_context"
+  },
+  "contingencies": {
+    "inaccessible": "retain metadata-only receipt and defer resource use",
+    "conflicting": "compare provisional and finalised releases; prefer finalised release and record divergence",
+    "incomplete": "record missing product/time coverage as a negative receipt; do not infer absence",
+    "restricted_or_terms_changed": "stop acquisition and invalidate dependent receipts"
+  }
+}
