@@ -11,6 +11,8 @@
   "source_terms_manifest": "atlas-candidate-source-terms-2026-08-03.json",
   "intended_use": "research-only contextual triangulation",
   "permitted_destination": "edithatogo/new-drug-reimbursement-game",
+  "candidate_target_commit": "fea743077a87e72e79582748089da61969e04fff",
+  "target_binding_status": "candidate_only; rebind and requalify after any commit or packet change",
   "promotion": "forbidden until Atlas owner approval binds exact bytes, terms, transformations, uncertainty, and destination",
   "negative_scope": ["no displacement", "no baseline cost/unit", "no confidential price", "no payer/HTA/policy/regulatory claim", "no empirical calibration"]
 }
