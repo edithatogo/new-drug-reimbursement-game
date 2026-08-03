@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "candidate_packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "status": "candidate_request_only",
+  "authority": "none_until_Atlas_owner_approval",
+  "target_programme": "NICE TA1121 acoramidis versus tafamidis, England",
+  "pinned_atlas_revision_checked": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca",
+  "reason": "Provides a stable identifier for a future same-programme packet request while the pinned Atlas tree contains no qualifying packet.",
+  "required_replacement": ["Atlas-issued packet ID", "immutable packet revision", "packet SHA-256", "source terms", "transformations", "uncertainty", "owner approval"],
+  "promotion": "forbidden_until_all_required_replacement_fields_are_verified",
+  "invalidation": "Discard this candidate ID if Atlas issues a different packet identifier or the target programme/scope changes."
+}

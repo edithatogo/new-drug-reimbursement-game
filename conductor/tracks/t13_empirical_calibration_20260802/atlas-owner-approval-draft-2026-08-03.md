@@ -4,7 +4,7 @@ Status: **DRAFT — not an approval and not sufficient to close the Atlas gate.*
 
 I, the owner and maintainer of Atlas, approve the derived evidence packet identified as:
 
-- Packet ID: **PENDING — no TA1121/acoramidis/tafamidis approved-derived packet was found.**
+- Packet ID: **Candidate request only: `atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0` (not an Atlas-issued packet ID).**
 - Immutable Atlas revision/commit: `c73d34dacae2f907a0eac399da8e6f43ce8d00ca`
 - Pinned Atlas tree metadata SHA-256: `cfd066fef0222f1ba04b110f5529391f6ae396fc93330b173b672e0c4cd24f5a`
 - Packet SHA-256: **PENDING — the pinned tree contains no qualifying packet.**
