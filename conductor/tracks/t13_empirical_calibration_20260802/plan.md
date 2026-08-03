@@ -79,5 +79,6 @@
 - [ ] Admit an owner-approved immutable Atlas packet with exact digest, source terms, transformations, uncertainty, destination, and packet-bound approval. (`docs/governance/atlas-packet-closure-checklist.md`)
 - [x] Prepare a prefilled, fail-closed Atlas owner-approval draft from the verified pinned revision; retain missing packet-specific fields and signature as explicit pending blockers. (`atlas-owner-approval-draft-2026-08-03.md`)
 - [x] Assign a deterministic candidate identifier for future Atlas packet coordination without treating it as an authoritative packet ID. (`atlas-packet-candidate-id-2026-08-03.json`)
+- [x] Compute and label the candidate request-manifest digest while preserving the authoritative packet digest as pending. (`atlas-packet-candidate-id-2026-08-03.json`)
 - [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
 - [ ] Obtain final research-only release authorization; calibrated and regulatory claims remain disabled. (`external-gate-status-2026-08-03.json`)

@@ -2,6 +2,8 @@
   "schema_version": "1.0",
   "candidate_packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
   "status": "candidate_request_only",
+  "candidate_manifest_sha256": "cf21c81ff8bdd34eccc53d8d7450d5044d1789420f6f7fce9f81b84bc019c66d",
+  "candidate_manifest_digest_scope": "Canonical digest covers the request metadata fields excluding these digest metadata fields; it is not the digest of an Atlas evidence packet.",
   "authority": "none_until_Atlas_owner_approval",
   "target_programme": "NICE TA1121 acoramidis versus tafamidis, England",
   "pinned_atlas_revision_checked": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca",
