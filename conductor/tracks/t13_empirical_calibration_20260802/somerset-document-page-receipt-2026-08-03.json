@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-03T03:30:00Z",
+  "source_id": "nhs-somerset-mpb-january-2026-document-page",
+  "publisher": "NHS Somerset ICB",
+  "document_page_uri": "https://nhssomerset.nhs.uk/news/document/mpb-minutes-january-2026/",
+  "web_observation": {
+    "content_type": "application/pdf",
+    "page_count": 12,
+    "meeting_date": "2026-01-21",
+    "document_title": "Minutes of the Medicines Programme Board held via Microsoft Teams",
+    "verified_context": [
+      "TA1121 acoramidis listed as new guidance",
+      "Commissioned by NHS England and provided by NHS hospital trusts",
+      "Red drug",
+      "MPB agreed",
+      "Add to NetFormulary Red drug and TLS Red drug"
+    ]
+  },
+  "payload": {
+    "direct_download_status": "timed_out_after_bounded_curl_and_browser_attempts",
+    "sha256": null,
+    "payload_retained": false
+  },
+  "status": "web_verified_context_unhashable",
+  "promotion": "context_only",
+  "does_not_close": ["actual displaced programme", "local baseline unit", "stable programme ID", "empirical or calibrated authorization"],
+  "contingency": "Retry direct download and hash the PDF when the NHS Somerset document route responds; invalidate this observation if the page or document revision changes."
+}
