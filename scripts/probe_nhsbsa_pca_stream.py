@@ -23,7 +23,6 @@ def main() -> int:
     terms = [term.lower() for term in args.terms]
     counts = dict.fromkeys(terms, 0)
     total_rows = 0
-    total_bytes = 0
     digest = hashlib.sha256()
     status: dict[str, object] = {
         "schema_version": "1.0",
@@ -33,7 +32,7 @@ def main() -> int:
         "terms": terms,
     }
     try:
-        request = urllib.request.Request(args.url, headers={"User-Agent": "new-drug-reimbursement-game/pca-stream-probe"})
+        request = urllib.request.Request(args.url, headers={"User-Agent": "new-drug-reimbursement-game/pca-stream-probe"})  # noqa: S310
         with urllib.request.urlopen(request, timeout=60) as response:  # noqa: S310
             status.update({"http_status": response.status, "content_type": response.headers.get_content_type(), "etag": response.headers.get("ETag")})
             reader = csv.DictReader(line.decode("utf-8", "replace") for line in _hashed_lines(response, digest, args.max_bytes, lambda n: _set_bytes(status, n)))
