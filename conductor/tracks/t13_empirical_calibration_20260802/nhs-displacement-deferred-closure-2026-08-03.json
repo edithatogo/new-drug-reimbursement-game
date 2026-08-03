@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "status": "deferred_authorized",
+  "authorized_by": "Dylan Mordaunt",
+  "target": "NHS displacement gate",
+  "decision": "Close as deferred where no attributable displaced programme, stable programme ID, or baseline unit is available.",
+  "prohibition": "No displacement shall be inferred from national guidance, formulary status, or aggregate prescribing context.",
+  "evidence_disposition": "Public NHS/NICE/formulary and NHSBSA aggregate records remain context-only and do not establish displacement.",
+  "reopen_conditions": ["attributable NHS/local record", "stable programme ID", "baseline unit/cost", "accountable payer/service line"],
+  "claims_state": "empirical, payer, HTA, policy, regulatory, and calibrated claims remain disabled"
+}

@@ -75,7 +75,7 @@
 ## External closure gates (pending authoritative inputs)
 
 - [x] Retrieve and hash the Somerset January 2026 MPB PDF from the stable document page; retain the source as context-only pending displacement evidence. (`somerset-document-page-receipt-2026-08-03.json`)
-- [ ] Bind an attributable NHS displacement record containing payer, service line, decision date, price year, intervention/comparator, displaced programme, stable programme ID, and baseline unit. (`external-gate-status-2026-08-03.json`)
+- [x] Close the NHS displacement gate as an authorized deferred closure where attributable displacement, stable programme ID, or baseline unit is unavailable; prohibit inference from context sources. (`nhs-displacement-deferred-closure-2026-08-03.json`)
 - [ ] Admit an owner-approved immutable Atlas packet with exact digest, source terms, transformations, uncertainty, destination, and packet-bound approval. (`docs/governance/atlas-packet-closure-checklist.md`)
 - [x] Prepare a prefilled, fail-closed Atlas owner-approval draft from the verified pinned revision; retain missing packet-specific fields and signature as explicit pending blockers. (`atlas-owner-approval-draft-2026-08-03.md`)
 - [x] Assign a deterministic candidate identifier for future Atlas packet coordination without treating it as an authoritative packet ID. (`atlas-packet-candidate-id-2026-08-03.json`)
