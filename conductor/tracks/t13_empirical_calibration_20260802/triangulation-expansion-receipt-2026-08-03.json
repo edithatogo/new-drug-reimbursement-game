@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-03T03:45:00Z",
+  "scope": "TA1121 acoramidis implementation context",
+  "sources": [
+    {"id":"nice-ta1121","authority":"NICE","access":"hashed_existing_receipt","role":"national recommendation and implementation timing"},
+    {"id":"nhs-somerset-mpb-january-2026-document-page","authority":"NHS Somerset ICB","access":"web_verified_unhashable","role":"local committee decision context; red hospital-trust route"},
+    {"id":"swl-jfc-january-2026","authority":"South West London Joint Formulary Committee","access":"hashed_curl_receipt","role":"independent local formulary context"},
+    {"id":"buckinghamshire-formulary-acoramidis","authority":"Buckinghamshire formulary","access":"hashed_curl_receipt","role":"independent local formulary and specialist referral context"},
+    {"id":"nhsbsa-finalised-scmd","authority":"NHSBSA on behalf of NHS England","access":"hashed_catalogue_metadata","role":"secondary-care aggregate data route"}
+  ],
+  "triangulated_observations": [
+    {"observation":"Acoramidis/TA1121 entered official NHS implementation pathways in early 2026.","support":"NICE plus Somerset MPB plus local formulary records","confidence":"high_context_only"},
+    {"observation":"Local records route use through specialist or hospital services rather than routine primary-care prescribing.","support":"Somerset red classification, Knowledge NoW TAG, Buckinghamshire referral note","confidence":"moderate_context_only"},
+    {"observation":"National secondary-care aggregate data is publicly discoverable and licensed for contextual analysis.","support":"NHSBSA finalised SCMD catalogue receipt","confidence":"high_metadata_only"}
+  ],
+  "redundancy_rules": {
+    "independent_publishers_required": 2,
+    "same_claim_requires": "one national authority plus one independent local record where available",
+    "unhashable_web_content": "may corroborate context but cannot satisfy immutable evidence or calibration gates",
+    "conflict_handling": "retain both records, prefer the newer directly hashed revision for factual use, and defer if the conflict affects displacement or baseline values"
+  },
+  "expanded_data_routes": [
+    "NHSBSA finalised SCMD product/time aggregate metadata and licensed resources",
+    "NHSBSA PCA community dispensing aggregates for coverage comparison",
+    "ICB and specialist-centre formulary/committee publications",
+    "NICE resource-impact and implementation documents"
+  ],
+  "does_not_establish": ["actual displaced programme", "local baseline cost/unit", "confidential net price", "causal substitution", "empirical or calibrated authorization"],
+  "disposition": "research_only_context_triangulation"
+}

@@ -70,3 +70,4 @@
 - [x] Recover additional official formulary sources with bounded curl retries, exact byte hashes, and explicit context-only limits; retain Somerset timeout as deferred. (`curl-recovery-receipt-2026-08-03.json`)
 - [x] Check the Somerset MPB index and browser/search routes; record the index-versus-search conflict without promoting an unhashable PDF. (`somerset-index-conflict-receipt-2026-08-03.json`)
 - [x] Recover the stable NHS Somerset document page and verify the January 2026 TA1121 decision through web-rendered PDF content; retain a null-hash context receipt until direct bytes are retrievable. (`somerset-document-page-receipt-2026-08-03.json`)
+- [x] Expand redundancy and triangulation across national NICE, local ICB/formulary, and NHSBSA secondary-care sources with explicit conflict and unhashable-content rules. (`triangulation-expansion-receipt-2026-08-03.json`)
