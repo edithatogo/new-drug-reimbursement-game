@@ -66,3 +66,4 @@
 - [x] Reconcile the authorized FOI submission and existing research-method approval with T13 lifecycle state.
 - [x] Bind the reviewed PR head and unchanged artifact hashes to the squash commit integrated into `main`. (`main-integration-receipt-2026-08-03.json`)
 - [x] Record machine-readable closure criteria, autonomous contingencies, and explicit stop conditions for every remaining external gate. (`external-gate-status-2026-08-03.json`)
+- [x] Resolve a failed public-source URL through an official replacement publication, hash the replacement bytes, and preserve context-only promotion limits. (`public-source-replacement-receipt-2026-08-03.json`)

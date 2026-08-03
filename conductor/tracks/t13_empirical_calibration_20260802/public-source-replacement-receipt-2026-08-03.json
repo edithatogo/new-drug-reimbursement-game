@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-08-03T02:45:00Z",
+  "source_id": "northwest-tag-newsletter-march-2026",
+  "publisher": "Norfolk and Waveney Knowledge NoW Therapeutics Advisory Group",
+  "requested_uri": "https://nwknowledgenow.nhs.uk/wp-content/uploads/2026/03/TAG-Agreements-March-2026.pdf",
+  "requested_status": "404_not_found",
+  "replacement_uri": "https://nwknowledgenow.nhs.uk/wp-content/uploads/2026/04/TAG-newsletter-March-2026.pdf",
+  "replacement_status": "fetched",
+  "http_status": 200,
+  "content_type": "application/pdf",
+  "byte_count": 278443,
+  "sha256": "2da2112ca44a693224a18f70f4f0d72ea61bad4682a72c96636ee6b839500a85",
+  "payload_retained": false,
+  "licence_or_terms": "Public official NHS organisational publication; source-specific terms remain controlling.",
+  "content_role": "context_only",
+  "supports": ["local TAG context for acoramidis and TA1121", "specialist/red-routing context"],
+  "does_not_support": ["actual displaced programme", "local baseline unit", "confidential price", "empirical or calibrated promotion"],
+  "invalidation": "Invalidate this receipt if the replacement URL, bytes, revision, or terms change; do not treat a search-engine snippet as a substitute for the hashed document."
+}
