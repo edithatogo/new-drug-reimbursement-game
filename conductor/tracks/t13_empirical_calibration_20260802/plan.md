@@ -71,3 +71,11 @@
 - [x] Check the Somerset MPB index and browser/search routes; record the index-versus-search conflict without promoting an unhashable PDF. (`somerset-index-conflict-receipt-2026-08-03.json`)
 - [x] Recover the stable NHS Somerset document page and verify the January 2026 TA1121 decision through web-rendered PDF content; retain a null-hash context receipt until direct bytes are retrievable. (`somerset-document-page-receipt-2026-08-03.json`)
 - [x] Expand redundancy and triangulation across national NICE, local ICB/formulary, and NHSBSA secondary-care sources with explicit conflict and unhashable-content rules. (`triangulation-expansion-receipt-2026-08-03.json`)
+
+## External closure gates (pending authoritative inputs)
+
+- [ ] Retrieve and hash the Somerset January 2026 MPB PDF from the stable document page; retain the current web-verified null-hash receipt until direct bytes are available. (`somerset-document-page-receipt-2026-08-03.json`)
+- [ ] Bind an attributable NHS displacement record containing payer, service line, decision date, price year, intervention/comparator, displaced programme, stable programme ID, and baseline unit. (`external-gate-status-2026-08-03.json`)
+- [ ] Admit an owner-approved immutable Atlas packet with exact digest, source terms, transformations, uncertainty, destination, and packet-bound approval. (`docs/governance/atlas-packet-closure-checklist.md`)
+- [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
+- [ ] Obtain final research-only release authorization; calibrated and regulatory claims remain disabled. (`external-gate-status-2026-08-03.json`)
