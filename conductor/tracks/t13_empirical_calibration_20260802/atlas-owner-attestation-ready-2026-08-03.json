@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "status": "ready_for_owner_attestation",
+  "owner_name": "Dylan Mordaunt",
+  "owner_role": "Atlas owner/maintainer",
+  "packet_id": "atlas-ta1121-acoramidis-tafamidis-derived-v0.1.0",
+  "candidate_packet_sha256": "be127cdf5e3386e9da912aadd0e71392ae7c44cdaf541a5bf0bcff51f0dfc7d0",
+  "target_repository": "edithatogo/new-drug-reimbursement-game",
+  "candidate_target_commit": "fea743077a87e72e79582748089da61969e04fff",
+  "scope": "research-only public-context triangulation; no empirical calibration, payer/HTA/policy/regulatory claims, raw data, or confidential data",
+  "attestation_text": "I approve only the exact candidate packet bytes, source-term limitations, transformations, uncertainty specification, intended use, destination, and target commit identified above. Any change invalidates this attestation and requires re-review.",
+  "signature": {"status":"pending", "method":"owner must sign or provide an attributable approval reference", "signed_at_utc":null, "approval_reference":null},
+  "promotion": "forbidden until signature and Atlas packet authority are independently verified"
+}

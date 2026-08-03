@@ -21,10 +21,10 @@ I confirm that approval, when completed, will apply only to the exact packet byt
 
 This draft does not authorize raw or confidential data access, payer/HTA/policy/regulatory claims, empirical calibration, or release beyond the stated research-only purpose.
 
-- Approved by: **PENDING owner attestation**
+- Approved by: Dylan Mordaunt — **PENDING owner attestation**
 - Role: Atlas owner/maintainer
 - Date/time UTC: **PENDING owner attestation**
-- Approval reference/signature: **PENDING owner attestation**
+- Approval reference/signature: **PENDING — see `atlas-owner-attestation-ready-2026-08-03.json`**
 
 ## Admission checklist
 
