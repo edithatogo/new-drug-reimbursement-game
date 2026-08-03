@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "status": "deferred_authorized",
+  "authorized_by": "Dylan Mordaunt",
+  "target_commit": "ace97d64981379fb3171e55db2557a9aff228a7e",
+  "decision": "Continued deferral of raw and confidential data access.",
+  "permitted_inputs": ["public", "aggregate", "redacted", "synthetic"],
+  "prohibited_actions": ["restricted-data acquisition", "confidential-value computation", "unauthorized transfer", "unauthorized export"],
+  "reopen_requirements": ["lawful basis", "custodian authorization", "contract/source terms", "controlled environment", "disclosure/export rules", "new authorization and governance review"],
+  "claims_state": "empirical, payer, HTA, policy, regulatory, and calibrated claims remain disabled"
+}

@@ -88,6 +88,6 @@
 - [x] Bind the candidate packet to the current repository commit and require requalification after any packet or commit change. (`atlas-ta1121-candidate-packet-v0.1.0.json`)
 - [x] Prepare a packet/digest/commit-bound owner-attestation receipt without fabricating the owner signature. (`atlas-owner-attestation-ready-2026-08-03.json`)
 - [~] Rebind the received owner approval to the actual candidate target commit before promotion; the supplied approval targets an earlier commit. (`atlas-owner-approval-receipt-2026-08-03.json`)
-- [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
+- [x] Record authorized deferral of raw/confidential-data access; permit only public, aggregate, redacted, and synthetic inputs pending any future new authorization. (`raw-confidential-deferral-authorization-2026-08-03.json`)
 - [x] Obtain and bind research-only release authorization to the current commit; calibrated and regulatory claims remain disabled. (`research-only-release-authorization-2026-08-03.json`)
 - [x] Rebind research-only release authorization to the exact current HEAD `70dceda19b33618e9d99e654c7eee64437ddfbae`. (`research-only-release-authorization-final-2026-08-03.json`)
