@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "status": "authorized_research_only",
+  "authorized_by": "Dylan Mordaunt",
+  "authorized_at_utc": "2026-08-03",
+  "target_repository": "edithatogo/new-drug-reimbursement-game",
+  "target_commit": "ffda4a233a323554fa288226564b2e09faf6b492",
+  "scope": "current repository outputs for research-only contextual analysis",
+  "prohibited_claims": ["empirical", "payer", "HTA", "policy", "regulatory", "calibrated", "raw-data", "confidential-data"],
+  "renewal_rule": "Any future claim expansion requires a new evidence and authorization review.",
+  "conditions": ["retain fail-closed claim boundaries", "preserve provenance and source terms", "requalify after commit or packet changes"],
+  "external_gates_remaining": ["authoritative NHS displacement record", "Atlas packet authority and target-bound approval", "raw/confidential authorization if ever required"]
+}

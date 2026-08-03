@@ -51,6 +51,7 @@
     },
     "release-authorization": {
       "status": "research_only_authorized; calibrated_and_regulatory_deferred",
+      "evidence": "research-only-release-authorization-2026-08-03.json",
       "closure_criteria": [
         "intended use and audience",
         "accountable sponsor",

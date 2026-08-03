@@ -89,4 +89,4 @@
 - [x] Prepare a packet/digest/commit-bound owner-attestation receipt without fabricating the owner signature. (`atlas-owner-attestation-ready-2026-08-03.json`)
 - [~] Rebind the received owner approval to the actual candidate target commit before promotion; the supplied approval targets an earlier commit. (`atlas-owner-approval-receipt-2026-08-03.json`)
 - [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
-- [ ] Obtain final research-only release authorization; calibrated and regulatory claims remain disabled. (`external-gate-status-2026-08-03.json`)
+- [x] Obtain and bind research-only release authorization to the current commit; calibrated and regulatory claims remain disabled. (`research-only-release-authorization-2026-08-03.json`)
