@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "identify_non_synthetic_aggregate_evidence_route",
+  "recorded_at": "2026-08-03T18:00:00Z",
+  "recommended_route": "NHSBSA_PCA_first; OpenPrescribing_secondary; dm+d_identity_support",
+  "sources": [
+    {"id": "nhsbsa-pca-collection", "publisher": "NHS Business Services Authority", "uri": "https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england", "status": 200, "bytes": 52285, "sha256": "6be7bbe4557c44d5c2f98387941af13c23b6716cf5ece7871bb5b486513267fc", "supports": ["community dispensing volumes and Net Ingredient Cost", "ICB-level aggregate route"], "limitation": "community dispensing only; not a local displacement decision or confidential net price"},
+    {"id": "nhsbsa-pca-2025-26", "publisher": "NHS Business Services Authority", "uri": "https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england/prescription-cost-analysis-england-202526", "status": 200, "bytes": 52521, "sha256": "62ff6c79cb64e9a4c1fe98718de597f2d7ece0fb222b8e421609f5cb26869a8e", "supports": ["current annual PCA release and downloadable tables"], "limitation": "management information tables and community scope remain separate from specialist hospital commissioning"},
+    {"id": "nhsbsa-pca-methodology", "publisher": "NHSBSA Open Data", "uri": "https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/pca/pca_background_info_methodology_june2026_v001.html", "status": 200, "bytes": 1614961, "sha256": "0e9bc6dd79b7b9a46878a7934e338bf265e82a09e2d6b6e0f6c6cac1fa73a21e", "etag": "dffe4b4c94077a1f8c54ff9b37b7b3fe", "supports": ["API/field/methodology and SNOMED linkage metadata"]},
+    {"id": "nhsbsa-open-data", "publisher": "NHSBSA", "uri": "https://www.nhsbsa.nhs.uk/prescription-data", "status": 200, "bytes": 53502, "sha256": "74b7262809214290ee78c08937490a0e55c18007233429aaceb3880ece02f634", "supports": ["Open Data Portal API route"]},
+    {"id": "openprescribing", "publisher": "Bennett Institute, University of Oxford", "uri": "https://openprescribing.net/", "status": 200, "bytes": 35358, "sha256": "e75e438007e751a14f905fdfd79ef5885f031cfe7bde35b54d8eb5c478b10b44", "supports": ["independent aggregate GP prescribing triangulation"], "limitation": "GP prescribing data; not specialist hospital dispensing or displacement attribution"}
+  ],
+  "programmatic_steps": [
+    "Resolve acoramidis and comparator identifiers through current dm+d/SNOMED metadata.",
+    "Query NHSBSA PCA API/tables for monthly items and NIC by geography and presentation.",
+    "Query OpenPrescribing for independent GP aggregate corroboration where coverage exists.",
+    "Hash raw response bytes and retain metadata only; do not commit bulk payloads.",
+    "Compare time series and geography with implementation dates and formulary context.",
+    "Emit negative receipt if acoramidis is absent because specialist dispensing is outside community PCA coverage."
+  ],
+  "options": [
+    {"id": "pca_plus_openprescribing", "recommendation": true, "rationale": "Best independent public aggregate triangulation with explicit coverage limits."},
+    {"id": "nhsbsa_only", "recommendation": false, "rationale": "Higher authority but less independent corroboration."},
+    {"id": "specialist_hospital_data_request", "recommendation": false, "rationale": "Would require custodian, lawful-basis, and controlled-environment approvals."}
+  ],
+  "promotion_boundary": "Aggregate observations may support public-context or research-method analysis only. They cannot identify displaced programmes, establish payer decisions, reveal confidential prices, or activate calibrated/HTA/policy/regulatory claims.",
+  "disposition": "approved_route_for_metadata_and_aggregate_probe; empirical_promotion_disabled",
+  "refresh_rule": "Reacquire and invalidate dependent receipts when source revisions, API schemas, identifiers, terms, geography, or intended use changes."
+}
