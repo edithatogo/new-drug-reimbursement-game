@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "status": "authorized_research_only",
+  "authorized_by": "Dylan Mordaunt",
+  "target_repository": "edithatogo/new-drug-reimbursement-game",
+  "target_commit": "70dceda19b33618e9d99e654c7eee64437ddfbae",
+  "scope": "repository outputs for research-only contextual analysis",
+  "prohibited_claims": ["empirical", "payer", "HTA", "policy", "regulatory", "calibrated", "raw-data", "confidential-data"],
+  "renewal_rule": "Any future claim expansion requires a new evidence and authorization review.",
+  "verification": "Authorization target commit matches current HEAD at recording time."
+}

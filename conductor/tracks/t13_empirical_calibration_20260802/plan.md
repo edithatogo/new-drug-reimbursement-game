@@ -90,3 +90,4 @@
 - [~] Rebind the received owner approval to the actual candidate target commit before promotion; the supplied approval targets an earlier commit. (`atlas-owner-approval-receipt-2026-08-03.json`)
 - [ ] Obtain lawful raw/confidential-data authorization, custodian contract, controlled environment, and disclosure rules if public routes prove insufficient. (`external-gate-status-2026-08-03.json`)
 - [x] Obtain and bind research-only release authorization to the current commit; calibrated and regulatory claims remain disabled. (`research-only-release-authorization-2026-08-03.json`)
+- [x] Rebind research-only release authorization to the exact current HEAD `70dceda19b33618e9d99e654c7eee64437ddfbae`. (`research-only-release-authorization-final-2026-08-03.json`)
