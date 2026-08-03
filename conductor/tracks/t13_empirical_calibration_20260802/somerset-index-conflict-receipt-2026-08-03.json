@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-03T03:15:00Z",
+  "source_id": "nhs-somerset-mpb-january-2026",
+  "publisher": "NHS Somerset ICB",
+  "index_uri": "https://nhssomerset.nhs.uk/prescribing-and-medicines-management/prescribing-committees/mpb-minutes/",
+  "browser_observation": {
+    "index_status": "accessible_via_web_index",
+    "visible_current_entries": ["November 2025", "July 2025", "May 2025", "March 2025", "January 2025"],
+    "january_2026_entry_visible": false,
+    "page_2_status": "accessible; contains 2024 and 2023 entries"
+  },
+  "search_observation": {
+    "result_uri": "https://nhssomerset.nhs.uk/wp-content/uploads/sites/2/DRAFT-MPB-Minutes-Jan-2026.pdf",
+    "snippet_claim": "Search index exposes a January 2026 draft MPB minutes document mentioning TA1121/acoramidis",
+    "direct_retrieval": "timed_out_after_bounded_curl_and_browser_attempts",
+    "payload_hash": null
+  },
+  "status": "conflicting_unverified_public_record",
+  "disposition": "deferred_no_evidence_promotion",
+  "reason": "The official index does not expose the January 2026 document and the direct PDF route cannot be retrieved reliably; a search snippet is not a custody or hash receipt.",
+  "contingency": "Retry when the index publishes a stable download link or the PDF becomes directly retrievable; then stream and hash bytes before use.",
+  "limits": ["No inference of local displacement, baseline unit, or payer decision", "No empirical or calibrated promotion"]
+}
