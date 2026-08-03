@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "track": "T13",
+  "task": "probe-nhsbsa-aggregate-evidence",
+  "probed_at": "2026-08-03T18:30:00Z",
+  "catalogue": {
+    "publisher": "NHS Business Services Authority",
+    "api": "https://opendata.nhsbsa.net/api/3/action/package_show?id=52423b6a-9605-4620-a425-2d4f9c323873",
+    "package_id": "52423b6a-9605-4620-a425-2d4f9c323873",
+    "license": "OGL-UK-3.0",
+    "resource_id": "72fa5515-4740-40fe-8ee7-5cbc390720a0",
+    "resource_name": "PCA_ICB_SNOMED_2025_2026",
+    "resource_datastore_active": true,
+    "resource_scope": "community prescriptions dispensed in England"
+  },
+  "probe": {
+    "endpoint": "https://opendata.nhsbsa.net/api/3/action/datastore_search_sql",
+    "query_class": "identifier-level BNF_PRESENTATION_NAME search for acoramidis, tafamidis, and vutrisiran",
+    "http_status": 500,
+    "disposition": "deferred_api_failure",
+    "payload_retained": false,
+    "interpretation": "HTTP 500 is an API availability failure, not evidence that any medicine is absent. Retry via resource CSV or a later API revision."
+  },
+  "next_steps": [
+    "Resolve current dm+d/SNOMED identifiers.",
+    "Retry datastore queries after API recovery.",
+    "If SQL remains unavailable, stream/filter the licensed CSV without committing bulk payloads.",
+    "Compare aggregate observations with NICE implementation dates and formulary records.",
+    "Emit a specialist-coverage negative receipt if community PCA cannot observe the treatment."
+  ],
+  "promotion_boundary": "No aggregate result from this probe can establish local displacement, payer authorization, confidential price, or calibrated/HTA/policy/regulatory claims.",
+  "disposition": "route_validated_api_temporarily_unavailable_empirical_promotion_disabled",
+  "refresh_rule": "Reacquire when API status, resource revision, identifier mapping, terms, or intended use changes."
+}

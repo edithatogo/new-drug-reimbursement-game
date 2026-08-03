@@ -26,6 +26,7 @@
 - [x] Encode the ordered blocker-resolution plan, options, contingencies, autonomous actions, and human stop conditions. (`gate-resolution-plan-2026-08-03.json`, `gate-resolution-plan-2026-08-03.md`)
 - [x] Record external-gate decisions: conditional Atlas pursuit; NHS, regulatory, raw-data, and confidential gates deferred fail-closed. (`conductor/gate-decision-record-2026-08-03.json`)
 - [x] Identify a non-synthetic aggregate evidence route through NHSBSA PCA and OpenPrescribing, with identifier resolution, hashing, triangulation, and specialist-coverage negative receipts. (`aggregate-evidence-route-2026-08-03.json`)
+- [x] Probe the NHSBSA ICB PCA resource and record the temporary SQL API failure with CSV retry contingency; no absence inference permitted. (`aggregate-evidence-probe-2026-08-03.json`)
 
 ## Phase 2 — calibration validation
 
