@@ -24,6 +24,7 @@
 - [x] Freeze the repository commit, packet digest, parameter-role mapping, and price-year disposition. (`packet-freeze-2026-08-03.json`)
 - [x] Review checkpoint: verify every external gate and fail closed on missing evidence; NHS displacement and Atlas packet remain pending without blocking synthetic research outputs. (`research-readiness-receipt-2026-08-03.json`)
 - [x] Encode the ordered blocker-resolution plan, options, contingencies, autonomous actions, and human stop conditions. (`gate-resolution-plan-2026-08-03.json`, `gate-resolution-plan-2026-08-03.md`)
+- [x] Record external-gate decisions: conditional Atlas pursuit; NHS, regulatory, raw-data, and confidential gates deferred fail-closed. (`conductor/gate-decision-record-2026-08-03.json`)
 
 ## Phase 2 — calibration validation
 

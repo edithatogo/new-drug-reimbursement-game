@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-03T17:15:00Z",
+  "scope": "External evidence and authorization gates",
+  "principle": "A decision to defer is not evidence that a gate is satisfied; claims and access remain fail-closed.",
+  "decisions": [
+    {
+      "gate": "t13.atlas-approved-packet",
+      "decision": "pursue_conditionally",
+      "recommended_option": "Accept only an owner-approved immutable Atlas revision with exact digest, source terms, transformations, intended use, and destination.",
+      "alternatives": ["continue synthetic research-only operation", "use public context for sensitivity only"],
+      "rationale": "This is the only potentially high-value gate that can advance calibration while preserving provenance and rights.",
+      "contingency": "If no packet or terms arrive, retain the pending gate and synthetic-only disposition.",
+      "stop_condition": "Do not infer parameters, accept mutable releases, or access restricted payloads."
+    },
+    {
+      "gate": "t13.nhs-context",
+      "decision": "defer_pending_authoritative_response",
+      "recommended_option": "Continue bounded public monitoring and await substantive NHS response or attributable no-records/owner receipt.",
+      "alternatives": ["public-context sensitivity only", "record an explicit negative receipt if NHS confirms records are not held"],
+      "rationale": "Public records establish implementation context but not an actual displaced programme or baseline unit.",
+      "contingency": "Refresh sources and preserve negative/inaccessible receipts.",
+      "stop_condition": "Do not map national resource impact or comparator adoption to local displacement."
+    },
+    {
+      "gate": "t14.regulatory-owner-and-submission",
+      "decision": "defer",
+      "recommended_option": "Keep the research-to-regulatory boundary and prohibited-claims matrix active.",
+      "alternatives": ["select a jurisdiction and sponsor later", "prepare a route-specific validation plan only after intended use is defined"],
+      "rationale": "No intended regulatory purpose, sponsor, audience, jurisdiction, or submission route is currently specified.",
+      "contingency": "Reopen only after an accountable sponsor defines the route and authorizes the validation plan.",
+      "stop_condition": "No filing, classification, compliance, HTA, payer, policy, or regulatory claim."
+    },
+    {
+      "gate": "t15.raw-data-and-t16.confidential-data",
+      "decision": "defer_no_access",
+      "recommended_option": "Use public, aggregate, redacted, or synthetic routes; do not activate restricted acquisition or computation.",
+      "alternatives": ["owner-approved derived packet only", "future controlled environment after lawful basis and contracts"],
+      "rationale": "Current purposes do not require raw or confidential values, and the required custodian, legal, environment, contract, and disclosure evidence is absent.",
+      "contingency": "Create source-specific field schedules and authorization receipts only if a future purpose proves public routes insufficient.",
+      "stop_condition": "No raw/confidential value access, transfer, computation, or export."
+    }
+  ],
+  "result": "research_only_fail_closed_external_gates_pending",
+  "refresh_rule": "Reconsider decisions only when the named response, immutable packet, sponsor authorization, lawful basis, contract, environment, or disclosure receipt changes."
+}
