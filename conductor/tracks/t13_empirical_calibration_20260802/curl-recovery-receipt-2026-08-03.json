@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-08-03T03:05:00Z",
+  "method": "curl_stream_with_redirects_retries_and_user_agent",
+  "payload_retained": false,
+  "sources": [
+    {
+      "source_id": "swl-jfc-january-2026",
+      "uri": "https://www.swljointmedicinesformulary.nhs.uk/docs/files/SWL%20JFC%20Bulletin%20January%202026.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 204454,
+      "sha256": "7d99cf2d3a9a9214b2676c222152815d617bee3416506024a151cd8ed68c8413",
+      "role": "official local formulary context",
+      "promotion": "context_only"
+    },
+    {
+      "source_id": "buckinghamshire-formulary-acoramidis",
+      "uri": "https://bucksformulary.nhs.uk/reports/Archive/A0003.asp",
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 2667038,
+      "sha256": "c5b6c01d529accad60c9a73002cee08f4c16a672423ad17cef881b35ad6a3921",
+      "role": "official local formulary context; acoramidis/TA1121 entry",
+      "promotion": "context_only"
+    }
+  ],
+  "failed_retry": {
+    "source_id": "nhs-somerset-mpb-january-2026",
+    "uri": "https://nhssomerset.nhs.uk/wp-content/uploads/sites/2/DRAFT-MPB-Minutes-Jan-2026.pdf",
+    "result": "timed_out_after_bounded_retries",
+    "disposition": "deferred_no_hash"
+  },
+  "limits": [
+    "These records do not establish an actual displaced programme or local baseline unit.",
+    "They do not authorize payer, HTA, policy, regulatory, empirical, or calibrated claims.",
+    "Invalidate on URL, bytes, revision, terms, or transformation changes."
+  ]
+}

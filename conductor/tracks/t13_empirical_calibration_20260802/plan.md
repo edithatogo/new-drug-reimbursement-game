@@ -67,3 +67,4 @@
 - [x] Bind the reviewed PR head and unchanged artifact hashes to the squash commit integrated into `main`. (`main-integration-receipt-2026-08-03.json`)
 - [x] Record machine-readable closure criteria, autonomous contingencies, and explicit stop conditions for every remaining external gate. (`external-gate-status-2026-08-03.json`)
 - [x] Resolve a failed public-source URL through an official replacement publication, hash the replacement bytes, and preserve context-only promotion limits. (`public-source-replacement-receipt-2026-08-03.json`)
+- [x] Recover additional official formulary sources with bounded curl retries, exact byte hashes, and explicit context-only limits; retain Somerset timeout as deferred. (`curl-recovery-receipt-2026-08-03.json`)
