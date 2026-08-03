@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-03T19:30:00Z",
+  "disposition": "research_only_fail_closed",
+  "principle": "Repository controls may be completed autonomously; authoritative evidence and owner permissions may not be inferred.",
+  "gates": {
+    "public-evidence-refresh": {
+      "status": "satisfied_context_only",
+      "evidence": [
+        "public-source-monitoring-run-2026-08-03.json",
+        "secondary-care-aggregate-receipt-2026-08-03.json",
+        "public-triangulation-supplement-2026-08-03.json"
+      ],
+      "promotion_limit": "No displacement, baseline, payer, HTA, policy, regulatory, empirical, or calibrated claim."
+    },
+    "nhs-displacement": {
+      "status": "pending_authoritative_receipt",
+      "closure_criteria": [
+        "attributable NHS or accountable local record",
+        "payer/commissioner and service line",
+        "decision date and price year",
+        "intervention, comparator, displaced programme, and stable programme ID",
+        "baseline unit and provenance"
+      ],
+      "autonomous_next_step": "Continue bounded allow-listed monitoring and preserve explicit negative receipts.",
+      "stop_condition": "Do not infer local displacement from national guidance or aggregate context."
+    },
+    "atlas-approved-packet": {
+      "status": "pending_owner_approved_immutable_packet",
+      "closure_criteria": [
+        "packet ID and immutable revision",
+        "exact packet digest",
+        "source-term adjudication",
+        "field transformations and uncertainty",
+        "permitted destination and intended use",
+        "owner approval bound to the same revision"
+      ],
+      "autonomous_next_step": "Keep ingestion, hash-binding, panel, stale-source, and requalification checks ready.",
+      "stop_condition": "Do not promote candidate parameters or use mutable/latest releases."
+    },
+    "raw-and-confidential-data": {
+      "status": "deferred_no_access",
+      "closure_criteria": [
+        "lawful basis and custodian authorization",
+        "contract and source terms",
+        "approved controlled environment",
+        "disclosure/export rules"
+      ],
+      "autonomous_next_step": "Use public aggregate, redacted, or synthetic inputs only.",
+      "stop_condition": "No restricted payload access, transfer, computation, or export."
+    },
+    "release-authorization": {
+      "status": "research_only_authorized; calibrated_and_regulatory_deferred",
+      "closure_criteria": [
+        "intended use and audience",
+        "accountable sponsor",
+        "claims and jurisdiction review",
+        "owner authorization bound to the final commit"
+      ],
+      "autonomous_next_step": "Run repository qualification and publish only research-only outputs.",
+      "stop_condition": "Keep empirical, payer, HTA, policy, regulatory, and calibrated claims disabled."
+    }
+  },
+  "refresh_and_invalidation": {
+    "recheck_before_use": ["URL", "HTTP metadata", "source revision", "terms", "transformations", "repository commit"],
+    "invalidate_dependents_on_change": true,
+    "required_action": "Regenerate packet freeze, panel receipts, readiness, and downstream projections after any material source or commit change."
+  }
+}
