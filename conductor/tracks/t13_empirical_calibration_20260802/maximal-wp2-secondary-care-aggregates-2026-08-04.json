@@ -6,6 +6,7 @@
   "sources": [
     {
       "source_id": "nhsbsa-finalised-scmd-catalogue-and-202603",
+      "authority_rank": 1,
       "publisher": "NHS Business Services Authority on behalf of NHS England",
       "title": "Finalised Secondary Care Medicines Data with indicative price: SCMD_FINAL_202603",
       "requested_url": "https://opendata.nhsbsa.net/api/3/action/package_show?id=finalised-secondary-care-medicines-data-scmd-with-indicative-price",
@@ -56,6 +57,7 @@
     },
     {
       "source_id": "nhsbsa-provisional-scmd-catalogue-and-202605",
+      "authority_rank": 1,
       "publisher": "NHS Business Services Authority on behalf of NHS England",
       "title": "Provisional Secondary Care Medicines Data with indicative price: SCMD_PROVISIONAL_202605",
       "requested_url": "https://opendata.nhsbsa.net/api/3/action/package_show?id=secondary-care-medicines-data-indicative-price",
@@ -110,6 +112,7 @@
     },
     {
       "source_id": "nhsbsa-pca-icb-snomed-2025-2026-existing-stream-reconciliation",
+      "authority_rank": 1,
       "publisher": "NHS Business Services Authority",
       "title": "Prescription Cost Analysis ICB SNOMED 2025/26",
       "requested_url": "https://opendata.nhsbsa.net/dataset/52423b6a-9605-4620-a425-2d4f9c323873/resource/72fa5515-4740-40fe-8ee7-5cbc390720a0/download/pca_icb_snomed_2025_2026.csv",

@@ -28,6 +28,7 @@ class MaximalPublicDataValidationTests(unittest.TestCase):
                     "scope": "test",
                     "sources": [{
                         "source_id": f"source-{number}",
+                        "authority_rank": 1,
                         "publisher": "publisher",
                         "title": "title",
                         "requested_url": "https://example.invalid",

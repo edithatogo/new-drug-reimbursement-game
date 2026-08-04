@@ -10,6 +10,7 @@
   "sources": [
     {
       "source_id": "wp6-crossref-metadata-terms",
+      "authority_rank": 1,
       "requested_url": "https://www.crossref.org/documentation/retrieve-metadata/",
       "final_url": "https://www.crossref.org/documentation/retrieve-metadata/",
       "publisher": "Crossref",
@@ -22,6 +23,7 @@
     },
     {
       "source_id": "wp6-clinicaltrials-api-terms",
+      "authority_rank": 1,
       "requested_url": "https://clinicaltrials.gov/data-api/about-api/terms",
       "final_url": "https://clinicaltrials.gov/data-api/about-api/terms",
       "publisher": "US National Library of Medicine",
@@ -34,6 +36,7 @@
     },
     {
       "source_id": "wp6-europe-pmc-platform-terms",
+      "authority_rank": 1,
       "requested_url": "https://www.ebi.ac.uk/about/terms-of-use/",
       "final_url": "https://www.ebi.ac.uk/about/terms-of-use/",
       "publisher": "EMBL-EBI",
@@ -46,6 +49,7 @@
     },
     {
       "source_id": "wp6-ncbi-platform-policy",
+      "authority_rank": 1,
       "requested_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
       "final_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
       "publisher": "US National Library of Medicine",
@@ -58,6 +62,7 @@
     },
     {
       "source_id": "wp6-pmc12304488-article-licence",
+      "authority_rank": 1,
       "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
       "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
       "publisher": "Medical Decision Making via Europe PMC",
@@ -70,6 +75,7 @@
     },
     {
       "source_id": "wp6-nice-content-reuse",
+      "authority_rank": 1,
       "requested_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
       "final_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
       "publisher": "National Institute for Health and Care Excellence",

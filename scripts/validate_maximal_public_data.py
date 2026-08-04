@@ -69,6 +69,9 @@ def acquisition_violations(track: Path = TRACK) -> list[str]:
                 violations.append(f"{prefix}: duplicate source_id {source_id}")
             else:
                 seen_ids.add(source_id)
+            authority_rank = source.get("authority_rank")
+            if not isinstance(authority_rank, int) or not 1 <= authority_rank <= 5:
+                violations.append(f"{prefix}: authority_rank must be an integer from 1 to 5")
             for key in ("publisher", "title", "requested_url", "final_url", "retrieval", "terms", "supported_fields", "unsupported_fields", "refresh_rule"):
                 if key not in source:
                     violations.append(f"{prefix}: missing {key}")

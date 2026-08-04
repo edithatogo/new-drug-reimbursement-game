@@ -6,6 +6,7 @@
   "sources": [
     {
       "source_id": "mhra-acoramidis-uk-authorisation",
+      "authority_rank": 1,
       "publisher": "Medicines and Healthcare products Regulatory Agency",
       "title": "Acoramidis approved to treat wild-type or variant transthyretin amyloidosis in adults with cardiomyopathy",
       "requested_url": "https://www.gov.uk/government/news/acoramidis-approved-to-treat-wild-type-or-variant-transthyretin-amyloidosis-in-adults-with-cardiomyopathy",
@@ -19,6 +20,7 @@
     },
     {
       "source_id": "ema-beyonttra-epar",
+      "authority_rank": 1,
       "publisher": "European Medicines Agency",
       "title": "Beyonttra EPAR",
       "requested_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/beyonttra",
@@ -32,6 +34,7 @@
     },
     {
       "source_id": "ema-beyonttra-product-information",
+      "authority_rank": 1,
       "publisher": "European Medicines Agency",
       "title": "Beyonttra EPAR product information, English",
       "requested_url": "https://www.ema.europa.eu/en/documents/product-information/beyonttra-epar-product-information_en.pdf",
@@ -45,6 +48,7 @@
     },
     {
       "source_id": "clinicaltrials-gov-acoramidis-enumeration",
+      "authority_rank": 1,
       "publisher": "US National Library of Medicine, ClinicalTrials.gov",
       "title": "Acoramidis intervention search, API v2",
       "requested_url": "https://clinicaltrials.gov/api/v2/studies?query.intr=Acoramidis&pageSize=100&format=json",
@@ -58,6 +62,7 @@
     },
     {
       "source_id": "clinicaltrials-gov-nct03860935",
+      "authority_rank": 1,
       "publisher": "US National Library of Medicine, ClinicalTrials.gov",
       "title": "ATTRibute-CM, NCT03860935",
       "requested_url": "https://clinicaltrials.gov/api/v2/studies/NCT03860935",
@@ -71,6 +76,7 @@
     },
     {
       "source_id": "nice-ta1121-resource-impact-price-boundary",
+      "authority_rank": 1,
       "publisher": "National Institute for Health and Care Excellence",
       "title": "TA1121 resource impact summary report",
       "requested_url": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
@@ -84,6 +90,7 @@
     },
     {
       "source_id": "sec-bridgebio-submissions-index",
+      "authority_rank": 2,
       "publisher": "US Securities and Exchange Commission",
       "title": "BridgeBio Pharma, Inc. submissions index, CIK 0001743881",
       "requested_url": "https://data.sec.gov/submissions/CIK0001743881.json",
@@ -97,6 +104,7 @@
     },
     {
       "source_id": "bridgebio-uk-authorisation-disclosure",
+      "authority_rank": 2,
       "publisher": "BridgeBio Pharma, Inc.",
       "title": "Beyonttra approved by UK MHRA to treat ATTR-CM",
       "requested_url": "https://investor.bridgebio.com/news/news-details/2025/BEYONTTRA-acoramidis-the-First-Near-complete-TTR-Stabilizer-90-Approved-by-the-UK-Medicines-and-Healthcare-Products-Regulatory-Agency-to-Treat-ATTR-CM/default.aspx",
@@ -110,6 +118,7 @@
     },
     {
       "source_id": "uk-procurement-search-acoramidis",
+      "authority_rank": 2,
       "publisher": "UK Cabinet Office procurement services",
       "title": "Contracts Finder and Find a Tender keyword probes",
       "requested_url": "https://www.contractsfinder.service.gov.uk/Search/Results?Keywords=acoramidis ; https://www.find-tender.service.gov.uk/Search/Results?keywords=acoramidis",

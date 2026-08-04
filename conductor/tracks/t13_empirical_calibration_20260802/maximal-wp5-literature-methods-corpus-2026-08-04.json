@@ -19,6 +19,7 @@
   "sources": [
     {
       "source_id": "wp5-pubmed-clinical-enumeration",
+      "authority_rank": 2,
       "requested_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%29%20AND%20%28ATTR-CM%20OR%20transthyretin%20amyloid%20cardiomyopathy%29&retmode=json&retmax=1000&sort=pub+date",
       "final_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%29%20AND%20%28ATTR-CM%20OR%20transthyretin%20amyloid%20cardiomyopathy%29&retmode=json&retmax=1000&sort=pub+date",
       "publisher": "US National Library of Medicine",
@@ -31,6 +32,7 @@
     },
     {
       "source_id": "wp5-pubmed-economic-enumeration",
+      "authority_rank": 2,
       "requested_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%20OR%20ATTR-CM%29%20AND%20%28economic%20OR%20cost-effectiveness%20OR%20budget%20impact%20OR%20reimbursement%29&retmode=json&retmax=100&sort=pub+date",
       "final_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%20OR%20ATTR-CM%29%20AND%20%28economic%20OR%20cost-effectiveness%20OR%20budget%20impact%20OR%20reimbursement%29&retmode=json&retmax=100&sort=pub+date",
       "publisher": "US National Library of Medicine",
@@ -43,6 +45,7 @@
     },
     {
       "source_id": "wp5-europe-pmc-focused-economic-corpus",
+      "authority_rank": 2,
       "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28TITLE_ABS%3Aacoramidis%20OR%20TITLE_ABS%3Atafamidis%20OR%20TITLE_ABS%3A%22ATTR-CM%22%29%20AND%20%28TITLE_ABS%3A%22cost-effectiveness%22%20OR%20TITLE_ABS%3A%22budget%20impact%22%20OR%20TITLE_ABS%3Areimbursement%20OR%20TITLE_ABS%3Aaffordability%29&format=json&pageSize=100&resultType=core",
       "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28TITLE_ABS%3Aacoramidis%20OR%20TITLE_ABS%3Atafamidis%20OR%20TITLE_ABS%3A%22ATTR-CM%22%29%20AND%20%28TITLE_ABS%3A%22cost-effectiveness%22%20OR%20TITLE_ABS%3A%22budget%20impact%22%20OR%20TITLE_ABS%3Areimbursement%20OR%20TITLE_ABS%3Aaffordability%29&format=json&pageSize=100&resultType=core",
       "publisher": "Europe PMC, EMBL-EBI",
@@ -56,6 +59,7 @@
     },
     {
       "source_id": "wp5-crossref-acoramidis-title-corpus",
+      "authority_rank": 2,
       "requested_url": "https://api.crossref.org/works?query.title=acoramidis&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
       "final_url": "https://api.crossref.org/works?query.title=acoramidis&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
       "publisher": "Crossref",
@@ -68,6 +72,7 @@
     },
     {
       "source_id": "wp5-crossref-tafamidis-economic-ranked-corpus",
+      "authority_rank": 2,
       "requested_url": "https://api.crossref.org/works?query.title=tafamidis%20cost-effectiveness&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
       "final_url": "https://api.crossref.org/works?query.title=tafamidis%20cost-effectiveness&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
       "publisher": "Crossref",
@@ -80,6 +85,7 @@
     },
     {
       "source_id": "wp5-clinicaltrials-gov-intervention-corpus",
+      "authority_rank": 1,
       "requested_url": "https://clinicaltrials.gov/api/v2/studies?query.cond=Transthyretin%20Amyloid%20Cardiomyopathy&query.intr=acoramidis%20OR%20tafamidis&pageSize=100&format=json",
       "final_url": "https://clinicaltrials.gov/api/v2/studies?query.cond=Transthyretin%20Amyloid%20Cardiomyopathy&query.intr=acoramidis%20OR%20tafamidis&pageSize=100&format=json",
       "publisher": "US National Library of Medicine",
@@ -93,6 +99,7 @@
     },
     {
       "source_id": "wp5-relative-survival-open-article",
+      "authority_rank": 3,
       "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
       "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
       "publisher": "Medical Decision Making via Europe PMC",
@@ -112,6 +119,7 @@
     },
     {
       "source_id": "wp5-nice-dsu-tsd14",
+      "authority_rank": 1,
       "requested_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD14-Survival-analysis.updated-March-2013.v2.pdf",
       "final_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD14-Survival-analysis.updated-March-2013.v2.pdf",
       "publisher": "NICE Decision Support Unit, University of Sheffield",
@@ -124,6 +132,7 @@
     },
     {
       "source_id": "wp5-nice-dsu-tsd21",
+      "authority_rank": 1,
       "requested_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD21-Flex-Surv-TSD-21_Final_alt_text.pdf",
       "final_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD21-Flex-Surv-TSD-21_Final_alt_text.pdf",
       "publisher": "NICE Decision Support Unit, University of Sheffield",
@@ -136,6 +145,7 @@
     },
     {
       "source_id": "wp5-nice-economic-evaluation-manual",
+      "authority_rank": 1,
       "requested_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
       "final_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
       "publisher": "National Institute for Health and Care Excellence",
