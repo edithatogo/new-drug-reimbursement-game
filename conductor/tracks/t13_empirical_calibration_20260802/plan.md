@@ -47,6 +47,10 @@
 
 ## Review Fixes
 
+- [x] Add and validate authority ranks for every maximal-acquisition source after panel review identified incomplete receipt fields. (`ae690c1`)
+- [x] Freeze packet target semantics, aggregate all 50 source-rights decisions, and add fail-closed mutation tests. (`46816a7`)
+- [x] Correct Ruff import ordering found by hosted CI without changing reviewed packet bytes. (`2778402`)
+
 ## While-waiting implementation tasks
 
 - [x] Harvest and hash public NICE, NHS England, ICB, specialist-centre, committee, and publication-scheme records; preserve source status, MIME, byte length, SHA-256, locators, and limitations. (`grey-literature-receipt-2026-08-02.json`, `public-triangulation-supplement-2026-08-03.json`, `public-source-refresh-2026-08-03.json`, `public-source-followup-2026-08-03.json`; `956a230`)
@@ -74,13 +78,13 @@
 
 ## Maximal public-data programme
 
-- [~] WP1: enumerate, retrieve, hash, and receipt all official authority, committee, formulary, specialist-centre, publication-scheme, and FOI disclosure records. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [~] WP2: enumerate and stream-filter NHSBSA SCMD/PCA and related prescribing aggregates using resolved medicine identifiers; retain no raw payloads. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [~] WP3: resolve public ODS, commissioner, provider, service, programme-category, and stable identifiers without inferring displacement. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [~] WP4: harvest regulatory, clinical-trial, list-price, procurement, commercial-framework, and public company records. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [~] WP5: harvest scholarly and grey-literature metadata/full text under source-specific terms, preserving source-mapped methods and assumptions. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [~] WP6: adjudicate source terms and produce approved-derived projections while retaining ambiguous/restricted sources as inventory-only receipts. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [ ] WP7: assemble the candidate Atlas-compatible packet, rebind hashes/approvals, run panel review, stale-source validation, full qualification, and hosted CI. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [x] WP1: enumerate, retrieve, hash, and receipt all official authority, committee, formulary, specialist-centre, publication-scheme, and FOI disclosure records. (`ae690c1`)
+- [x] WP2: enumerate and stream-filter NHSBSA SCMD/PCA and related prescribing aggregates using resolved medicine identifiers; retain no raw payloads. (`ae690c1`)
+- [x] WP3: resolve public ODS, commissioner, provider, service, programme-category, and stable identifiers without inferring displacement. (`ae690c1`)
+- [x] WP4: harvest regulatory, clinical-trial, list-price, procurement, commercial-framework, and public company records. (`ae690c1`)
+- [x] WP5: harvest scholarly and grey-literature metadata/full text under source-specific terms, preserving source-mapped methods and assumptions. (`ae690c1`)
+- [x] WP6: adjudicate source terms and produce approved-derived projections while retaining ambiguous/restricted sources as inventory-only receipts. (`ae690c1`)
+- [x] WP7: assemble the candidate Atlas-compatible packet, rebind hashes/approvals, run panel review, stale-source validation, full qualification, and hosted CI. (`2778402`; panel target `46816a7`; CI run `30917953051`)
 
 ## External closure gates (pending authoritative inputs)
 

@@ -29,6 +29,7 @@ RIGHTS = {"reuse_confirmed", "citation_only", "terms_ambiguous", "restricted", "
 PACKET = "maximal-public-context-packet-v0.2.0.json"
 REVIEW_TARGET_COMMIT = "46816a77e9878206c03591361e0b1fec4d233e1b"
 CONSENSUS = "maximal-panel-consensus-2026-08-04.json"
+HOSTED_CI = "maximal-hosted-ci-receipt-2026-08-04.json"
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -176,6 +177,17 @@ def acquisition_violations(track: Path = TRACK) -> list[str]:
                 violations.append("WP7: panel consensus has blocking findings")
             if consensus.get("disposition") != "pass_public_context_research_only_defer_empirical_calibration":
                 violations.append("WP7: panel consensus disposition exceeds public-context scope")
+        ci_path = track / HOSTED_CI
+        if not ci_path.is_file():
+            violations.append("WP7: missing hosted CI receipt")
+        else:
+            ci = _load(ci_path)
+            if ci.get("status") != "completed" or ci.get("conclusion") != "success":
+                violations.append("WP7: hosted CI is not green")
+            if ci.get("commit") != "27784020654913f153d6997a63d7b7621f464535":
+                violations.append("WP7: hosted CI receipt is not bound to the expected commit")
+            if ci.get("reviewed_packet_sha256") != hashlib.sha256(packet_path.read_bytes()).hexdigest():
+                violations.append("WP7: hosted CI receipt packet digest is stale")
     return violations
 
 

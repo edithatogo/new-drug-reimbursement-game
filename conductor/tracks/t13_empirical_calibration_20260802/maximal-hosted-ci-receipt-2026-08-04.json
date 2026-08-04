@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-maximal-public-context-hosted-ci-2026-08-04",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "commit": "27784020654913f153d6997a63d7b7621f464535",
+  "workflow": "CI",
+  "run_id": 30917953051,
+  "run_url": "https://github.com/edithatogo/new-drug-reimbursement-game/actions/runs/30917953051",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": {
+    "python": {
+      "conclusion": "success",
+      "checks": [
+        "scope and clean-room validation",
+        "unit tests",
+        "compile Python sources",
+        "offline ecosystem validation",
+        "governance and extraction inventories",
+        "clean-environment package build and install",
+        "Ruff",
+        "Mypy"
+      ]
+    },
+    "rust": {
+      "conclusion": "success",
+      "checks": ["format", "clippy", "tests"]
+    }
+  },
+  "reviewed_packet_commit": "46816a77e9878206c03591361e0b1fec4d233e1b",
+  "reviewed_packet_sha256": "9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05",
+  "relationship": "The CI commit contains the unchanged reviewed packet and panel receipts plus a Ruff-only import-order correction to the validator.",
+  "claim_boundary": "Hosted validation supports repository readiness for public-context research only; empirical calibration and decision use remain disabled."
+}
