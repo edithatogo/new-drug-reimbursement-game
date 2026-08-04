@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.1",
+  "review_id": "t13-maximal-public-packet-reproducibility-governance-review-v2",
+  "review_role": "independent_reproducibility_security_governance_reviewer",
+  "reviewed_at": "2026-08-05T00:10:00+10:00",
+  "exact_target": {
+    "review_commit": "46816a77e9878206c03591361e0b1fec4d233e1b",
+    "packet_path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-public-context-packet-v0.2.0.json",
+    "packet_sha256": "9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05",
+    "packet_acquisition_target_commit": "ae690c19b83147cbaa6dd2b00b177e3fd25910da",
+    "builder_sha256": "880cd8309fd4eb7e4308df97a266afaea28fe85f97add0cf4dd5a5a178a527b2",
+    "validator_sha256": "28271a42cdd503ff545e596aafd3fa8dffcd2cab1bcc33b2aa61a7499a5fe045",
+    "tests_sha256": "d830537e9ab70a45fdb0334fe002906f7682157cb53a0776908ad412d299d942"
+  },
+  "disposition": "pass",
+  "pass": true,
+  "blocking_findings": [],
+  "open_findings": [],
+  "resolved_prior_findings": [
+    {
+      "id": "GOV-WP7-001",
+      "status": "resolved",
+      "resolution": "The packet now contains all_source_rights_matrix generated from every WP1-WP6 source. Independent comparison found 50 rows, 50 unique source IDs, and exact ordered equality of source ID, classification, and authority rank with the six source bundles."
+    },
+    {
+      "id": "GOV-WP7-002",
+      "status": "resolved_for_packet_validation",
+      "resolution": "The validator now rejects an acquisition target that differs from the governed ACQUISITION_TARGET_COMMIT or is not a 40-character lowercase hexadecimal commit. The frozen commit ae690c19b83147cbaa6dd2b00b177e3fd25910da resolves locally and is an ancestor of the exact review commit."
+    },
+    {
+      "id": "GOV-WP7-003",
+      "status": "resolved",
+      "resolution": "Committed tests now cover stale bundle rejection, empirical-promotion and parameter-role rejection, and acquisition-target mismatch rejection. Independent adversarial checks additionally covered rights-row removal, rights-classification mutation, and invalid authority rank."
+    }
+  ],
+  "checks": [
+    {
+      "id": "deterministic-rebuild",
+      "status": "pass",
+      "evidence": "In a detached local clone of exact commit 46816a77e9878206c03591361e0b1fec4d233e1b, scripts.build_maximal_public_packet.build() produced byte-identical canonical JSON. Committed and rebuilt SHA-256 values both equal 9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05."
+    },
+    {
+      "id": "source-bundle-hash-binding",
+      "status": "pass",
+      "evidence": {
+        "wp1": "550ed22f99f9387d20a523592c3fa713d8a09ad0335f7dd80622c50e216b962f",
+        "wp2": "5fa33bd04712008246e17e37fa1bd34824c2d3236f6f349fef9cadc63afb2c92",
+        "wp3": "55a8473193ede96d7949d7eba12001703142a023a8df290e203995eddb12a7c2",
+        "wp4": "92ec02c0c480809380397ee7cc813959f337e290e66e658a4f403dfd7b850742",
+        "wp5": "bca9125af8fff530dd2ce33a4a7fab35166797b96c42636b5fcc0ab7698761d0",
+        "wp6": "ec5bf53d54ddf50151fc98fb1642adf0e435999a2ab84cd3bf9578047cd70bc8"
+      }
+    },
+    {
+      "id": "complete-rights-matrix",
+      "status": "pass",
+      "evidence": {
+        "matrix_rows": 50,
+        "unique_source_ids": 50,
+        "approved_derived_rows": 4,
+        "comparison": "Exact ordered equality with all WP1-WP6 source IDs, classifications, and authority ranks",
+        "inventory_boundary": "Every row outside the four explicit WP6 approved-derived sources remains inventory or source-receipt context only"
+      }
+    },
+    {
+      "id": "immutable-acquisition-target",
+      "status": "pass",
+      "evidence": {
+        "governed_commit": "ae690c19b83147cbaa6dd2b00b177e3fd25910da",
+        "packet_matches_builder_constant": true,
+        "commit_resolves_locally": true,
+        "commit_is_ancestor_of_review_target": true,
+        "mismatch_mutation_rejected": true
+      }
+    },
+    {
+      "id": "fail-closed-mutation-controls",
+      "status": "pass",
+      "evidence": [
+        "One-byte WP1 drift rejected as stale referenced bundle",
+        "Empirical-calibration promotion rejected",
+        "Non-empty parameter_roles rejected",
+        "Acquisition-target substitution rejected",
+        "Missing rights-matrix row rejected",
+        "Rights-classification mutation rejected",
+        "Authority rank outside 1-5 rejected"
+      ]
+    },
+    {
+      "id": "tests",
+      "status": "pass",
+      "evidence": [
+        "python3 scripts/validate_maximal_public_data.py: passed",
+        "PYTHONPATH=src python3 -m pytest -q: 137 tests and 72 subtests passed"
+      ],
+      "execution_scope": "Detached clone of exact commit 46816a77e9878206c03591361e0b1fec4d233e1b"
+    },
+    {
+      "id": "raw-payload-absence",
+      "status": "pass",
+      "evidence": "The packet and six bundles are seven parseable JSON files. File-signature checks found no PDF, ZIP, PNG, or JPEG payload; no data URI or embedded base64 payload was detected. Receipts retain hashes and bounded derived fields rather than source payloads."
+    },
+    {
+      "id": "secrets-and-pii-screen",
+      "status": "pass",
+      "evidence": "Static scans found no private-key header, AWS access key, GitHub token, assigned generic secret, email address, or data URI. Manual review found public organisation/source metadata and no patient-level, confidential, or personal data."
+    },
+    {
+      "id": "claim-and-authority-boundary",
+      "status": "pass",
+      "evidence": "parameter_roles is empty; empirical calibration remains disabled; decision use is prohibited; the packet states that it is repository-derived and not an Atlas-approved calibration packet; missing displacement, baseline unit, confidential price, and joint uncertainty remain explicit negative scope."
+    }
+  ],
+  "limitations": [
+    "This is exact-artifact engineering and governance assurance, not a legal opinion, scientific validation, Atlas owner approval, NHS displacement decision, or release authorization.",
+    "Receipt hashes establish observed bytes and packet bindings. Because raw source payloads are deliberately absent, historical payload reproduction still depends on publisher availability or an independently governed archive.",
+    "The target validator enforces agreement with the builder's governed constant. A coordinated future edit to both code and packet is a material change and therefore invalidates this exact-commit review and requires a new independent receipt.",
+    "Live source freshness, publisher-side licence warranties, corrections, retractions, and post-retrieval terms changes are outside this exact-commit rerun and remain governed by the packet refresh rules."
+  ],
+  "invalidation": {
+    "rule": "Invalidate this review after any change to the review commit, packet bytes or digest, acquisition target, source-bundle bytes or hashes, rights matrix, authority rank, builder, validator, tests, source URL or revision, retrieval metadata, terms, transformation, destination, approved-derived projection, parameter roles, or promotion boundary.",
+    "required_requalification": [
+      "rebuild and compare deterministic packet bytes",
+      "verify all source-bundle hashes and the complete rights matrix",
+      "verify the governed acquisition target resolves and matches",
+      "rerun validator, committed tests, and adversarial mutations",
+      "repeat raw-payload, secret, and PII screens",
+      "issue a new exact-commit and exact-packet review receipt"
+    ]
+  },
+  "conclusion": "All three prior governance limitations are resolved for the exact reviewed artifacts. WP7 deterministic assembly, complete source-rights coverage, immutable target enforcement, bundle hash binding, committed mutation tests, fail-closed claim boundaries, and raw-payload/secrets/PII controls pass at commit 46816a77e9878206c03591361e0b1fec4d233e1b and packet SHA-256 9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05."
+}

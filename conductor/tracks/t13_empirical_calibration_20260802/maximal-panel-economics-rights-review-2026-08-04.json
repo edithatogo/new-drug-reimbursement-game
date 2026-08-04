@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "review_id": "t13-maximal-public-context-economics-rights-review-governance-hardened",
+  "review_type": "independent_subagent_panel_health_economics_rights_and_data_interpretation",
+  "reviewed_at": "2026-08-05T00:30:00+10:00",
+  "reviewer": {
+    "role": "health-economics, evidence-authority, rights, and public-data interpretation reviewer",
+    "independence": "The reviewer did not assemble or amend the reviewed packet or WP1-WP6 bundles during this review.",
+    "authority_boundary": "Technical panel assurance only; not NHS, regulator, source owner, Atlas, reimbursement, HTA, policy, or release authority."
+  },
+  "binding": {
+    "repository": "edithatogo/new-drug-reimbursement-game",
+    "reviewed_commit": "46816a77e9878206c03591361e0b1fec4d233e1b",
+    "packet_path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-public-context-packet-v0.2.0.json",
+    "packet_id": "atlas-ta1121-acoramidis-public-context-derived-v0.2.0",
+    "packet_sha256": "9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05",
+    "packet_acquisition_target_commit": "ae690c19b83147cbaa6dd2b00b177e3fd25910da",
+    "interpretation": "The acquisition target binds the immutable source-bundle snapshot. This review separately binds the governance-hardened repository commit and exact packet digest.",
+    "bundle_integrity": {
+      "status": "passed",
+      "verified": 6,
+      "expected": 6,
+      "sha256": {
+        "WP1": "550ed22f99f9387d20a523592c3fa713d8a09ad0335f7dd80622c50e216b962f",
+        "WP2": "5fa33bd04712008246e17e37fa1bd34824c2d3236f6f349fef9cadc63afb2c92",
+        "WP3": "55a8473193ede96d7949d7eba12001703142a023a8df290e203995eddb12a7c2",
+        "WP4": "92ec02c0c480809380397ee7cc813959f337e290e66e658a4f403dfd7b850742",
+        "WP5": "bca9125af8fff530dd2ce33a4a7fab35166797b96c42636b5fcc0ab7698761d0",
+        "WP6": "ec5bf53d54ddf50151fc98fb1642adf0e435999a2ab84cd3bf9578047cd70bc8"
+      }
+    }
+  },
+  "decision": {
+    "status": "pass_with_limitations",
+    "permitted_disposition": "research-only public-context packet",
+    "blocking_findings": 0,
+    "prohibited_dispositions": [
+      "empirical calibration",
+      "payer or reimbursement decision support",
+      "HTA, policy, or regulatory conclusion",
+      "raw or confidential data use",
+      "causal displacement inference"
+    ]
+  },
+  "review_checks": [
+    {
+      "check": "packet_and_bundle_integrity",
+      "status": "pass",
+      "evidence": "Exact packet bytes at commit 46816a77e9878206c03591361e0b1fec4d233e1b hash to 9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05; all six embedded bundle digests match exact commit bytes."
+    },
+    {
+      "check": "complete_source_rights_matrix",
+      "status": "pass",
+      "evidence": {
+        "matrix_entries": 50,
+        "unique_source_work_package_pairs": 50,
+        "classification_counts": {"reuse_confirmed": 20, "citation_only": 24, "terms_ambiguous": 6, "restricted": 0, "prohibited": 0},
+        "permitted_use_counts": {"inventory_or_source_receipt_context_only": 46, "approved_derived_projection_only": 4},
+        "authority_rank_counts": {"rank_1": 40, "rank_2": 9, "rank_3": 1, "rank_4": 0, "rank_5": 0}
+      },
+      "interpretation": "The ordered matrix exactly covers all WP1-WP6 receipts and copies their rights classifications. Only four separately adjudicated WP6 sources are eligible for approved-derived projection. Reuse-confirmed status on other sources does not promote them beyond receipt-bound context. Authority rank and rights remain independent controls."
+    },
+    {
+      "check": "acquisition_target_enforcement",
+      "status": "pass",
+      "evidence": "Packet acquisition_target_commit equals governed constant ae690c19b83147cbaa6dd2b00b177e3fd25910da. The builder defaults to it; the validator rejects a mismatch or malformed value; the acquisition-target mismatch unit test passes."
+    },
+    {
+      "check": "aggregate_arithmetic",
+      "status": "pass",
+      "evidence": {
+        "finalised_202603_tafamidis": {"quantity_capsules": 81932.0, "indicative_cost_gbp": 29181447.33, "recomputed": true},
+        "finalised_202603_vutrisiran": {"quantity_ml": 45.5, "indicative_cost_gbp": 8723474.76, "recomputed": true},
+        "provisional_202605_acoramidis": {"quantity_tablets": 3960.0, "indicative_cost_gbp": 282070.8, "recomputed": true},
+        "provisional_202605_tafamidis": {"quantity_capsules": 49570.0, "indicative_cost_gbp": 17655181.67, "recomputed": true},
+        "provisional_202605_vutrisiran": {"quantity_ml": 34.5, "indicative_cost_gbp": 6614502.84, "recomputed": true}
+      },
+      "qualification": "Product/organisation/month quantities and indicative costs cannot establish patient count, indication, duration, list or net price, budget impact, or displacement."
+    },
+    {
+      "check": "finalised_provisional_and_scope_separation",
+      "status": "pass",
+      "evidence": "Finalised SCMD 202603 and provisional SCMD 202605 remain separately identified and hashed. Acoramidis occurs only provisionally. PCA zero matches are treated as community-versus-secondary-care scope divergence, not clinical absence."
+    },
+    {
+      "check": "regulatory_hta_reimbursement_and_price_boundaries",
+      "status": "pass",
+      "evidence": "MHRA/EMA authorisation, ClinicalTrials.gov registry, NICE appraisal/resource-impact, NHSBSA administrative, and company disclosure roles remain distinct. NICE records the acoramidis model price as confidential; NHSBSA indicative cost is not used as list or net price. No regulator, HTA, payer, reimbursement, policy, confidential-price, or comparative cost-effectiveness conclusion is created."
+    },
+    {
+      "check": "displacement_non_inference",
+      "status": "pass",
+      "evidence": "Organisation, service, medicine, formulary, guidance, aggregate, authority-rank, and rights fields are not converted into a displaced programme. Stable displaced-programme ID, baseline unit, baseline cost, and causal displacement remain deferred."
+    },
+    {
+      "check": "approved_derived_fields",
+      "status": "pass",
+      "evidence": "Approved-derived output is limited to Crossref facts, ClinicalTrials.gov registry metadata with its submitted-information warning, NICE reference-case discounting facts, and bounded CC BY-NC relative-survival methods. Treatment effects, hazards, utilities, costs, prices, population, uptake, displacement, and calibrated Chapter 7 parameters are excluded."
+    },
+    {
+      "check": "uncertainty_and_claim_boundaries",
+      "status": "pass",
+      "evidence": "Provisional status and structural uncertainty are retained; missing economic fields are not imputed; parameter_roles is empty; no joint parameter distribution exists; packet authority is repository-derived and not Atlas-approved; empirical calibration remains disabled and decision use prohibited."
+    },
+    {
+      "check": "fail_closed_validation",
+      "status": "pass",
+      "evidence": "Eight maximal-public-data tests pass, including acquisition-target mismatch, stale bundle, empirical promotion, parameter role, missing hash, and missing bundle failures. Maximal-data validation passes with complete matrix and authority-rank checks; T13 closeout remains synthetic-research-only."
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "Acoramidis is present only in provisional May 2026 SCMD and cannot be treated as finalised activity until the corresponding final release is reconciled.",
+    "SCMD is neither patient-level nor indication-specific and cannot identify eligible population, treatment courses, adherence, unit net price, or causal budget impact.",
+    "No public evidence supplies an attributable displaced programme, stable displaced-programme ID, baseline unit/cost, confidential price, model-ready treatment effects, utilities, or joint uncertainty distribution.",
+    "The complete rights matrix is an inventory control; only the four expressly marked sources feed the narrow approved-derived projection.",
+    "Registry information is submitted data, company records are interested-party disclosures, and procurement probes did not establish a query-verifiable award or price.",
+    "This subagent review cannot replace NHS, regulator, source-owner, Atlas, restricted-data, or release authority."
+  ],
+  "invalidation": {
+    "rule": "Invalidate on any change to reviewed commit, packet digest, acquisition target, bundle bytes/hash, source or authority rank, rights classification or permitted use, URL/revision/ETag/Last-Modified, transformation, projection, uncertainty, destination, claim boundary, or promotion status.",
+    "required_action": "Rebuild deterministically; repeat bundle, rights-matrix, acquisition-target, arithmetic, and claims validation; issue a new exact-commit and exact-packet review.",
+    "provisional_trigger": "SCMD_FINAL_202605 publication requires comparison with the provisional receipt before any use of the May observation."
+  },
+  "validation": {
+    "commands": [
+      "sha256sum conductor/tracks/t13_empirical_calibration_20260802/maximal-public-context-packet-v0.2.0.json",
+      "independent SHA-256 verification of all six source bundles at commit 46816a77e9878206c03591361e0b1fec4d233e1b",
+      "independent count and classification check of all_source_rights_matrix",
+      "PYTHONPATH=. python3 -m unittest discover -s tests -p 'test_maximal_public_data.py' -v",
+      "python3 scripts/validate_maximal_public_data.py",
+      "python3 scripts/validate_t13_closeout.py",
+      "git diff --check"
+    ],
+    "results": {
+      "packet_sha256": "passed",
+      "source_bundle_hashes": "6_of_6_passed",
+      "rights_matrix": "50_of_50_exact_source_classifications_present",
+      "authority_ranks": "50_of_50_present_and_in_range",
+      "acquisition_target_enforcement": "passed_and_mismatch_tested",
+      "unit_tests": "8_passed",
+      "maximal_public_data_validation": "passed_context_only_no_raw_payloads",
+      "t13_closeout": "passed_synthetic_research_only",
+      "diff_check": "passed"
+    }
+  }
+}

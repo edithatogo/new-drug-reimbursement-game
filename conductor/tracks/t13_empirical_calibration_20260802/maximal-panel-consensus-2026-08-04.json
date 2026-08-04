@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "consensus_id": "t13-maximal-public-context-panel-consensus-v1",
+  "recorded_at": "2026-08-04T14:45:00Z",
+  "review_target": {
+    "repository_commit": "46816a77e9878206c03591361e0b1fec4d233e1b",
+    "packet_path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-public-context-packet-v0.2.0.json",
+    "packet_sha256": "9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05",
+    "acquisition_target_commit": "ae690c19b83147cbaa6dd2b00b177e3fd25910da"
+  },
+  "receipts": [
+    {
+      "role": "provenance_and_triangulation",
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-panel-provenance-review-2026-08-04.json",
+      "sha256": "d26bc72b9205e1171aa5b4e7122ba4d38d664c62e9199114ddbb84660acb4e5e",
+      "decision": "pass"
+    },
+    {
+      "role": "health_economics_and_rights",
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-panel-economics-rights-review-2026-08-04.json",
+      "sha256": "ab4c146c4b8017afb546adc230a145275627586a278ea7715b71a54f3865b514",
+      "decision": "pass_with_limitations"
+    },
+    {
+      "role": "reproducibility_security_and_governance",
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-panel-reproducibility-governance-review-2026-08-04.json",
+      "sha256": "713e41ad0734d8576ad793b418e607845c36c160d8347d248619f71061056129",
+      "decision": "pass"
+    }
+  ],
+  "disposition": "pass_public_context_research_only_defer_empirical_calibration",
+  "blocking_findings": [],
+  "resolved_review_findings": [
+    "authority_rank added to all 50 source receipts and enforced",
+    "packet rights matrix expanded to all 50 sources and exact equality enforced",
+    "immutable acquisition target explicitly enforced",
+    "stale-bundle, promotion, parameter-role, target, rights-matrix, and authority-rank mutation paths fail closed"
+  ],
+  "limitations": [
+    "Public sources do not identify an attributable displaced programme, stable displaced-programme ID, or baseline unit.",
+    "No Atlas-approved programme-aligned empirical parameter packet or joint uncertainty distribution is present.",
+    "Provisional secondary-care aggregates are descriptive administrative context, not patient counts, causal displacement, or confidential prices.",
+    "Source terms remain controlling; rights classifications do not constitute legal advice."
+  ],
+  "claim_boundary": "Empirical, payer, HTA, policy, regulatory, calibrated, raw-data, confidential-data, and decision-use claims remain disabled.",
+  "invalidation": "Any source, byte hash, authority rank, rights classification, transformation, packet, destination, acquisition commit, or review-target commit change invalidates this consensus."
+}

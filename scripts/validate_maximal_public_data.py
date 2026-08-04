@@ -27,6 +27,8 @@ EXPECTED = {
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 RIGHTS = {"reuse_confirmed", "citation_only", "terms_ambiguous", "restricted", "prohibited"}
 PACKET = "maximal-public-context-packet-v0.2.0.json"
+REVIEW_TARGET_COMMIT = "46816a77e9878206c03591361e0b1fec4d233e1b"
+CONSENSUS = "maximal-panel-consensus-2026-08-04.json"
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -149,6 +151,31 @@ def acquisition_violations(track: Path = TRACK) -> list[str]:
         ] if isinstance(matrix, list) else []
         if actual_matrix != expected_matrix:
             violations.append("WP7: packet rights matrix does not exactly cover WP1-WP6 sources")
+    if track == TRACK:
+        consensus_path = track / CONSENSUS
+        if not consensus_path.is_file():
+            violations.append("WP7: missing exact-target panel consensus")
+        else:
+            consensus = _load(consensus_path)
+            review_target = consensus.get("review_target", {})
+            if review_target.get("repository_commit") != REVIEW_TARGET_COMMIT:
+                violations.append("WP7: panel consensus review target is stale")
+            if packet_path.is_file() and review_target.get("packet_sha256") != hashlib.sha256(packet_path.read_bytes()).hexdigest():
+                violations.append("WP7: panel consensus packet digest is stale")
+            receipts = consensus.get("receipts", [])
+            if not isinstance(receipts, list) or len(receipts) != 3:
+                violations.append("WP7: panel consensus must contain three role-separated receipts")
+            else:
+                for receipt in receipts:
+                    path = ROOT / receipt.get("path", "")
+                    if not path.is_file():
+                        violations.append(f"WP7: missing panel receipt {receipt.get('path')}")
+                    elif hashlib.sha256(path.read_bytes()).hexdigest() != receipt.get("sha256"):
+                        violations.append(f"WP7: stale panel receipt {receipt.get('path')}")
+            if consensus.get("blocking_findings") != []:
+                violations.append("WP7: panel consensus has blocking findings")
+            if consensus.get("disposition") != "pass_public_context_research_only_defer_empirical_calibration":
+                violations.append("WP7: panel consensus disposition exceeds public-context scope")
     return violations
 
 

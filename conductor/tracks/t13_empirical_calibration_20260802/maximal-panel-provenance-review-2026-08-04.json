@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "review_type": "independent_subagent_panel_provenance_and_triangulation_review",
+  "reviewed_at": "2026-08-04T14:21:00Z",
+  "reviewer": {
+    "id": "codex-subagent-provenance-reviewer",
+    "role": "independent provenance, authority, triangulation, rights-matrix, and packet-boundary reviewer",
+    "independence": "The reviewer did not assemble WP2, WP4, WP5, WP6, or the WP7 packet and changed no reviewed target. The reviewer previously authored WP1 and WP3 receipts, so their external acquisition assertions are not treated as independently re-performed; their Git-object hashes, boundaries, and packet references were independently rechecked."
+  },
+  "target": {
+    "repository_commit": "46816a77e9878206c03591361e0b1fec4d233e1b",
+    "commit_subject": "fix(t13): harden packet governance validation",
+    "packet_path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-public-context-packet-v0.2.0.json",
+    "packet_sha256": "9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05",
+    "packet_bytes": 22074,
+    "packet_id": "atlas-ta1121-acoramidis-public-context-derived-v0.2.0",
+    "packet_acquisition_target_commit": "ae690c19b83147cbaa6dd2b00b177e3fd25910da"
+  },
+  "result": "pass",
+  "checks": [
+    {
+      "id": "exact-target-binding",
+      "status": "pass",
+      "evidence": "All reviewed bytes were loaded from Git objects at commit 46816a77e9878206c03591361e0b1fec4d233e1b. The working tree was not used as review authority."
+    },
+    {
+      "id": "packet-digest",
+      "status": "pass",
+      "evidence": "The exact committed packet is 22,074 bytes and has SHA-256 9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05."
+    },
+    {
+      "id": "deterministic-rebuild",
+      "status": "pass",
+      "evidence": "A clean git-archive of the target rebuilt the packet byte-for-byte. The default acquisition target is immutable commit ae690c19b83147cbaa6dd2b00b177e3fd25910da rather than ambient HEAD."
+    },
+    {
+      "id": "bundle-references",
+      "status": "pass",
+      "evidence": "Every WP1-WP6 reference resolves at the exact target and its recorded digest equals the Git-object byte digest.",
+      "bundle_digests": [
+        {"work_package": "WP1", "sha256": "550ed22f99f9387d20a523592c3fa713d8a09ad0335f7dd80622c50e216b962f"},
+        {"work_package": "WP2", "sha256": "5fa33bd04712008246e17e37fa1bd34824c2d3236f6f349fef9cadc63afb2c92"},
+        {"work_package": "WP3", "sha256": "55a8473193ede96d7949d7eba12001703142a023a8df290e203995eddb12a7c2"},
+        {"work_package": "WP4", "sha256": "92ec02c0c480809380397ee7cc813959f337e290e66e658a4f403dfd7b850742"},
+        {"work_package": "WP5", "sha256": "bca9125af8fff530dd2ce33a4a7fab35166797b96c42636b5fcc0ab7698761d0"},
+        {"work_package": "WP6", "sha256": "ec5bf53d54ddf50151fc98fb1642adf0e435999a2ab84cd3bf9578047cd70bc8"}
+      ]
+    },
+    {
+      "id": "source-receipt-integrity",
+      "status": "pass",
+      "evidence": "The six bundles contain 50 unique source IDs, 51 recorded byte or service hashes representing 45 unique payload digests, and 17 explicit negative or deferred closures. No source lacks a valid hash form or an explicit no-hash reason under the repository validator."
+    },
+    {
+      "id": "authority-ranking",
+      "status": "pass",
+      "evidence": "All 50 sources retain validated integer authority ranks: 40 rank-1 primary authority, administrative, registry, or terms records; 9 rank-2 secondary authoritative, publisher, or bibliographic records; and 1 rank-3 scholarly method record. Rank does not convert a commercial, bibliographic, or contextual record into NHS decision authority."
+    },
+    {
+      "id": "complete-source-rights-matrix",
+      "status": "pass",
+      "evidence": "The packet carries exactly one ordered matrix row for each of the 50 unique source receipts. Every row matches its bundle source_id, work_package, authority_rank, and terms classification. The matrix contains 20 reuse_confirmed, 24 citation_only, and 6 terms_ambiguous rows. Forty-six rows are limited to inventory or source-receipt context; only four reuse-confirmed WP6 terms sources are eligible for the enumerated approved-derived projection."
+    },
+    {
+      "id": "rights-boundary",
+      "status": "pass",
+      "evidence": "WP6 projects only enumerated permitted fields. Citation-only and ambiguous records remain inventory-only, raw payload redistribution is prohibited, and public accessibility or successful hashing does not itself authorize reuse or promotion."
+    },
+    {
+      "id": "triangulation-and-independence",
+      "status": "pass",
+      "evidence": "National descriptive context is supported across NICE, NHS England, NHSBSA, ODS, local ICB or formulary, regulator, registry, and literature publishers. Repeated hashes are treated as the same underlying record, not independent corroboration. PubMed, Europe PMC, and Crossref overlap is indexing redundancy rather than independent substantive evidence."
+    },
+    {
+      "id": "identifier-non-inference",
+      "status": "pass",
+      "evidence": "TA1121, X24, RAL, QU9, PBC 10X, E13/S(HSS)/c, 02B, medicine identifiers, and organisation relationships remain guidance, organisation, category, service, or product identifiers. None is transformed into an attributable displaced-programme identifier."
+    },
+    {
+      "id": "negative-and-deferred-receipts",
+      "status": "pass",
+      "evidence": "Access denials, absent disclosure logs, provisional-versus-finalised timing, missing indication or displacement, unverifiable procurement results, restricted commercial price, heterogeneous article rights, and missing empirical model inputs have explicit negative or deferred closures and retry conditions."
+    },
+    {
+      "id": "packet-boundaries",
+      "status": "pass",
+      "evidence": "The packet declares repository-derived authority only, has an empty parameter_roles object, disables empirical calibration, prohibits decision use, requires Atlas owner approval for any future calibration packet, and excludes payer, HTA, policy, regulatory, calibrated, raw-data, and confidential-data claims."
+    },
+    {
+      "id": "governance-validator",
+      "status": "pass",
+      "evidence": "The validator now checks authority ranks, exact bundle hashes in normal and copied-track contexts, the governed immutable acquisition target, exact ordered source-ID and classification coverage by the rights matrix, empty parameter roles, and disabled empirical and decision-use promotion."
+    },
+    {
+      "id": "repository-validation",
+      "status": "pass",
+      "evidence": "In a clean git-archive of the target, scripts/validate_maximal_public_data.py passed; all 8 focused tests passed, including stale-bundle, acquisition-target, empirical-promotion, and parameter-role fail-closed tests; compileall passed for the builder, validator, and focused test."
+    }
+  ],
+  "findings": [
+    {
+      "severity": "informational",
+      "status": "accepted_boundary",
+      "finding": "The packet is a repository-derived public-context packet, not an Atlas-approved empirical calibration packet.",
+      "disposition": "Keep empirical calibration and decision use disabled until a separately approved, programme-aligned Atlas packet satisfies the external evidence contract."
+    },
+    {
+      "severity": "informational",
+      "status": "accepted_boundary",
+      "finding": "Repeated byte hashes occur when one authoritative record supports multiple work-package views.",
+      "disposition": "Treat identical digests as one underlying source for independence counts while preserving work-package-specific field mappings."
+    },
+    {
+      "severity": "informational",
+      "status": "accepted_boundary",
+      "finding": "The repository validator compares ordered rights-matrix source IDs and classifications; this review additionally verified work-package, rank, and permitted-use consistency for all 50 rows.",
+      "disposition": "The deterministic builder and this exact-target review supply the additional assurance. Add direct validator assertions for these fields if the matrix becomes an external interface."
+    },
+    {
+      "severity": "informational",
+      "status": "accepted_boundary",
+      "finding": "Finalised and provisional SCMD observations are not interchangeable, and PCA non-observation is not evidence of treatment absence.",
+      "disposition": "Retain provisional labels, dataset-scope limitations, and the finalised-data refresh condition."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "The review verifies committed receipts, bundle digests, builder determinism, complete rights-matrix mappings, and internal provenance bindings. Because raw public payloads are intentionally not archived, it cannot reconstruct every historical external response after a publisher changes it.",
+    "WP1 and WP3 acquisition assertions were authored by this reviewer in an earlier delegated role; this review rechecks their committed bytes and boundaries but is not an independent re-performance of every external request.",
+    "Official sources triangulate descriptive context but do not supply an attributable displaced programme, stable displaced-programme ID, baseline unit, confidential net price, empirical parameter roles, or joint uncertainty distribution.",
+    "Bibliographic indexes may describe the same publications and do not become independent substantive validation merely because multiple indexes return them.",
+    "Terms classifications remain source- and field-specific. A public URL, successful retrieval, or recorded hash does not itself authorize payload redistribution or claim promotion."
+  ],
+  "invalidation": {
+    "rule": "This review is valid only for repository commit 46816a77e9878206c03591361e0b1fec4d233e1b and packet SHA-256 9b96fa1f4e1733182ad23a9e7fa8a22a856117f1f592b7a8eb36181943d61d05.",
+    "triggers": [
+      "repository target commit changes",
+      "packet bytes or digest change",
+      "any WP1-WP6 bundle path or digest changes",
+      "any rights-matrix row, classification, authority rank, work package, or permitted use changes",
+      "source URL, redirect, revision, ETag, Last-Modified value, or source-byte hash changes",
+      "transformation, uncertainty, purpose, destination, or promotion boundary changes",
+      "a negative or deferred source becomes available or a provisional dataset is finalised",
+      "new Atlas, NHS displacement, owner-approval, or release-authorization evidence is introduced"
+    ],
+    "required_action": "Rebuild the packet deterministically, reacquire or re-adjudicate affected receipts, rerun source-independence and boundary review, and issue a new exact-commit panel receipt."
+  },
+  "approval_boundary": "Pass authorizes only the packet's stated research-only public-context eligibility at the reviewed target. It does not authorize empirical calibration, NHS payer or displacement claims, HTA or policy conclusions, regulatory claims, raw or confidential data use, or decision support."
+}
