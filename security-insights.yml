@@ -1,0 +1,32 @@
+header:
+  schema-version: 2.2.0
+  last-updated: '2026-08-05'
+  last-reviewed: '2026-08-05'
+  url: https://github.com/edithatogo/new-drug-reimbursement-game/blob/main/security-insights.yml
+  comment: |
+    Machine-readable security posture for the research-only reimbursement-game software.
+
+project:
+  name: new drug reimbursement game
+  administrators:
+    - name: Dylan Mordaunt
+      primary: true
+  repositories:
+    - name: new-drug-reimbursement-game
+      url: https://github.com/edithatogo/new-drug-reimbursement-game
+      comment: Research-only Python and Rust implementation.
+  vulnerability-reporting:
+    reports-accepted: true
+    bug-bounty-available: false
+
+repository:
+  url: https://github.com/edithatogo/new-drug-reimbursement-game
+  status: active
+  accepts-change-request: true
+  accepts-automated-change-request: true
+  security:
+    assessments:
+      self:
+        comment: |
+          CI, coverage, dependency review, Scorecard and SBOM evidence are automated.
+          Research-only claim boundaries and evidence approvals remain separately governed.

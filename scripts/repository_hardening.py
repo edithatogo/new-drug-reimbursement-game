@@ -17,13 +17,18 @@ RECEIPT = ROOT / "docs/generated/repository-hardening-receipt.json"
 TRACKED = (
     ".github/CODEOWNERS",
     ".github/pull_request_template.md",
-    ".github/renovate.json5",
     ".github/workflows/ci.yml",
+    ".github/workflows/dependency-review.yml",
+    ".github/workflows/sbom.yml",
+    ".github/workflows/scorecard.yml",
     ".github/ISSUE_TEMPLATE/bug_report.md",
     ".github/ISSUE_TEMPLATE/feature_request.md",
     "AGENTS.md",
     "CONTRIBUTING.md",
+    "codecov.yml",
+    "renovate.json",
     "SECURITY.md",
+    "security-insights.yml",
 )
 
 
@@ -38,9 +43,11 @@ def expected() -> dict[str, object]:
         "scope": "repository-owned GitHub metadata and contribution/security context",
         "files": files,
         "workflow_controls": {
-            "permissions": "contents: read",
+            "default_permissions": "contents: read",
             "concurrency": "cancel-in-progress",
             "job_timeouts_minutes": 30,
+            "immutable_actions": True,
+            "coverage_upload": "codecov OIDC",
         },
         "external_gates": ["branch rulesets", "repository visibility", "required checks"],
     }
