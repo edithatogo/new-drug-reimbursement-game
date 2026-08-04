@@ -37,7 +37,10 @@ python scripts/validate_scope.py
 python -m unittest discover -s tests -p 'test_*.py'
 python -m compileall -q src scripts tests
 python scripts/discover_ecosystem.py --offline-fixture-mode
+ty check src
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 ```
+
+Before opening or updating a pull request, also run `basedpyright`.

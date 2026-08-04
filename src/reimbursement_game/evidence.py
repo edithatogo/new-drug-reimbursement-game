@@ -288,7 +288,7 @@ def _role_number(role: ParameterRole, value: float, field: str) -> float:
         raise ValueError(f"{field} for {role.value} must be positive")
     if role is ParameterRole.PRESENT_VALUE_MULTIPLIER and value <= 1:
         raise ValueError(f"{field} for phi must be greater than 1")
-    if role is ParameterRole.HORIZON and not value.is_integer():
+    if role is ParameterRole.HORIZON and not float(value).is_integer():
         raise ValueError(f"{field} for horizon must be a whole number of years")
     return value
 

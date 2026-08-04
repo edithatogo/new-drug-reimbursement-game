@@ -42,8 +42,11 @@ jobs:
         run: python scripts/validate_packaging.py
       - name: Ruff
         run: ruff check .
-      - name: Mypy
-        run: mypy
+      - name: Routine type check (ty)
+        run: ty check src
+      - name: Pre-PR type check (basedpyright)
+        if: github.event_name == 'pull_request'
+        run: basedpyright
 
   rust:
     runs-on: ubuntu-latest

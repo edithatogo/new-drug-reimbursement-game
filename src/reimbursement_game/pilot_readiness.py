@@ -324,7 +324,7 @@ def _candidate_from_mapping(
             raise ValueError("candidate value must be positive")
         if ParameterRole.PRESENT_VALUE_MULTIPLIER in roles and number <= 1:
             raise ValueError("present-value multiplier candidate must be greater than 1")
-        if ParameterRole.HORIZON in roles and not number.is_integer():
+        if ParameterRole.HORIZON in roles and not float(number).is_integer():
             raise ValueError("numeric horizon candidate must be a whole number of years")
     unit = _text(value, "unit")
     expected_units = {_role_unit(role, context) for role in roles}

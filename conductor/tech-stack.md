@@ -1,6 +1,7 @@
 # Tech stack
 
-- Python 3.11 or later with setuptools, Ruff, mypy, and unittest.
+- Python 3.11 or later with setuptools, Ruff, `ty` for routine type checking,
+  basedpyright before pull requests, and unittest.
 - Stable Rust workspace with rustfmt, Clippy, and Cargo tests.
 - RDF, JSON-LD, and SHACL artifacts aligned to pinned UOGTO semantics.
 - GitHub Actions for hosted Python and Rust validation.
