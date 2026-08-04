@@ -47,7 +47,7 @@
 
 ## Review Fixes
 
-- [~] Replace legacy Mypy usage with routine `ty` and pre-PR basedpyright gates, fixing type issues exposed by `ty`.
+- [x] Replace legacy Mypy usage with routine `ty` and pre-PR basedpyright gates, fixing type issues exposed by `ty`. (`27e65bf`)
 - [x] Add and validate authority ranks for every maximal-acquisition source after panel review identified incomplete receipt fields. (`ae690c1`)
 - [x] Freeze packet target semantics, aggregate all 50 source-rights decisions, and add fail-closed mutation tests. (`46816a7`)
 - [x] Correct Ruff import ordering found by hosted CI without changing reviewed packet bytes. (`2778402`)
