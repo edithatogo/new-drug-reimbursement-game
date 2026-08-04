@@ -9,17 +9,24 @@
     ".github/ISSUE_TEMPLATE/bug_report.md": "1e8fdba4c9a3441dec8d8cec77410a1f8d8f87deabc70e5f21ab9b6c46ef672a",
     ".github/ISSUE_TEMPLATE/feature_request.md": "9bc7f070f41117b6829eff526e537da9823240531257bc8af8a75f65cc1bbe6f",
     ".github/pull_request_template.md": "bd3cff8fbdaab58dfd58ca93862cc4a2be180c0d93137dffd4ce7f157e840cec",
-    ".github/renovate.json5": "b086df495076a6930e57d18be5cc222011776e068f789c4101cab48fd3be6ce8",
-    ".github/workflows/ci.yml": "49bf26a06bfda2abd602192baf97ad92fc69f047bc203bfa6c321fa2d8dae5b6",
+    ".github/workflows/ci.yml": "d34fca8116efb1b266a976fe9eda75b23e9055fbd00a63a3b907000e7f266e79",
+    ".github/workflows/dependency-review.yml": "15f54e3fbb3df0ada8ce7a9176a2a666d8bb83ce79a779d2e1120398f9f4ed95",
+    ".github/workflows/sbom.yml": "c20b1525e1057020bec9148653cf5f73c3cde5004e3329a193923be97c552362",
+    ".github/workflows/scorecard.yml": "e63ae940052634c9a18476a118f835de6b368f3881b9fc6880e916946775e72e",
     "AGENTS.md": "af0e4be2d2bd8fa8635ccd10cf2483c855cc6dc4fc8c3281e0f2756c32a84d7a",
     "CONTRIBUTING.md": "d04f331380909406247bf0d2ab7cddeea4a774705007f896fd5d03df764f909b",
-    "SECURITY.md": "bbeffbfdd9de1c0bade993012024bb249bfc6a64a39a380d035dcc482f7788f2"
+    "SECURITY.md": "bbeffbfdd9de1c0bade993012024bb249bfc6a64a39a380d035dcc482f7788f2",
+    "codecov.yml": "b8fc4b59a61218296bbfb9fd62c521d25ce05e30d9c7c07843c92040a8ed5db3",
+    "renovate.json": "016c46394515f51a4ae5c4194d947a2dd9e7b43db807424643a7b1b5bd759d73",
+    "security-insights.yml": "c0383f0b92f5c730e85c395f422b5a899cd80d06b7d96b01c167957fa08bc401"
   },
   "schema": "repository-hardening-receipt/v1",
   "scope": "repository-owned GitHub metadata and contribution/security context",
   "workflow_controls": {
     "concurrency": "cancel-in-progress",
-    "job_timeouts_minutes": 30,
-    "permissions": "contents: read"
+    "coverage_upload": "codecov OIDC",
+    "default_permissions": "contents: read",
+    "immutable_actions": true,
+    "job_timeouts_minutes": 30
   }
 }
