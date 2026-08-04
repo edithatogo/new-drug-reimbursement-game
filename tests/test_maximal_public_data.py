@@ -1,10 +1,11 @@
 import json
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
 
 from scripts.build_maximal_public_packet import ACQUISITION_TARGET_COMMIT, build
-from scripts.validate_maximal_public_data import EXPECTED, acquisition_violations
+from scripts.validate_maximal_public_data import EXPECTED, PACKET, TRACK, acquisition_violations
 
 
 class MaximalPublicDataValidationTests(unittest.TestCase):
@@ -59,6 +60,42 @@ class MaximalPublicDataValidationTests(unittest.TestCase):
 
     def test_default_packet_target_is_immutable(self) -> None:
         self.assertEqual(build()["acquisition_target_commit"], ACQUISITION_TARGET_COMMIT)
+
+    def _copy_acquisition(self, directory: str) -> Path:
+        target = Path(directory)
+        for filename in [*EXPECTED.values(), PACKET]:
+            shutil.copyfile(TRACK / filename, target / filename)
+        return target
+
+    def test_stale_bundle_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            target = self._copy_acquisition(directory)
+            with (target / EXPECTED[1]).open("a", encoding="utf-8") as stream:
+                stream.write(" ")
+            violations = acquisition_violations(target)
+        self.assertTrue(any("stale referenced bundle" in item for item in violations))
+
+    def test_empirical_promotion_and_parameter_roles_fail_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            target = self._copy_acquisition(directory)
+            path = target / PACKET
+            packet = json.loads(path.read_text(encoding="utf-8"))
+            packet["promotion"]["empirical_calibration"] = "enabled"
+            packet["parameter_roles"] = {"n": 1}
+            path.write_text(json.dumps(packet), encoding="utf-8")
+            violations = acquisition_violations(target)
+        self.assertTrue(any("empirical or decision-use boundary" in item for item in violations))
+        self.assertTrue(any("must not contain calibration parameter roles" in item for item in violations))
+
+    def test_acquisition_target_mismatch_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            target = self._copy_acquisition(directory)
+            path = target / PACKET
+            packet = json.loads(path.read_text(encoding="utf-8"))
+            packet["acquisition_target_commit"] = "0" * 40
+            path.write_text(json.dumps(packet), encoding="utf-8")
+            violations = acquisition_violations(target)
+        self.assertTrue(any("governed immutable commit" in item for item in violations))
 
 
 if __name__ == "__main__":

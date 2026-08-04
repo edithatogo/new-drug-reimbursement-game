@@ -9,6 +9,11 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
+try:
+    from build_maximal_public_packet import ACQUISITION_TARGET_COMMIT
+except ModuleNotFoundError:  # Imported as scripts.validate_maximal_public_data.
+    from scripts.build_maximal_public_packet import ACQUISITION_TARGET_COMMIT
+
 ROOT = Path(__file__).resolve().parents[1]
 TRACK = ROOT / "conductor/tracks/t13_empirical_calibration_20260802"
 EXPECTED = {
@@ -116,7 +121,7 @@ def acquisition_violations(track: Path = TRACK) -> list[str]:
                 if not isinstance(reference, dict) or not isinstance(reference.get("path"), str):
                     violations.append("WP7: invalid bundle reference")
                     continue
-                referenced = ROOT / reference["path"]
+                referenced = (ROOT / reference["path"]) if track == TRACK else (track / Path(reference["path"]).name)
                 if not referenced.is_file():
                     violations.append(f"WP7: missing referenced bundle {reference['path']}")
                 elif hashlib.sha256(referenced.read_bytes()).hexdigest() != reference.get("sha256"):
@@ -128,6 +133,22 @@ def acquisition_violations(track: Path = TRACK) -> list[str]:
             violations.append("WP7: empirical or decision-use boundary is not fail-closed")
         if packet.get("authority") != "repository-derived; not an Atlas-approved calibration packet":
             violations.append("WP7: packet authority is overstated")
+        target = packet.get("acquisition_target_commit")
+        if target != ACQUISITION_TARGET_COMMIT or not isinstance(target, str) or not re.fullmatch(r"[0-9a-f]{40}", target):
+            violations.append("WP7: acquisition target does not match the governed immutable commit")
+        matrix = packet.get("source_terms", {}).get("all_source_rights_matrix", [])
+        expected_matrix = [
+            (source["source_id"], source["terms"]["classification"])
+            for number in EXPECTED
+            for source in _load(track / EXPECTED[number])["sources"]
+        ]
+        actual_matrix = [
+            (item.get("source_id"), item.get("classification"))
+            for item in matrix
+            if isinstance(item, dict)
+        ] if isinstance(matrix, list) else []
+        if actual_matrix != expected_matrix:
+            violations.append("WP7: packet rights matrix does not exactly cover WP1-WP6 sources")
     return violations
 
 

@@ -39,6 +39,24 @@ def _sha256(path: Path) -> str:
 def build(target_commit: str | None = None) -> dict[str, Any]:
     bundles = [(TRACK / filename, _load(TRACK / filename)) for filename in INPUTS]
     rights = bundles[-1][1]
+    rights_matrix = [
+        {
+            "source_id": source["source_id"],
+            "work_package": bundle["work_package"],
+            "authority_rank": source["authority_rank"],
+            "classification": source["terms"]["classification"],
+            "permitted_use": "approved-derived projection only"
+            if source["source_id"] in {
+                "wp6-crossref-metadata-terms",
+                "wp6-clinicaltrials-api-terms",
+                "wp6-pmc12304488-article-licence",
+                "wp6-nice-content-reuse",
+            }
+            else "inventory or source-receipt context only",
+        }
+        for _, bundle in bundles
+        for source in bundle["sources"]
+    ]
     return {
         "schema_version": "1.0",
         "packet_id": "atlas-ta1121-acoramidis-public-context-derived-v0.2.0",
@@ -75,6 +93,7 @@ def build(target_commit: str | None = None) -> dict[str, Any]:
             "reuse_confirmed": rights["coverage"]["reuse_confirmed"],
             "inventory_only": rights["coverage"]["citation_only"] + rights["coverage"]["terms_ambiguous"],
             "raw_payload_redistribution": "prohibited",
+            "all_source_rights_matrix": rights_matrix,
         },
         "parameter_roles": {},
         "supported_context": [

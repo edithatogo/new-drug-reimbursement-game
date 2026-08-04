@@ -143,7 +143,359 @@
       "articles without verified open licences",
       "Europe PMC corpus as a whole"
     ],
-    "raw_payload_redistribution": "prohibited"
+    "raw_payload_redistribution": "prohibited",
+    "all_source_rights_matrix": [
+      {
+        "source_id": "nice-ta1121-overview-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nice-ta1121-evidence-index-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nice-ta1121-committee-papers-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "terms_ambiguous",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nice-ta1121-resource-impact-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-tafamidis-national-context-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-specialised-service-index-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-amyloidosis-service-specification-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-prescribed-specialised-services-manual-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "south-yorkshire-imoc-minutes-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "terms_ambiguous",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "cheshire-merseyside-nice-adherence-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "terms_ambiguous",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "oxfordshire-formulary-acoramidis-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "terms_ambiguous",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "buckinghamshire-formulary-acoramidis-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "terms_ambiguous",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ucl-national-amyloidosis-centre-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 2,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-publication-scheme-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-foi-policy-20260804",
+        "work_package": "WP1-authority-and-committee-corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhsbsa-finalised-scmd-catalogue-and-202603",
+        "work_package": "WP2_secondary_care_and_prescribing_aggregates",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhsbsa-provisional-scmd-catalogue-and-202605",
+        "work_package": "WP2_secondary_care_and_prescribing_aggregates",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhsbsa-pca-icb-snomed-2025-2026-existing-stream-reconciliation",
+        "work_package": "WP2_secondary_care_and_prescribing_aggregates",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ods-x24-nhs-england-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ods-ral-royal-free-london-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ods-qu9-bob-icb-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ods-bob-name-search-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-ta1121-resource-impact-identifiers-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-amyloidosis-service-id-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nhse-amyloidosis-service-code-02b-20260804",
+        "work_package": "WP3-organisations-and-stable-identifiers",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "mhra-acoramidis-uk-authorisation",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ema-beyonttra-epar",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "ema-beyonttra-product-information",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "clinicaltrials-gov-acoramidis-enumeration",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "clinicaltrials-gov-nct03860935",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "nice-ta1121-resource-impact-price-boundary",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "sec-bridgebio-submissions-index",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 2,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "bridgebio-uk-authorisation-disclosure",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 2,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "uk-procurement-search-acoramidis",
+        "work_package": "WP4_regulatory_clinical_and_commercial_context",
+        "authority_rank": 2,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-pubmed-clinical-enumeration",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 2,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-pubmed-economic-enumeration",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 2,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-europe-pmc-focused-economic-corpus",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 2,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-crossref-acoramidis-title-corpus",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 2,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-crossref-tafamidis-economic-ranked-corpus",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 2,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-clinicaltrials-gov-intervention-corpus",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-relative-survival-open-article",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 3,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-nice-dsu-tsd14",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-nice-dsu-tsd21",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp5-nice-economic-evaluation-manual",
+        "work_package": "WP5_literature_and_methods_corpus",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp6-crossref-metadata-terms",
+        "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "approved-derived projection only"
+      },
+      {
+        "source_id": "wp6-clinicaltrials-api-terms",
+        "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "approved-derived projection only"
+      },
+      {
+        "source_id": "wp6-europe-pmc-platform-terms",
+        "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+        "authority_rank": 1,
+        "classification": "terms_ambiguous",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp6-ncbi-platform-policy",
+        "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+        "authority_rank": 1,
+        "classification": "citation_only",
+        "permitted_use": "inventory or source-receipt context only"
+      },
+      {
+        "source_id": "wp6-pmc12304488-article-licence",
+        "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "approved-derived projection only"
+      },
+      {
+        "source_id": "wp6-nice-content-reuse",
+        "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+        "authority_rank": 1,
+        "classification": "reuse_confirmed",
+        "permitted_use": "approved-derived projection only"
+      }
+    ]
   },
   "parameter_roles": {},
   "supported_context": [
