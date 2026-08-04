@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "work_package": "WP5_literature_and_methods_corpus",
+  "generated_at": "2026-08-04T13:49:01Z",
+  "scope": {
+    "decision_context": "TA1121 acoramidis versus tafamidis for ATTR-CM, England, research-only",
+    "search_terms": [
+      "acoramidis",
+      "tafamidis",
+      "ATTR-CM",
+      "transthyretin amyloid cardiomyopathy",
+      "cost-effectiveness",
+      "budget impact",
+      "reimbursement",
+      "affordability"
+    ],
+    "retention": "No API response, article XML, PDF, abstract, figure, table, or full text is committed; only retrieval metadata, byte hashes, bibliographic identifiers, bounded method facts, and negative/deferred receipts are retained."
+  },
+  "sources": [
+    {
+      "source_id": "wp5-pubmed-clinical-enumeration",
+      "requested_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%29%20AND%20%28ATTR-CM%20OR%20transthyretin%20amyloid%20cardiomyopathy%29&retmode=json&retmax=1000&sort=pub+date",
+      "final_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%29%20AND%20%28ATTR-CM%20OR%20transthyretin%20amyloid%20cardiomyopathy%29&retmode=json&retmax=1000&sort=pub+date",
+      "publisher": "US National Library of Medicine",
+      "title": "PubMed ESearch clinical-context enumeration",
+      "retrieval": {"retrieved_at": "2026-08-04T13:53:00Z", "http_status": 200, "mime_type": "application/json; charset=UTF-8", "bytes": 7654, "sha256": "ffcbad953232156340bd76e34be840339cfad799551c6835c8924bcfdc585442", "reported_total": 517, "returned_ids": 517},
+      "terms": {"terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/", "classification": "citation_only", "rationale": "NCBI warns that database records may contain publisher-owned material; public indexing is not a blanket licence for article content."},
+      "supported_fields": ["complete PubMed identifier enumeration for the recorded query at retrieval time", "bounded discovery count", "query reproducibility"],
+      "unsupported_fields": ["article reuse rights", "model parameters", "NHS displacement", "comparative effectiveness"],
+      "refresh_rule": "Rerun monthly and whenever the query vocabulary, ESearch API behavior, or target commit changes."
+    },
+    {
+      "source_id": "wp5-pubmed-economic-enumeration",
+      "requested_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%20OR%20ATTR-CM%29%20AND%20%28economic%20OR%20cost-effectiveness%20OR%20budget%20impact%20OR%20reimbursement%29&retmode=json&retmax=100&sort=pub+date",
+      "final_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28acoramidis%20OR%20tafamidis%20OR%20ATTR-CM%29%20AND%20%28economic%20OR%20cost-effectiveness%20OR%20budget%20impact%20OR%20reimbursement%29&retmode=json&retmax=100&sort=pub+date",
+      "publisher": "US National Library of Medicine",
+      "title": "PubMed economic-context enumeration",
+      "retrieval": {"retrieved_at": "2026-08-04T13:45:00Z", "http_status": 200, "mime_type": "application/json; charset=UTF-8", "bytes": 4231, "sha256": "c2f151e858aaef0d58a9ff83fa0f1c3d62884096732cf18e1bc6eee25b97a72d", "reported_total": 81, "returned_ids": 81},
+      "terms": {"terms_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/", "classification": "citation_only", "rationale": "Identifiers and discovery metadata are retained for citation; article-level rights require separate adjudication."},
+      "supported_fields": ["complete identifier enumeration for the recorded query at retrieval time", "query reproducibility"],
+      "unsupported_fields": ["abstract or full-text reuse", "parameter extraction without article-level licence", "England-specific calibration"],
+      "refresh_rule": "Rerun monthly and after terminology or API changes."
+    },
+    {
+      "source_id": "wp5-europe-pmc-focused-economic-corpus",
+      "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28TITLE_ABS%3Aacoramidis%20OR%20TITLE_ABS%3Atafamidis%20OR%20TITLE_ABS%3A%22ATTR-CM%22%29%20AND%20%28TITLE_ABS%3A%22cost-effectiveness%22%20OR%20TITLE_ABS%3A%22budget%20impact%22%20OR%20TITLE_ABS%3Areimbursement%20OR%20TITLE_ABS%3Aaffordability%29&format=json&pageSize=100&resultType=core",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28TITLE_ABS%3Aacoramidis%20OR%20TITLE_ABS%3Atafamidis%20OR%20TITLE_ABS%3A%22ATTR-CM%22%29%20AND%20%28TITLE_ABS%3A%22cost-effectiveness%22%20OR%20TITLE_ABS%3A%22budget%20impact%22%20OR%20TITLE_ABS%3Areimbursement%20OR%20TITLE_ABS%3Aaffordability%29&format=json&pageSize=100&resultType=core",
+      "publisher": "Europe PMC, EMBL-EBI",
+      "title": "Focused ATTR-CM economic and reimbursement corpus",
+      "retrieval": {"retrieved_at": "2026-08-04T13:46:00Z", "http_status": 200, "mime_type": "application/json;charset=UTF-8", "bytes": 167941, "sha256": "c8c4e9959d1c87c79f226ac023eb6e1eafd2df219e327cec950d6af471311e8b", "reported_total": 25, "returned_records": 25},
+      "terms": {"terms_url": "https://www.ebi.ac.uk/about/terms-of-use/", "classification": "citation_only", "rationale": "The API result mixes article-specific licences. Corpus-level metadata is used for discovery only; each article needs its own licence decision."},
+      "supported_fields": ["PMID or PMCID where present", "DOI where present", "title", "publication year", "open-access flag", "deposited licence label"],
+      "unsupported_fields": ["uniform corpus reuse right", "validity of publisher-deposited licence", "transferable parameters"],
+      "selected_identifiers": ["PMID:42227177", "PMID:40528187", "PMID:32078382", "PMID:36102240", "PMID:37979789"],
+      "refresh_rule": "Rerun monthly; invalidate article-derived fields if DOI, PMCID, deposited licence, record revision, or response hash changes."
+    },
+    {
+      "source_id": "wp5-crossref-acoramidis-title-corpus",
+      "requested_url": "https://api.crossref.org/works?query.title=acoramidis&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
+      "final_url": "https://api.crossref.org/works?query.title=acoramidis&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
+      "publisher": "Crossref",
+      "title": "Crossref acoramidis title-query metadata",
+      "retrieval": {"retrieved_at": "2026-08-04T13:53:00Z", "http_status": 200, "mime_type": "application/json", "reported_total": 109, "returned_records": 109, "sha256": "a74500f316ed70803d225eaf35019d652a37aaea6916c93b6ed525c7bab99c6f", "pages": [{"offset": 0, "bytes": 59078, "sha256": "a74500f316ed70803d225eaf35019d652a37aaea6916c93b6ed525c7bab99c6f", "returned_records": 100}, {"offset": 100, "bytes": 6092, "sha256": "4b42d1ab926df3388ccd261c6a4c73b38ee0296fd96507261f2ab16c85da482e", "returned_records": 9}]},
+      "terms": {"terms_url": "https://www.crossref.org/documentation/retrieve-metadata/", "classification": "reuse_confirmed", "rationale": "Crossref states that bibliographic metadata is factual/not subject to copyright and Crossref-generated data is CC0; abstracts remain excluded."},
+      "supported_fields": ["DOI", "title", "publisher", "publication date", "record URL", "deposited licence URL", "work type"],
+      "unsupported_fields": ["abstracts", "article content", "publisher licence accuracy", "clinical or economic parameters"],
+      "refresh_rule": "Rerun all offsets whenever the Crossref result count, metadata, query semantics, or terms change."
+    },
+    {
+      "source_id": "wp5-crossref-tafamidis-economic-ranked-corpus",
+      "requested_url": "https://api.crossref.org/works?query.title=tafamidis%20cost-effectiveness&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
+      "final_url": "https://api.crossref.org/works?query.title=tafamidis%20cost-effectiveness&rows=100&select=DOI,title,publisher,published,URL,license,relation,type",
+      "publisher": "Crossref",
+      "title": "Crossref ranked tafamidis cost-effectiveness metadata",
+      "retrieval": {"retrieved_at": "2026-08-04T13:47:00Z", "http_status": 200, "mime_type": "application/json", "bytes": 39912, "sha256": "c6731ed829361c229181ff2ee50c4eedc99f91fa5d42206684d536e5fbce48a9", "reported_total": 802664, "returned_records": 100},
+      "terms": {"terms_url": "https://www.crossref.org/documentation/retrieve-metadata/", "classification": "reuse_confirmed", "rationale": "Only bibliographic metadata is projected; abstracts and content are excluded."},
+      "supported_fields": ["ranked discovery metadata", "DOI", "title", "publisher", "publication date"],
+      "unsupported_fields": ["query exhaustiveness because Crossref free-text ranking is broad", "abstracts", "article methods", "model inputs"],
+      "refresh_rule": "Treat as a lead generator; rerun monthly and replace with exact DOI lookups for selected records."
+    },
+    {
+      "source_id": "wp5-clinicaltrials-gov-intervention-corpus",
+      "requested_url": "https://clinicaltrials.gov/api/v2/studies?query.cond=Transthyretin%20Amyloid%20Cardiomyopathy&query.intr=acoramidis%20OR%20tafamidis&pageSize=100&format=json",
+      "final_url": "https://clinicaltrials.gov/api/v2/studies?query.cond=Transthyretin%20Amyloid%20Cardiomyopathy&query.intr=acoramidis%20OR%20tafamidis&pageSize=100&format=json",
+      "publisher": "US National Library of Medicine",
+      "title": "ClinicalTrials.gov ATTR-CM acoramidis/tafamidis registry corpus",
+      "retrieval": {"retrieved_at": "2026-08-04T13:44:00Z", "http_status": 200, "mime_type": "application/json", "etag": "\"4/0.34.1/msefgh6w\"", "bytes": 2380563, "sha256": "4218815f2f43dd3024979ae9a178fee92a23951e97c09ed7c952ffa7e3fad9cd", "returned_records": 35},
+      "terms": {"terms_url": "https://clinicaltrials.gov/data-api/about-api/terms", "classification": "reuse_confirmed", "rationale": "ClinicalTrials.gov identifies API data as CC0 subject to attribution, update notices, and its disclaimer; uploaded documents can have separate rights and are excluded."},
+      "supported_fields": ["NCT identifier", "official and brief title", "study status", "study type", "interventions", "conditions", "dates", "sponsor", "outcome definitions"],
+      "unsupported_fields": ["uploaded document reuse", "results not submitted", "causal comparison across trials", "NHS population transferability", "cost or displacement parameters"],
+      "selected_identifiers": ["NCT03860935", "NCT02791230", "NCT04108091", "NCT07116473", "NCT07695701"],
+      "refresh_rule": "Rerun monthly and invalidate derived registry fields when ETag, record version, status, outcome, or API terms change."
+    },
+    {
+      "source_id": "wp5-relative-survival-open-article",
+      "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
+      "publisher": "Medical Decision Making via Europe PMC",
+      "title": "Relative Survival Modeling for Appraising the Cost-Effectiveness of Life-Extending Treatments: An Application to Tafamidis for ATTR-CM",
+      "retrieval": {"retrieved_at": "2026-08-04T13:48:00Z", "http_status": 200, "mime_type": "application/xml", "bytes": 101076, "sha256": "922f9bddf10e1ebf595a65dbb704d6bafcfd5492947bcda1d3603e33b244ac1d", "pmid": "40528187", "pmcid": "PMC12304488", "doi": "10.1177/0272989X251342459"},
+      "terms": {"terms_url": "https://creativecommons.org/licenses/by-nc/4.0/", "classification": "reuse_confirmed", "rationale": "Europe PMC deposits the article as CC BY-NC; bounded research-only derived method facts are permitted with attribution. No article bytes or substantial text are retained."},
+      "supported_fields": ["relative-survival method definition", "background mortality incorporation", "candidate survival distributions", "model-selection criteria", "extrapolation validation horizon", "reported uncertainty approach"],
+      "unsupported_fields": ["TA1121 acoramidis calibration", "England-specific baseline risks", "NHS displacement", "commercial price", "transfer of ATTR-ACT patient-level data"],
+      "derived_method_facts": [
+        "Relative-survival models add an independently modelled excess hazard to externally defined expected mortality.",
+        "Candidate extrapolations included exponential, Weibull, Gompertz, log-logistic, lognormal, generalized gamma, and gamma forms.",
+        "Selection considered statistical fit, empirical hazard shape, clinical plausibility, and validation against long-term extension observations through 72 months.",
+        "Country-specific life tables informed expected mortality; uncertainty in extrapolation remained material and alternative distributions produced different mean survival."
+      ],
+      "attribution": "Young R, Said J, Large S. Medical Decision Making. 2025. DOI 10.1177/0272989X251342459. CC BY-NC 4.0.",
+      "refresh_rule": "Invalidate if the PMCID XML hash, deposited licence, correction/retraction status, DOI metadata, transformation wording, destination, or target commit changes."
+    },
+    {
+      "source_id": "wp5-nice-dsu-tsd14",
+      "requested_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD14-Survival-analysis.updated-March-2013.v2.pdf",
+      "final_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD14-Survival-analysis.updated-March-2013.v2.pdf",
+      "publisher": "NICE Decision Support Unit, University of Sheffield",
+      "title": "TSD 14: Survival analysis for economic evaluations alongside clinical trials — extrapolation with patient-level data",
+      "retrieval": {"retrieved_at": "2026-08-04T13:50:00Z", "http_status": 200, "mime_type": "application/pdf", "etag": "W/\"6218a4a6-62c8f\"", "last_modified": "2022-02-25T09:43:02Z", "bytes": 404623, "sha256": "62fb398a6ab6452556b882c3477a55bb9b372496c418f5ebb1e45c47593e3845"},
+      "terms": {"terms_url": "https://www.sheffield.ac.uk/about/terms", "classification": "citation_only", "rationale": "The public technical document is authoritative grey literature, but no source-specific open reuse licence was verified in this acquisition."},
+      "supported_fields": ["authoritative method citation", "standard parametric extrapolation framework", "model-selection context"],
+      "unsupported_fields": ["redistribution of PDF", "TA1121 parameters", "automatic transfer of recommendations into calibration"],
+      "refresh_rule": "Check the DSU landing page and PDF ETag/hash quarterly; invalidate if a revised TSD is published."
+    },
+    {
+      "source_id": "wp5-nice-dsu-tsd21",
+      "requested_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD21-Flex-Surv-TSD-21_Final_alt_text.pdf",
+      "final_url": "https://www.sheffield.ac.uk/sites/default/files/2022-02/TSD21-Flex-Surv-TSD-21_Final_alt_text.pdf",
+      "publisher": "NICE Decision Support Unit, University of Sheffield",
+      "title": "TSD 21: Flexible methods for survival analysis",
+      "retrieval": {"retrieved_at": "2026-08-04T13:50:00Z", "http_status": 200, "mime_type": "application/pdf", "etag": "W/\"6218dd53-5af573\"", "last_modified": "2022-02-25T13:44:51Z", "bytes": 5961075, "sha256": "882cee45da906a70bb6b90cb7fc5c9539bedf1af29f045998293e3d29d8b2a82"},
+      "terms": {"terms_url": "https://www.sheffield.ac.uk/about/terms", "classification": "citation_only", "rationale": "Public accessibility supports citation; no document-specific open licence was verified."},
+      "supported_fields": ["authoritative method citation", "flexible parametric survival approaches", "background mortality and external-data context", "extrapolation limitations"],
+      "unsupported_fields": ["redistribution of PDF", "TA1121 parameters", "claim that one model is universally preferred"],
+      "refresh_rule": "Check the DSU landing page and PDF ETag/hash quarterly; invalidate on revision."
+    },
+    {
+      "source_id": "wp5-nice-economic-evaluation-manual",
+      "requested_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+      "final_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+      "publisher": "National Institute for Health and Care Excellence",
+      "title": "Technology appraisal and highly specialised technologies guidance manual — economic evaluation",
+      "retrieval": {"retrieved_at": "2026-08-04T13:50:00Z", "http_status": 200, "mime_type": "text/html; charset=utf-8", "etag": "W/03827DE50CA4E09F6FD06A6C2CCB9002", "bytes": 358036, "sha256": "20b1111fc52b846dcb1e3ce4c705af4592472bbc13369f7d74ac2fb578de40b5"},
+      "terms": {"terms_url": "https://www.nice.org.uk/reusing-our-content", "classification": "reuse_confirmed", "rationale": "Bounded factual reference-case rules are reusable with NICE attribution; NICE logos and third-party content remain excluded."},
+      "supported_fields": ["reference-case discounting of costs and health effects at 3.5% annually", "conditional 1.5% sensitivity criteria", "economic-evaluation method context"],
+      "unsupported_fields": ["TA1121 parameter values", "permission for third-party content", "NHS displacement"],
+      "refresh_rule": "Check chapter revision/hash before each qualification and whenever NICE updates PMG36."
+    }
+  ],
+  "coverage": {
+    "source_families": {"PubMed": "enumerated", "Europe_PMC": "focused_query_complete", "Crossref": "bounded_ranked_query_partial", "ClinicalTrials_gov": "query_result_complete_at_retrieval", "NICE_DSU_grey_literature": "key_survival_documents_hashed", "NICE_methods_manual": "hashed"},
+    "methods": ["reference-case discounting", "survival extrapolation", "relative survival", "background mortality", "model selection", "structural uncertainty", "external validation"],
+    "not_covered": ["paywalled full text", "conference portals without stable public bytes", "unpublished models", "patient-level trial data", "England-specific empirical calibration"]
+  },
+  "negative_or_deferred": [
+    {"source": "ISRCTN", "status": "deferred", "reason": "The attempted non-search file route returned HTTP 404 and no stable documented anonymous search API result was acquired.", "retry": "Use the public web search interface or a documented API if published; do not automate around access controls."},
+    {"source": "Crossref tafamidis economic free-text query", "status": "lead_only", "reason": "Crossref reported 802664 ranked matches, demonstrating low specificity rather than a meaningful corpus size.", "retry": "Resolve selected exact DOIs from the focused Europe PMC corpus."},
+    {"source": "paywalled_or_unlicensed_articles", "status": "citation_only", "reason": "Public bibliographic discovery does not establish rights to retain or transform article content.", "retry": "Reassess when an author manuscript or article-specific open licence is verified."}
+  ],
+  "rights_boundary": "Discovery is intentionally broad, but only Crossref bibliographic facts, ClinicalTrials.gov CC0 registry fields, NICE-attributed reference-case rules, and bounded CC BY-NC method facts enter the approved-derived projection. No source in this receipt activates empirical, payer, HTA, policy, regulatory, calibrated, raw-data, or confidential-data claims.",
+  "completion_status": "completed_bounded_public_enumeration_with_explicit_deferrals",
+  "validation": {"json_parse": "passed", "required_receipt_fields": "passed", "git_diff_check": "passed", "raw_payloads_committed": false, "full_text_committed": false, "copyrighted_substantial_text_committed": false}
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+  "generated_at": "2026-08-04T13:49:01Z",
+  "scope": {
+    "input_receipt": "maximal-wp5-literature-methods-corpus-2026-08-04.json",
+    "destination": "research-only contextual and methodological analysis in edithatogo/new-drug-reimbursement-game",
+    "rule": "Public accessibility permits discovery only. A field is projected only when the source-level terms and field-level content permit the intended research reuse."
+  },
+  "sources": [
+    {
+      "source_id": "wp6-crossref-metadata-terms",
+      "requested_url": "https://www.crossref.org/documentation/retrieve-metadata/",
+      "final_url": "https://www.crossref.org/documentation/retrieve-metadata/",
+      "publisher": "Crossref",
+      "title": "Metadata retrieval and licence boundary",
+      "retrieval": {"retrieved_at": "2026-08-04T13:47:00Z", "http_status": 200, "mime_type": "text/html", "etag": "\"bdbc37e6b7800e5f5bb86c08a739b016\"", "last_modified": "2026-07-26T12:38:23Z", "bytes": 75622, "sha256": "c0dd02c0ff42295c56b5946b700fe2100e869042dd604b92ade91e0bbe0e5110"},
+      "terms": {"classification": "reuse_confirmed", "permitted": ["bibliographic facts", "references", "Crossref-generated aggregations"], "excluded": ["abstracts", "full text", "publisher-owned content"]},
+      "supported_fields": ["DOI", "title", "publisher", "publication date", "URL", "work type", "deposited licence link"],
+      "unsupported_fields": ["article abstract", "article methods", "article conclusions", "publisher licence warranty"],
+      "refresh_rule": "Reacquire terms and query responses when the terms page ETag/hash, API response hash, selected DOI, or destination changes."
+    },
+    {
+      "source_id": "wp6-clinicaltrials-api-terms",
+      "requested_url": "https://clinicaltrials.gov/data-api/about-api/terms",
+      "final_url": "https://clinicaltrials.gov/data-api/about-api/terms",
+      "publisher": "US National Library of Medicine",
+      "title": "ClinicalTrials.gov API terms of service",
+      "retrieval": {"retrieved_at": "2026-08-04T13:47:00Z", "http_status": 200, "mime_type": "text/html", "bytes": 94295, "sha256": "e6e64acd2df5a4459205bd1aa476d09fc4d6d18d47f4f48fa04a4a1908f73d16"},
+      "terms": {"classification": "reuse_confirmed", "permitted": ["CC0 API data with attribution and update date"], "excluded": ["uploaded documents unless separately licensed", "claims that NLM validates submitted study information"]},
+      "supported_fields": ["NCT ID", "registry title", "status", "study type", "interventions", "conditions", "dates", "sponsor", "outcome definitions"],
+      "unsupported_fields": ["document attachments", "unreported results", "comparative causal estimates", "model-ready treatment effects"],
+      "refresh_rule": "Invalidate when terms hash, API ETag, study last-update date, record status, or destination changes."
+    },
+    {
+      "source_id": "wp6-europe-pmc-platform-terms",
+      "requested_url": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "final_url": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "publisher": "EMBL-EBI",
+      "title": "EMBL-EBI terms of use",
+      "retrieval": {"retrieved_at": "2026-08-04T13:47:00Z", "http_status": 200, "mime_type": "text/html", "bytes": 21379, "sha256": "29b7d5a384dd7e9520003fbf6b7a9a3c255da618a6c509bb76da84b0e9fe0529"},
+      "terms": {"classification": "terms_ambiguous", "permitted": ["platform discovery and links"], "excluded": ["corpus-wide assumption of article-content reuse"]},
+      "supported_fields": ["source discovery", "deposited article licence label"],
+      "unsupported_fields": ["article-level licence warranty", "uniform full-text reuse"],
+      "refresh_rule": "Reacquire on terms-page hash change and adjudicate each selected article independently."
+    },
+    {
+      "source_id": "wp6-ncbi-platform-policy",
+      "requested_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+      "final_url": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+      "publisher": "US National Library of Medicine",
+      "title": "NCBI website and data policies",
+      "retrieval": {"retrieved_at": "2026-08-04T13:47:00Z", "http_status": 200, "mime_type": "text/html", "bytes": 38936, "sha256": "8ad8f6f186ca51ec73a5fb8935ecfa17b8cbaad300b7025b381898ab72621869"},
+      "terms": {"classification": "citation_only", "permitted": ["identifier and citation inventory"], "excluded": ["assumption that all PubMed records or linked articles are public domain"]},
+      "supported_fields": ["PubMed identifier", "citation link", "query provenance"],
+      "unsupported_fields": ["article content", "publisher data reuse", "automatic public-domain status"],
+      "refresh_rule": "Reacquire on policy-page hash change; preserve article-specific adjudication."
+    },
+    {
+      "source_id": "wp6-pmc12304488-article-licence",
+      "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12304488/fullTextXML",
+      "publisher": "Medical Decision Making via Europe PMC",
+      "title": "Relative Survival Modeling for Appraising the Cost-Effectiveness of Life-Extending Treatments",
+      "retrieval": {"retrieved_at": "2026-08-04T13:48:00Z", "http_status": 200, "mime_type": "application/xml", "bytes": 101076, "sha256": "922f9bddf10e1ebf595a65dbb704d6bafcfd5492947bcda1d3603e33b244ac1d", "pmcid": "PMC12304488", "doi": "10.1177/0272989X251342459"},
+      "terms": {"terms_url": "https://creativecommons.org/licenses/by-nc/4.0/", "classification": "reuse_confirmed", "conditions": ["research-only noncommercial use", "attribution", "indicate bounded transformation", "do not imply endorsement"]},
+      "supported_fields": ["bounded paraphrased method facts", "candidate distribution names", "model-selection dimensions", "reported validation horizon", "uncertainty caveat"],
+      "unsupported_fields": ["patient-level data", "substantial text", "figures or tables", "TA1121 calibration", "commercial use"],
+      "refresh_rule": "Invalidate on XML hash, licence, correction/retraction, transformation, destination, or target-commit change."
+    },
+    {
+      "source_id": "wp6-nice-content-reuse",
+      "requested_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+      "final_url": "https://www.nice.org.uk/process/pmg36/chapter/economic-evaluation-2/",
+      "publisher": "National Institute for Health and Care Excellence",
+      "title": "NICE economic-evaluation reference-case rules",
+      "retrieval": {"retrieved_at": "2026-08-04T13:50:00Z", "http_status": 200, "mime_type": "text/html; charset=utf-8", "etag": "W/03827DE50CA4E09F6FD06A6C2CCB9002", "bytes": 358036, "sha256": "20b1111fc52b846dcb1e3ce4c705af4592472bbc13369f7d74ac2fb578de40b5"},
+      "terms": {"terms_url": "https://www.nice.org.uk/reusing-our-content", "classification": "reuse_confirmed", "conditions": ["attribute NICE", "exclude NICE logos and third-party content", "do not imply endorsement"]},
+      "supported_fields": ["3.5 percent annual reference-case discount rate for costs and health effects", "conditional 1.5 percent sensitivity context"],
+      "unsupported_fields": ["TA1121 empirical parameters", "third-party content", "displacement", "confidential commercial terms"],
+      "refresh_rule": "Invalidate on PMG36 revision, chapter hash, reuse-terms change, transformation, or target-commit change."
+    }
+  ],
+  "approved_derived_projection": {
+    "projection_id": "t13-wp6-public-literature-derived-v1",
+    "permitted_purpose": "research-only contextual and methods analysis",
+    "fields": {
+      "bibliographic_metadata": {"status": "approved_derived", "source": "Crossref", "contents": ["DOI", "title", "publisher", "publication date", "URL", "work type", "licence link"]},
+      "trial_registry_metadata": {"status": "approved_derived", "source": "ClinicalTrials.gov", "contents": ["NCT ID", "title", "status", "study type", "interventions", "conditions", "dates", "sponsor", "outcome definitions"], "warning": "Registry statements are submitted information, not NLM validation."},
+      "reference_case_discounting": {"status": "approved_derived", "source": "NICE PMG36", "primary": "3.5 percent annually for both costs and health effects", "sensitivity": "1.5 percent for both only when NICE's stated conditions are met"},
+      "survival_method_context": {"status": "approved_derived", "source": "Young et al. 2025, CC BY-NC 4.0", "facts": ["consider expected plus excess mortality in relative-survival extrapolation", "assess multiple candidate distributions", "select using fit and clinical plausibility", "validate extrapolation against independent longer follow-up where available", "retain structural uncertainty across plausible models"]}
+    },
+    "excluded_fields": ["treatment-effect parameters", "baseline hazards", "utilities", "costs", "prices", "eligible population size", "uptake", "NHS displacement", "stable programme ID", "calibrated Chapter 7 parameters", "payer or policy conclusions"],
+    "attribution": ["Crossref metadata retrieval, accessed 2026-08-04", "ClinicalTrials.gov API, accessed 2026-08-04", "NICE PMG36 economic evaluation chapter, accessed 2026-08-04", "Young R, Said J, Large S. 2025. DOI 10.1177/0272989X251342459. CC BY-NC 4.0"]
+  },
+  "coverage": {
+    "reuse_confirmed": ["Crossref bibliographic facts", "ClinicalTrials.gov API fields", "NICE reference-case facts", "CC BY-NC bounded relative-survival method facts"],
+    "citation_only": ["PubMed corpus metadata beyond identifiers", "NICE DSU TSD 14", "NICE DSU TSD 21", "articles without verified open licences"],
+    "terms_ambiguous": ["Europe PMC corpus as a whole"],
+    "restricted": [],
+    "prohibited": [],
+    "model_input_coverage": "none; projection is methods and context only"
+  },
+  "negative_or_deferred": [
+    {"class": "citation_only", "count": "article-level and source dependent", "reason": "Public indexing or public PDF access does not establish an open content licence.", "closure": "Verify an article-specific open licence or retain citation only."},
+    {"class": "terms_ambiguous", "source": "Europe PMC platform-level result set", "reason": "Deposited records carry heterogeneous licences.", "closure": "Adjudicate each selected PMCID/DOI."},
+    {"class": "model_inputs", "status": "deferred", "reason": "No reusable public literature record establishes TA1121-specific England population, cost, displacement, utility, or calibrated-effect fields.", "closure": "Require a field-matched, rights-cleared, revision-bound evidence packet; do not infer values."}
+  ],
+  "rights_boundary": "This projection permits only the enumerated bibliographic, registry, reference-case, and method-context fields. It is not an Atlas calibration packet and does not authorize empirical, payer, HTA, policy, regulatory, calibrated, raw-data, confidential-data, or commercial claims. Any source, terms, transformation, destination, packet, or target-commit change invalidates the affected projection and its approvals.",
+  "completion_status": "completed_for_discovered_wp5_sources_with_field_level_projection",
+  "validation": {"json_parse": "passed", "required_receipt_fields": "passed", "git_diff_check": "passed", "only_reuse_confirmed_fields_projected": true, "citation_only_projected_to_model_inputs": false, "terms_ambiguous_projected_to_model_inputs": false, "raw_payloads_committed": false}
+}

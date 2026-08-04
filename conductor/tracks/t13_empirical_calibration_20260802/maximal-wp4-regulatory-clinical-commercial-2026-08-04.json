@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "work_package": "WP4_regulatory_clinical_and_commercial_context",
+  "generated_at": "2026-08-04T13:50:56Z",
+  "scope": "Current public regulatory, clinical-trial, pricing-boundary, procurement, and company-record acquisition for acoramidis/Beyonttra in the TA1121 context. Regulatory facts are evidence about authorisation only and are not promoted as repository regulatory claims.",
+  "sources": [
+    {
+      "source_id": "mhra-acoramidis-uk-authorisation",
+      "publisher": "Medicines and Healthcare products Regulatory Agency",
+      "title": "Acoramidis approved to treat wild-type or variant transthyretin amyloidosis in adults with cardiomyopathy",
+      "requested_url": "https://www.gov.uk/government/news/acoramidis-approved-to-treat-wild-type-or-variant-transthyretin-amyloidosis-in-adults-with-cardiomyopathy",
+      "final_url": "https://www.gov.uk/government/news/acoramidis-approved-to-treat-wild-type-or-variant-transthyretin-amyloidosis-in-adults-with-cardiomyopathy",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "text/html; charset=utf-8", "etag": "W/\"ae4926e2aa376e3c3c825014ff35e783\"", "bytes": 78098},
+      "sha256": "ae4926e2aa376e3c3c825014ff35e7835fc76e282ec77a3c6ca5709b1ef909ae",
+      "terms": {"classification": "reuse_confirmed", "licence": "Open Government Licence 3.0 except where otherwise stated", "payload_retained": false},
+      "supported_fields": {"uk_marketing_authorisation_date": "2025-04-24", "published_date": "2025-04-25", "product": "Beyonttra (acoramidis)", "holder": "Bayer plc", "indication": "adult variant or wild-type ATTR-CM", "route": "International Recognition Procedure following EMA approval"},
+      "unsupported_fields": ["NHS reimbursement", "net price", "comparative cost effectiveness", "local implementation", "displacement"],
+      "refresh_rule": "Reacquire on GOV.UK update metadata, hash, licensing, authorisation-holder, indication, safety, or repository-commit change."
+    },
+    {
+      "source_id": "ema-beyonttra-epar",
+      "publisher": "European Medicines Agency",
+      "title": "Beyonttra EPAR",
+      "requested_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/beyonttra",
+      "final_url": "https://www.ema.europa.eu/en/medicines/human/EPAR/beyonttra",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "text/html; charset=UTF-8", "etag": "W/\"1785851363-gzip\"", "last_modified": "2026-08-04T13:49:23Z", "bytes": 152976},
+      "sha256": "9e5a976118706b4fe2fa2e1078a1ea32bf530a4838c299b7a98b8be1a892b3c7",
+      "terms": {"classification": "citation_only", "licence": "EMA legal-notice and record-specific reproduction conditions apply", "payload_retained": false},
+      "supported_fields": {"ema_product_number": "EMEA/H/C/006333", "opinion_date": "2024-12-12", "eu_authorisation_date": "2025-02-10", "revision": 3, "page_last_updated": "2025-11-05", "holder": "Bayer AG", "atc_code": "C01EB25", "additional_monitoring": true},
+      "unsupported_fields": ["UK reimbursement", "net price", "local uptake", "causal comparative effectiveness"],
+      "refresh_rule": "Reacquire the EPAR and linked product information on revision, last-updated, hash, holder, indication, terms, or repository-commit change."
+    },
+    {
+      "source_id": "ema-beyonttra-product-information",
+      "publisher": "European Medicines Agency",
+      "title": "Beyonttra EPAR product information, English",
+      "requested_url": "https://www.ema.europa.eu/en/documents/product-information/beyonttra-epar-product-information_en.pdf",
+      "final_url": "https://www.ema.europa.eu/en/documents/product-information/beyonttra-epar-product-information_en.pdf",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "application/pdf", "etag": "\"1762350310\"", "last_modified": "2025-11-05T13:45:10Z", "bytes": 443096},
+      "sha256": "463592a22ca5c3974b4030f71c469696bdaaf5c017858cc911c5d562245c17fc",
+      "terms": {"classification": "citation_only", "payload_retained": false},
+      "supported_fields": ["authorised product identity", "dose-form and indication documentation", "safety and use context"],
+      "unsupported_fields": ["price", "NHS commissioning", "comparative cost effectiveness"],
+      "refresh_rule": "Rehash whenever the EPAR revision or Last-Modified value changes."
+    },
+    {
+      "source_id": "clinicaltrials-gov-acoramidis-enumeration",
+      "publisher": "US National Library of Medicine, ClinicalTrials.gov",
+      "title": "Acoramidis intervention search, API v2",
+      "requested_url": "https://clinicaltrials.gov/api/v2/studies?query.intr=Acoramidis&pageSize=100&format=json",
+      "final_url": "https://clinicaltrials.gov/api/v2/studies?query.intr=Acoramidis&pageSize=100&format=json",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "application/json", "etag": "\"4/0.34.1/msefgh6w\"", "bytes": 352483, "returned_studies": 13},
+      "sha256": "d2e3a3d22dd8356608e367137521089ca66d66118e4599c03f44c16d06fe5aac",
+      "terms": {"classification": "reuse_confirmed", "licence": "ClinicalTrials.gov API terms and attribution requirements", "payload_retained": false},
+      "supported_fields": {"nct_ids": ["NCT03860935", "NCT04622046", "NCT04769479", "NCT04882735", "NCT04958135", "NCT04988386", "NCT06563895", "NCT07116473", "NCT07196839", "NCT07235462", "NCT07298044", "NCT07306949", "NCT07695701"]},
+      "unsupported_fields": ["independent verification of submitted results", "cost effectiveness", "NHS uptake"],
+      "refresh_rule": "Repeat the same API query monthly and on trial-record ETag, last-update, result, intervention-name, or repository-commit change."
+    },
+    {
+      "source_id": "clinicaltrials-gov-nct03860935",
+      "publisher": "US National Library of Medicine, ClinicalTrials.gov",
+      "title": "ATTRibute-CM, NCT03860935",
+      "requested_url": "https://clinicaltrials.gov/api/v2/studies/NCT03860935",
+      "final_url": "https://clinicaltrials.gov/api/v2/studies/NCT03860935",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "application/json", "etag": "\"4/0.34.1/msefgh6w\"", "bytes": 153099},
+      "sha256": "4062920ee547244c0a9d6601b5fe59dd1129e9b33d115d906027c900287e4b35",
+      "terms": {"classification": "reuse_confirmed", "licence": "ClinicalTrials.gov API terms and attribution requirements", "payload_retained": false},
+      "supported_fields": {"status": "COMPLETED", "actual_enrollment": 632, "phase": "PHASE3", "intervention": "acoramidis HCl 800 mg twice daily", "comparator": "placebo", "results_posted": true, "other_ids": ["AG10-301", "2018-004280-32"]},
+      "unsupported_fields": ["unregistered outcomes", "independent appraisal of bias", "economic parameters", "NHS displacement"],
+      "refresh_rule": "Reacquire on record ETag, posted results, document, sponsor, outcome, status, or repository-commit change."
+    },
+    {
+      "source_id": "nice-ta1121-resource-impact-price-boundary",
+      "publisher": "National Institute for Health and Care Excellence",
+      "title": "TA1121 resource impact summary report",
+      "requested_url": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "final_url": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "application/pdf", "etag": "DD1EE3B9AA018BD77CC992DC0389B5AE", "bytes": 56531, "extraction": "pdftotext in temporary storage; payload immediately deleted"},
+      "sha256": "002ed229eb53c18c502ab5c290b7e3613052e7448518ecd619071d7146cf1213",
+      "terms": {"classification": "citation_only", "payload_retained": false},
+      "supported_fields": {"price_status": "confidential acoramidis price must be supplied by an authorised user", "national_budget_impact_statement": "expected below GBP 5 million per year", "population_normalised_statement": "about GBP 8,700 per 100,000 people", "comparison_statement": "costs described as similar to or lower than tafamidis and vutrisiran"},
+      "unsupported_fields": ["acoramidis list price", "acoramidis net price", "tafamidis net price", "vutrisiran net price", "attributable local budget", "displaced programme"],
+      "refresh_rule": "Reacquire on NICE document hash, guidance update, confidential-price status, resource-impact model revision, terms, or repository-commit change."
+    },
+    {
+      "source_id": "sec-bridgebio-submissions-index",
+      "publisher": "US Securities and Exchange Commission",
+      "title": "BridgeBio Pharma, Inc. submissions index, CIK 0001743881",
+      "requested_url": "https://data.sec.gov/submissions/CIK0001743881.json",
+      "final_url": "https://data.sec.gov/submissions/CIK0001743881.json",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "application/json", "bytes": 128532, "latest_10k_filed": "2026-02-24", "latest_10k_accession": "0001743881-26-000009"},
+      "sha256": "1e1f2ae7d19cbf3080c669856d374695b3acf038a75a7539870676c179380d11",
+      "terms": {"classification": "citation_only", "payload_retained": false, "note": "SEC filing rights may include third-party material; metadata only retained"},
+      "supported_fields": {"issuer": "BridgeBio Pharma, Inc.", "ticker": "BBIO", "stable_company_identifier": "CIK0001743881", "latest_10k_accession": "0001743881-26-000009"},
+      "unsupported_fields": ["NHS price", "Bayer UK sales", "NHS procurement terms", "confidential licence terms"],
+      "refresh_rule": "Refresh from SEC submissions JSON on filing-index hash or new 10-K/10-Q/8-K."
+    },
+    {
+      "source_id": "bridgebio-uk-authorisation-disclosure",
+      "publisher": "BridgeBio Pharma, Inc.",
+      "title": "Beyonttra approved by UK MHRA to treat ATTR-CM",
+      "requested_url": "https://investor.bridgebio.com/news/news-details/2025/BEYONTTRA-acoramidis-the-First-Near-complete-TTR-Stabilizer-90-Approved-by-the-UK-Medicines-and-Healthcare-Products-Regulatory-Agency-to-Treat-ATTR-CM/default.aspx",
+      "final_url": "https://investor.bridgebio.com/news/news-details/2025/BEYONTTRA-acoramidis-the-First-Near-complete-TTR-Stabilizer-90-Approved-by-the-UK-Medicines-and-Healthcare-Products-Regulatory-Agency-to-Treat-ATTR-CM/default.aspx",
+      "retrieval": {"retrieved_at": "2026-08-04T13:48:00Z", "http_status": 200, "mime_type": "text/html; charset=utf-8", "etag": "\"d6723210e10c364cd269901f131bb648\"", "bytes": 125889},
+      "sha256": "93ce0b57307d189fa023bd07f4f9ba5ad66fcfa3c0d9dcf8a933332cfc48d1a1",
+      "terms": {"classification": "citation_only", "payload_retained": false},
+      "supported_fields": {"commercialisation_partner": "Bayer", "territory": "Europe including UK", "public_royalty_description": "tiered structure beginning in the low-thirties percent on UK sales"},
+      "unsupported_fields": ["NHS list or net price", "unit sales attributable to NHS", "confidential contract schedules", "local procurement"],
+      "refresh_rule": "Reacquire on correction, commercial-rights, holder, terms, or repository-commit change; triangulate regulatory facts against MHRA rather than treating issuer disclosure as authority."
+    },
+    {
+      "source_id": "uk-procurement-search-acoramidis",
+      "publisher": "UK Cabinet Office procurement services",
+      "title": "Contracts Finder and Find a Tender keyword probes",
+      "requested_url": "https://www.contractsfinder.service.gov.uk/Search/Results?Keywords=acoramidis ; https://www.find-tender.service.gov.uk/Search/Results?keywords=acoramidis",
+      "final_url": "https://www.contractsfinder.service.gov.uk/Search/Results?Keywords=acoramidis ; https://www.find-tender.service.gov.uk/Search/Results?keywords=acoramidis",
+      "retrieval": {"retrieved_at": "2026-08-04T13:42:00Z", "http_status": 200, "mime_type": "text/html; charset=utf-8", "bytes": [200026, 172037], "sha256_by_service": {"contracts_finder": "82e315a4733efc5bd7a37f9d34e86413371c4fae0a3f19f9eab40089aea8453b", "find_a_tender": "9083a7550bd90ad7a12ce87a7f7c68861ebddd4bf4ab91ec48f8c55aa4b2ce86"}},
+      "sha256": null,
+      "no_hash_reason": "Two independently hashed service responses are represented in sha256_by_service; no synthetic combined byte stream was created.",
+      "terms": {"classification": "reuse_confirmed", "licence": "public procurement metadata subject to service terms and OGL notices", "payload_retained": false},
+      "supported_fields": {"query_execution": "both public search endpoints returned HTTP 200"},
+      "unsupported_fields": ["verified zero-result count because neither response reflected the keyword in returned HTML", "acoramidis-specific notice", "framework price", "contract award"],
+      "refresh_rule": "Retry through each documented search/export API and service UI monthly; do not treat this technically successful but query-unverified probe as evidence that no notice exists."
+    }
+  ],
+  "coverage": {
+    "regulatory": "Independent UK MHRA and EU EMA primary records acquired and hashed.",
+    "clinical_trials": "ClinicalTrials.gov intervention search enumerated 13 records; pivotal NCT03860935 acquired separately with results metadata.",
+    "price": "NICE confirms that the acoramidis price used by the resource model is confidential; no public attributable list or net price was found in these primary records. NHSBSA indicative aggregate cost remains a distinct administrative field.",
+    "commercial": "SEC issuer identity/latest filing index and BridgeBio/Bayer public commercial-rights disclosure acquired; confidential agreement schedules and NHS-specific commercial terms remain unavailable.",
+    "procurement": "Both UK central procurement search services were probed and hashed, but the server-rendered responses did not verify the query or expose an attributable notice; absence is not inferred.",
+    "triangulation": "MHRA authorisation date/holder and EMA authorisation/product identity independently corroborate the regulatory context. ClinicalTrials.gov supports the pivotal study identity and enrollment. Company disclosures are secondary to regulator records and do not establish reimbursement."
+  },
+  "negative_or_deferred": [
+    {"field": "public_acoramidis_list_or_net_price", "status": "deferred_confidential", "reason": "NICE explicitly requires users to input the confidential price; no attributable public UK list/net price was established.", "retry_condition": "An authoritative public price notice or explicitly redistributable NHS/manufacturer source is published."},
+    {"field": "acoramidis_procurement_notice", "status": "deferred_query_not_verified", "reason": "Search responses were retrievable and hashed but did not reflect the keyword in returned HTML; a zero-result claim would be unsafe.", "retry_condition": "A documented API/export or interactive result supplies an attributable query and result count."},
+    {"field": "latest_bridgebio_10k_payload", "status": "deferred_access_denied", "reason": "SEC submissions metadata identified accession 0001743881-26-000009, but the filing payload request returned HTTP 403; metadata remains usable, payload was not bypassed.", "retry_condition": "SEC permits a compliant bounded retrieval or an issuer-hosted immutable copy is available."},
+    {"field": "causal_displacement_and_nhs_contract_price", "status": "not_supported", "reason": "Regulatory, trial, corporate, and procurement-discovery records do not identify a displaced programme or confidential NHS transaction price.", "retry_condition": "An attributable authorised NHS decision packet provides those fields."}
+  ],
+  "rights_boundary": {
+    "discovery": "all listed public records were inventoried irrespective of ultimate reuse status",
+    "retention": "no source payload committed; hashes and narrowly derived factual metadata only",
+    "use": "OGL/API fields may support attributed research context; EMA, NICE, issuer, and SEC material remains citation-only unless separately adjudicated",
+    "promotion": "empirical, payer, HTA, policy, regulatory, calibrated, raw-data, and confidential-data claims remain disabled"
+  },
+  "completion_status": "implemented_public_regulatory_clinical_commercial_context_with_explicit_deferrals",
+  "validation": {
+    "checks": ["direct byte counts and SHA-256 captured", "primary regulator facts triangulated", "ClinicalTrials.gov query and pivotal record independently hashed", "confidential price not inferred", "procurement response not misreported as zero results", "JSON syntax validation required"],
+    "limitations": ["public accessibility does not resolve every source-specific reuse right", "company statements are not independent regulatory or reimbursement evidence", "trial registry content is submitted record data", "procurement searches require a query-verifiable route before absence can be asserted"]
+  }
+}

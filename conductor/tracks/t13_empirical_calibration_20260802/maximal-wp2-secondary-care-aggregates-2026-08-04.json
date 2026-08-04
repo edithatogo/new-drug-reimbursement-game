@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "work_package": "WP2_secondary_care_and_prescribing_aggregates",
+  "generated_at": "2026-08-04T13:50:56Z",
+  "scope": "Live enumeration and no-retention stream scan of current NHSBSA finalised and provisional Secondary Care Medicines Data, reconciled with the existing community PCA scan. Counts and indicative costs are public aggregate observations, not displacement, net-price, payer, HTA, policy, regulatory, or calibrated evidence.",
+  "sources": [
+    {
+      "source_id": "nhsbsa-finalised-scmd-catalogue-and-202603",
+      "publisher": "NHS Business Services Authority on behalf of NHS England",
+      "title": "Finalised Secondary Care Medicines Data with indicative price: SCMD_FINAL_202603",
+      "requested_url": "https://opendata.nhsbsa.net/api/3/action/package_show?id=finalised-secondary-care-medicines-data-scmd-with-indicative-price",
+      "final_url": "https://opendata.nhsbsa.net/dataset/b63be82b-8764-484a-82a1-155b050586da/resource/2359dce2-6c9a-4a49-9760-6a14dc3048a5/download/scmd_final_202603.csv",
+      "retrieval": {
+        "retrieved_at": "2026-08-04T13:35:00Z",
+        "http_status": 200,
+        "mime_type": "application/octet-stream",
+        "etag": "\"2329c8fee5a8d380a10c18233199643d\"",
+        "catalogue_metadata_modified": "2026-07-29T11:42:47.349852",
+        "catalogue_resource_id": "2359dce2-6c9a-4a49-9760-6a14dc3048a5",
+        "bytes": 36060683,
+        "rows_including_header": 321403,
+        "method": "CKAN package_show followed by bounded streaming SHA-256 and case-insensitive product-name filtering; payload not retained"
+      },
+      "sha256": "be6aa27d94f240f3af4167ada65d6ea61ed18eb7aaaea040163d9f90e7160b68",
+      "terms": {
+        "classification": "reuse_confirmed",
+        "licence": "Open Government Licence 3.0 (United Kingdom)",
+        "payload_retained": false,
+        "attribution_required": true
+      },
+      "supported_fields": {
+        "month": "202603",
+        "tafamidis": {
+          "vmp_snomed_code": "38659511000001105",
+          "product": "Tafamidis 61mg capsules",
+          "aggregate_rows": 6,
+          "ods_codes": ["R1H", "RAL", "RBQ", "RJ7", "RRK", "RTH"],
+          "total_quantity_capsules": 81932.0,
+          "indicative_cost_gbp": 29181447.33
+        },
+        "vutrisiran": {
+          "vmp_snomed_code": "41545611000001109",
+          "product": "Vutrisiran 25mg/0.5ml solution for injection pre-filled syringes",
+          "aggregate_rows": 1,
+          "ods_codes": ["RAL"],
+          "total_quantity_ml": 45.5,
+          "indicative_cost_gbp": 8723474.76
+        },
+        "acoramidis": {
+          "aggregate_rows": 0,
+          "interpretation": "not observed in this finalised month; this is a coverage result, not evidence of clinical absence"
+        }
+      },
+      "unsupported_fields": ["patient-level use", "indication-specific use", "net or confidential price", "causal displacement", "budget owner", "stable displaced-programme ID"],
+      "refresh_rule": "Re-enumerate the CKAN package and re-stream the latest finalised resource when metadata_modified, resource ID, size, hash, terms, or downstream commit changes. Preserve this receipt if superseded."
+    },
+    {
+      "source_id": "nhsbsa-provisional-scmd-catalogue-and-202605",
+      "publisher": "NHS Business Services Authority on behalf of NHS England",
+      "title": "Provisional Secondary Care Medicines Data with indicative price: SCMD_PROVISIONAL_202605",
+      "requested_url": "https://opendata.nhsbsa.net/api/3/action/package_show?id=secondary-care-medicines-data-indicative-price",
+      "final_url": "https://opendata.nhsbsa.net/dataset/74f3e468-095b-44c0-b957-f3766a92514e/resource/673cd266-20af-4535-bfaa-08feab0d7ed2/download/scmd_provisional_202605.csv",
+      "retrieval": {
+        "retrieved_at": "2026-08-04T13:36:00Z",
+        "http_status": 200,
+        "mime_type": "application/octet-stream",
+        "etag": "\"d16402c54568a68ac3d6a9b11a89cf6e\"",
+        "catalogue_metadata_modified": "2026-07-27T12:50:26.655443",
+        "catalogue_resource_id": "673cd266-20af-4535-bfaa-08feab0d7ed2",
+        "bytes": 35021477,
+        "rows_including_header": 312458,
+        "method": "CKAN package_show followed by bounded streaming SHA-256 and case-insensitive product-name filtering; payload not retained"
+      },
+      "sha256": "6345419d207ac6743cd0bee78a7cfaca87f7dfbe88194bc78f1b1d0e03f89ab4",
+      "terms": {
+        "classification": "reuse_confirmed",
+        "licence": "Open Government Licence 3.0 (United Kingdom)",
+        "payload_retained": false,
+        "attribution_required": true
+      },
+      "supported_fields": {
+        "month": "202605",
+        "acoramidis": {
+          "vmp_snomed_code": "45554711000001100",
+          "product": "Acoramidis 356mg tablets",
+          "aggregate_rows": 1,
+          "ods_codes": ["RAL"],
+          "total_quantity_tablets": 3960.0,
+          "indicative_cost_gbp": 282070.8
+        },
+        "tafamidis": {
+          "vmp_snomed_code": "38659511000001105",
+          "product": "Tafamidis 61mg capsules",
+          "aggregate_rows": 7,
+          "ods_codes": ["R1H", "RAL", "RHM", "RJ1", "RJ7", "RR8", "RRK"],
+          "total_quantity_capsules": 49570.0,
+          "indicative_cost_gbp": 17655181.67
+        },
+        "vutrisiran": {
+          "vmp_snomed_code": "41545611000001109",
+          "product": "Vutrisiran 25mg/0.5ml solution for injection pre-filled syringes",
+          "aggregate_rows": 1,
+          "ods_codes": ["RAL"],
+          "total_quantity_ml": 34.5,
+          "indicative_cost_gbp": 6614502.84
+        }
+      },
+      "unsupported_fields": ["finalised observations", "patient-level use", "indication-specific use", "net or confidential price", "causal displacement", "budget owner", "stable displaced-programme ID"],
+      "refresh_rule": "Re-enumerate monthly and replace analytical use with the corresponding finalised release when available; never rewrite this provisional receipt."
+    },
+    {
+      "source_id": "nhsbsa-pca-icb-snomed-2025-2026-existing-stream-reconciliation",
+      "publisher": "NHS Business Services Authority",
+      "title": "Prescription Cost Analysis ICB SNOMED 2025/26",
+      "requested_url": "https://opendata.nhsbsa.net/dataset/52423b6a-9605-4620-a425-2d4f9c323873/resource/72fa5515-4740-40fe-8ee7-5cbc390720a0/download/pca_icb_snomed_2025_2026.csv",
+      "final_url": "https://opendata.nhsbsa.net/dataset/52423b6a-9605-4620-a425-2d4f9c323873/resource/72fa5515-4740-40fe-8ee7-5cbc390720a0/download/pca_icb_snomed_2025_2026.csv",
+      "retrieval": {
+        "retrieved_at": "2026-08-03T02:28:22Z",
+        "http_status": 200,
+        "mime_type": "application/octet-stream",
+        "etag": "\"e205fe9c045604d19f73bdccb0097feb\"",
+        "bytes": 352749211,
+        "rows": 761883,
+        "method": "Existing no-retention streamed repository receipt reconciled against the newly observed SCMD products"
+      },
+      "sha256": "e2d8fd66e3bdaa220096d64215502183087ab7faffd59461829dfac972afa640",
+      "terms": {
+        "classification": "reuse_confirmed",
+        "licence": "Open Government Licence 3.0 (United Kingdom)",
+        "payload_retained": false
+      },
+      "supported_fields": {
+        "acoramidis_match_count": 0,
+        "tafamidis_match_count": 0,
+        "vutrisiran_match_count": 0,
+        "interpretation": "Community prescribing coverage does not capture these specialist secondary-care observations; the positive SCMD rows independently demonstrate that PCA zero matches must not be interpreted as treatment absence."
+      },
+      "unsupported_fields": ["specialist hospital activity", "clinical absence", "displacement", "net price"],
+      "refresh_rule": "Repeat against each annual PCA release and invalidate the coverage comparison if the dataset scope, terms, resource hash, identifier mapping, or repository commit changes."
+    }
+  ],
+  "coverage": {
+    "catalogue_families_enumerated": ["finalised SCMD", "provisional SCMD", "community PCA"],
+    "medicine_identity_resolution": "resolved from NHSBSA VMP SNOMED codes embedded in current SCMD rows",
+    "resolved_vmp_snomed_codes": {
+      "acoramidis_356mg_tablets": "45554711000001100",
+      "tafamidis_61mg_capsules": "38659511000001105",
+      "vutrisiran_25mg_per_0.5ml_prefilled_syringe": "41545611000001109"
+    },
+    "triangulation": "The same NHSBSA data architecture yields zero community PCA matches but positive secondary-care SCMD observations, establishing dataset-scope divergence. Finalised 202603 comparator observations and provisional 202605 acoramidis observations are retained separately rather than silently pooled.",
+    "completion_assessment": "WP2 source-family enumeration, latest-release hashing, medicine-identifier resolution, and PCA/SCMD coverage comparison complete as of retrieval time. Monthly longitudinal extraction and indication attribution remain outside the available public fields."
+  },
+  "negative_or_deferred": [
+    {
+      "field": "acoramidis_finalised_observation",
+      "status": "not_observed_in_latest_finalised_month",
+      "reason": "Acoramidis appears in provisional 202605 but not finalised 202603; await finalised 202605 before promotion beyond provisional context.",
+      "retry_condition": "NHSBSA publishes SCMD_FINAL_202605."
+    },
+    {
+      "field": "indication_and_displacement",
+      "status": "deferred_not_present_in_dataset",
+      "reason": "SCMD reports organisation, product, quantity, and indicative cost; it does not attribute an indication, counterfactual programme, or causal budget displacement.",
+      "retry_condition": "An attributable NHS decision packet supplies the missing programme fields."
+    }
+  ],
+  "rights_boundary": {
+    "discovery": "public and acquired",
+    "retention": "raw payloads not retained or committed",
+    "derived_use": "OGL aggregate contextual fields with attribution",
+    "promotion": "research-only context; empirical, payer, HTA, policy, regulatory, calibrated, raw-data, and confidential-data claims remain disabled"
+  },
+  "completion_status": "implemented_public_aggregate_context_only",
+  "validation": {
+    "checks": ["catalogue SHA-256 equals streamed SHA-256 for both current SCMD resources", "derived totals recomputed from matched public aggregate rows", "no raw source payload exists in the repository", "JSON syntax validation required"],
+    "limitations": ["provisional SCMD is subject to revision", "indicative cost is neither list price nor net acquisition cost", "dataset rows are not indication-specific"]
+  }
+}

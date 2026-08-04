@@ -74,12 +74,12 @@
 
 ## Maximal public-data programme
 
-- [ ] WP1: enumerate, retrieve, hash, and receipt all official authority, committee, formulary, specialist-centre, publication-scheme, and FOI disclosure records. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [ ] WP2: enumerate and stream-filter NHSBSA SCMD/PCA and related prescribing aggregates using resolved medicine identifiers; retain no raw payloads. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [ ] WP3: resolve public ODS, commissioner, provider, service, programme-category, and stable identifiers without inferring displacement. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [ ] WP4: harvest regulatory, clinical-trial, list-price, procurement, commercial-framework, and public company records. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [ ] WP5: harvest scholarly and grey-literature metadata/full text under source-specific terms, preserving source-mapped methods and assumptions. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
-- [ ] WP6: adjudicate source terms and produce approved-derived projections while retaining ambiguous/restricted sources as inventory-only receipts. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [~] WP1: enumerate, retrieve, hash, and receipt all official authority, committee, formulary, specialist-centre, publication-scheme, and FOI disclosure records. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [~] WP2: enumerate and stream-filter NHSBSA SCMD/PCA and related prescribing aggregates using resolved medicine identifiers; retain no raw payloads. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [~] WP3: resolve public ODS, commissioner, provider, service, programme-category, and stable identifiers without inferring displacement. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [~] WP4: harvest regulatory, clinical-trial, list-price, procurement, commercial-framework, and public company records. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [~] WP5: harvest scholarly and grey-literature metadata/full text under source-specific terms, preserving source-mapped methods and assumptions. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
+- [~] WP6: adjudicate source terms and produce approved-derived projections while retaining ambiguous/restricted sources as inventory-only receipts. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
 - [ ] WP7: assemble the candidate Atlas-compatible packet, rebind hashes/approvals, run panel review, stale-source validation, full qualification, and hosted CI. (`public-data-maximal-acquisition-plan-2026-08-03.md`)
 
 ## External closure gates (pending authoritative inputs)

@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "work_package": "WP3-organisations-and-stable-identifiers",
+  "generated_at": "2026-08-04T13:50:36Z",
+  "scope": "Current public ODS identities and public service identifiers relevant to TA1121/acoramidis commissioner, provider, ICB, and amyloidosis service context. Organisation and service identifiers are not treated as displaced-programme identifiers.",
+  "acquisition_method": {
+    "user_agent": "ndr-game-public-evidence/1.0",
+    "transport": "open-access ODS ORD API and official NHS document HTTPS GET; 60 second timeout; streamed hashing",
+    "payload_retention": "none",
+    "hash_algorithm": "sha256",
+    "rate": "sequential and below the documented five requests per second"
+  },
+  "sources": [
+    {
+      "source_id": "ods-x24-nhs-england-20260804",
+      "authority_rank": 1,
+      "publisher": "NHS England Organisation Data Service",
+      "title": "ODS organisation X24",
+      "requested_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/X24",
+      "final_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/X24",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/json", "bytes": 661, "etag": "W/\"1\"", "last_modified": "Fri, 21 Jul 2023 15:24:26 GMT"},
+      "sha256": "c98f5758e8970666dfbd01bcbd758546caa267b391d7aa5465ac6a6ca7c98a90",
+      "resolved_fields": {"ods_code": "X24", "name": "NHS ENGLAND", "status": "Active", "primary_role": "RO162", "record_last_change": "2013-04-05"},
+      "terms": {"classification": "reuse_confirmed", "url": "https://digital.nhs.uk/binaries/content/assets/website-assets/services/ods/odsstandards.pdf", "reason": "ODS standards state ODS data are published under the UK Open Government Licence, subject to listed exemptions not applicable to these organisation records."},
+      "supported_fields": ["stable NHS England organisation identifier", "active status"],
+      "unsupported_fields": ["TA1121 budget owner", "programme identifier", "displacement decision"],
+      "refresh_rule": "Reacquire monthly and whenever ODS ETag, Last-Modified, status, role, or succession changes."
+    },
+    {
+      "source_id": "ods-ral-royal-free-london-20260804",
+      "authority_rank": 1,
+      "publisher": "NHS England Organisation Data Service",
+      "title": "ODS organisation RAL",
+      "requested_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/RAL",
+      "final_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/RAL",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/json", "bytes": 4815, "etag": "W/\"8\"", "last_modified": "Wed, 01 Apr 2026 01:09:42 GMT"},
+      "sha256": "5f916b7b22af0c2c6c6ed3b7994e548b8dbee2f25c110644f42f0198ab99aec5",
+      "resolved_fields": {"ods_code": "RAL", "name": "ROYAL FREE LONDON NHS FOUNDATION TRUST", "status": "Active", "record_last_change": "2026-04-01", "active_roles": ["RO197", "RO57", "RO268"], "relationships_observed": ["RE5", "RE8"]},
+      "terms": {"classification": "reuse_confirmed", "url": "https://digital.nhs.uk/binaries/content/assets/website-assets/services/ods/odsstandards.pdf", "reason": "ODS organisation reference data are OGL except enumerated exemptions."},
+      "supported_fields": ["stable trust/provider identifier", "active organisation status", "organisation relationships as represented by ODS"],
+      "unsupported_fields": ["National Amyloidosis Centre service-level ODS ID", "exclusive TA1121 provider", "commissioner contract", "displaced programme"],
+      "refresh_rule": "Reacquire monthly and on ODS status, role, relationship, succession, ETag, or hash change."
+    },
+    {
+      "source_id": "ods-qu9-bob-icb-20260804",
+      "authority_rank": 1,
+      "publisher": "NHS England Organisation Data Service",
+      "title": "ODS organisation QU9",
+      "requested_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/QU9",
+      "final_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/QU9",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/json", "bytes": 1695, "etag": "W/\"4\"", "last_modified": "Thu, 09 Apr 2026 01:22:16 GMT"},
+      "sha256": "27500c9cb61839fad7ce08a20bb3319574e20717a33904c66c1ea29a840053b7",
+      "resolved_fields": {"ods_code": "QU9", "name": "NHS BUCKINGHAMSHIRE, OXFORDSHIRE AND BERKSHIRE WEST INTEGRATED CARE BOARD", "status": "Active", "record_last_change": "2026-04-08", "active_roles": ["RO261", "RO318"], "inactive_roles": ["RO262"]},
+      "terms": {"classification": "reuse_confirmed", "url": "https://digital.nhs.uk/binaries/content/assets/website-assets/services/ods/odsstandards.pdf", "reason": "ODS organisation reference data are OGL except enumerated exemptions."},
+      "supported_fields": ["current stable ICB identifier for the BOB geography", "post-merger active status", "organisation roles"],
+      "unsupported_fields": ["TA1121 payer decision", "local service owner", "displaced programme", "baseline budget"],
+      "refresh_rule": "Reacquire monthly during the 2026 ICB reorganisation and on ODS status, succession, ETag, or hash change."
+    },
+    {
+      "source_id": "ods-bob-name-search-20260804",
+      "authority_rank": 1,
+      "publisher": "NHS England Organisation Data Service",
+      "title": "ODS search for Buckinghamshire, Oxfordshire and Berkshire West ICB",
+      "requested_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations?Name=NHS%20Buckinghamshire%2C%20Oxfordshire%20and%20Berkshire%20West%20ICB",
+      "final_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations?Name=NHS%20Buckinghamshire%2C%20Oxfordshire%20and%20Berkshire%20West%20ICB",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/json", "bytes": 667, "etag": null, "last_modified": "Tue, 04 Aug 2026 13:47:41 GMT"},
+      "sha256": "843f74f3bdfccbf129804319b3c8837c81efe0e20a911605a610319823cbee78",
+      "resolved_fields": {"matched_ods_code": "QU9", "matched_name": "NHS BUCKINGHAMSHIRE, OXFORDSHIRE AND BERKSHIRE WEST INTEGRATED CARE BOARD", "matched_status": "Active"},
+      "terms": {"classification": "reuse_confirmed", "url": "https://digital.nhs.uk/binaries/content/assets/website-assets/services/ods/odsstandards.pdf", "reason": "ODS organisation reference data are OGL except enumerated exemptions."},
+      "supported_fields": ["independent name-to-code resolution for QU9"],
+      "unsupported_fields": ["programme ownership", "service contract", "displacement"],
+      "refresh_rule": "Repeat on ICB-name, code, or organisational-status change."
+    },
+    {
+      "source_id": "nhse-ta1121-resource-impact-identifiers-20260804",
+      "authority_rank": 1,
+      "publisher": "National Institute for Health and Care Excellence",
+      "title": "TA1121 resource impact summary report",
+      "requested_url": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "final_url": "https://www.nice.org.uk/guidance/ta1121/resources/resource-impact-summary-report-pdf-20159191246021",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/pdf", "bytes": 56531, "etag": "DD1EE3B9AA018BD77CC992DC0389B5AE", "last_modified": null},
+      "sha256": "002ed229eb53c18c502ab5c290b7e3613052e7448518ecd619071d7146cf1213",
+      "resolved_fields": {"guidance_id": "TA1121", "programme_budgeting_category": "PBC 10X, Problems of circulation", "commissioner_category": "NHS England", "provider_category": "NHS Hospital trusts", "pathway_position": "First line"},
+      "terms": {"classification": "citation_only", "url": "https://www.nice.org.uk/reusing-our-content/nice-uk-open-content-licence", "reason": "Stable public identifiers and categories are cited; raw document not retained."},
+      "supported_fields": ["TA1121 guidance ID", "PBC 10X category", "commissioner and provider categories"],
+      "unsupported_fields": ["PBC 10X as a displaced programme ID", "named commissioner team", "named local provider", "baseline"],
+      "refresh_rule": "Reacquire if NICE changes the report, category, commissioner, provider, or hash."
+    },
+    {
+      "source_id": "nhse-amyloidosis-service-id-20260804",
+      "authority_rank": 1,
+      "publisher": "NHS England",
+      "title": "Diagnostic Service for Amyloidosis (All Ages), E13/S(HSS)/c",
+      "requested_url": "https://www.england.nhs.uk/wp-content/uploads/2013/06/e13-diag-serv-amyloidosis.pdf",
+      "final_url": "https://www.england.nhs.uk/wp-content/uploads/2013/06/e13-diag-serv-amyloidosis.pdf",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/pdf", "bytes": 103641, "etag": "\"520a5a99-194d9\"", "last_modified": "Tue, 13 Aug 2013 16:11:05 GMT"},
+      "sha256": "41188a005d7f9567ace46b22008a99114caa83d6fb633f8b5ed370f05722411c",
+      "resolved_fields": {"historical_service_specification_number": "E13/S(HSS)/c", "service_name": "Diagnostic Service for Amyloidosis (All Ages)"},
+      "terms": {"classification": "citation_only", "url": "https://www.england.nhs.uk/terms-and-conditions/", "reason": "Historical official service identifier retained for context."},
+      "supported_fields": ["historical national diagnostic-service specification ID"],
+      "unsupported_fields": ["current treatment programme ID", "TA1121 medicine funding", "displaced programme"],
+      "refresh_rule": "Search the current specification index quarterly; retain the historical ID without asserting current contractual force."
+    },
+    {
+      "source_id": "nhse-amyloidosis-service-code-02b-20260804",
+      "authority_rank": 1,
+      "publisher": "NHS England",
+      "title": "Prescribed specialised services manual, version 6",
+      "requested_url": "https://www.england.nhs.uk/wp-content/uploads/2017/10/PRN00115-prescribed-specialised-services-manual-v6.pdf",
+      "final_url": "https://www.england.nhs.uk/wp-content/uploads/2017/10/PRN00115-prescribed-specialised-services-manual-v6.pdf",
+      "retrieval": {"timestamp": "2026-08-04T13:50:36Z", "http_status": 200, "mime_type": "application/pdf", "bytes": 2582110, "etag": "\"641acb8c-27665e\"", "last_modified": "Wed, 22 Mar 2023 09:34:04 GMT"},
+      "sha256": "93aced4fcd0c68ea03ffc404d1ebc80e1d98f1d93ba68213c7516e72ddcac309",
+      "resolved_fields": {"ncbps_service_code": "02B", "service": "Diagnostic service for amyloidosis", "programme_of_care": "Blood and Infection", "clinical_reference_group": "Specialised Immunology and Allergy"},
+      "terms": {"classification": "citation_only", "url": "https://www.england.nhs.uk/terms-and-conditions/", "reason": "Official public service-code context; current version and TA1121 applicability remain separate questions."},
+      "supported_fields": ["service code 02B", "programme-of-care and CRG categories"],
+      "unsupported_fields": ["02B as TA1121 treatment programme", "displaced programme", "current contract", "baseline unit"],
+      "refresh_rule": "Reacquire when NHS England issues a newer prescribed-services manual; invalidate current-version assumptions."
+    }
+  ],
+  "coverage": {
+    "resolved_organisation_ids": {"NHS England": "X24", "Royal Free London NHS Foundation Trust": "RAL", "NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board": "QU9"},
+    "resolved_public_service_ids": {"NICE appraisal": "TA1121", "programme_budgeting_category": "PBC 10X", "historical_amyloidosis_service_specification": "E13/S(HSS)/c", "amyloidosis_diagnostic_service_code": "02B"},
+    "identifier_boundary": "These identifiers resolve organisations, categories, guidance, or diagnostic services. None identifies an attributable programme displaced by acoramidis.",
+    "not_identified": ["TA1121-specific programme ID", "displaced-programme ID", "baseline budget unit", "named accountable commissioner team", "service-level ODS ID for the National Amyloidosis Centre"]
+  },
+  "negative_or_deferred": [
+    {
+      "source_id": "ods-api-documentation-direct-byte-retrieval",
+      "url": "https://digital.nhs.uk/developer/api-catalogue/organisation-data-service-ord",
+      "result": "HTTP 403 to bounded programmatic request",
+      "sha256": null,
+      "no_hash_reason": "Documentation host denied automated bytes; the open production API itself returned the hashed records.",
+      "contingency": "Retain per-response ODS hashes and retry the documentation page without bypass if access policy changes."
+    },
+    {
+      "source_id": "ods-standards-license-document-direct-byte-retrieval",
+      "url": "https://digital.nhs.uk/binaries/content/assets/website-assets/services/ods/odsstandards.pdf",
+      "result": "HTTP 403 to bounded programmatic request",
+      "sha256": null,
+      "no_hash_reason": "The publisher denied the automated PDF request; no access-control bypass was attempted.",
+      "contingency": "The official indexed document states the OGL status; retain this limitation and reacquire the license bytes when directly available."
+    },
+    {
+      "source_id": "ta1121-attributable-displaced-programme-id",
+      "url": null,
+      "result": "not found in authoritative public records acquired",
+      "sha256": null,
+      "no_hash_reason": "This is a missing field, not an unavailable document.",
+      "contingency": "Keep displacement null/deferred. Only an attributable decision record may close the field; do not infer it from X24, RAL, QU9, PBC 10X, E13/S(HSS)/c, or 02B."
+    }
+  ],
+  "rights_boundary": "ODS organisation fields are classified reuse-confirmed under the stated OGL coverage. NICE and NHS document fields remain citation-only. No raw ODS or document payloads are committed, and identifiers are not promoted into empirical model inputs.",
+  "completion_status": "completed_identifier_resolution_with_displacement_deferred",
+  "validation": {"json_syntax": "passed", "required_shape": "passed", "source_count": 7, "negative_or_deferred_count": 3, "raw_payloads_committed": false, "identifier_to_displacement_inference": false, "claim_promotion": false}
+}
