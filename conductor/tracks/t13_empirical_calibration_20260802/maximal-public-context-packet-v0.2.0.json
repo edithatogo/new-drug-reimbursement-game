@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "packet_id": "atlas-ta1121-acoramidis-public-context-derived-v0.2.0",
+  "packet_status": "candidate_public_context_complete_empirical_fields_deferred",
+  "authority": "repository-derived; not an Atlas-approved calibration packet",
+  "programme": "NICE TA1121 acoramidis versus tafamidis, England",
+  "assembled_at": "2026-08-04T14:30:00Z",
+  "acquisition_target_commit": "acee48d6f3c8f40fe88b89de414eadc05f7c35df",
+  "source_bundles": [
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp1-authority-committee-corpus-2026-08-04.json",
+      "sha256": "550ed22f99f9387d20a523592c3fa713d8a09ad0335f7dd80622c50e216b962f",
+      "work_package": "WP1-authority-and-committee-corpus",
+      "completion_status": "completed_with_deferred_sources_and_empirical_gates_open"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp2-secondary-care-aggregates-2026-08-04.json",
+      "sha256": "7db136fea215dd2487d6076aeaf94a0db517277a7a70ff20da29976bcd927fce",
+      "work_package": "WP2_secondary_care_and_prescribing_aggregates",
+      "completion_status": "implemented_public_aggregate_context_only"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp3-organisation-stable-identifiers-2026-08-04.json",
+      "sha256": "55a8473193ede96d7949d7eba12001703142a023a8df290e203995eddb12a7c2",
+      "work_package": "WP3-organisations-and-stable-identifiers",
+      "completion_status": "completed_identifier_resolution_with_displacement_deferred"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp4-regulatory-clinical-commercial-2026-08-04.json",
+      "sha256": "2ece3d87a87dcaa0318a2e342ac5a870c68b6393656f3e986229292b445a340d",
+      "work_package": "WP4_regulatory_clinical_and_commercial_context",
+      "completion_status": "implemented_public_regulatory_clinical_commercial_context_with_explicit_deferrals"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp5-literature-methods-corpus-2026-08-04.json",
+      "sha256": "58e8c94bfa3fce92ecc4e03dba7586e0ef43061baa929b1997dfeefd2040a486",
+      "work_package": "WP5_literature_and_methods_corpus",
+      "completion_status": "completed_bounded_public_enumeration_with_explicit_deferrals"
+    },
+    {
+      "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp6-rights-approved-derived-projection-2026-08-04.json",
+      "sha256": "ed54e711564134ef71b39d08953802736523a203849859eaf82b71d6eee21b47",
+      "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
+      "completion_status": "completed_for_discovered_wp5_sources_with_field_level_projection"
+    }
+  ],
+  "approved_derived_projection": {
+    "projection_id": "t13-wp6-public-literature-derived-v1",
+    "permitted_purpose": "research-only contextual and methods analysis",
+    "fields": {
+      "bibliographic_metadata": {
+        "status": "approved_derived",
+        "source": "Crossref",
+        "contents": [
+          "DOI",
+          "title",
+          "publisher",
+          "publication date",
+          "URL",
+          "work type",
+          "licence link"
+        ]
+      },
+      "trial_registry_metadata": {
+        "status": "approved_derived",
+        "source": "ClinicalTrials.gov",
+        "contents": [
+          "NCT ID",
+          "title",
+          "status",
+          "study type",
+          "interventions",
+          "conditions",
+          "dates",
+          "sponsor",
+          "outcome definitions"
+        ],
+        "warning": "Registry statements are submitted information, not NLM validation."
+      },
+      "reference_case_discounting": {
+        "status": "approved_derived",
+        "source": "NICE PMG36",
+        "primary": "3.5 percent annually for both costs and health effects",
+        "sensitivity": "1.5 percent for both only when NICE's stated conditions are met"
+      },
+      "survival_method_context": {
+        "status": "approved_derived",
+        "source": "Young et al. 2025, CC BY-NC 4.0",
+        "facts": [
+          "consider expected plus excess mortality in relative-survival extrapolation",
+          "assess multiple candidate distributions",
+          "select using fit and clinical plausibility",
+          "validate extrapolation against independent longer follow-up where available",
+          "retain structural uncertainty across plausible models"
+        ]
+      }
+    },
+    "excluded_fields": [
+      "treatment-effect parameters",
+      "baseline hazards",
+      "utilities",
+      "costs",
+      "prices",
+      "eligible population size",
+      "uptake",
+      "NHS displacement",
+      "stable programme ID",
+      "calibrated Chapter 7 parameters",
+      "payer or policy conclusions"
+    ],
+    "attribution": [
+      "Crossref metadata retrieval, accessed 2026-08-04",
+      "ClinicalTrials.gov API, accessed 2026-08-04",
+      "NICE PMG36 economic evaluation chapter, accessed 2026-08-04",
+      "Young R, Said J, Large S. 2025. DOI 10.1177/0272989X251342459. CC BY-NC 4.0"
+    ]
+  },
+  "transformations": [
+    "stream source bytes only long enough to hash or aggregate permitted fields",
+    "retain source receipts and approved-derived fields; retain no raw payloads",
+    "preserve publisher values and identifiers without imputing missing fields",
+    "classify supported, unsupported, conflicting, and deferred fields separately",
+    "do not convert organisation, service, budget, or guidance identifiers into a displaced-programme identifier"
+  ],
+  "uncertainty": {
+    "administrative_aggregates": "provisional observations are labelled provisional and are not causal or indication-specific",
+    "literature": "structural and source-selection uncertainty retained as methods context only",
+    "missingness": "no imputation for displacement, baseline unit, confidential price, or calibration parameters",
+    "joint_parameter_distribution": "not available"
+  },
+  "source_terms": {
+    "classification_authority": "WP6 field-level adjudication",
+    "reuse_confirmed": [
+      "Crossref bibliographic facts",
+      "ClinicalTrials.gov API fields",
+      "NICE reference-case facts",
+      "CC BY-NC bounded relative-survival method facts"
+    ],
+    "inventory_only": [
+      "PubMed corpus metadata beyond identifiers",
+      "NICE DSU TSD 14",
+      "NICE DSU TSD 21",
+      "articles without verified open licences",
+      "Europe PMC corpus as a whole"
+    ],
+    "raw_payload_redistribution": "prohibited"
+  },
+  "parameter_roles": {},
+  "supported_context": [
+    "national guidance and implementation chronology",
+    "official organisation, provider, service, and medicine identifiers",
+    "final and provisional secondary-care aggregate observations with dataset-scope limitations",
+    "regulatory, trial-registry, public commercial, bibliographic, and economic-method context"
+  ],
+  "negative_scope": [
+    "no attributable displaced programme or stable displaced-programme identifier",
+    "no programme baseline cost or unit",
+    "no confidential or net NHS price",
+    "no empirical Chapter 7 parameter roles or joint uncertainty distribution",
+    "no payer, HTA, policy, regulatory, calibrated, raw-data, or confidential-data claims"
+  ],
+  "promotion": {
+    "public_context_research_only": "eligible after exact-target validation",
+    "empirical_calibration": "disabled",
+    "decision_use": "prohibited",
+    "atlas_owner_approval": "required for any future calibration packet"
+  },
+  "refresh_and_invalidation": "Any source URL, revision, ETag, byte hash, terms, transformation, destination, packet, or target-commit change invalidates dependent review and requires rebuilding this packet."
+}

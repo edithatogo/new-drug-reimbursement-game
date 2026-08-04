@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import hashlib
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,7 @@ EXPECTED = {
 }
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 RIGHTS = {"reuse_confirmed", "citation_only", "terms_ambiguous", "restricted", "prohibited"}
+PACKET = "maximal-public-context-packet-v0.2.0.json"
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -96,6 +98,33 @@ def acquisition_violations(track: Path = TRACK) -> list[str]:
         if not isinstance(deferred, list):
             violations.append(f"WP{number}: negative_or_deferred must be a list")
 
+    packet_path = track / PACKET
+    if packet_path.is_file():
+        try:
+            packet = _load(packet_path)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            violations.append(f"WP7: unreadable packet: {exc}")
+            return violations
+        references = packet.get("source_bundles")
+        if not isinstance(references, list) or len(references) != len(EXPECTED):
+            violations.append("WP7: packet must reference every WP1-WP6 bundle")
+        else:
+            for reference in references:
+                if not isinstance(reference, dict) or not isinstance(reference.get("path"), str):
+                    violations.append("WP7: invalid bundle reference")
+                    continue
+                referenced = ROOT / reference["path"]
+                if not referenced.is_file():
+                    violations.append(f"WP7: missing referenced bundle {reference['path']}")
+                elif hashlib.sha256(referenced.read_bytes()).hexdigest() != reference.get("sha256"):
+                    violations.append(f"WP7: stale referenced bundle {reference['path']}")
+        if packet.get("parameter_roles") != {}:
+            violations.append("WP7: public-context packet must not contain calibration parameter roles")
+        promotion = packet.get("promotion", {})
+        if not isinstance(promotion, dict) or promotion.get("empirical_calibration") != "disabled" or promotion.get("decision_use") != "prohibited":
+            violations.append("WP7: empirical or decision-use boundary is not fail-closed")
+        if packet.get("authority") != "repository-derived; not an Atlas-approved calibration packet":
+            violations.append("WP7: packet authority is overstated")
     return violations
 
 

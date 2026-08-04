@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from scripts.build_maximal_public_packet import build
 from scripts.validate_maximal_public_data import EXPECTED, acquisition_violations
 
 
@@ -47,6 +48,13 @@ class MaximalPublicDataValidationTests(unittest.TestCase):
             violations = acquisition_violations(target)
         self.assertEqual(len(violations), len(EXPECTED))
         self.assertTrue(all("missing hash and no-hash reason" in item for item in violations))
+
+    def test_packet_is_context_only_and_fail_closed(self) -> None:
+        packet = build("a" * 40)
+        self.assertEqual(packet["parameter_roles"], {})
+        self.assertEqual(packet["promotion"]["empirical_calibration"], "disabled")
+        self.assertEqual(packet["promotion"]["decision_use"], "prohibited")
+        self.assertIn("no attributable displaced programme or stable displaced-programme identifier", packet["negative_scope"])
 
 
 if __name__ == "__main__":
