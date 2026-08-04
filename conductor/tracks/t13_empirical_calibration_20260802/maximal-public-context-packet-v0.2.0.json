@@ -5,7 +5,7 @@
   "authority": "repository-derived; not an Atlas-approved calibration packet",
   "programme": "NICE TA1121 acoramidis versus tafamidis, England",
   "assembled_at": "2026-08-04T14:30:00Z",
-  "acquisition_target_commit": "acee48d6f3c8f40fe88b89de414eadc05f7c35df",
+  "acquisition_target_commit": "ae690c19b83147cbaa6dd2b00b177e3fd25910da",
   "source_bundles": [
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp1-authority-committee-corpus-2026-08-04.json",
@@ -15,7 +15,7 @@
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp2-secondary-care-aggregates-2026-08-04.json",
-      "sha256": "7db136fea215dd2487d6076aeaf94a0db517277a7a70ff20da29976bcd927fce",
+      "sha256": "5fa33bd04712008246e17e37fa1bd34824c2d3236f6f349fef9cadc63afb2c92",
       "work_package": "WP2_secondary_care_and_prescribing_aggregates",
       "completion_status": "implemented_public_aggregate_context_only"
     },
@@ -27,19 +27,19 @@
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp4-regulatory-clinical-commercial-2026-08-04.json",
-      "sha256": "2ece3d87a87dcaa0318a2e342ac5a870c68b6393656f3e986229292b445a340d",
+      "sha256": "92ec02c0c480809380397ee7cc813959f337e290e66e658a4f403dfd7b850742",
       "work_package": "WP4_regulatory_clinical_and_commercial_context",
       "completion_status": "implemented_public_regulatory_clinical_commercial_context_with_explicit_deferrals"
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp5-literature-methods-corpus-2026-08-04.json",
-      "sha256": "58e8c94bfa3fce92ecc4e03dba7586e0ef43061baa929b1997dfeefd2040a486",
+      "sha256": "bca9125af8fff530dd2ce33a4a7fab35166797b96c42636b5fcc0ab7698761d0",
       "work_package": "WP5_literature_and_methods_corpus",
       "completion_status": "completed_bounded_public_enumeration_with_explicit_deferrals"
     },
     {
       "path": "conductor/tracks/t13_empirical_calibration_20260802/maximal-wp6-rights-approved-derived-projection-2026-08-04.json",
-      "sha256": "ed54e711564134ef71b39d08953802736523a203849859eaf82b71d6eee21b47",
+      "sha256": "ec5bf53d54ddf50151fc98fb1642adf0e435999a2ab84cd3bf9578047cd70bc8",
       "work_package": "WP6_rights_adjudication_and_approved_derived_projection",
       "completion_status": "completed_for_discovered_wp5_sources_with_field_level_projection"
     }

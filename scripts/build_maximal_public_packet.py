@@ -11,7 +11,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 TRACK = ROOT / "conductor/tracks/t13_empirical_calibration_20260802"
 OUTPUT = TRACK / "maximal-public-context-packet-v0.2.0.json"
-ACQUISITION_TARGET_COMMIT = "acee48d6f3c8f40fe88b89de414eadc05f7c35df"
+ACQUISITION_TARGET_COMMIT = "ae690c19b83147cbaa6dd2b00b177e3fd25910da"
 INPUTS = [
     f"maximal-wp{number}-{suffix}-2026-08-04.json"
     for number, suffix in [
