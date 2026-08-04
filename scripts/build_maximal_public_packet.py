@@ -5,13 +5,13 @@ from __future__ import annotations
 
 import hashlib
 import json
-import subprocess
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 TRACK = ROOT / "conductor/tracks/t13_empirical_calibration_20260802"
 OUTPUT = TRACK / "maximal-public-context-packet-v0.2.0.json"
+ACQUISITION_TARGET_COMMIT = "acee48d6f3c8f40fe88b89de414eadc05f7c35df"
 INPUTS = [
     f"maximal-wp{number}-{suffix}-2026-08-04.json"
     for number, suffix in [
@@ -36,12 +36,6 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _head() -> str:
-    return subprocess.run(
-        ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True
-    ).stdout.strip()
-
-
 def build(target_commit: str | None = None) -> dict[str, Any]:
     bundles = [(TRACK / filename, _load(TRACK / filename)) for filename in INPUTS]
     rights = bundles[-1][1]
@@ -52,7 +46,7 @@ def build(target_commit: str | None = None) -> dict[str, Any]:
         "authority": "repository-derived; not an Atlas-approved calibration packet",
         "programme": "NICE TA1121 acoramidis versus tafamidis, England",
         "assembled_at": "2026-08-04T14:30:00Z",
-        "acquisition_target_commit": target_commit or _head(),
+        "acquisition_target_commit": target_commit or ACQUISITION_TARGET_COMMIT,
         "source_bundles": [
             {
                 "path": str(path.relative_to(ROOT)),

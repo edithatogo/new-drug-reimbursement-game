@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.build_maximal_public_packet import build
+from scripts.build_maximal_public_packet import ACQUISITION_TARGET_COMMIT, build
 from scripts.validate_maximal_public_data import EXPECTED, acquisition_violations
 
 
@@ -55,6 +55,9 @@ class MaximalPublicDataValidationTests(unittest.TestCase):
         self.assertEqual(packet["promotion"]["empirical_calibration"], "disabled")
         self.assertEqual(packet["promotion"]["decision_use"], "prohibited")
         self.assertIn("no attributable displaced programme or stable displaced-programme identifier", packet["negative_scope"])
+
+    def test_default_packet_target_is_immutable(self) -> None:
+        self.assertEqual(build()["acquisition_target_commit"], ACQUISITION_TARGET_COMMIT)
 
 
 if __name__ == "__main__":
