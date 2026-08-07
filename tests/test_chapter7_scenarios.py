@@ -4,7 +4,7 @@ import math
 import unittest
 from pathlib import Path
 
-from reimbursement_game.case_io import chapter7_inputs_from_case
+from reimbursement_game.case_io import _required_number, chapter7_inputs_from_case
 from reimbursement_game.chapter7 import (
     Scenario1Inputs,
     Scenario2Inputs,
@@ -156,6 +156,10 @@ class Chapter7ScenarioTests(unittest.TestCase):
         case["schema_version"] = True
         with self.assertRaisesRegex(ValueError, "schema_version 1"):
             chapter7_inputs_from_case(case)
+
+    def test_required_number_missing_field(self) -> None:
+        with self.assertRaises(KeyError):
+            _required_number({}, "missing_field")
 
     def test_schema_scenario_one_forbids_dynamic_fields(self) -> None:
         schema = json.loads(
