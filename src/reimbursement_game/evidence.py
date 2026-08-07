@@ -91,9 +91,6 @@ class EvidencePacket:
     context: EvidenceContext
     records: tuple[ParameterEvidenceRecord, ...]
 
-    def records_for_role(self, role: ParameterRole) -> tuple[ParameterEvidenceRecord, ...]:
-        return tuple(record for record in self.records if record.role is role)
-
 
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _PACKET_KEYS = {"schema_version", "export_kind", "packet_id", "packet_revision", "context", "records"}

@@ -25,7 +25,7 @@ class EvidencePacketTests(unittest.TestCase):
         packet = evidence_packet_from_mapping(fixture_value())
         self.assertEqual(packet.context.jurisdiction, "SYNTHETIC-NOT-FOR-DECISIONS")
         self.assertEqual(len(packet.records), 9)
-        investment = packet.records_for_role(ParameterRole.INVESTMENT_ICER)[0]
+        investment = next(record for record in packet.records if record.role is ParameterRole.INVESTMENT_ICER)
         self.assertEqual(investment.samples, (2.0, 2.4))
         self.assertEqual(investment.marginality, Marginality.MARGINAL)
         self.assertEqual(investment.uncertainty_kind, UncertaintyKind.POSTERIOR_SAMPLES)
