@@ -225,7 +225,8 @@ def evaluate_reimbursement(inputs: ReimbursementInputs) -> ReimbursementEvaluati
     fixed = inputs.context is EconomicContext.FIXED
     displacement_loss = 0.0
     if fixed:
-        assert inputs.opportunities.displacement_icer is not None
+        if inputs.opportunities.displacement_icer is None:
+            raise RuntimeError("fixed-budget reimbursement requires displacement_icer")
         displacement_loss = inputs.incremental_cost / inputs.opportunities.displacement_icer
     alternative = inputs.opportunities.best_alternative(fixed_budget=fixed)
     alternative_gain = (
