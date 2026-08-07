@@ -8,6 +8,7 @@ from reimbursement_game.evidence import (
     Marginality,
     ParameterRole,
     UncertaintyKind,
+    _context_from_mapping,
     evidence_packet_from_mapping,
 )
 
@@ -81,6 +82,15 @@ class EvidencePacketTests(unittest.TestCase):
         unexpected["records"][0]["raw_payload"] = "forbidden"
         with self.assertRaisesRegex(ValueError, "unexpected=.*raw_payload"):
             evidence_packet_from_mapping(unexpected)
+
+    def test_rejects_invalid_decision_date_format(self) -> None:
+        value = fixture_value()
+        context_value = value["context"]
+        context_value["decision_date"] = "01/08/2026"
+        with self.assertRaisesRegex(
+            ValueError, "decision_date must be an ISO-8601 calendar date"
+        ):
+            _context_from_mapping(context_value)
 
 
 if __name__ == "__main__":
