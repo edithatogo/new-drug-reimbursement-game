@@ -66,11 +66,12 @@ class ReimbursementAtlasExport:
     def records(self) -> list[dict[str, Any]]:
         suffix = self.path.suffix.lower()
         if suffix in {".jsonl", ".ndjson"}:
-            values = [
-                json.loads(line)
-                for line in self.path.read_text(encoding="utf-8").splitlines()
-                if line.strip()
-            ]
+            with self.path.open(encoding="utf-8") as f:
+                values = [
+                    json.loads(line)
+                    for line in f
+                    if line.strip()
+                ]
         elif suffix == ".json":
             value = json.loads(self.path.read_text(encoding="utf-8"))
             if not isinstance(value, list):
