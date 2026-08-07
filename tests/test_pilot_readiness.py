@@ -104,6 +104,7 @@ class PilotReadinessTests(unittest.TestCase):
 
     def test_parser_enforces_role_domains_and_shared_role_boundary(self) -> None:
         cases = (
+            (candidate("bad-role", "invalid_role", 1.0, "dimensionless"), "unsupported role"),
             (candidate("bad-phi", "phi", 1.0, "dimensionless"), "greater than 1"),
             (candidate("bad-horizon", "horizon", 3.5, "year"), "whole number"),
             (candidate("bad-annual", "annual_program_health_effect", 2.0, "GBP/QALY"), "QALY/year"),
