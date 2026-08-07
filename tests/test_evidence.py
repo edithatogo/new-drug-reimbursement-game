@@ -21,6 +21,18 @@ def fixture_value() -> dict[str, Any]:
 
 
 class EvidencePacketTests(unittest.TestCase):
+    def test_rejects_unsupported_role_or_classification(self) -> None:
+        for field, replacement in (
+            ("role", "invalid_role"),
+            ("evidence_method", "invalid_method"),
+            ("marginality", "invalid_marginality"),
+        ):
+            with self.subTest(field=field):
+                value = fixture_value()
+                value["records"][0][field] = replacement
+                with self.assertRaisesRegex(ValueError, "evidence record contains an unsupported role or classification"):
+                    evidence_packet_from_mapping(value)
+
     def test_parses_strict_approved_derived_packet(self) -> None:
         packet = evidence_packet_from_mapping(fixture_value())
         self.assertEqual(packet.context.jurisdiction, "SYNTHETIC-NOT-FOR-DECISIONS")
