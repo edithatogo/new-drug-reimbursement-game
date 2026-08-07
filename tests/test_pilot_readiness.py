@@ -89,6 +89,8 @@ class PilotReadinessTests(unittest.TestCase):
             (("candidates", 0, "approval_state"), "approved", "remain candidate"),
             (("candidates", 0, "value"), float("nan"), "finite"),
             (("candidates", 0, "unit"), "bananas", "require unit"),
+            (("candidates", 0, "kind"), "invalid_kind", "unsupported candidate classification"),
+            (("candidates", 0, "uncertainty_status"), "invalid_status", "unsupported candidate classification"),
             (("candidates", 0, "source", "sha256"), "bad", "sha256"),
             (("candidates", 0, "source", "uri"), "http://example.com", "HTTPS"),
         )
