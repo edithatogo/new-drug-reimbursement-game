@@ -12,6 +12,7 @@ import json
 import os
 import subprocess
 import sys
+import configparser
 import tomllib
 from collections.abc import Iterable, Sequence
 from dataclasses import asdict, dataclass
@@ -268,25 +269,63 @@ def inspect_candidate(
 ) -> Candidate | None:
     """Inspect a possible checkout and return it only for an exact remote match."""
 
-    top_level = run_git(path, ["rev-parse", "--show-toplevel"])
-    if top_level.returncode != 0:
-        return None
-    actual_path = Path(top_level.stdout.strip()).resolve()
-    remote_result = run_git(actual_path, ["remote", "get-url", "origin"])
-    if remote_result.returncode != 0:
-        remotes = run_git(actual_path, ["remote"]).stdout.splitlines()
-        remote = ""
-        for remote_name in remotes:
-            result = run_git(actual_path, ["remote", "get-url", remote_name])
-            if normalize_remote(result.stdout) == normalize_remote(component.repository):
-                remote = result.stdout.strip()
-                break
-    else:
-        remote = remote_result.stdout.strip()
+    # Fast path: direct config parsing to avoid subprocess overhead
+    actual_path = path.resolve()
+    config_file = actual_path / ".git" / "config"
+    fast_remote = None
+    config_parsed = False
 
-    normalized = normalize_remote(remote)
-    if normalized != normalize_remote(component.repository):
+    if config_file.is_file():
+        try:
+            config = configparser.ConfigParser(allow_no_value=True)
+            config.read(config_file)
+            config_parsed = True
+
+            # Check origin first
+            if config.has_section('remote "origin"'):
+                url = config.get('remote "origin"', 'url', fallback="")
+                if normalize_remote(url) == normalize_remote(component.repository):
+                    fast_remote = url
+
+            # Check other remotes if origin didn't match
+            if fast_remote is None:
+                for section in config.sections():
+                    if section.startswith('remote '):
+                        url = config.get(section, 'url', fallback="")
+                        if normalize_remote(url) == normalize_remote(component.repository):
+                            fast_remote = url
+                            break
+        except configparser.Error:
+            pass
+
+    if fast_remote is not None:
+        remote = fast_remote
+        normalized = normalize_remote(remote)
+    elif config_parsed:
+        # If we successfully parsed the config and didn't find a matching remote,
+        # there's no need to spawn git processes to find out the same thing.
         return None
+    else:
+        # Fallback to subprocess if config parsing fails or config doesn't exist (e.g. worktree)
+        top_level = run_git(path, ["rev-parse", "--show-toplevel"])
+        if top_level.returncode != 0:
+            return None
+        actual_path = Path(top_level.stdout.strip()).resolve()
+        remote_result = run_git(actual_path, ["remote", "get-url", "origin"])
+        if remote_result.returncode != 0:
+            remotes = run_git(actual_path, ["remote"]).stdout.splitlines()
+            remote = ""
+            for remote_name in remotes:
+                result = run_git(actual_path, ["remote", "get-url", remote_name])
+                if normalize_remote(result.stdout) == normalize_remote(component.repository):
+                    remote = result.stdout.strip()
+                    break
+        else:
+            remote = remote_result.stdout.strip()
+
+        normalized = normalize_remote(remote)
+        if normalized != normalize_remote(component.repository):
+            return None
 
     head_result = run_git(actual_path, ["rev-parse", "HEAD"])
     branch_result = run_git(actual_path, ["symbolic-ref", "--quiet", "--short", "HEAD"])
