@@ -1,8 +1,11 @@
 import json
 import unittest
-from pathlib import Path
 
-from scripts.validate_claim_boundaries import MATRIX, validate_claims, validate_repository_boundaries
+from scripts.validate_claim_boundaries import (
+    MATRIX,
+    validate_claims,
+    validate_repository_boundaries,
+)
 
 
 class ClaimBoundaryTests(unittest.TestCase):
