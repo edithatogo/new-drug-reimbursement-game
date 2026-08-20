@@ -59,6 +59,12 @@ class EvidencePacketTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, message):
                     evidence_packet_from_mapping(value)
 
+    def test_rejects_unsupported_uncertainty_kind(self) -> None:
+        value = fixture_value()
+        value["records"][0]["uncertainty"]["kind"] = "invalid_kind"
+        with self.assertRaisesRegex(ValueError, "unsupported uncertainty kind"):
+            evidence_packet_from_mapping(value)
+
     def test_rejects_non_finite_misaligned_or_out_of_scale_samples(self) -> None:
         for samples, message in (
             ([2.0], "at least two"),
