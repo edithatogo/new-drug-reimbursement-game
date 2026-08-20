@@ -1,0 +1,30 @@
+name: Renovate bootstrap cycle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: renovate-bootstrap-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      LOG_LEVEL: info
+      RENOVATE_ONBOARDING: "false"
+      RENOVATE_PLATFORM: github
+      RENOVATE_REPOSITORIES: '["edithatogo/new-drug-reimbursement-game"]'
+      RENOVATE_REQUIRE_CONFIG: required
+    steps:
+      - name: Run one repository-scoped Renovate cycle
+        uses: renovatebot/github-action@e09d604f8f803bb527bd8321ed5be06c460b8682 # v46.2.2
+        with:
+          renovate-version: 44.35.4
+          token: ${{ secrets.GITHUB_TOKEN }}
