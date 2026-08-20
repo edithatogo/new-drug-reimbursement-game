@@ -30,7 +30,7 @@ jobs:
           python-version: "3.11"
           cache: pip
       - name: Install package and development tools
-        run: python -m pip install --upgrade pip && python -m pip install -e '.[dev]'
+        run: python -m pip install --upgrade pip && python -m pip install -e '.[dev,voiage]'
       - name: Scope and clean-room validation
         run: python scripts/validate_scope.py
       - name: Unit tests and coverage

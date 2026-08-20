@@ -9,7 +9,7 @@
     ".github/ISSUE_TEMPLATE/bug_report.md": "1e8fdba4c9a3441dec8d8cec77410a1f8d8f87deabc70e5f21ab9b6c46ef672a",
     ".github/ISSUE_TEMPLATE/feature_request.md": "9bc7f070f41117b6829eff526e537da9823240531257bc8af8a75f65cc1bbe6f",
     ".github/pull_request_template.md": "bd3cff8fbdaab58dfd58ca93862cc4a2be180c0d93137dffd4ce7f157e840cec",
-    ".github/workflows/ci.yml": "d34fca8116efb1b266a976fe9eda75b23e9055fbd00a63a3b907000e7f266e79",
+    ".github/workflows/ci.yml": "62e9bbe6084e347a8854f26167a08622685b6a19208aa9a642a46c48b7c65979",
     ".github/workflows/dependency-review.yml": "15f54e3fbb3df0ada8ce7a9176a2a666d8bb83ce79a779d2e1120398f9f4ed95",
     ".github/workflows/sbom.yml": "c20b1525e1057020bec9148653cf5f73c3cde5004e3329a193923be97c552362",
     ".github/workflows/scorecard.yml": "e63ae940052634c9a18476a118f835de6b368f3881b9fc6880e916946775e72e",
