@@ -7,6 +7,12 @@
   "labels": ["dependencies"],
   "packageRules": [
     {
+      "description": "Preserve the supported Python range instead of pinning the interpreter",
+      "matchManagers": ["pep621"],
+      "matchPackageNames": ["python"],
+      "enabled": false
+    },
+    {
       "matchManagers": ["github-actions"],
       "pinDigests": true,
       "automerge": false
