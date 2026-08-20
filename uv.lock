@@ -688,14 +688,14 @@ voiage = [
 
 [package.metadata]
 requires-dist = [
-    { name = "basedpyright", marker = "extra == 'dev'", specifier = ">=1.39.9" },
+    { name = "basedpyright", marker = "extra == 'dev'", specifier = "==1.39.10" },
     { name = "build", marker = "extra == 'dev'", specifier = "==1.5.0" },
-    { name = "matplotlib", marker = "extra == 'dev'", specifier = ">=3.9" },
+    { name = "matplotlib", marker = "extra == 'dev'", specifier = "==3.11.1" },
     { name = "numpy", marker = "extra == 'dev'", specifier = ">=2.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.8" },
-    { name = "ty", marker = "extra == 'dev'", specifier = ">=0.0.66" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = "==9.1.1" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = "==7.1.0" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = "==0.16.3" },
+    { name = "ty", marker = "extra == 'dev'", specifier = "==0.0.73" },
     { name = "voiage", marker = "extra == 'voiage'" },
 ]
 provides-extras = ["voiage", "dev"]

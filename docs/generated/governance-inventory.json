@@ -31,14 +31,14 @@
     "name": "new-drug-reimbursement-game",
     "python_optional_dependencies": {
       "dev": [
-        "basedpyright>=1.39.9",
+        "basedpyright==1.39.10",
         "build==1.5.0",
-        "matplotlib>=3.9",
+        "matplotlib==3.11.1",
         "numpy>=2.0",
-        "pytest-cov>=5",
-        "pytest>=8.3",
-        "ruff>=0.8",
-        "ty>=0.0.66"
+        "pytest-cov==7.1.0",
+        "pytest==9.1.1",
+        "ruff==0.16.3",
+        "ty==0.0.73"
       ],
       "voiage": [
         "voiage"
