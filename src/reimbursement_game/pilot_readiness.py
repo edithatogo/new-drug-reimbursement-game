@@ -276,6 +276,13 @@ def assess_pilot_readiness(dossier: CandidateDossier) -> PilotReadinessReceipt:
     )
 
 
+def promote_candidate_dossier(_dossier: CandidateDossier) -> None:
+    """Refuse automatic promotion across the Atlas/human-review boundary."""
+
+    raise ValueError(
+        "candidate evidence cannot be promoted automatically; Atlas and human approval are required"
+    )
+
 
 def _candidate_from_mapping(
     value: dict[str, Any], context: PilotContext

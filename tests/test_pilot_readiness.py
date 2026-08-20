@@ -13,6 +13,7 @@ from reimbursement_game.pilot_readiness import (
     ReadinessStatus,
     assess_pilot_readiness,
     candidate_dossier_from_mapping,
+    promote_candidate_dossier,
 )
 
 DOSSIER = Path("fixtures/evidence/nhs-england-methodological-candidates-v1.json")
@@ -216,7 +217,10 @@ class PilotReadinessTests(unittest.TestCase):
                 changed = assess_pilot_readiness(candidate_dossier_from_mapping(value))
                 self.assertNotEqual(changed.dossier_revision, baseline.dossier_revision)
 
-    def test_candidate_dossier_cannot_be_parsed_as_evidence_packet(self) -> None:
+    def test_candidate_dossier_cannot_enter_approved_evidence_path(self) -> None:
+        dossier = candidate_dossier_from_mapping(dossier_value())
+        with self.assertRaisesRegex(ValueError, "cannot be promoted"):
+            promote_candidate_dossier(dossier)
         with self.assertRaisesRegex(ValueError, "fields mismatch"):
             evidence_packet_from_mapping(dossier_value())
 
