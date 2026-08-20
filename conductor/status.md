@@ -16,3 +16,4 @@
 | T11 Evidence and uncertainty | Done | Strict approved-derived packet, all-scenario calibration receipts, aligned uncertainty checks, CLI, Atlas ingestion, and actual pinned Voiage schema handoff pass; real evidence and human review remain external. |
 | T12 NHS England pilot | Done | Candidate-only source dossier, bounded and aligned all-scenario readiness, non-promotion controls, exact receipt, independent review, and full validation complete; Atlas, health-economist, and specific-displacement approvals remain external. |
 | T13 Empirical calibration | Done | Autonomous maximal public-data acquisition (WP1-WP7), synthetic research-only output controls, panel consensus, closeout validation, and fail-closed external gates complete. |
+| T14 Regulatory validation boundary | Done | Official UK regulatory/HTA framework evidence, prohibited-claims matrix, gap assessment, and fail-closed release separation complete. |

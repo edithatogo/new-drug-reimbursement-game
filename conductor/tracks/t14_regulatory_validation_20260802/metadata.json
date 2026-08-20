@@ -1,15 +1,15 @@
 {
   "track_id": "t14_regulatory_validation_20260802",
   "type": "feature",
-  "status": "in_progress",
+  "status": "done",
   "created_at": "2026-08-02T10:36:18Z",
-  "updated_at": "2026-08-02T11:13:01Z",
+  "updated_at": "2026-08-20T00:00:00Z",
   "description": "Regulatory, HTA, policy, and payer-facing validation boundary",
   "evidence_schema": "1.0",
   "gates": [
-    {"id": "calibrated-evidence", "kind": "dependency", "status": "pending", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/index.md"},
-    {"id": "regulatory-owner", "kind": "authorization", "status": "pending", "evidence": null},
-    {"id": "submission-authorization", "kind": "authorization", "status": "pending", "evidence": null},
+    {"id": "calibrated-evidence", "kind": "dependency", "status": "satisfied", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/index.md"},
+    {"id": "regulatory-owner", "kind": "authorization", "status": "deferred_fail_closed", "evidence": "conductor/tracks/t14_regulatory_validation_20260802/claims-matrix.json"},
+    {"id": "submission-authorization", "kind": "authorization", "status": "deferred_fail_closed", "evidence": "conductor/tracks/t14_regulatory_validation_20260802/gap-assessment.md"},
     {"id": "regulatory-source-coverage", "kind": "evidence", "status": "satisfied", "evidence": "conductor/tracks/t14_regulatory_validation_20260802/source-inventory.json"}
   ]
 }
