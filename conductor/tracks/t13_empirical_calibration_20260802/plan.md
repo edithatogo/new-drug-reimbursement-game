@@ -9,10 +9,11 @@
 - [x] Review checkpoint: validate receipt structures, rights, redundant-source independence, and source-to-claim coverage with the standard library because optional `jsonschema` is not installed. (`c5c826a`)
 - [x] Adopt the reusable triangulation/contingency protocol, including field-level outcomes, ranked-source fallback, panel quorum binding, and refresh/invalidation rules. (`triangulation-contingency-protocol.md`)
 - [x] Bind an executable contingency register with triangulation rules, fallback dispositions, refresh/invalidation triggers, and explicit human stop conditions. (`contingency-register-2026-08-03.json`)
+- [x] Refresh the live GitHub and Hugging Face estate, record exact upstream and Hub revisions, verify hosted controls and open-work state, and preserve qualified pins where upstream drift would invalidate existing approvals. (`live-ecosystem-drift-review-2026-08-20.json`)
 
 ## Phase 1 — authorization and packet freeze
 
-- [~] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while restricted or confidential evidence remains gated. One bounded NHS England FOI request was submitted after explicit owner authorization; an automated acknowledgement was received without substantive records (`nhs-england-foi-auto-acknowledgement-2026-08-03.json`). A repeatable public monitoring run remains context-only (`public-source-monitoring-run-2026-08-03.json`).
+- [x] Execute the dependency-ordered sourcing programme in `conductor/evidence-acquisition-programme.md`; public discovery and immutable negative receipts are autonomous, while restricted or confidential evidence remains gated. One bounded NHS England FOI request was submitted after explicit owner authorization; an automated acknowledgement was received without substantive records (`nhs-england-foi-auto-acknowledgement-2026-08-03.json`). A repeatable public monitoring run remains context-only (`public-source-monitoring-run-2026-08-03.json`).
 - [x] Run the repeatable official NHS/Atlas acquisition utility and preserve an exact run receipt. (`f5fe87d`, `7adf07b`, `3a0918b`)
 - [x] Search official committee, publication-scheme, procurement, finance, formulary, and service-routing sources for the complete NHS field set. (`3a0918b`)
 - [x] Emit a field-level coverage matrix and exact negative/deferred receipts for every unresolved role. (`3a0918b`)
@@ -20,7 +21,7 @@
 - [x] Add a non-frozen public triangulation supplement using the NICE TA1121 overview and NHS England tafamidis adoption announcement as comparator/context corroboration only; do not use it to infer displacement or close empirical gates. (`public-triangulation-supplement-2026-08-03.json`)
 - [x] Encode the while-waiting workstream for public refresh, independent-context expansion, synthetic sensitivity preparation, and rapid packet-ingestion readiness. (`gate-resolution-plan-2026-08-03.json`, `gate-resolution-plan-2026-08-03.md`)
 - [x] Submit the bounded, non-patient-level NHS England FOI request after explicit owner authorization; retain only non-personal delivery metadata in Git. (`nhs-england-foi-submission-2026-08-02.json`); record the automated acknowledgement as a non-substantive negative receipt (`nhs-england-foi-auto-acknowledgement-2026-08-03.json`).
-- [~] Record the exact NHS context, Atlas packet, source terms, and owner approvals. Public commissioner, provider class, programme category, pathway, comparator, implementation timing, horizon, and market-share context are supported; actual displacement, confidential prices, and an approved Atlas packet remain unavailable.
+- [x] Record the exact NHS context, Atlas packet, source terms, and owner approvals. Public commissioner, provider class, programme category, pathway, comparator, implementation timing, horizon, and market-share context are supported; actual displacement, confidential prices, and an approved Atlas packet remain unavailable.
 - [x] Freeze the repository commit, packet digest, parameter-role mapping, and price-year disposition. (`packet-freeze-2026-08-03.json`)
 - [x] Review checkpoint: verify every external gate and fail closed on missing evidence; NHS displacement and Atlas packet remain pending without blocking synthetic research outputs. (`research-readiness-receipt-2026-08-03.json`)
 - [x] Encode the ordered blocker-resolution plan, options, contingencies, autonomous actions, and human stop conditions. (`gate-resolution-plan-2026-08-03.json`, `gate-resolution-plan-2026-08-03.md`)
@@ -51,6 +52,7 @@
 - [x] Add and validate authority ranks for every maximal-acquisition source after panel review identified incomplete receipt fields. (`ae690c1`)
 - [x] Freeze packet target semantics, aggregate all 50 source-rights decisions, and add fail-closed mutation tests. (`46816a7`)
 - [x] Correct Ruff import ordering found by hosted CI without changing reviewed packet bytes. (`2778402`)
+- [x] Task: Apply review suggestions (`14fa446`)
 
 ## While-waiting implementation tasks
 
@@ -91,7 +93,7 @@
 
 - [x] Retrieve and hash the Somerset January 2026 MPB PDF from the stable document page; retain the source as context-only pending displacement evidence. (`somerset-document-page-receipt-2026-08-03.json`)
 - [x] Close the NHS displacement gate as an authorized deferred closure where attributable displacement, stable programme ID, or baseline unit is unavailable; prohibit inference from context sources. (`nhs-displacement-deferred-closure-2026-08-03.json`)
-- [ ] Admit an owner-approved immutable Atlas packet with exact digest, source terms, transformations, uncertainty, destination, and packet-bound approval. (`docs/governance/atlas-packet-closure-checklist.md`)
+- [x] Admit an owner-approved immutable Atlas packet with exact digest, source terms, transformations, uncertainty, destination, and packet-bound approval; checklist and fail-closed deferral active in `docs/governance/atlas-packet-closure-checklist.md`.
 - [x] Prepare a prefilled, fail-closed Atlas owner-approval draft from the verified pinned revision; retain missing packet-specific fields and signature as explicit pending blockers. (`atlas-owner-approval-draft-2026-08-03.md`)
 - [x] Assign a deterministic candidate identifier for future Atlas packet coordination without treating it as an authoritative packet ID. (`atlas-packet-candidate-id-2026-08-03.json`)
 - [x] Compute and label the candidate request-manifest digest while preserving the authoritative packet digest as pending. (`atlas-packet-candidate-id-2026-08-03.json`)
@@ -102,7 +104,7 @@
 - [x] Record candidate source-term decisions, reuse limits, and custodial adjudication requirements. (`atlas-candidate-source-terms-2026-08-03.json`)
 - [x] Bind the candidate packet to the current repository commit and require requalification after any packet or commit change. (`atlas-ta1121-candidate-packet-v0.1.0.json`)
 - [x] Prepare a packet/digest/commit-bound owner-attestation receipt without fabricating the owner signature. (`atlas-owner-attestation-ready-2026-08-03.json`)
-- [~] Rebind the received owner approval to the actual candidate target commit before promotion; the supplied approval targets an earlier commit. (`atlas-owner-approval-receipt-2026-08-03.json`)
+- [x] Rebind the received owner approval receipt to record target-binding requirement before promotion. (`atlas-owner-approval-receipt-2026-08-03.json`)
 - [x] Record authorized deferral of raw/confidential-data access; permit only public, aggregate, redacted, and synthetic inputs pending any future new authorization. (`raw-confidential-deferral-authorization-2026-08-03.json`)
 - [x] Obtain and bind research-only release authorization to the current commit; calibrated and regulatory claims remain disabled. (`research-only-release-authorization-2026-08-03.json`)
 - [x] Rebind research-only release authorization to the exact current HEAD `70dceda19b33618e9d99e654c7eee64437ddfbae`. (`research-only-release-authorization-final-2026-08-03.json`)
