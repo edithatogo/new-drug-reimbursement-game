@@ -17,7 +17,7 @@
     "CONTRIBUTING.md": "d04f331380909406247bf0d2ab7cddeea4a774705007f896fd5d03df764f909b",
     "SECURITY.md": "bbeffbfdd9de1c0bade993012024bb249bfc6a64a39a380d035dcc482f7788f2",
     "codecov.yml": "b8fc4b59a61218296bbfb9fd62c521d25ce05e30d9c7c07843c92040a8ed5db3",
-    "renovate.json": "424b7b1817250262eaffc3df7c54af26eaaa6533b5c6a900b7ebdbf4506c185a",
+    "renovate.json": "cdb57200b526a41ac61af1c2de3f86413d76acb353e7b2c9036f906ed5a569cd",
     "security-insights.yml": "c0383f0b92f5c730e85c395f422b5a899cd80d06b7d96b01c167957fa08bc401"
   },
   "schema": "repository-hardening-receipt/v1",
