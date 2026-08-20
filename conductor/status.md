@@ -18,3 +18,4 @@
 | T13 Empirical calibration | Done | Autonomous maximal public-data acquisition (WP1-WP7), synthetic research-only output controls, panel consensus, closeout validation, and fail-closed external gates complete. |
 | T14 Regulatory validation boundary | Done | Official UK regulatory/HTA framework evidence, prohibited-claims matrix, gap assessment, and fail-closed release separation complete. |
 | T15 Raw-data acquisition and governance | Done | Public metadata discovery, repository exclusion boundaries, zero-raw-payload enforcement, and controlled-derivation governance complete. |
+| T16 Confidential data controls | Done | Default-deny disclosure matrix, aggregation suppression thresholds, audience-labelled outputs, and zero-confidential-payload governance complete. |

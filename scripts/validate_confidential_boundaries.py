@@ -8,6 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "conductor/tracks/t16_confidential_data_controls_20260802/disclosure-matrix.json"
+if not MATRIX.is_file():
+    MATRIX = ROOT / "conductor/archive/t16_confidential_data_controls_20260802/disclosure-matrix.json"
 RELEASE = ROOT / "docs/governance/release-packet/research-only-release-authorization-2026-08-02.json"
 
 
