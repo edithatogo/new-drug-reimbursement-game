@@ -17,6 +17,9 @@ def run(command: list[str]) -> dict[str, object]:
 
     print("+", " ".join(command), flush=True)
     environment = os.environ.copy()
+    venv_bin = (Path(__file__).resolve().parents[1] / ".venv/bin").resolve()
+    if venv_bin.is_dir():
+        environment["PATH"] = str(venv_bin) + os.pathsep + environment.get("PATH", "")
     source_path = str((Path.cwd() / "src").resolve())
     environment["PYTHONPATH"] = source_path + os.pathsep + environment.get("PYTHONPATH", "")
     started = time.monotonic()

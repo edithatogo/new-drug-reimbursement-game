@@ -38,9 +38,9 @@ class VoiageAdapter:
         # coerced into object arrays.
         rows = _validated_rows(net_benefit_samples)
         try:
-            import numpy as np  # ty: ignore[unresolved-import]
-            from voiage.analysis import DecisionAnalysis  # ty: ignore[unresolved-import]
-            from voiage.schema import ValueArray  # ty: ignore[unresolved-import]
+            import numpy as np
+            from voiage.analysis import DecisionAnalysis
+            from voiage.schema import ValueArray
         except ImportError as exc:  # pragma: no cover - optional ecosystem checkout
             raise RuntimeError(
                 "Install or check out edithatogo/voiage to use VOI analysis"
@@ -68,8 +68,8 @@ class VoiageAdapter:
         if any(len(values) != len(rows) for values in parameter_values.values()):
             raise ValueError("Voiage parameter samples must align with strategy samples")
         try:
-            import numpy as np  # ty: ignore[unresolved-import]
-            from voiage.schema import ParameterSet, ValueArray  # ty: ignore[unresolved-import]
+            import numpy as np
+            from voiage.schema import ParameterSet, ValueArray
         except ImportError as exc:  # pragma: no cover - optional ecosystem checkout
             raise RuntimeError(
                 "Install or check out pinned edithatogo/voiage to prepare VOI inputs"
