@@ -49,7 +49,9 @@
       "renovate_version": "44.35.4",
       "token": "ephemeral repository-scoped GITHUB_TOKEN",
       "automerge": false,
-      "warning": "The first run could not access vulnerability alerts; security-events read permission was added for the clean rerun."
+      "permission_probe_rerun": "https://github.com/edithatogo/new-drug-reimbursement-game/actions/runs/32371262562",
+      "permission_probe_rerun_head": "1aaca7167ff5ef989736822f847fab124f71f0ad",
+      "warning": "The ephemeral Actions token cannot read GitHub Dependabot alert data. Adding security-events read did not change that result, so the ineffective permission was removed. Dependabot alerts remain enabled and were independently verified at zero open alerts with the authenticated maintainer API session."
     },
     "repository_mutation_performed": true
   },
