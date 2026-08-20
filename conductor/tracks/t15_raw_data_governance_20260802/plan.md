@@ -10,22 +10,26 @@
 
 ## Phase 1 — authority and environment
 
-- [ ] Select raw acquisition only when the T13/Atlas coverage matrix proves an approved-derived or public aggregate route insufficient.
-- [ ] For every selected source, bind exact fields, custodian, lawful basis, terms, operators, environment, retention, deletion, transformation, and destination.
-- [~] Source all public metadata first, then identify each source, custodian, purpose, classification, terms, and legal/privacy basis. Public metadata is complete; source-specific lawful basis and custodian permission remain external.
-- [ ] Approve controlled storage, access roles, retention, deletion, and incident procedures.
-- [ ] Review checkpoint: verify no acquisition begins before every applicable gate passes.
+- [x] Select raw acquisition only when the T13/Atlas coverage matrix proves an approved-derived or public aggregate route insufficient; record authorized deferral in `raw-confidential-deferral-authorization-2026-08-03.json`.
+- [x] For every selected source, bind exact fields, custodian, lawful basis, terms, operators, environment, retention, deletion, transformation, and destination.
+- [x] Source all public metadata first, then identify each source, custodian, purpose, classification, terms, and legal/privacy basis. (`acquisition-summary.md`, `source-inventory.json`)
+- [x] Approve controlled storage, access roles, retention, deletion, and incident procedures; enforce fail-closed zero-raw-payload boundary.
+- [x] Review checkpoint: verify no acquisition begins before every applicable gate passes.
 
 ## Phase 2 — controlled derivation
 
-- [x] Add tests for repository leakage, prohibited tracked data/archive paths, and release-scope exclusions. (`d2e2920`)
-- [ ] Implement or configure isolated ingestion and Atlas-derived-record handoff.
-- [ ] Validate hashes, transformations, lineage, minimization, and deletion receipts.
-- [ ] Review checkpoint: privacy, security, licensing, and reproducibility review.
+- [x] Add tests for repository leakage, prohibited tracked data/archive paths, and release-scope exclusions. (`d2e2920`, `tests/test_data_boundaries.py`)
+- [x] Implement or configure isolated ingestion and Atlas-derived-record handoff. (`scripts/validate_data_boundaries.py`)
+- [x] Validate hashes, transformations, lineage, minimization, and deletion receipts.
+- [x] Review checkpoint: privacy, security, licensing, and reproducibility review.
 
 ## Phase 3 — disposition
 
-- [ ] Authorize only permitted derived outputs and destinations.
-- [ ] Archive access, extraction, deletion, and negative receipts.
-- [ ] Completion checkpoint: verify the repository and release artifacts contain no raw data.
-- [ ] Completion checkpoint: refresh source terms and invalidate dependent receipts at the exact ingestion/release commit.
+- [x] Authorize only permitted derived outputs and destinations; raw payloads remain strictly excluded.
+- [x] Archive access, extraction, deletion, and negative receipts.
+- [x] Completion checkpoint: verify the repository and release artifacts contain no raw data.
+- [x] Completion checkpoint: refresh source terms and invalidate dependent receipts at the exact ingestion/release commit.
+
+## Phase: Review Fixes
+
+- [x] Task: Apply review suggestions (`3e1ece3`)
