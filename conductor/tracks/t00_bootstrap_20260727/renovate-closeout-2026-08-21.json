@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t00-renovate-closeout-2026-08-21",
+  "observed_at": "2026-08-20T14:29:40Z",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "head": "d199b63612585e8f8c108ba6125869a3ffcab65a",
+  "final_cycle": {
+    "workflow_run": "https://github.com/edithatogo/new-drug-reimbursement-game/actions/runs/32380342553",
+    "result": "success",
+    "dashboard": "https://github.com/edithatogo/new-drug-reimbursement-game/issues/81",
+    "open_or_pending_branches": 0,
+    "open_pull_requests": 0
+  },
+  "merged_updates": [
+    {
+      "pull_request": 82,
+      "merge_commit": "78182f34fdabe454c1cb09d22181261a743c3681",
+      "scope": "wheel 0.47.0 to 0.48.0"
+    },
+    {
+      "pull_request": 83,
+      "merge_commit": "27c219a8ab42720ad8d81e612be29d7b40e24165",
+      "scope": "Rust toolchain digest and CodeQL action patch"
+    },
+    {
+      "pull_request": 84,
+      "merge_commit": "9ea5a30d78eae44f64cf7ce2982976632dc58a2d",
+      "scope": "setuptools 83.0.0 to 84.0.0"
+    },
+    {
+      "pull_request": 85,
+      "merge_commit": "d199b63612585e8f8c108ba6125869a3ffcab65a",
+      "scope": "compatible development-tool pins with NumPy range preserved for Python 3.11"
+    }
+  ],
+  "validation": {
+    "pull_request_policy": "Each update was reviewed individually and merged only after dependency review and repository CI passed.",
+    "main_ci_run": "https://github.com/edithatogo/new-drug-reimbursement-game/actions/runs/32380299987",
+    "main_ci_result": "success",
+    "scorecard_result": "success",
+    "sbom_result": "success"
+  },
+  "contingencies": {
+    "workflow_updates": "The ephemeral Actions token cannot push workflow-file changes. Renovate run 32378268066 resolved immutable revisions; a maintainer-authored PR applied and validated them.",
+    "numpy_pin": "The latest NumPy pin excluded Python 3.11. NumPy remains >=2.0 with lockfile environment markers and a package-specific Renovate widen rule.",
+    "platform_vulnerability_alerts": "The ephemeral token cannot list GitHub Dependabot alerts. Renovate's platform query is disabled to avoid a false operational warning; inherited OSV scanning remains enabled. GitHub vulnerability alerts and Dependabot security updates remain enabled, but alert-list completeness is not asserted by this receipt."
+  },
+  "operating_model": {
+    "trigger": "manual workflow_dispatch only",
+    "automerge": false,
+    "review": "single-maintainer individual merge-or-close triage",
+    "hosted_app": "deferred; manual bootstrap remains the credential-minimizing contingency"
+  }
+}
