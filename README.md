@@ -108,6 +108,7 @@ python -m reimbursement_game.cli evidence fixtures/evidence/synthetic-chapter7-p
 python -m reimbursement_game.cli pilot-readiness fixtures/evidence/nhs-england-methodological-candidates-v1.json
 python -m reimbursement_game.cli calibrate fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json scenario_3 120 20 --case-id synthetic-demo --record n=n-allocative --record m=m-contraction --record d=d-displacement
 python -m reimbursement_game.cli equilibrium examples/cases/chapter8_example.json
+python -m reimbursement_game.cli sweep --output-dir docs/figures
 python -m reimbursement_game.cli uogto examples/cases/chapter8_example.json
 python scripts/validate_scope.py
 ```
