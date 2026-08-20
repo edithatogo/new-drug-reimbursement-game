@@ -34,7 +34,7 @@
 - [x] **Track: T15 raw-data acquisition and governance**
   *Link: [./archive/t15_raw_data_governance_20260802/index.md](./archive/t15_raw_data_governance_20260802/index.md)*
 - [x] **Track: T16 confidential and commercially sensitive data controls**
-  *Link: [./tracks/t16_confidential_data_controls_20260802/index.md](./tracks/t16_confidential_data_controls_20260802/index.md)*
+  *Link: [./archive/t16_confidential_data_controls_20260802/index.md](./archive/t16_confidential_data_controls_20260802/index.md)*
 
 The remaining implementation programme T03-T08 remains authoritative in
 `conductor/tracks.yaml` and will be migrated into detailed track folders as each
