@@ -1,7 +1,0 @@
-🧪 [Add Error Tests for Unsupported Candidate Classification]
-
-🎯 What: Added explicit error test cases in `test_pilot_readiness.py` to ensure that providing an invalid `kind` or `uncertainty_status` string to `_candidate_from_mapping` correctly raises a ValueError with the message "unsupported candidate classification".
-
-📊 Coverage: These tests cover the previously unhandled error conditions described in the prompt for `src/reimbursement_game/pilot_readiness.py:296`.
-
-✨ Result: Improves test coverage by explicitly validating error conditions when parsing candidate classification data, reducing the risk of edge cases going undetected.
