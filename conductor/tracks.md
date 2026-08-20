@@ -36,6 +36,7 @@
 - [x] **Track: T16 confidential and commercially sensitive data controls**
   *Link: [./archive/t16_confidential_data_controls_20260802/index.md](./archive/t16_confidential_data_controls_20260802/index.md)*
 
-The remaining implementation programme T03-T08 remains authoritative in
-`conductor/tracks.yaml` and will be migrated into detailed track folders as each
-track is activated.
+All registered tracks T00–T16 are complete for their bounded scopes. Archived
+tracks retain explicit external, empirical, regulatory, raw-data, and
+confidential-data limitations; completion does not promote those deferred claim
+classes.

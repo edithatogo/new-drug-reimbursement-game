@@ -2,7 +2,7 @@
 
 | Track | Status | Current evidence |
 |---|---|---|
-| T00 Repository bootstrap and ecosystem resolution | Done | Public GitHub remote, pinned cache clones, green local baseline, active solo-maintainer main ruleset, and green hosted CI, Scorecard, and SBOM runs verified on 2026-08-20. Renovate configuration is present, but the first hosted cycle remains unobserved pending authenticated GitHub App access. |
+| T00 Repository bootstrap and ecosystem resolution | Done | Public GitHub remote, pinned cache clones, green local baseline, active solo-maintainer main ruleset, and green hosted CI, Scorecard, and SBOM runs verified on 2026-08-20. The manual Renovate bootstrap completed its first observable cycle, individually reviewed and merged PRs #82–#85, migrated its configuration in PR #87, and reached a dashboard state with no open or pending branches. |
 | T01 Mathematical foundation | Done | Source-verified Scenario 3 derivation, independent panel review, and Python/Rust conformance evidence complete. |
 | T02 Rust game runtime | Done | Domain-neutral UOGTO-native Rust runtime, conformance fixtures, and validation complete. |
 | T03 UOGTO semantics | Done | UOGTO reimbursement and execution semantics are archived; upstream-dependent promotion remains external. |
