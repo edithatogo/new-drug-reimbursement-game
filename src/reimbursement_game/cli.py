@@ -18,6 +18,7 @@ from .chapter8 import solve_pekarsky_game1
 from .economics import evaluate_reimbursement
 from .evidence import ParameterRole
 from .pilot_readiness import assess_pilot_readiness, candidate_dossier_from_mapping
+from .sweeps import generate_all_figures
 
 
 def _load(path: str) -> dict[str, Any]:
@@ -37,6 +38,8 @@ def main(argv: list[str] | None = None) -> int:
     for name in ("evaluate", "scenario", "equilibrium", "uogto", "kairos"):
         command = sub.add_parser(name)
         command.add_argument("case")
+    sweep_command = sub.add_parser("sweep", help="generate scenario sweep figures")
+    sweep_command.add_argument("--output-dir", default="docs/figures", help="target figure output directory")
     evidence_command = sub.add_parser("evidence")
     evidence_command.add_argument("packet")
     readiness_command = sub.add_parser("pilot-readiness")
@@ -55,6 +58,17 @@ def main(argv: list[str] | None = None) -> int:
         help="select exactly one approved evidence record for each required role",
     )
     args = parser.parse_args(argv)
+    if args.command == "sweep":
+        output_dir = Path(args.output_dir)
+        paths = generate_all_figures(output_dir)
+        _print(
+            {
+                "status": "success",
+                "output_dir": str(output_dir),
+                "generated_figures": [str(path) for path in paths],
+            }
+        )
+        return 0
     if args.command == "pilot-readiness":
         dossier = candidate_dossier_from_mapping(_load(args.dossier))
         _print(asdict(assess_pilot_readiness(dossier)))
