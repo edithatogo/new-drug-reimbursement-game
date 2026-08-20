@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t13-live-ecosystem-drift-review-2026-08-20",
+  "track": "T13",
+  "observed_at": "2026-08-20T11:14:21Z",
+  "application_repository": {
+    "repository": "https://github.com/edithatogo/new-drug-reimbursement-game",
+    "visibility": "public",
+    "default_branch": "main",
+    "head_revision": "9f2a9bd834ed8a5dbd5aa6f048213314eef51e11",
+    "open_pull_requests": 0,
+    "open_issues": 0,
+    "latest_head_workflows": {
+      "ci": "success",
+      "scorecard": "success",
+      "sbom": "success"
+    },
+    "main_ruleset": {
+      "enforcement": "active",
+      "required_status_checks": ["python", "rust"],
+      "required_approving_reviews": 0,
+      "deletion_blocked": true,
+      "non_fast_forward_blocked": true,
+      "single_maintainer_exception_retained": true
+    },
+    "open_security_alerts": {
+      "scorecard": 1,
+      "dependabot": 0,
+      "secret_scanning": 0,
+      "note": "The sole open Scorecard alert is the documented single-maintainer branch-protection exception."
+    },
+    "renovate": {
+      "observable_pull_requests": 0,
+      "observable_dependency_dashboard_issues": 0,
+      "disposition": "Configuration is present locally, but this observation does not prove a completed hosted Renovate update cycle."
+    }
+  },
+  "repository_dependencies": [
+    {
+      "component": "UOGTO",
+      "locked_revision": "ac5b8e86c4a3547d008e83ba4cfcbb5f3ba95f25",
+      "live_default_branch_revision": "ac5b8e86c4a3547d008e83ba4cfcbb5f3ba95f25",
+      "drift": false,
+      "disposition": "retain qualified pin"
+    },
+    {
+      "component": "Kairos",
+      "locked_revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+      "live_default_branch_revision": "fae901558f07b7b717a676adbafbe2cdc78dea1c",
+      "drift": false,
+      "disposition": "retain qualified pin"
+    },
+    {
+      "component": "Voiage",
+      "locked_revision": "4b93ee04231bedaeae7e24d39b2b6f2c6ff9b9d6",
+      "live_default_branch_revision": "b19857f44df21ff6a854a2363ab4b1f94a340e4c",
+      "drift": true,
+      "disposition": "retain qualified pin pending compatibility and licence requalification"
+    },
+    {
+      "component": "Reimbursement Atlas",
+      "locked_revision": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca",
+      "live_default_branch_revision": "2183c25ee2bf940a1c8879cfef521474b1fc0dce",
+      "commits_ahead_of_pin": 143,
+      "drift": true,
+      "live_search_terms": {
+        "TA1121": 0,
+        "acoramidis": 0,
+        "tafamidis": 0,
+        "ATTR-CM": 0
+      },
+      "search_limitation": "GitHub code-search counts are bounded observations and are not proof of repository-wide or historical absence.",
+      "disposition": "retain qualified pin; inspect upstream changes before any re-pin and do not treat live main as an approved packet"
+    },
+    {
+      "component": "Repository standards",
+      "reference_revision": "ad67bedaa0c4d0769bd54fd76354bac65b25b88c",
+      "live_default_branch_revision": "ad67bedaa0c4d0769bd54fd76354bac65b25b88c",
+      "drift": false,
+      "disposition": "standards baseline remains current"
+    }
+  ],
+  "hugging_face": {
+    "dataset": {
+      "id": "edithatogo/reimbursement-atlas",
+      "revision": "a2b3682b1fd4dc5910a154c15abdc6e9c4199442",
+      "last_modified": "2026-08-01T11:59:40Z",
+      "private": false,
+      "gated": false,
+      "disabled": false,
+      "hub_license": "other",
+      "card_license": "other",
+      "dataset_card_sha256": "4eb977cf482bb0bc038e3291179cec63ad1fd2384b7fdeab4f587806b4c7fe18",
+      "rights_sha256": "abe4bc1c7393f7b6008e37c29b58aeb675cae7155cff25418a3f27e1c6625b0c",
+      "publication_manifest_sha256": "d197707a271a478305a16d572104af23bf362ff7be4feedd3306e8f59b565d71",
+      "rights_registry_status": "unresolved",
+      "publication_manifest_artifact_count": 246,
+      "ta1121_approved_packet_present": false
+    },
+    "space": {
+      "id": "edithatogo/reimbursement-atlas",
+      "revision": "2a82c05f8e38a0ae8ab681d3d4cbda1b43c46d01",
+      "last_modified": "2026-08-01T11:58:50Z",
+      "private": false,
+      "gated": false,
+      "disabled": false,
+      "runtime_stage": "RUNNING"
+    }
+  },
+  "decision": {
+    "recommendation": "Do not automatically re-pin Voiage or Reimbursement Atlas and do not promote the Hub seed dataset as TA1121 evidence.",
+    "rationale": "A dependency or destination revision change invalidates packet, review, and owner-approval bindings. The Hub metadata is internally consistent but retains source-specific unresolved rights and does not publish the required TA1121 packet.",
+    "next_autonomous_actions": [
+      "Review Voiage changes since the qualified pin for contract-compatible improvements.",
+      "Review Atlas changes since the qualified pin and identify whether a new immutable Hub publication is planned or available.",
+      "Re-run compatibility, rights, packet, panel, and exact-commit qualification before changing any lock revision.",
+      "Continue enforcing research-only outputs and disabled empirical, payer, HTA, policy, regulatory, calibrated, raw-data, and confidential-data claims."
+    ],
+    "stop_conditions": [
+      "A proposed re-pin changes an approved packet, transformation, source term, destination, or target commit.",
+      "A source has conflicting, incomplete, inaccessible, or restricted terms.",
+      "Promotion would require a TA1121 packet or accountable approval that is not present at an immutable revision."
+    ]
+  }
+}
