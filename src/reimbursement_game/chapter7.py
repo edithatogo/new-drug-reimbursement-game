@@ -62,9 +62,7 @@ class Scenario4Inputs:
     evidence_revision: str
 
 
-Chapter7Inputs: TypeAlias = (
-    Scenario1Inputs | Scenario2Inputs | Scenario3Inputs | Scenario4Inputs
-)
+Chapter7Inputs: TypeAlias = Scenario1Inputs | Scenario2Inputs | Scenario3Inputs | Scenario4Inputs
 
 
 @dataclass(frozen=True, slots=True)
@@ -88,20 +86,6 @@ class Chapter7ScenarioEvaluation:
     evidence_revision: str | None
 
 
-@dataclass(frozen=True, slots=True)
-class _IntermediateEvaluation:
-    scenario: Chapter7Scenario
-    reimbursement_effect: float
-    alternative_gain: float
-    beta: float
-    net_cost: float
-    expansion_shadow: float | None
-    contraction_shadow: float | None
-    conditional_expansion_shadow: float | None
-    source: str
-    parameterization: str
-
-
 def _positive(name: str, value: float) -> float:
     if not math.isfinite(value) or value <= 0:
         raise ValueError(f"{name} must be positive and finite")
@@ -111,109 +95,6 @@ def _positive(name: str, value: float) -> float:
 def _close(left: float, right: float) -> bool:
     tolerance = 1e-12 * max(abs(left), abs(right))
     return abs(left - right) <= tolerance
-
-
-def _evaluate_scenario_1(
-    inputs: Scenario1Inputs, cost: float, effect: float
-) -> _IntermediateEvaluation:
-    n = _positive("expansion_icer", inputs.expansion_icer)
-    return _IntermediateEvaluation(
-        scenario=Chapter7Scenario.EXPANDABLE_EFFICIENT,
-        reimbursement_effect=effect,
-        alternative_gain=cost / n,
-        beta=n,
-        net_cost=cost,
-        expansion_shadow=n,
-        contraction_shadow=None,
-        conditional_expansion_shadow=None,
-        source="Pekarsky 2015, equation 7.1, printed p. 110/PDF p. 120",
-        parameterization="exact",
-    )
-
-
-def _evaluate_scenario_2(
-    inputs: Scenario2Inputs, cost: float, effect: float
-) -> _IntermediateEvaluation:
-    n = _positive("expansion_icer", inputs.expansion_icer)
-    m = _positive("contraction_icer", inputs.contraction_icer)
-    d = _positive("displacement_icer", inputs.displacement_icer)
-    if not _close(n, m):
-        raise ValueError("Scenario 2 requires economic efficiency n = m")
-    return _IntermediateEvaluation(
-        scenario=Chapter7Scenario.FIXED_EFFICIENT,
-        reimbursement_effect=effect - cost / d,
-        alternative_gain=0.0,
-        beta=d,
-        net_cost=0.0,
-        expansion_shadow=None,
-        contraction_shadow=m,
-        conditional_expansion_shadow=n,
-        source="Pekarsky 2015, Scenario 2, printed pp. 110-114/PDF pp. 120-124",
-        parameterization="exact",
-    )
-
-
-def _evaluate_scenario_3(
-    inputs: Scenario3Inputs, cost: float, effect: float
-) -> _IntermediateEvaluation:
-    n = _positive("expansion_icer", inputs.expansion_icer)
-    m = _positive("contraction_icer", inputs.contraction_icer)
-    d = _positive("displacement_icer", inputs.displacement_icer)
-    if not m > n:
-        raise ValueError("Scenario 3 requires allocative inefficiency m > n")
-    if not n <= d <= m:
-        raise ValueError("Scenario 3 requires n <= d <= m")
-    reallocation_productivity = (1 / n) * (1 - n / m)
-    return _IntermediateEvaluation(
-        scenario=Chapter7Scenario.FIXED_ALLOCATIVE_INEFFICIENCY,
-        reimbursement_effect=effect - cost / d,
-        alternative_gain=cost * reallocation_productivity,
-        beta=1 / (1 / d + reallocation_productivity),
-        net_cost=0.0,
-        expansion_shadow=None,
-        contraction_shadow=None,
-        conditional_expansion_shadow=None,
-        source="Pekarsky 2015, equations 7.2-7.5, printed pp. 116-119/PDF pp. 126-129",
-        parameterization="exact",
-    )
-
-
-def _evaluate_scenario_4(
-    inputs: Scenario4Inputs, cost: float, effect: float
-) -> _IntermediateEvaluation:
-    m = _positive("contraction_icer", inputs.contraction_icer)
-    d = _positive("displacement_icer", inputs.displacement_icer)
-    mu = _positive("investment_icer", inputs.investment_icer)
-    phi = _positive("present_value_multiplier", inputs.present_value_multiplier)
-    annual_effect = _positive(
-        "annual_program_health_effect", inputs.annual_program_health_effect
-    )
-    if phi <= 1:
-        raise ValueError("Scenario 4 requires present_value_multiplier phi > 1")
-    if mu >= m:
-        raise ValueError("Scenario 4 technical inefficiency requires mu < m")
-    if d > m:
-        raise ValueError("Scenario 4 requires actual displacement d <= m")
-    present_value_gain = phi * annual_effect
-    implied_gain = cost / mu
-    if not _close(present_value_gain, implied_gain):
-        raise ValueError("Scenario 4 requires phi * DeltaE_G = incremental_cost / mu")
-    investment_productivity = (1 / mu) * (1 - mu / m)
-    alternative_gain = cost * investment_productivity
-    if alternative_gain <= 0:
-        raise ValueError("Scenario 4 requires a positive net investment health gain")
-    return _IntermediateEvaluation(
-        scenario=Chapter7Scenario.FIXED_TECHNICAL_INVESTMENT,
-        reimbursement_effect=effect - cost / d,
-        alternative_gain=alternative_gain,
-        beta=1 / (1 / d + investment_productivity),
-        net_cost=0.0,
-        expansion_shadow=None,
-        contraction_shadow=None,
-        conditional_expansion_shadow=None,
-        source="Pekarsky 2012, Appendix 5, pp. 231-234; Pekarsky 2015, Table 7.2",
-        parameterization="source-backed-exogenous-mu",
-    )
 
 
 def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvaluation:
@@ -226,50 +107,112 @@ def evaluate_chapter7_scenario(inputs: Chapter7Inputs) -> Chapter7ScenarioEvalua
     iper = cost / effect
 
     if isinstance(inputs, Scenario1Inputs):
-        res = _evaluate_scenario_1(inputs, cost, effect)
+        n = _positive("expansion_icer", inputs.expansion_icer)
+        scenario = Chapter7Scenario.EXPANDABLE_EFFICIENT
+        reimbursement_effect = effect
+        alternative_gain = cost / n
+        beta = n
+        net_cost = cost
+        expansion_shadow = n
+        contraction_shadow = None
+        conditional_expansion_shadow = None
+        source = "Pekarsky 2015, equation 7.1, printed p. 110/PDF p. 120"
+        parameterization = "exact"
     elif isinstance(inputs, Scenario2Inputs):
-        res = _evaluate_scenario_2(inputs, cost, effect)
+        n = _positive("expansion_icer", inputs.expansion_icer)
+        m = _positive("contraction_icer", inputs.contraction_icer)
+        d = _positive("displacement_icer", inputs.displacement_icer)
+        if not _close(n, m):
+            raise ValueError("Scenario 2 requires economic efficiency n = m")
+        scenario = Chapter7Scenario.FIXED_EFFICIENT
+        reimbursement_effect = effect - cost / d
+        alternative_gain = 0.0
+        beta = d
+        net_cost = 0.0
+        expansion_shadow = None
+        contraction_shadow = m
+        conditional_expansion_shadow = n
+        source = "Pekarsky 2015, Scenario 2, printed pp. 110-114/PDF pp. 120-124"
+        parameterization = "exact"
     elif isinstance(inputs, Scenario3Inputs):
-        res = _evaluate_scenario_3(inputs, cost, effect)
+        n = _positive("expansion_icer", inputs.expansion_icer)
+        m = _positive("contraction_icer", inputs.contraction_icer)
+        d = _positive("displacement_icer", inputs.displacement_icer)
+        if not m > n:
+            raise ValueError("Scenario 3 requires allocative inefficiency m > n")
+        if not n <= d <= m:
+            raise ValueError("Scenario 3 requires n <= d <= m")
+        scenario = Chapter7Scenario.FIXED_ALLOCATIVE_INEFFICIENCY
+        reimbursement_effect = effect - cost / d
+        reallocation_productivity = (1 / n) * (1 - n / m)
+        alternative_gain = cost * reallocation_productivity
+        beta = 1 / (1 / d + reallocation_productivity)
+        net_cost = 0.0
+        expansion_shadow = None
+        contraction_shadow = None
+        conditional_expansion_shadow = None
+        source = "Pekarsky 2015, equations 7.2-7.5, printed pp. 116-119/PDF pp. 126-129"
+        parameterization = "exact"
     elif isinstance(inputs, Scenario4Inputs):
-        res = _evaluate_scenario_4(inputs, cost, effect)
+        m = _positive("contraction_icer", inputs.contraction_icer)
+        d = _positive("displacement_icer", inputs.displacement_icer)
+        mu = _positive("investment_icer", inputs.investment_icer)
+        phi = _positive("present_value_multiplier", inputs.present_value_multiplier)
+        annual_effect = _positive(
+            "annual_program_health_effect", inputs.annual_program_health_effect
+        )
+        if phi <= 1:
+            raise ValueError("Scenario 4 requires present_value_multiplier phi > 1")
+        if mu >= m:
+            raise ValueError("Scenario 4 technical inefficiency requires mu < m")
+        if d > m:
+            raise ValueError("Scenario 4 requires actual displacement d <= m")
+        present_value_gain = phi * annual_effect
+        implied_gain = cost / mu
+        if not _close(present_value_gain, implied_gain):
+            raise ValueError("Scenario 4 requires phi * DeltaE_G = incremental_cost / mu")
+        scenario = Chapter7Scenario.FIXED_TECHNICAL_INVESTMENT
+        reimbursement_effect = effect - cost / d
+        investment_productivity = (1 / mu) * (1 - mu / m)
+        alternative_gain = cost * investment_productivity
+        if alternative_gain <= 0:
+            raise ValueError("Scenario 4 requires a positive net investment health gain")
+        beta = 1 / (1 / d + investment_productivity)
+        net_cost = 0.0
+        expansion_shadow = None
+        contraction_shadow = None
+        conditional_expansion_shadow = None
+        source = "Pekarsky 2012, Appendix 5, pp. 231-234; Pekarsky 2015, Table 7.2"
+        parameterization = "source-backed-exogenous-mu"
     else:
         raise TypeError("unsupported Chapter 7 scenario input type")
 
-    nebh = res.reimbursement_effect - res.alternative_gain
-    evci = res.beta * effect
-    values = (
-        iper,
-        res.reimbursement_effect,
-        res.alternative_gain,
-        nebh,
-        res.beta,
-        evci,
-        res.net_cost,
-    )
+    nebh = reimbursement_effect - alternative_gain
+    evci = beta * effect
+    values = (iper, reimbursement_effect, alternative_gain, nebh, beta, evci, net_cost)
     if not all(math.isfinite(value) for value in values):
         raise ValueError("derived Chapter 7 values must be finite")
     tolerance = 1e-12 * max(
         abs(effect),
-        abs(res.reimbursement_effect),
-        abs(res.alternative_gain),
+        abs(reimbursement_effect),
+        abs(alternative_gain),
     )
     return Chapter7ScenarioEvaluation(
-        scenario=res.scenario,
+        scenario=scenario,
         iper=iper,
-        reimbursement_health_effect=res.reimbursement_effect,
-        alternative_health_gain=res.alternative_gain,
+        reimbursement_health_effect=reimbursement_effect,
+        alternative_health_gain=alternative_gain,
         nebh=nebh,
-        beta=res.beta,
+        beta=beta,
         evci=evci,
-        net_financial_cost=res.net_cost,
+        net_financial_cost=net_cost,
         adoption_required=True,
         economically_preferred=nebh >= -tolerance,
         tolerance=tolerance,
-        budget_shadow_price_expansion=res.expansion_shadow,
-        budget_shadow_price_contraction=res.contraction_shadow,
-        conditional_expansion_shadow_price=res.conditional_expansion_shadow,
-        source_location=res.source,
-        parameterization=res.parameterization,
+        budget_shadow_price_expansion=expansion_shadow,
+        budget_shadow_price_contraction=contraction_shadow,
+        conditional_expansion_shadow_price=conditional_expansion_shadow,
+        source_location=source,
+        parameterization=parameterization,
         evidence_revision=inputs.evidence_revision,
     )
