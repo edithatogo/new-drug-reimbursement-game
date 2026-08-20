@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "receipt_id": "t00-renovate-observability-2026-08-20",
-  "observed_at": "2026-08-20T11:55:09Z",
+  "observed_at": "2026-08-20T12:45:58Z",
   "repository": "edithatogo/new-drug-reimbursement-game",
   "configuration": {
     "path": "renovate.json",
@@ -13,10 +13,24 @@
   "observations": {
     "open_renovate_pull_requests": 0,
     "closed_renovate_pull_requests": 0,
-    "open_dependency_dashboard_issues": 0,
+    "open_dependency_dashboard_issues": 1,
     "closed_dependency_dashboard_issues": 0,
-    "renovate_actor_repository_events": 0,
-    "first_observable_cycle_present": false
+    "renovate_actor_repository_events": 1,
+    "first_observable_cycle_present": true,
+    "workflow_run": "https://github.com/edithatogo/new-drug-reimbursement-game/actions/runs/32370374168",
+    "workflow_head": "102dbd49f688481d7ea5f7615840c790fd43e665",
+    "workflow_result": "success",
+    "dependency_dashboard": "https://github.com/edithatogo/new-drug-reimbursement-game/issues/81",
+    "dependencies_detected": 40,
+    "files_detected": 9,
+    "managers": {
+      "cargo": {"files": 2, "dependencies": 3},
+      "github-actions": {"files": 5, "dependencies": 26},
+      "pep621": {"files": 1, "dependencies": 10},
+      "renovate-config": {"files": 1, "dependencies": 1}
+    },
+    "pending_update_groups": 4,
+    "pull_requests_created": 0
   },
   "activation_attempt": {
     "github_installations_api": {
@@ -27,17 +41,27 @@
       "status": "authentication_required",
       "reason": "The available in-app browser is not signed into GitHub; the requested Chrome browser family is not connected."
     },
-    "repository_mutation_performed": false
+    "fallback_bootstrap": {
+      "status": "success",
+      "workflow": ".github/workflows/renovate-bootstrap.yml",
+      "trigger": "workflow_dispatch only",
+      "action": "renovatebot/github-action@e09d604f8f803bb527bd8321ed5be06c460b8682",
+      "renovate_version": "44.35.4",
+      "token": "ephemeral repository-scoped GITHUB_TOKEN",
+      "automerge": false,
+      "warning": "The first run could not access vulnerability alerts; security-events read permission was added for the clean rerun."
+    },
+    "repository_mutation_performed": true
   },
   "recommended_resolution": {
-    "option": "Use the official hosted Renovate GitHub App and grant it access to this repository, then request or await its first run.",
-    "rationale": "This preserves the shared standards configuration and avoids introducing a competing self-hosted workflow solely to manufacture observability.",
+    "option": "Retain the manual-only bootstrap workflow as an auditable contingency and prefer the official hosted Renovate GitHub App for recurring operation once an authenticated owner browser is available.",
+    "rationale": "The one-shot workflow proves configuration and update discovery without a persistent credential or schedule. The hosted App remains the cleaner recurring operating model.",
     "verification": [
       "A Dependency Dashboard issue or Renovate-authored pull request exists.",
       "The bot output resolves github>edithatogo/renovate-config without a configuration error.",
       "Any update pull request passes repository CI and remains non-automerge."
     ],
-    "fallback": "If the hosted App cannot be used, separately approve a self-hosted Renovate design with least-privilege credentials and an explicit ownership/rotation plan.",
+    "fallback": "Dispatch the pinned manual-only workflow for explicit update discovery; do not add a schedule or long-lived token without a separate governance decision.",
     "stop_condition": "Installing or changing GitHub App repository access requires an authenticated owner session and an explicit permission-grant action."
   }
 }
