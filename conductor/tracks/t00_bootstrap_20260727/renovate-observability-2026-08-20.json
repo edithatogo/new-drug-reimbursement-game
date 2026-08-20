@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "t00-renovate-observability-2026-08-20",
+  "observed_at": "2026-08-20T11:55:09Z",
+  "repository": "edithatogo/new-drug-reimbursement-game",
+  "configuration": {
+    "path": "renovate.json",
+    "extends": ["github>edithatogo/renovate-config"],
+    "dependency_dashboard": true,
+    "range_strategy": "pin",
+    "automerge": false
+  },
+  "observations": {
+    "open_renovate_pull_requests": 0,
+    "closed_renovate_pull_requests": 0,
+    "open_dependency_dashboard_issues": 0,
+    "closed_dependency_dashboard_issues": 0,
+    "renovate_actor_repository_events": 0,
+    "first_observable_cycle_present": false
+  },
+  "activation_attempt": {
+    "github_installations_api": {
+      "status": "inaccessible",
+      "reason": "The authenticated classic GitHub token cannot list user GitHub App installations."
+    },
+    "mend_developer_portal": {
+      "status": "authentication_required",
+      "reason": "The available in-app browser is not signed into GitHub; the requested Chrome browser family is not connected."
+    },
+    "repository_mutation_performed": false
+  },
+  "recommended_resolution": {
+    "option": "Use the official hosted Renovate GitHub App and grant it access to this repository, then request or await its first run.",
+    "rationale": "This preserves the shared standards configuration and avoids introducing a competing self-hosted workflow solely to manufacture observability.",
+    "verification": [
+      "A Dependency Dashboard issue or Renovate-authored pull request exists.",
+      "The bot output resolves github>edithatogo/renovate-config without a configuration error.",
+      "Any update pull request passes repository CI and remains non-automerge."
+    ],
+    "fallback": "If the hosted App cannot be used, separately approve a self-hosted Renovate design with least-privilege credentials and an explicit ownership/rotation plan.",
+    "stop_condition": "Installing or changing GitHub App repository access requires an authenticated owner session and an explicit permission-grant action."
+  }
+}

@@ -32,7 +32,7 @@
 - [x] **Track: T14 regulatory and HTA validation boundary**
   *Link: [./archive/t14_regulatory_validation_20260802/index.md](./archive/t14_regulatory_validation_20260802/index.md)*
 - [x] **Track: T15 raw-data acquisition and governance**
-  *Link: [./tracks/t15_raw_data_governance_20260802/index.md](./tracks/t15_raw_data_governance_20260802/index.md)*
+  *Link: [./archive/t15_raw_data_governance_20260802/index.md](./archive/t15_raw_data_governance_20260802/index.md)*
 - [~] **Track: T16 confidential and commercially sensitive data controls**
   *Link: [./tracks/t16_confidential_data_controls_20260802/index.md](./tracks/t16_confidential_data_controls_20260802/index.md)*
 
