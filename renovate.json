@@ -2,7 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>edithatogo/renovate-config"],
   "dependencyDashboard": true,
-  "vulnerabilityAlerts": false,
+  "vulnerabilityAlerts": {
+    "enabled": false
+  },
   "rebaseWhen": "behind-base-branch",
   "rangeStrategy": "pin",
   "labels": ["dependencies"],
