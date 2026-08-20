@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-from scripts.validate_claim_boundaries import validate_claims, validate_repository_boundaries
+from scripts.validate_claim_boundaries import MATRIX, validate_claims, validate_repository_boundaries
 
 
 class ClaimBoundaryTests(unittest.TestCase):
@@ -10,9 +10,7 @@ class ClaimBoundaryTests(unittest.TestCase):
         self.assertEqual(validate_repository_boundaries(), [])
 
     def test_rejects_regulatory_promotion(self) -> None:
-        matrix = json.loads(
-            Path("conductor/tracks/t14_regulatory_validation_20260802/claims-matrix.json").read_text()
-        )
+        matrix = json.loads(MATRIX.read_text())
         for item in matrix["claims"]:
             if item["claim"] == "MHRA compliant or medical-device approved":
                 item["status"] = "permitted"
