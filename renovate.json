@@ -13,6 +13,12 @@
       "enabled": false
     },
     {
+      "description": "Preserve NumPy's cross-Python range and lockfile markers",
+      "matchManagers": ["pep621"],
+      "matchPackageNames": ["numpy"],
+      "rangeStrategy": "widen"
+    },
+    {
       "matchManagers": ["github-actions"],
       "pinDigests": true,
       "automerge": false
