@@ -26,3 +26,14 @@ The corresponding static Space was observed at revision
 TA1121-specific approved parameter packet. Exact revisions in
 `ecosystem.lock.toml` remain authoritative until a deliberate compatibility,
 rights, packet, and approval requalification is completed.
+
+Atlas commit `2183c25ee2bf940a1c8879cfef521474b1fc0dce` was validated by the
+publication workflow on 20 August 2026 without publishing either surface. The
+validation candidate passed, while both mutation jobs were skipped. Its
+regenerated publication manifest has SHA-256
+`398d6348c15a6bddd1b15a00095fc62192436300c55a15f85253a83587806d69` and
+241 artifacts; this differs from both the checked-in Atlas manifest and the
+older Hub manifest. The workflow publishes seed tables and the manifest, but
+does not upload the reviewed-source-bundle directory. A future Hub refresh is
+therefore a separately authorized publication action, not an empirical evidence
+promotion and not a substitute for a TA1121 packet.

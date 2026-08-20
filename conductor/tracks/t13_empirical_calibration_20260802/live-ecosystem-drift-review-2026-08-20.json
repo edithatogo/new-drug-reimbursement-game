@@ -54,8 +54,26 @@
       "component": "Voiage",
       "locked_revision": "4b93ee04231bedaeae7e24d39b2b6f2c6ff9b9d6",
       "live_default_branch_revision": "b19857f44df21ff6a854a2363ab4b1f94a340e4c",
+      "commits_ahead_of_pin": 166,
       "drift": true,
-      "disposition": "retain qualified pin pending compatibility and licence requalification"
+      "compatibility_review": {
+        "schema_py_unchanged": true,
+        "schema_py_sha256": "81198e58fabd74af71b738b99896016d30b8347bca3892c4d1107f921a4b6ca2",
+        "license_unchanged": true,
+        "license_sha256": "ce8c23436cf2f3540f1148fe4202293f1612837c0a21951ba71591164b1c5dce",
+        "downstream_api_present": ["ValueArray", "ParameterSet", "DecisionAnalysis"],
+        "live_head_smoke_test": {
+          "status": "pass",
+          "shape": [2, 2],
+          "strategies": ["reimburse", "alternative"],
+          "parameters": ["n"],
+          "evpi": 0.5
+        },
+        "latest_release": "v2.0.1",
+        "latest_release_revision": "73c92eebdf581c763f1afb5b5196f687a6d33575",
+        "live_head_is_released": false
+      },
+      "disposition": "retain qualified pin; live main is contract-compatible in the bounded smoke test but is an unreleased moving target"
     },
     {
       "component": "Reimbursement Atlas",
@@ -63,13 +81,57 @@
       "live_default_branch_revision": "2183c25ee2bf940a1c8879cfef521474b1fc0dce",
       "commits_ahead_of_pin": 143,
       "drift": true,
-      "live_search_terms": {
+      "bounded_github_code_search_terms": {
         "TA1121": 0,
         "acoramidis": 0,
         "tafamidis": 0,
         "ATTR-CM": 0
       },
-      "search_limitation": "GitHub code-search counts are bounded observations and are not proof of repository-wide or historical absence.",
+      "full_tree_review": {
+        "TA1121_matches": 0,
+        "ATTR-CM_matches": 0,
+        "acoramidis_records": {
+          "distinct_records": 4,
+          "source": "RxNorm Current Prescribable Content 2026-07-06",
+          "jurisdiction": "United States",
+          "licence_class": "permissive",
+          "use_boundary": "terminology context only"
+        },
+        "tafamidis_records": {
+          "rxnorm_distinct_records": 6,
+          "pbs_distinct_records": 1,
+          "pbs_item_code": "14100D",
+          "pbs_effective_from": "2026-07-01",
+          "pbs_published_amount_aud_per_pack": 9860.0,
+          "pbs_licence_class": "public_reuse_unclear",
+          "use_boundary": "terminology and public schedule context only; the published amount is not a net effective price"
+        }
+      },
+      "search_limitation": "The earlier bounded GitHub code-search result missed reviewed-source-bundle records. Full-tree review found drug terminology and one Australian public schedule record, but no TA1121 or ATTR-CM record and no attributable NHS displacement or approved parameter packet.",
+      "publication_review": {
+        "checked_in_manifest_sha256": "6497d2eea8139ab308ef11e6c34c49119e34ba4b0d21fe676db20f55363428a2",
+        "validation_candidate_manifest_sha256": "398d6348c15a6bddd1b15a00095fc62192436300c55a15f85253a83587806d69",
+        "hub_manifest_sha256": "d197707a271a478305a16d572104af23bf362ff7be4feedd3306e8f59b565d71",
+        "artifact_count": 241,
+        "validation_run": "https://github.com/edithatogo/reimbursement-atlas/actions/runs/32365159269",
+        "validation_result": "success",
+        "validation_artifact_id": 9405002380,
+        "validation_artifact_sha256": "4768aa3b05e32f530716879f7d0bdc346800a304422e139c5aa88fba4bde5711",
+        "publish_dataset_job": "skipped",
+        "publish_space_job": "skipped",
+        "checked_in_manifest_integrity": {
+          "missing_artifacts": 0,
+          "checksum_mismatches": 2,
+          "mismatched_paths": [
+            "data/derived/research_package/datapackage.json",
+            "data/derived/research_package/ro-crate-metadata.json"
+          ],
+          "disposition": "The hosted workflow regenerated a coherent candidate before validation. Do not publish the stale checked-in manifest bytes directly."
+        },
+        "reviewed_source_bundles_in_manifest": 82,
+        "reviewed_source_bundles_uploaded_by_workflow": false,
+        "disposition": "candidate validated without publication; publication remains a separately authorized mutation and does not close the TA1121 evidence gate"
+      },
       "disposition": "retain qualified pin; inspect upstream changes before any re-pin and do not treat live main as an approved packet"
     },
     {
@@ -108,16 +170,17 @@
     }
   },
   "decision": {
-    "recommendation": "Do not automatically re-pin Voiage or Reimbursement Atlas and do not promote the Hub seed dataset as TA1121 evidence.",
-    "rationale": "A dependency or destination revision change invalidates packet, review, and owner-approval bindings. The Hub metadata is internally consistent but retains source-specific unresolved rights and does not publish the required TA1121 packet.",
+    "recommendation": "Retain the qualified Voiage and Reimbursement Atlas pins, do not publish or promote the Hub seed dataset as TA1121 evidence, and treat the successful current-head Atlas validation as a candidate-only qualification receipt.",
+    "rationale": "Voiage live main passed a bounded compatibility test but is unreleased. Atlas live main contains useful terminology and public Australian schedule context, yet no TA1121-specific approved packet or NHS displacement evidence; source-bundle payloads are not part of the Hub upload workflow and source-specific rights remain controlling.",
     "next_autonomous_actions": [
-      "Review Voiage changes since the qualified pin for contract-compatible improvements.",
-      "Review Atlas changes since the qualified pin and identify whether a new immutable Hub publication is planned or available.",
-      "Re-run compatibility, rights, packet, panel, and exact-commit qualification before changing any lock revision.",
+      "Keep the qualified pins unchanged until a released Voiage revision or deliberately selected Atlas revision is proposed.",
+      "If a new Hub publication is authorized, bind it to Atlas commit 2183c25ee2bf940a1c8879cfef521474b1fc0dce and the regenerated candidate manifest, then verify remote byte parity.",
+      "Re-run compatibility, rights, packet, panel, and exact-commit qualification before changing any lock revision or consuming any newly published bytes.",
       "Continue enforcing research-only outputs and disabled empirical, payer, HTA, policy, regulatory, calibrated, raw-data, and confidential-data claims."
     ],
     "stop_conditions": [
       "A proposed re-pin changes an approved packet, transformation, source term, destination, or target commit.",
+      "The selected Atlas publication manifest has not been regenerated and reviewed at the exact publication commit.",
       "A source has conflicting, incomplete, inaccessible, or restricted terms.",
       "Promotion would require a TA1121 packet or accountable approval that is not present at an immutable revision."
     ]

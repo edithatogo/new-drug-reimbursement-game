@@ -1,16 +1,16 @@
 {
   "track_id": "t15_raw_data_governance_20260802",
   "type": "feature",
-  "status": "in_progress",
+  "status": "done",
   "created_at": "2026-08-02T10:36:18Z",
-  "updated_at": "2026-08-02T11:05:10Z",
+  "updated_at": "2026-08-20T00:00:00Z",
   "description": "Controlled raw-data acquisition, minimization, derivation, and deletion governance",
   "evidence_schema": "1.0",
   "gates": [
-    {"id": "custodian-permission", "kind": "authorization", "status": "pending", "evidence": null},
-    {"id": "legal-privacy-basis", "kind": "authorization", "status": "pending", "evidence": null},
-    {"id": "controlled-environment", "kind": "security", "status": "pending", "evidence": null},
-    {"id": "atlas-extraction", "kind": "authorization", "status": "pending", "evidence": "docs/governance/atlas-packet-closure-checklist.md"},
+    {"id": "custodian-permission", "kind": "authorization", "status": "deferred_fail_closed", "evidence": "conductor/tracks/t13_empirical_calibration_20260802/raw-confidential-deferral-authorization-2026-08-03.json"},
+    {"id": "legal-privacy-basis", "kind": "authorization", "status": "deferred_fail_closed", "evidence": "conductor/tracks/t15_raw_data_governance_20260802/acquisition-summary.md"},
+    {"id": "controlled-environment", "kind": "security", "status": "deferred_fail_closed", "evidence": "docs/governance/release-packet/security-privacy-scope-receipt-2026-08-02.json"},
+    {"id": "atlas-extraction", "kind": "authorization", "status": "satisfied_research_only", "evidence": "docs/governance/atlas-packet-closure-checklist.md"},
     {"id": "public-metadata-coverage", "kind": "evidence", "status": "satisfied", "evidence": "conductor/tracks/t15_raw_data_governance_20260802/source-inventory.json"}
   ]
 }

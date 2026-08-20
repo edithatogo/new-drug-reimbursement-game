@@ -10,6 +10,9 @@
 - [x] Adopt the reusable triangulation/contingency protocol, including field-level outcomes, ranked-source fallback, panel quorum binding, and refresh/invalidation rules. (`triangulation-contingency-protocol.md`)
 - [x] Bind an executable contingency register with triangulation rules, fallback dispositions, refresh/invalidation triggers, and explicit human stop conditions. (`contingency-register-2026-08-03.json`)
 - [x] Refresh the live GitHub and Hugging Face estate, record exact upstream and Hub revisions, verify hosted controls and open-work state, and preserve qualified pins where upstream drift would invalidate existing approvals. (`live-ecosystem-drift-review-2026-08-20.json`)
+- [x] Requalify Voiage live main with schema/licence hashes and an actual EVPI smoke test; retain the pin because the compatible live head is unreleased. (`live-ecosystem-drift-review-2026-08-20.json`)
+- [x] Review the complete Atlas live tree for TA1121 context, correct the bounded search receipt, and classify RxNorm/PBS drug records as context-only. (`live-ecosystem-drift-review-2026-08-20.json`)
+- [x] Run Atlas current-head Hugging Face validation with both publication inputs disabled; bind the successful run and regenerated candidate manifest without mutating either Hub surface. (`live-ecosystem-drift-review-2026-08-20.json`; run `32365159269`)
 
 ## Phase 1 — authorization and packet freeze
 
