@@ -3,7 +3,7 @@ import json
 import unittest
 from contextlib import redirect_stdout
 
-from reimbursement_game.cli import main, _record_selection
+from reimbursement_game.cli import main
 
 PACKET = "fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json"
 
@@ -65,7 +65,19 @@ class EvidenceCliTests(unittest.TestCase):
 
     def test_unsupported_evidence_role_fails_closed(self) -> None:
         with self.assertRaisesRegex(ValueError, "unsupported evidence role: invalid_role"):
-            _record_selection(["invalid_role=foo"])
+            main(
+                [
+                    "calibrate",
+                    PACKET,
+                    "scenario_1",
+                    "120",
+                    "20",
+                    "--case-id",
+                    "invalid-role-test",
+                    "--record",
+                    "invalid_role=foo",
+                ]
+            )
 
 
 if __name__ == "__main__":
