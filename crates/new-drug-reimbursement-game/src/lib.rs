@@ -776,8 +776,8 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
                 result.economically_preferred,
                 result.nebh >= -result.tolerance
             );
-            assert!(!result.source_location.is_empty());
-            assert!(!result.parameterization.is_empty());
+            assert_ne!(result.source_location, "");
+            assert_ne!(result.parameterization, "");
             match fields[2] {
                 "scenario_1" => {
                     assert_eq!(result.budget_shadow_price_expansion, Some(parse(5)));
