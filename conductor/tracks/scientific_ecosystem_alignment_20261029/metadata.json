@@ -2,7 +2,7 @@
   "track_id": "scientific_ecosystem_alignment_20261029",
   "type": "refactor",
   "status": "deferred",
-  "created_at": "2026-10-29T00:00:00+10:00",
+  "created_at": "2026-10-28T22:32:13+00:00",
   "description": "Deferred qualification of existing Kairos and Voiage consumer boundaries",
   "prerequisite": "first-wave shared provider contract acceptance",
   "issue": "https://github.com/edithatogo/new-drug-reimbursement-game/issues/97"
