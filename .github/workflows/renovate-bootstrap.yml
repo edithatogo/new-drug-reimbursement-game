@@ -33,7 +33,7 @@ jobs:
       RENOVATE_REQUIRE_CONFIG: required
     steps:
       - name: Run one repository-scoped Renovate cycle
-        uses: renovatebot/github-action@e09d604f8f803bb527bd8321ed5be06c460b8682 # v46.2.2
+        uses: renovatebot/github-action@2804199d260ad00c1fae0e9e842888369391c776 # v46.3.10
         with:
-          renovate-version: 44.35.4
+          renovate-version: 44.192.2
           token: ${{ secrets.GITHUB_TOKEN }}
