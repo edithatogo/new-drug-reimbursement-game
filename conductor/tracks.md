@@ -40,3 +40,7 @@ All registered tracks T00–T16 are complete for their bounded scopes. Archived
 tracks retain explicit external, empirical, regulatory, raw-data, and
 confidential-data limitations; completion does not promote those deferred claim
 classes.
+
+- [ ] **Track: Deferred scientific ecosystem consumer qualification**
+  *Link: [./tracks/scientific_ecosystem_alignment_20261029/index.md](./tracks/scientific_ecosystem_alignment_20261029/index.md)*
+  Deferred until first-wave shared provider contracts pass.
