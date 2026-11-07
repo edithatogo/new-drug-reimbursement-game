@@ -21,7 +21,7 @@ pure Nash enumeration. The broader capability remit and pending roadmap cover:
 - payoff and preference representations;
 - validation and canonical serialization;
 - solver interfaces and equilibrium-result objects;
-- generic solver traces, with Kairos compilation in an optional adapter;
+- solver diagnostics and selected policies, with optional native execution;
 - UOGTO semantic identifiers and conformance.
 
 It must contain no drug, reimbursement, QALY, HTA, payer, or manufacturer
@@ -41,6 +41,19 @@ compiles supported game execution into native events; neither provider depends
 on the adapter. The adapter does not reimplement scheduling or use a non-Rust
 simulation fallback.
 
+`Solution.trace` currently records solver analysis of alternative branches.
+The adapter projects only the selected policy and declared chance outcomes into
+a new causal execution trace. Live policies receive their permitted observation
+and legal actions, not the full solver graph or opponent-private state. Game
+specification, instance, session and trace identities remain distinct from the
+adapter's full generational Kairos entity/event handles.
+
+Static expectation-based solving consumes no simulation random draws. Future
+stochastic solvers accept an explicit random source/configuration; native
+execution uses separately identified Kairos streams. Solver budget changes must
+not advance unrelated simulation streams. Resume support must restore qualified
+policy, native state and RNG state together, or reject that capability.
+
 Reuse the packages here before considering another repository. An independent
 repository is eligible for a separate extraction decision only after two real
 consumers qualify the same package artifacts. A wrapper or toy fixture is not
@@ -48,7 +61,19 @@ a real consumer. [T17](../../conductor/tracks/t17_game_runtime_ecosystem_2026110
 records the pending work, including inherited Kairos S01 RK4, S02 mixed Nash,
 S03 correlated equilibrium, and S04 CFR/CFR+ obligations. Moving code does not
 validate those methods, and historical track completion does not discharge
-them. This clarification changes no source, dependency pin, or runtime package.
+them. Two static consumers can qualify the same bounded package profile without
+waiting for the optional adapter or every future algorithm. Every advertised
+method still needs its own evidence; excluded methods stay explicitly
+unsupported and pending. Full T17 completion is separate from a bounded static
+qualification decision.
+
+[Issue 100](https://github.com/edithatogo/new-drug-reimbursement-game/issues/100)
+is the receiving handoff, coordinated with
+[Innovate PR 570, G01–G04](https://github.com/edithatogo/innovate/pull/570).
+Kairos `K01.games` and `K01.port` own the source map and execution-port contract;
+generic solver fixes belong here, with source regressions and retirement records
+retained in Kairos. This clarification changes no source, dependency pin, or
+runtime package.
 
 ## UOGTO boundary
 

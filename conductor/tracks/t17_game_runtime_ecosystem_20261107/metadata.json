@@ -8,10 +8,21 @@
   "updated_at": "2026-11-07T00:00:00Z",
   "description": "Reusable Rust game packages outside Kairos, optional native simulation adapter, and inherited scientific completion",
   "base_revision": "ab4ce37a905a8cf9bb54d1ad905de4b0f34b7165",
-  "repositories": [".", "edithatogo/careops-sim", "Innovate consumer (resolve in its local track)"],
+  "refinement_base_revision": "90602b93db7352bfb307bac7852db211cf94af1e",
+  "repositories": [".", "edithatogo/careops-sim", "edithatogo/innovate"],
+  "coordination": {
+    "receiving_issue_url": "https://github.com/edithatogo/new-drug-reimbursement-game/issues/100",
+    "innovate_programme_url": "https://github.com/edithatogo/innovate/pull/570",
+    "innovate_work_items": ["G01", "G02", "G03", "G04"],
+    "kairos_contract_proposal_url": "https://github.com/edithatogo/kairos/pull/382",
+    "kairos_tasks": ["K01.games", "K01.port"]
+  },
   "dependencies": ["T02", "T03", "T06"],
   "conditional_dependencies": {
-    "T17.08": "scientific_ecosystem_alignment_20261029: accepted Kairos provider contract and separately qualified pin"
+    "T17.08": "K01.port and scientific_ecosystem_alignment_20261029: accepted Kairos provider contract and separately qualified pin; no static-package dependency",
+    "T17.09": "Only numerical/native/valuation capabilities selected by the first real application case require their corresponding receipts",
+    "T17.10": "Only capabilities selected by the second distinct application case require their corresponding receipts",
+    "T17.14": "T17.17 additionally required when information-set support is claimed"
   },
   "scientific_obligations": {
     "S01": "T17.04: RK4/continuous replicator",
@@ -19,26 +30,28 @@
     "S03": "T17.06: correlated equilibrium",
     "S04": "T17.07: CFR/CFR+"
   },
-  "leaf_count": 12,
+  "leaf_count": 17,
   "max_files_per_leaf": 5,
   "review_policy": "Routine diff and focused checks; independent specialist agent review at numerical and public contract boundaries; no repeated human approval gate",
-  "extraction_policy": "Package boundary first; independent repository eligible only after two distinct real consumers qualify the same artifacts; no repository creation in this track",
+  "extraction_policy": "Package boundary first; two real static applications, including reimbursement plus Innovate, may qualify the same supported artifacts/profile without optional native execution or every future algorithm; no repository creation or publication in this track",
+  "completion_policy": "T17.12 reports bounded eligibility; excluded S01-S04 methods remain explicitly unsupported/pending with owners and completion tasks. A bounded library receipt does not close unfinished T17 work.",
   "verification": {
     "status": "passed",
-    "scope": "Planning documents only; implementation and scientific validation remain pending",
+    "scope": "Planning refinement only; implementation, consumer execution and scientific validation remain pending",
+    "tooling_runtime": "Python 3.12.14 compatibility helper; planning checks only",
     "commands": [
       "python scripts/validate_scope.py",
       "python scripts/validate_extraction.py",
       "python scripts/governance_inventory.py --check",
-      "python -m unittest discover -s tests -p 'test_scope.py'",
-      "python -m unittest discover -s tests -p 'test_handoff.py'",
+      "python -m unittest discover -s tests -p 'test_scope.py' -v",
+      "python -m unittest discover -s tests -p 'test_handoff.py' -v",
       "git diff --check"
     ],
     "results": {
       "scope_tests": 5,
       "handoff_tests": 3,
-      "stdlib_document_checks": "12 pending leaves, file budgets, S01-S04 mappings, historical registry preservation, and 38 local links passed",
-      "independent_review": "No blocking findings in bounded read-only documentation review",
+      "stdlib_document_checks": "17 pending leaves, <=5-file budgets, declared future Cargo targets, acyclic dependencies, static eligibility closure limited to T17.01/T17.02/T17.03/T17.09/T17.10, conditional information-set scope, S01-S04 mappings, two local links and exact five-file scope passed; historical registry and runtime unchanged",
+      "independent_review": "No blocking dependency or false-closure findings; clarified that the RNG-isolation fixture is explicitly exploratory/stochastic while deterministic static solving draws nothing",
       "not_run": "Future Cargo targets, consumer integrations, numerical qualification, and the full runtime quality gate"
     }
   }
