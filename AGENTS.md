@@ -23,8 +23,10 @@ Read these files before editing:
 - Voiage owns VOI; Kairos owns simulation time/events/DES/ABM; UOGTO owns game
   semantics; Reimbursement Atlas owns reimbursement evidence/provenance.
 - Keep application and general game capability separate. Domain-neutral code
-  belongs in Rust crates and must not mention drugs, QALYs, reimbursement, HTA,
-  or manufacturers.
+  belongs in the Rust packages maintained in `edithatogo/paignia`, consumed here
+  at an immutable revision. Do not recreate a local generic solver or package
+  override. Generic source must not mention drugs, QALYs, reimbursement, HTA,
+  or manufacturers; application games and valuation remain here.
 - The Python game solver is a conformance oracle, not the future product.
 - Never silently choose among ambiguous economic interpretations. Represent
   named alternatives and provenance.

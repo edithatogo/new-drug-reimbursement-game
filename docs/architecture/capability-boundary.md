@@ -11,8 +11,9 @@ The application owns only reimbursement-domain concepts:
 
 ## General game capability
 
-The existing `uogto-game-core` and `uogto-game-solve` crates are the package
-boundary for the reusable Rust library outside Kairos. Their supported subset
+The external **Paignia** `paignia-core` and `paignia-solve` packages are the
+reusable Rust game boundary. They are immutable Git dependencies of this
+application, with no local generic implementation. Their supported subset
 is finite game validation, backward induction, chance-node expectations, and
 pure Nash enumeration. The broader capability remit and pending roadmap cover:
 
@@ -54,26 +55,18 @@ execution uses separately identified Kairos streams. Solver budget changes must
 not advance unrelated simulation streams. Resume support must restore qualified
 policy, native state and RNG state together, or reject that capability.
 
-Reuse the packages here before considering another repository. An independent
-repository is eligible for a separate extraction decision only after two real
-consumers qualify the same package artifacts. A wrapper or toy fixture is not
-a real consumer. [T17](../../conductor/tracks/t17_game_runtime_ecosystem_20261107/index.md)
-records the pending work, including inherited Kairos S01 RK4, S02 mixed Nash,
-S03 correlated equilibrium, and S04 CFR/CFR+ obligations. Moving code does not
-validate those methods, and historical track completion does not discharge
-them. Two static consumers can qualify the same bounded package profile without
-waiting for the optional adapter or every future algorithm. Every advertised
-method still needs its own evidence; excluded methods stay explicitly
-unsupported and pending. Full T17 completion is separate from a bounded static
-qualification decision.
+Paignia is the implementation home. This application's
+[T17](../../conductor/tracks/t17_game_runtime_ecosystem_20261107/index.md) owns
+only .09 consumer acceptance and .11 valued-input contracts; the other stable
+IDs forward to Paignia or the second application. The provider retains S01 RK4,
+S02 mixed Nash, S03 CE and S04 CFR/CFR+ as open scientific obligations. Moving
+source never validates those methods or permits a duplicate corrected solver.
 
-[Issue 100](https://github.com/edithatogo/new-drug-reimbursement-game/issues/100)
-is the receiving handoff, coordinated with
-[Innovate PR 570, G01–G04](https://github.com/edithatogo/innovate/pull/570).
-Kairos `K01.games` and `K01.port` own the source map and execution-port contract;
-generic solver fixes belong here, with source regressions and retirement records
-retained in Kairos. This clarification changes no source, dependency pin, or
-runtime package.
+Two real static consumers can qualify the same bounded artifacts without
+waiting for an optional adapter or every future algorithm. The local finite
+application test is useful native integration evidence, not full release/model
+acceptance. Registry publication, independent artifacts and second-consumer
+acceptance remain distinct. See [the source transfer history](paignia-transfer-map.md).
 
 ## UOGTO boundary
 

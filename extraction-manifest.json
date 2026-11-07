@@ -1,15 +1,7 @@
 {
   "schema_version": 1,
-  "crates": [
-    "crates/uogto-game-core",
-    "crates/uogto-game-solve"
-  ],
-  "allowed_internal_dependencies": {
-    "uogto-game-core": [],
-    "uogto-game-solve": [
-      "uogto-game-core"
-    ]
-  },
+  "crates": [],
+  "allowed_internal_dependencies": {},
   "forbidden_vocabulary": [
     "drug",
     "hta",
@@ -18,5 +10,61 @@
     "qaly",
     "reimbursement"
   ],
-  "external_gate": "Extraction repository and release authorization"
+  "external_gate": "Provider artifact qualification and real-consumer release acceptance remain separate from this immutable Git dependency switch",
+  "library_name": "Paignia",
+  "stage": "immutable_native_consumer",
+  "standalone_repository_created": true,
+  "packages_published": false,
+  "incubator_repository": "https://github.com/edithatogo/new-drug-reimbursement-game",
+  "source_provenance": {
+    "paignia-core": {
+      "current_path": "crates/paignia-core",
+      "previous_package": "uogto-game-core",
+      "source_repository": "https://github.com/edithatogo/new-drug-reimbursement-game",
+      "source_revision": "f6c1c87b6b00875b33c1e19401c1de09481913ce",
+      "source_path": "crates/uogto-game-core",
+      "license_spdx": "Apache-2.0",
+      "license_notice_paths": [
+        "crates/paignia-core/LICENSE",
+        "crates/paignia-core/NOTICE"
+      ],
+      "change": "Package/path rename; solver imports updated; no algorithm change",
+      "current_repository": "https://github.com/edithatogo/paignia"
+    },
+    "paignia-solve": {
+      "current_path": "crates/paignia-solve",
+      "previous_package": "uogto-game-solve",
+      "source_repository": "https://github.com/edithatogo/new-drug-reimbursement-game",
+      "source_revision": "f6c1c87b6b00875b33c1e19401c1de09481913ce",
+      "source_path": "crates/uogto-game-solve",
+      "license_spdx": "Apache-2.0",
+      "license_notice_paths": [
+        "crates/paignia-solve/LICENSE",
+        "crates/paignia-solve/NOTICE"
+      ],
+      "change": "Package/path rename; solver imports updated; no algorithm change",
+      "current_repository": "https://github.com/edithatogo/paignia"
+    }
+  },
+  "mode": "external_provider",
+  "provider": {
+    "repository": "https://github.com/edithatogo/paignia",
+    "revision": "12b22ce7571b9c590405bf53c2c1c5862b49cd64",
+    "packages": [
+      "paignia-core",
+      "paignia-solve"
+    ],
+    "version": "0.1.0",
+    "track": "conductor/tracks/t17_game_runtime_ecosystem_20261107",
+    "reviewed_tree": "f438caa902e07a7ec5b7be3020c94d5b7e4868e8",
+    "pull_request": "https://github.com/edithatogo/paignia/pull/2",
+    "hosted_ci": "https://github.com/edithatogo/paignia/actions/runs/42420971781"
+  },
+  "forbidden_local_crates": [
+    "crates/paignia-core",
+    "crates/paignia-solve",
+    "crates/uogto-game-core",
+    "crates/uogto-game-solve"
+  ],
+  "source_provenance_status": "historical transfer provenance; current implementation is in provider repository"
 }

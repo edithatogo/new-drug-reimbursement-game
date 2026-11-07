@@ -9,3 +9,15 @@ UOGTO ontology terms are referenced under UOGTO's stated CC-BY-4.0 licensing
 for ontology/documentation. Software integrations remain subject to the
 licences of their respective repositories. See ecosystem.lock.toml and
 DEPENDENCY_MIGRATION_PLAN.md.
+
+Paignia's paignia-core and paignia-solve packages are the renamed generic Rust
+seed formerly called uogto-game-core and uogto-game-solve in this repository.
+Their original Apache-2.0 contributor attribution is retained. Source revision,
+paths and rename provenance are recorded in extraction-manifest.json. No Kairos
+or UOGTO implementation or ontology asset is copied by this rename; a later
+transfer must preserve the applicable source licence and attribution separately.
+
+The generic native seed is now maintained in edithatogo/paignia. This repository
+retains its original source history and application attribution, and consumes
+Paignia through an immutable dependency. Provider notices preserve the original
+Apache-2.0 contributor credit; current ownership is recorded in the transfer map.

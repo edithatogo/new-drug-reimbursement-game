@@ -33,7 +33,7 @@ class EcosystemDiscoveryTests(unittest.TestCase):
         components = MODULE.load_components(Path("ecosystem.lock.toml"))
         self.assertEqual(
             [component.name for component in components],
-            ["UOGTO", "Kairos", "Voiage", "Reimbursement Atlas"],
+            ["UOGTO", "Kairos", "Voiage", "Reimbursement Atlas", "Paignia"],
         )
         self.assertTrue(all(len(component.revision) == 40 for component in components))
 

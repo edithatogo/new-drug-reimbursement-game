@@ -85,8 +85,11 @@ jobs:
         run: cargo fmt --all -- --check
       - name: Clippy
         run: cargo clippy --workspace --all-targets -- -D warnings
-      - name: Test
-        run: cargo test --workspace
+      - name: Test application against immutable Paignia
+        # Generic game packages are Git dependencies maintained in Paignia.
+        # This workspace includes the application and paignia_static_game target;
+        # complete release/real-model qualification remains separate.
+        run: cargo test --workspace --locked
       - name: Install Rust coverage tool
         run: cargo install cargo-llvm-cov --version 0.8.7 --locked
       - name: Collect Rust coverage

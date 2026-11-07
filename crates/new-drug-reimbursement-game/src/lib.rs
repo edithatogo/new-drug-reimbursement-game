@@ -727,7 +727,11 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
             assert_eq!(fields.len(), 19);
             assert_eq!(fields[0], "1");
             let parse = |index: usize| fields[index].parse::<f64>().unwrap();
-            let inputs = match fields[2] {
+            let inputs = match fields
+                .get(2)
+                .copied()
+                .expect("fixture has a scenario column")
+            {
                 "scenario_1" => Chapter7ScenarioInputs::Scenario1 {
                     incremental_cost: parse(3),
                     incremental_health_effect: parse(4),
@@ -778,7 +782,11 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
             );
             assert_ne!(result.source_location, "");
             assert_ne!(result.parameterization, "");
-            match fields[2] {
+            match fields
+                .get(2)
+                .copied()
+                .expect("fixture has a scenario column")
+            {
                 "scenario_1" => {
                     assert_eq!(result.budget_shadow_price_expansion, Some(parse(5)));
                     assert_eq!(result.budget_shadow_price_contraction, None);
@@ -845,7 +853,11 @@ incremental_health_effect,expected_price,expected_firm_rent,expected_nebh"
             let fields: Vec<_> = line.split(',').collect();
             assert_eq!(fields.len(), 12);
             let parse = |index: usize| fields[index].parse::<f64>().unwrap();
-            let inputs = match fields[2] {
+            let inputs = match fields
+                .get(2)
+                .copied()
+                .expect("fixture has a scenario column")
+            {
                 "scenario_1" => Chapter7ScenarioInputs::Scenario1 {
                     incremental_cost: parse(3),
                     incremental_health_effect: parse(4),
