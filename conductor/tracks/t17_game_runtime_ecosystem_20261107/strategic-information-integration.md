@@ -1,4 +1,4 @@
-# T17 strategic-information provider and reimbursement pilot
+# T17 strategic-information provider handoffs and reimbursement pilot
 
 Date: 8 November 2026. Status: roadmap accepted for incorporation; all numerical,
 package, application and scientific qualification remains pending. This supplements
@@ -6,8 +6,10 @@ T17 and issue #100; it creates no new coordinator, package or repository.
 
 ## Boundary and sequencing
 
-The generic Rust packages own supported game representations, solving and result
-diagnostics. Voiage owns VOI. UOGTO owns semantics; Kairos is optional for native
+[Paignia](https://github.com/edithatogo/paignia) owns the generic Rust packages for
+supported game representations, solving and result diagnostics. This repository
+retains the reimbursement application and historical seed provenance. Voiage owns
+VOI. UOGTO owns semantics; Kairos is optional for native
 dynamic execution. The reimbursement application owns payoff construction,
 health-economic valuation, evidence interpretation and disclosure/contract terms.
 Keep domain economics out of game-core/solve and never duplicate VOI formulas here.
@@ -23,20 +25,27 @@ No provider pin or independent extraction decision changes in this addendum.
 
 ## Pending work within existing leaves
 
-- [ ] T17.01/result contracts: distinguish unsupported representation, no equilibrium
+[Paignia's canonical T17](https://github.com/edithatogo/paignia/blob/main/conductor/tracks/t17_game_runtime_ecosystem_20261107/plan.md)
+owns T17.01–T17.08 and T17.12–T17.17. The provider entries below are handoff inputs,
+not a second completion ledger. This application retains T17.09 (first real
+consumer), T17.11 (valued inputs) and its pilot; T17.10 belongs to the selected
+second application, currently Innovate. Preserve the existing IDs and historical
+receipts without maintaining another generic solver authority here.
+
+- Paignia T17.01/result contracts: distinguish unsupported representation, no equilibrium
   in the searched class, nonconvergence, selected equilibrium and catalogue coverage.
   Export algorithm/version, tolerances, residuals and explicit selection semantics.
   Do not infer probabilities from repeated solver restarts or label a pure catalogue
   as exhaustive over mixed equilibria. Keep backend-specific diagnostics optional.
-- [ ] T17.13–14 and T17.17: map specification, instance, policy, player, session and
+- Paignia T17.13–14 and T17.17: map specification, instance, policy, player, session and
   trace identities without conflating analyst draws with player observations. Live
   policies receive only permitted observations/legal actions. Incomplete-information
   profiles require accepted representation and solving semantics, not just labels.
-- [ ] T17.15–16: isolate solver RNG from exogenous simulation RNG; distinguish solver
+- Paignia T17.15–16: isolate solver RNG from exogenous simulation RNG; distinguish solver
   traversal from selected-policy/chance execution; qualify policy/native/RNG replay
   together. Cache/warm-start evidence binds information regime, solution concept,
   selection rule, valuation and tolerance so search order cannot silently select value.
-- [ ] T17.04–07: retain inherited RK4, mixed-Nash, CE and CFR scientific obligations.
+- Paignia T17.04–07: retain inherited RK4, mixed-Nash, CE and CFR scientific obligations.
   Test only claims actually supported by the candidate. Normal-form mixed Nash does
   not establish Bayesian games; general CE does not establish Bayes correlated equilibrium.
 - [ ] T17.11: extend the application-owned valued-input port for an optional Voiage
