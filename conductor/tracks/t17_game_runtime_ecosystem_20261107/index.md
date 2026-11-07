@@ -12,3 +12,8 @@ Status: new; execution pending. Planning does not qualify a solver or a consumer
 T00–T16 retain their historical completion for their recorded scopes. T17 adds
 package reuse and scientific completion work; it does not reopen those records
 or treat their completion as evidence for the new claims.
+
+## Strategic information integration — 8 November 2026
+
+- [Owner-scoped roadmap and acceptance cases](strategic-information-integration.md).
+  Planning only; existing implementation statuses, pins and release gates remain unchanged.
