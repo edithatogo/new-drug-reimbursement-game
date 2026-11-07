@@ -14,3 +14,8 @@
 - [Tracks Registry](./tracks.md)
 - [Tracks Directory](./tracks/)
 - [Archive Directory](./archive/)
+
+## Pending ecosystem work
+
+- [T17 reusable Rust game library and optional Kairos adapter](./tracks/t17_game_runtime_ecosystem_20261107/index.md)
+- [Deferred scientific consumer qualification](./tracks/scientific_ecosystem_alignment_20261029/index.md)

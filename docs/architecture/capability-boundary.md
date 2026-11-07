@@ -11,24 +11,44 @@ The application owns only reimbursement-domain concepts:
 
 ## General game capability
 
-The future Rust library owns:
+The existing `uogto-game-core` and `uogto-game-solve` crates are the package
+boundary for the reusable Rust library outside Kairos. Their supported subset
+is finite game validation, backward induction, chance-node expectations, and
+pure Nash enumeration. The broader capability remit and pending roadmap cover:
 
 - players, roles, states, actions, strategies, information sets, beliefs;
 - normal/extensive/stochastic/repeated game representations;
 - payoff and preference representations;
 - validation and canonical serialization;
 - solver interfaces and equilibrium-result objects;
-- execution traces and Kairos compilation;
+- generic solver traces, with Kairos compilation in an optional adapter;
 - UOGTO semantic identifiers and conformance.
 
 It must contain no drug, reimbursement, QALY, HTA, payer, or manufacturer
 semantics.
 
+Specific games, payoff construction, and domain policy stay in CareOps,
+Innovate, or the reimbursement application. HEOR valuation is a distinct
+capability supplying valued inputs under explicit units, perspectives, and
+assumptions; it is not owned by the generic solver or Kairos. Voiage retains VOI.
+
 ## Kairos boundary
 
-Kairos is below the game library. It owns deterministic scheduling, time,
-events, ECS state, random streams, DES, and ABM. The game library compiles a
-game execution plan to Kairos events; it does not reimplement these facilities.
+Kairos owns deterministic scheduling, time, events, ECS state, random streams,
+DES, and ABM. Static game representation and solving have no Kairos dependency,
+direct or transitive. An optional adapter depends on game core and Kairos and
+compiles supported game execution into native events; neither provider depends
+on the adapter. The adapter does not reimplement scheduling or use a non-Rust
+simulation fallback.
+
+Reuse the packages here before considering another repository. An independent
+repository is eligible for a separate extraction decision only after two real
+consumers qualify the same package artifacts. A wrapper or toy fixture is not
+a real consumer. [T17](../../conductor/tracks/t17_game_runtime_ecosystem_20261107/index.md)
+records the pending work, including inherited Kairos S01 RK4, S02 mixed Nash,
+S03 correlated equilibrium, and S04 CFR/CFR+ obligations. Moving code does not
+validate those methods, and historical track completion does not discharge
+them. This clarification changes no source, dependency pin, or runtime package.
 
 ## UOGTO boundary
 

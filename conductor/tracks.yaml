@@ -91,3 +91,14 @@ tracks:
     priority: 4
     status: done
     depends_on: [T09, T15]
+  - id: T17
+    title: Reusable Rust game library and optional Kairos adapter
+    priority: 2
+    status: pending
+    depends_on: [T02, T03, T06]
+    path: tracks/t17_game_runtime_ecosystem_20261107/index.md
+    exit_evidence:
+      - static game packages have no direct or transitive Kairos dependency
+      - inherited scientific obligations S01 to S04 have explicit completion evidence
+      - optional adapter uses qualified native Kairos execution
+      - two distinct real consumers qualify the same package artifacts before repository extraction is eligible

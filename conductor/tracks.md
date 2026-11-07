@@ -41,6 +41,11 @@ tracks retain explicit external, empirical, regulatory, raw-data, and
 confidential-data limitations; completion does not promote those deferred claim
 classes.
 
+- [ ] **Track: T17 reusable Rust game library and optional Kairos adapter**
+  *Link: [./tracks/t17_game_runtime_ecosystem_20261107/index.md](./tracks/t17_game_runtime_ecosystem_20261107/index.md)*
+  New execution pending: package boundary first, inherited S01–S04 scientific
+  obligations, and two real consumers before repository-extraction eligibility.
+
 - [ ] **Track: Deferred scientific ecosystem consumer qualification**
   *Link: [./tracks/scientific_ecosystem_alignment_20261029/index.md](./tracks/scientific_ecosystem_alignment_20261029/index.md)*
   Deferred until first-wave shared provider contracts pass.

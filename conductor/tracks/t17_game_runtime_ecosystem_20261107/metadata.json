@@ -1,0 +1,45 @@
+{
+  "track_id": "t17_game_runtime_ecosystem_20261107",
+  "registry_id": "T17",
+  "type": "refactor",
+  "status": "new",
+  "execution_status": "pending",
+  "created_at": "2026-11-07T00:00:00Z",
+  "updated_at": "2026-11-07T00:00:00Z",
+  "description": "Reusable Rust game packages outside Kairos, optional native simulation adapter, and inherited scientific completion",
+  "base_revision": "ab4ce37a905a8cf9bb54d1ad905de4b0f34b7165",
+  "repositories": [".", "edithatogo/careops-sim", "Innovate consumer (resolve in its local track)"],
+  "dependencies": ["T02", "T03", "T06"],
+  "conditional_dependencies": {
+    "T17.08": "scientific_ecosystem_alignment_20261029: accepted Kairos provider contract and separately qualified pin"
+  },
+  "scientific_obligations": {
+    "S01": "T17.04: RK4/continuous replicator",
+    "S02": "T17.05: mixed Nash/support enumeration/Lemke–Howson",
+    "S03": "T17.06: correlated equilibrium",
+    "S04": "T17.07: CFR/CFR+"
+  },
+  "leaf_count": 12,
+  "max_files_per_leaf": 5,
+  "review_policy": "Routine diff and focused checks; independent specialist agent review at numerical and public contract boundaries; no repeated human approval gate",
+  "extraction_policy": "Package boundary first; independent repository eligible only after two distinct real consumers qualify the same artifacts; no repository creation in this track",
+  "verification": {
+    "status": "passed",
+    "scope": "Planning documents only; implementation and scientific validation remain pending",
+    "commands": [
+      "python scripts/validate_scope.py",
+      "python scripts/validate_extraction.py",
+      "python scripts/governance_inventory.py --check",
+      "python -m unittest discover -s tests -p 'test_scope.py'",
+      "python -m unittest discover -s tests -p 'test_handoff.py'",
+      "git diff --check"
+    ],
+    "results": {
+      "scope_tests": 5,
+      "handoff_tests": 3,
+      "stdlib_document_checks": "12 pending leaves, file budgets, S01-S04 mappings, historical registry preservation, and 38 local links passed",
+      "independent_review": "No blocking findings in bounded read-only documentation review",
+      "not_run": "Future Cargo targets, consumer integrations, numerical qualification, and the full runtime quality gate"
+    }
+  }
+}
