@@ -6,17 +6,19 @@ version = 3
 name = "new-drug-reimbursement-game"
 version = "0.1.0"
 dependencies = [
- "uogto-game-core",
- "uogto-game-solve",
+ "paignia-core",
+ "paignia-solve",
 ]
 
 [[package]]
-name = "uogto-game-core"
+name = "paignia-core"
 version = "0.1.0"
+source = "git+https://github.com/edithatogo/paignia?rev=12b22ce7571b9c590405bf53c2c1c5862b49cd64#12b22ce7571b9c590405bf53c2c1c5862b49cd64"
 
 [[package]]
-name = "uogto-game-solve"
+name = "paignia-solve"
 version = "0.1.0"
+source = "git+https://github.com/edithatogo/paignia?rev=12b22ce7571b9c590405bf53c2c1c5862b49cd64#12b22ce7571b9c590405bf53c2c1c5862b49cd64"
 dependencies = [
- "uogto-game-core",
+ "paignia-core",
 ]

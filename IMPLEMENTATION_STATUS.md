@@ -1,5 +1,19 @@
 # Implementation status
 
+## Current Paignia consumer handoff (2026-11-08)
+
+Paignia owns `paignia-core` and `paignia-solve` in its separate repository.
+The application consumes one immutable provider revision and retains its
+finite offer/response integration test and valuation. No local generic solver
+copy remains. Provider algorithms are unchanged by the transfer.
+
+Native Git-consumer execution is distinct from qualified release artifacts,
+two real consumer receipts and S01–S04 completion. Exact execution results and
+the actual provider revision are recorded in T17 metadata. Only application
+T17.09/.11 remain active here; all other original IDs are preserved as ownership
+handoffs. Historical handoff/milestone descriptions below retain their original
+scope and do not qualify the new release or scientific claims.
+
 ## Complete in this handoff
 
 - Ecosystem-first architecture and pin file.

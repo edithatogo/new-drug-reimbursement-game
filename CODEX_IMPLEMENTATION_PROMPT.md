@@ -8,9 +8,10 @@ boundaries explicit:
 1. **New Drug Reimbursement Game application** — an auditable implementation of
    Pekarsky's PEA and strategic games, extended with post-2015 methods and
    empirical evidence.
-2. **General game-theory runtime** — a UOGTO-native Rust capability above
-   Kairos, suitable for extraction into its own repository and reuse across
-   domains.
+2. **Paignia consumer integration** — consume the separate domain-neutral Rust
+   game library at an immutable revision, with UOGTO semantics and optional
+   Kairos integration. Generic provider work belongs in `edithatogo/paignia`;
+   this application retains its domain model, valuation and acceptance.
 
 ## Invariants
 
@@ -41,9 +42,11 @@ boundaries explicit:
    resolves them.
 5. Add an independent implementation in Rust and cross-language fixtures.
 
-## Workstream 2 — general Rust game runtime
+## Workstream 2 — Paignia Rust game library
 
-Extend `uogto-game-core` and `uogto-game-solve` without domain leakage:
+Implement the following generic capabilities in `edithatogo/paignia`, not in
+this application. Retain the stable provider T17 IDs and consume its published
+Git/artifact contract without a local solver fork:
 
 - canonical IDs and versioned game specification;
 - players, roles, actions, strategies, states, transitions, terminal outcomes;
@@ -62,8 +65,9 @@ Design a compiler from supported game specifications to Kairos events and ECS
 state. Do not write another scheduler or RNG. Pin and use the released Kairos
 contract when available. Add conformance fixtures and deterministic trace tests.
 
-Prepare extraction into a dedicated Rust repository. The extraction must not
-require moving application files or reimbursement ontology terms.
+Paignia is the dedicated Rust repository. Keep its provider plan there; this
+application owns only its consumer case and valued-input contract. No application
+files or reimbursement ontology terms move into the generic library.
 
 ## Workstream 3 — UOGTO
 

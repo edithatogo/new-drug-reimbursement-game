@@ -34,6 +34,14 @@ role = "authoritative reviewed reimbursement evidence and provenance layer"
 license = "Apache-2.0 for software; source-specific data licences retained"
 integration = "local reviewed derived export; no raw-source copying"
 
+[[component]]
+name = "Paignia"
+repository = "https://github.com/edithatogo/paignia"
+revision = "12b22ce7571b9c590405bf53c2c1c5862b49cd64"
+role = "authoritative reusable native game representations and bounded static solvers"
+license = "Apache-2.0; original contributor attribution retained in package LICENSE/NOTICE"
+integration = "immutable Rust Cargo dependency; provider release and real-model qualification remain separate"
+
 [[hugging_face_repo]]
 id = "edithatogo/reimbursement-atlas"
 type = "dataset"

@@ -1,8 +1,6 @@
 [workspace]
 resolver = "2"
 members = [
-  "crates/uogto-game-core",
-  "crates/uogto-game-solve",
   "crates/new-drug-reimbursement-game",
 ]
 

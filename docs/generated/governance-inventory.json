@@ -23,6 +23,12 @@
       "name": "Reimbursement Atlas",
       "repository": "https://github.com/edithatogo/reimbursement-atlas",
       "revision": "c73d34dacae2f907a0eac399da8e6f43ce8d00ca"
+    },
+    {
+      "license_decision": "Apache-2.0; original contributor attribution retained in package LICENSE/NOTICE",
+      "name": "Paignia",
+      "repository": "https://github.com/edithatogo/paignia",
+      "revision": "12b22ce7571b9c590405bf53c2c1c5862b49cd64"
     }
   ],
   "open_decisions": [],
@@ -48,9 +54,7 @@
     "rust_license": "Apache-2.0",
     "rust_version": "1.75",
     "rust_workspace_members": [
-      "crates/new-drug-reimbursement-game",
-      "crates/uogto-game-core",
-      "crates/uogto-game-solve"
+      "crates/new-drug-reimbursement-game"
     ],
     "version": "0.4.0"
   },

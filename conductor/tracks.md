@@ -41,10 +41,11 @@ tracks retain explicit external, empirical, regulatory, raw-data, and
 confidential-data limitations; completion does not promote those deferred claim
 classes.
 
-- [ ] **Track: T17 reusable Rust game library and optional Kairos adapter**
+- [~] **Track: T17 Paignia application consumption and valued-payoff contract**
   *Link: [./tracks/t17_game_runtime_ecosystem_20261107/index.md](./tracks/t17_game_runtime_ecosystem_20261107/index.md)*
-  New execution pending: package boundary first, inherited S01–S04 scientific
-  obligations, and two real consumers before repository-extraction eligibility.
+  Only application T17.09/.11 remain active here. The fourteen provider leaves
+  live in Paignia and T17.10 in the second application. Native Git integration
+  is distinct from package release and scientific completion.
 
 - [ ] **Track: Deferred scientific ecosystem consumer qualification**
   *Link: [./tracks/scientific_ecosystem_alignment_20261029/index.md](./tracks/scientific_ecosystem_alignment_20261029/index.md)*

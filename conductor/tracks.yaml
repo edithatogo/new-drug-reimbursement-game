@@ -92,13 +92,15 @@ tracks:
     status: done
     depends_on: [T09, T15]
   - id: T17
-    title: Reusable Rust game library and optional Kairos adapter
+    title: Paignia application consumption and valued-payoff contract
     priority: 2
-    status: pending
-    depends_on: [T02, T03, T06]
+    status: in_progress
+    depends_on: [T04]
     path: tracks/t17_game_runtime_ecosystem_20261107/index.md
+    external_provider: https://github.com/edithatogo/paignia
+    active_leaves: [T17.09, T17.11]
     exit_evidence:
-      - static game packages have no direct or transitive Kairos dependency
-      - inherited scientific obligations S01 to S04 have explicit completion evidence
-      - optional adapter uses qualified native Kairos execution
-      - two distinct real consumers qualify the same package artifacts before repository extraction is eligible
+      - actual immutable Paignia dependency and coherent Cargo/ecosystem lock
+      - native application case and independent model/profile acceptance receipt
+      - valued-payoff units and perspective contract rejects incompatible inputs
+      - provider scientific and release work retains its separate owner and open state
