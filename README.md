@@ -8,8 +8,8 @@ This repository has two deliberately separate concerns:
 1. **Application:** price-effectiveness analysis and the new-drug reimbursement
    games described by Pekarsky, extended for uncertainty, evidence governance,
    repeated interaction, contracts, equity, and empirical calibration.
-2. **Capability incubator:** a domain-neutral game-theory runtime intended to
-   become a Rust library above **Kairos**, with semantics supplied by **UOGTO**.
+2. **Capability incubator:** reusable domain-neutral Rust game packages, with
+   semantics supplied by **UOGTO** and an optional **Kairos** execution adapter.
 
 The repository does **not** contain the book, copied figures, copied tables, or
 substantial source text. It implements equations and concepts independently and
@@ -40,6 +40,7 @@ flowchart TB
   APP[New-drug reimbursement application]
   PORTS[Stable application ports]
   GT[Game Theory Runtime\nRust capability incubator]
+  GAME_ADAPTER[Optional Rust game execution adapter]
   UOGTO[UOGTO\nsemantics + validation]
   KAIROS[Kairos\ntime/events/DES/ABM]
   VOI[Voiage\nVOI + decision uncertainty]
@@ -49,7 +50,9 @@ flowchart TB
   APP --> PORTS
   PORTS --> GT
   GT --> UOGTO
-  GT --> KAIROS
+  PORTS --> GAME_ADAPTER
+  GAME_ADAPTER --> GT
+  GAME_ADAPTER --> KAIROS
   PORTS --> VOI
   PORTS --> ATLAS
   ATLAS --> HF
@@ -59,6 +62,13 @@ The application never imports a solver implementation directly. It depends on
 ports. The current pure-Python solver is a small conformance oracle, not a new
 public game-theory library. The Rust crates under `crates/` are the extraction
 seed for the general capability.
+
+Static game representation and solving have no Kairos dependency. The optional
+adapter executes a selected policy and chance process through Kairos; a solver's
+diagnostic visits to hypothetical branches are not simulation events. The
+[T17 plan](conductor/tracks/t17_game_runtime_ecosystem_20261107/index.md) separates
+bounded static package qualification from native integration and the pending
+advanced numerical methods. No new package release is claimed by this plan.
 
 ## Implemented now
 
