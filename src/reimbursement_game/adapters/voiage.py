@@ -17,7 +17,7 @@ from ..calibration import VoiageSampleBundle
 
 @dataclass(frozen=True, slots=True)
 class VoiageHandoffReceipt:
-    """Deterministic, non-authorizing receipt for a Voiage input handoff."""
+    """Deterministic identity of an explicitly valued application handoff."""
 
     digest: str
     sample_count: int
@@ -29,13 +29,7 @@ class VoiageHandoffReceipt:
 
 
 class VoiageAdapter:
-    """Convert application net-benefit samples to Voiage's DecisionAnalysis."""
-
     def evpi(self, net_benefit_samples: Sequence[Sequence[float]]) -> float:
-        # Validate the boundary before importing the optional ecosystem.  This
-        # keeps malformed application data distinguishable from an unavailable
-        # Voiage installation and prevents ragged arrays being silently
-        # coerced into object arrays.
         rows = _validated_rows(net_benefit_samples)
         try:
             import numpy as np
@@ -50,23 +44,16 @@ class VoiageAdapter:
         return float(DecisionAnalysis(value_array).evpi())
 
     def prepare_inputs(self, bundle: VoiageSampleBundle) -> tuple[Any, Any]:
-        """Construct the pinned Voiage ValueArray and ParameterSet schemas.
+        """Validate the handoff before constructing provider-owned schemas.
 
         This method performs no VOI calculation and does not generate samples.
+        The same validation is used by the receipt path, independently of whether
+        the optional provider has been installed.
         """
-
-        rows = _validated_rows(bundle.net_benefit_samples)
-        if bundle.perspective != "health" or not bundle.health_unit.strip():
-            raise ValueError("Voiage calibration bundle requires an explicit health perspective")
-        if not bundle.evidence_revision.startswith("sha256:"):
-            raise ValueError("Voiage calibration bundle requires a sha256 evidence revision")
-        if len(bundle.strategy_names) != len(rows[0]):
-            raise ValueError("Voiage strategy names must align with sample columns")
-        parameter_values = {item.role.value: item.values for item in bundle.parameter_samples}
-        if not parameter_values:
-            raise ValueError("Voiage calibration bundle requires parameter samples")
-        if any(len(values) != len(rows) for values in parameter_values.values()):
-            raise ValueError("Voiage parameter samples must align with strategy samples")
+        rows, _ = _validated_bundle(bundle)
+        parameter_values = {
+            item.role.value: item.values for item in bundle.parameter_samples
+        }
         try:
             import numpy as np
             from voiage.schema import ParameterSet, ValueArray
@@ -74,33 +61,19 @@ class VoiageAdapter:
             raise RuntimeError(
                 "Install or check out pinned edithatogo/voiage to prepare VOI inputs"
             ) from exc
-        values = ValueArray.from_numpy(np.asarray(rows, dtype=float), list(bundle.strategy_names))
+        values = ValueArray.from_numpy(
+            np.asarray(rows, dtype=float), list(bundle.strategy_names)
+        )
         parameters = ParameterSet.from_numpy_or_dict(
-            {name: np.asarray(samples, dtype=float) for name, samples in parameter_values.items()}
+            {
+                name: np.asarray(samples, dtype=float)
+                for name, samples in parameter_values.items()
+            }
         )
         return values, parameters
 
     def handoff_receipt(self, bundle: VoiageSampleBundle) -> VoiageHandoffReceipt:
-        """Return a hash-bound receipt without importing or running Voiage."""
-
-        rows = _validated_rows(bundle.net_benefit_samples)
-        if bundle.perspective != "health" or not bundle.health_unit.strip():
-            raise ValueError("Voiage calibration bundle requires an explicit health perspective")
-        if not bundle.evidence_revision.startswith("sha256:"):
-            raise ValueError("Voiage calibration bundle requires a sha256 evidence revision")
-        if len(bundle.strategy_names) != len(rows[0]):
-            raise ValueError("Voiage strategy names must align with sample columns")
-        if any(not name.strip() for name in bundle.strategy_names):
-            raise ValueError("Voiage strategy names must be non-empty")
-        parameter_roles = tuple(item.role.value for item in bundle.parameter_samples)
-        if not parameter_roles:
-            raise ValueError("Voiage calibration bundle requires parameter samples")
-        if len(set(parameter_roles)) != len(parameter_roles):
-            raise ValueError("Voiage parameter roles must be unique")
-        if any(len(item.values) != len(rows) for item in bundle.parameter_samples):
-            raise ValueError("Voiage parameter samples must align with strategy samples")
-        if any(not math.isfinite(float(value)) for item in bundle.parameter_samples for value in item.values):
-            raise ValueError("Voiage parameter samples must contain only finite numbers")
+        rows, parameter_roles = _validated_bundle(bundle)
         payload = {
             "evidence_revision": bundle.evidence_revision,
             "health_unit": bundle.health_unit,
@@ -114,7 +87,7 @@ class VoiageAdapter:
             json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
         ).hexdigest()
         return VoiageHandoffReceipt(
-            digest=f"sha256:{digest}",
+            digest="sha256:" + digest,
             sample_count=len(rows),
             strategy_names=bundle.strategy_names,
             parameter_roles=parameter_roles,
@@ -122,6 +95,37 @@ class VoiageAdapter:
             health_unit=bundle.health_unit,
             evidence_revision=bundle.evidence_revision,
         )
+
+
+def _validated_bundle(
+    bundle: VoiageSampleBundle,
+) -> tuple[list[list[float]], tuple[str, ...]]:
+    """Validate joint samples before any provider import or role-to-dict conversion."""
+    rows = _validated_rows(bundle.net_benefit_samples)
+    if bundle.perspective != "health" or not bundle.health_unit.strip():
+        raise ValueError("Voiage calibration bundle requires an explicit health perspective")
+    if not bundle.evidence_revision.startswith("sha256:"):
+        raise ValueError("Voiage calibration bundle requires a sha256 evidence revision")
+    if len(bundle.strategy_names) != len(rows[0]):
+        raise ValueError("Voiage strategy names must align with sample columns")
+    if any(not name.strip() for name in bundle.strategy_names):
+        raise ValueError("Voiage strategy names must be non-empty")
+    if len(set(bundle.strategy_names)) != len(bundle.strategy_names):
+        raise ValueError("Voiage strategy names must be unique")
+    parameter_roles = tuple(item.role.value for item in bundle.parameter_samples)
+    if not parameter_roles:
+        raise ValueError("Voiage calibration bundle requires parameter samples")
+    if len(set(parameter_roles)) != len(parameter_roles):
+        raise ValueError("Voiage parameter roles must be unique")
+    if any(len(item.values) != len(rows) for item in bundle.parameter_samples):
+        raise ValueError("Voiage parameter samples must align with strategy samples")
+    if any(
+        not math.isfinite(float(value))
+        for item in bundle.parameter_samples
+        for value in item.values
+    ):
+        raise ValueError("Voiage parameter samples must contain only finite numbers")
+    return rows, parameter_roles
 
 
 def _validated_rows(samples: Sequence[Sequence[float]]) -> list[list[float]]:
