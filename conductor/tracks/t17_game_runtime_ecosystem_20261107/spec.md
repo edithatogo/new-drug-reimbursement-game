@@ -63,3 +63,12 @@ public-contract/numerical review where relevant. No repeated human approval is
 introduced. Rollback uses an actually qualified immutable provider revision or
 an explicit ordinary revert preserving history, never a silent non-Rust or local
 solver fallback. T17.09/.11 stay open until their full acceptance is recorded.
+
+## Serde suitability as a Paignia consumer — 18 November 2026
+
+The existing Rust application depends on exact-pinned `paignia-core` and `paignia-solve`; its current Cargo manifest does not directly require Serde. Paignia's native result envelope explicitly has **no published wire format**. No application-side Serde fork or competing game/result serialization layer should be introduced. Serde cannot replace game solvers or independently validate reimbursement/game-theory outputs.
+
+- [ ] Track Paignia T19 conditional `paignia-io` decision and T17 external consumer contracts; identify a *real* need for CLI/API interchange before adding any format dependency here.
+- [ ] If Paignia publishes an accepted versioned Serde adapter, consume **the pinned provider's wire DTOs** and retain exact game identity, payoff units/rounding, source rights, version, finite probabilities and order-dependent solution choices.
+- [ ] Compare independent scientific/game oracles and the application against original native results; JSON roundtrip cannot prove equilibrium correctness.
+- [ ] Keep this application's pinned `Cargo.lock` and exact-head target tests unchanged until provider API evidence and app-owner approval. Record no-go if no stable wire consumer exists; planning only.
