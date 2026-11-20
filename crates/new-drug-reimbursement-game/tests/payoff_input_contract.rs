@@ -1,4 +1,5 @@
 use std::collections::BTreeMap;
+use std::error::Error;
 
 use new_drug_reimbursement_game::payoff_input::{
     solve_valued_game, PayoffBasis, PayoffInputError, TerminalValuations, ValuedPayoff,
@@ -137,6 +138,50 @@ fn matching_basis_reaches_native_solver_and_preserves_provenance() {
     assert_eq!(result.valuations, expected_inputs);
 }
 
+fn assert_input_diagnostic(error: &PayoffInputError, message: &str) {
+    assert_eq!(error.to_string(), message);
+    assert!(error.source().is_none());
+}
+
+#[test]
+fn empty_invalid_and_missing_player_bases_fail_with_context() {
+    let (specification, identities, mut basis, mut payoffs) = fixture();
+    let error = solve_valued_game(
+        specification.clone(),
+        identities.clone(),
+        &BTreeMap::new(),
+        payoffs.clone(),
+    )
+    .unwrap_err();
+    assert!(matches!(error, PayoffInputError::NoPlayerBasis));
+    assert_input_diagnostic(&error, "the game needs a payoff basis");
+
+    let institution = PlayerId("institution".into());
+    let message = "missing or invalid payoff basis for \"institution\"";
+    basis.get_mut(&institution).unwrap().perspective = " ".into();
+    let error = solve_valued_game(
+        specification.clone(),
+        identities.clone(),
+        &basis,
+        payoffs.clone(),
+    )
+    .unwrap_err();
+    assert!(
+        matches!(&error, PayoffInputError::InvalidPlayerBasis { player } if player == &institution)
+    );
+    assert_input_diagnostic(&error, message);
+
+    basis.remove(&institution);
+    for values in payoffs.values_mut() {
+        values.remove(&institution);
+    }
+    let error = solve_valued_game(specification, identities, &basis, payoffs).unwrap_err();
+    assert!(
+        matches!(&error, PayoffInputError::InvalidPlayerBasis { player } if player == &institution)
+    );
+    assert_input_diagnostic(&error, message);
+}
+
 #[test]
 fn wrong_unit_and_wrong_perspective_are_rejected_before_the_solver() {
     let (mut specification, identities, basis, mut payoffs) = fixture();
@@ -147,23 +192,28 @@ fn wrong_unit_and_wrong_perspective_are_rejected_before_the_solver() {
     let player = PlayerId("firm".into());
     let value = payoffs.get_mut(&node).unwrap().get_mut(&player).unwrap();
     value.basis.unit = "USD-2026".into();
-    assert!(matches!(
-        solve_valued_game(
-            specification.clone(),
-            identities.clone(),
-            &basis,
-            payoffs.clone()
-        ),
-        Err(PayoffInputError::UnitMismatch { .. })
-    ));
+    let error = solve_valued_game(
+        specification.clone(),
+        identities.clone(),
+        &basis,
+        payoffs.clone(),
+    )
+    .unwrap_err();
+    assert!(matches!(error, PayoffInputError::UnitMismatch { .. }));
+    assert_input_diagnostic(&error, "payoff unit mismatch for \"firm\" at \"accepted\"");
 
     let value = payoffs.get_mut(&node).unwrap().get_mut(&player).unwrap();
     value.basis.unit = "AUD-2026".into();
     value.basis.perspective = "societal".into();
+    let error = solve_valued_game(specification, identities, &basis, payoffs).unwrap_err();
     assert!(matches!(
-        solve_valued_game(specification, identities, &basis, payoffs),
-        Err(PayoffInputError::PerspectiveMismatch { .. })
+        error,
+        PayoffInputError::PerspectiveMismatch { .. }
     ));
+    assert_input_diagnostic(
+        &error,
+        "payoff perspective mismatch for \"firm\" at \"accepted\"",
+    );
 }
 
 #[test]
@@ -172,22 +222,40 @@ fn omitted_and_unproven_payoffs_do_not_become_zero_values() {
     let node = NodeId("accepted".into());
     let player = PlayerId("firm".into());
     let mut value = payoffs.get_mut(&node).unwrap().remove(&player).unwrap();
-    assert!(matches!(
-        solve_valued_game(
+    let error = solve_valued_game(
+        specification.clone(),
+        identities.clone(),
+        &basis,
+        payoffs.clone(),
+    )
+    .unwrap_err();
+    assert!(matches!(error, PayoffInputError::PlayerPayoffSet { .. }));
+    assert_input_diagnostic(
+        &error,
+        "incomplete or undeclared player payoffs at \"accepted\"",
+    );
+
+    let mut unproven = value.clone();
+    unproven.valuation_revision.clear();
+    value.amount = f64::INFINITY;
+    for invalid in [unproven, value] {
+        payoffs
+            .get_mut(&node)
+            .unwrap()
+            .insert(player.clone(), invalid);
+        let error = solve_valued_game(
             specification.clone(),
             identities.clone(),
             &basis,
-            payoffs.clone()
-        ),
-        Err(PayoffInputError::PlayerPayoffSet { .. })
-    ));
-
-    value.valuation_revision.clear();
-    payoffs.get_mut(&node).unwrap().insert(player, value);
-    assert!(matches!(
-        solve_valued_game(specification, identities, &basis, payoffs),
-        Err(PayoffInputError::InvalidValue { .. })
-    ));
+            payoffs.clone(),
+        )
+        .unwrap_err();
+        assert!(matches!(error, PayoffInputError::InvalidValue { .. }));
+        assert_input_diagnostic(
+            &error,
+            "non-finite payoff or missing valuation revision for \"firm\" at \"accepted\"",
+        );
+    }
 }
 
 #[test]
@@ -199,37 +267,40 @@ fn raw_values_and_valuations_for_decision_nodes_are_rejected() {
         panic!("accepted is a terminal");
     };
     raw.insert(PlayerId("firm".into()), 80_000.0);
-    assert!(matches!(
-        solve_valued_game(
-            specification.clone(),
-            identities.clone(),
-            &basis,
-            payoffs.clone()
-        ),
-        Err(PayoffInputError::RawPayoffs { .. })
-    ));
+    let error = solve_valued_game(
+        specification.clone(),
+        identities.clone(),
+        &basis,
+        payoffs.clone(),
+    )
+    .unwrap_err();
+    assert!(matches!(error, PayoffInputError::RawPayoffs { .. }));
+    assert_input_diagnostic(&error, "unvalued payoffs supplied at \"accepted\"");
 
     let values = payoffs.remove(&accepted).unwrap();
     payoffs.insert(specification.game.root.clone(), values);
-    assert!(matches!(
-        solve_valued_game(specification, identities, &basis, payoffs),
-        Err(PayoffInputError::UnknownTerminal { .. })
-    ));
+    let error = solve_valued_game(specification, identities, &basis, payoffs).unwrap_err();
+    assert!(matches!(error, PayoffInputError::UnknownTerminal { .. }));
+    assert_input_diagnostic(&error, "valuations reference a nonterminal node \"offer\"");
 }
 
 #[test]
 fn version_and_identity_admission_fail_closed_at_the_provider_boundary() {
     let (mut specification, mut identities, basis, payoffs) = fixture();
     specification.schema_version = "unknown".into();
+    let error = solve_valued_game(
+        specification.clone(),
+        identities.clone(),
+        &basis,
+        payoffs.clone(),
+    )
+    .unwrap_err();
     assert!(matches!(
-        solve_valued_game(
-            specification.clone(),
-            identities.clone(),
-            &basis,
-            payoffs.clone()
-        ),
-        Err(PayoffInputError::Solver(ResultSolveError::Input(_)))
+        error,
+        PayoffInputError::Solver(ResultSolveError::Input(_))
     ));
+    let cause = error.source().expect("the native cause is exposed");
+    assert_eq!(error.to_string(), cause.to_string());
     specification.schema_version = "1.0.0".into();
     identities.specification_id = GameSpecificationId("urn:ndrg:test:other-specification".into());
     assert!(matches!(

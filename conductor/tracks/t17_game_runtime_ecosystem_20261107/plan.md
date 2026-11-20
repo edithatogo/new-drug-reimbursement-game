@@ -109,7 +109,7 @@ approval loop. No package-release or scientific method is completed by this move
   The typed Rust fixture in `payoff_input_contract.rs` supplies the planned
   conformance cases with a distinct provenance revision for every payoff.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  payoff_input_contract --test paignia_static_game`. The five port cases
+  payoff_input_contract --test paignia_static_game`. The six port cases
   and the existing finite offer case pass against the versioned Paignia
   static contract at `bd880dd756d2ba56cc5f479bc078cea31b53c1d1`.
   The real artifact and extended Voiage receipts remain separate.
