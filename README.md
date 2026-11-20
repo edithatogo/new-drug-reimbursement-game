@@ -116,6 +116,9 @@ the authoritative restoration path. See `START_HERE_CODEX.md` and
 ## Quick start
 
 ```bash
+UV_PROJECT_ENVIRONMENT=target/dev-python uv sync --locked --python "$(cat .python-version)" --extra dev --extra voiage
+source target/dev-python/bin/activate
+python --version
 python -m reimbursement_game.cli evaluate examples/cases/chapter8_example.json
 python -m reimbursement_game.cli scenario examples/cases/chapter7_scenario4.json
 python -m reimbursement_game.cli evidence fixtures/evidence/synthetic-chapter7-parameter-packet-v1.json
