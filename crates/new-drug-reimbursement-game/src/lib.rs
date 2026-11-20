@@ -1,5 +1,6 @@
 //! Domain application using the domain-neutral game runtime.
 
+pub mod paignia_acceptance;
 pub mod payoff_input;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
