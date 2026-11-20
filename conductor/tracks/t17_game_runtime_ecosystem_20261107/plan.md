@@ -84,12 +84,19 @@ approval loop. No package-release or scientific method is completed by this move
   under the selected coupling. Separately solving fully observed hidden states
   and averaging their outcomes is not an information-consistent policy/game.
 
-#### Future slice T17.09.artifact — accept a real case outside the provider checkout
+#### T17.09.artifact — accept a real case outside the provider checkout
 
 - Depends on: provider T17.03's actual artifacts and the case-specific result
   contract. Use independent expected results, declared unsupported cases and
   solver/version identity; do not count the local synthetic fixture as the full
   real-model or second-application receipt.
+- The application-owned [finite Chapter 8 model](../../../docs/architecture/paignia-chapter8-application.md)
+  applies the existing fixed-budget valuation to each offer and uses the
+  admitted Paignia policy to recover the reimbursement decision. The four
+  `paignia_chapter8_application` tests check the independent equation 8.2
+  result, an off-threshold menu, rejection and invalid inputs. The model is
+  the maintained Chapter 8 application case with explicitly synthetic inputs.
+  Isolated artifact execution and its receipt follow the source eligibility tests.
 - Files (5): application `Cargo.toml`, `Cargo.lock`,
   `scripts/validate_paignia_consumer.py` (future),
   `tests/test_paignia_consumer_artifact.py` (future),
