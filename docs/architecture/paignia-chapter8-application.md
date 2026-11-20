@@ -46,3 +46,26 @@ The case qualifies the application model on synthetic parameters under the
 declared finite perfect-information profile. The closed-form solver remains
 available for the continuous threshold. Clinical inputs, private information,
 simulation and empirical uptake are outside this case's scope.
+
+## Reproduce the artifact run
+
+Use the qualified CPython environment, the handed-off Rust toolchain and
+both `.crate` files from the selected Paignia bundle. The verifier uses
+macOS `sandbox-exec`. Choose an evidence directory outside both Cargo
+checkouts and use the full application commit from the receipt.
+
+```bash
+target/dev-python/bin/python scripts/validate_paignia_consumer.py \
+  --provider "$provider_checkout" \
+  --handoff "$handoff_json" \
+  --archives "$qualified_archives" \
+  --revision "$application_commit" \
+  --work-dir "$evidence_directory"
+```
+
+The verifier stages the committed application and checks the two archive
+hashes before unpacking them. It runs Cargo with a separate cache of the
+locked registry packages, blocks provider and Git cache reads, and denies
+network access throughout resolution, compilation, and tests. It retains
+the execution log, the resolved metadata, and a receipt for the specific
+application commit and package bytes.
