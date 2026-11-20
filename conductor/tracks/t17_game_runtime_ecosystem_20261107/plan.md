@@ -41,17 +41,18 @@ approval loop. No package-release or scientific method is completed by this move
   evidence, not registry release, the second application receipt or S01–S04
   completion. Only numerical/native capabilities actually used add prerequisites.
 
-#### Future slice T17.09.result — reject an unsupported or incomplete result
+#### T17.09.result — reject an unsupported or incomplete result
 
 - Depends on: Paignia T17.01's actual result contract and the selected numerical
   method; missing fields return to that provider owner instead of being invented
   in this application. This is not a new generic result implementation here.
-- Files (4): `crates/new-drug-reimbursement-game/src/lib.rs`,
-  `crates/new-drug-reimbursement-game/src/paignia_acceptance.rs` (future),
-  `crates/new-drug-reimbursement-game/tests/paignia_result_contract.rs` (future),
-  `docs/architecture/paignia-result-acceptance.md` (future).
+- Files (5): `crates/new-drug-reimbursement-game/src/lib.rs`,
+  `crates/new-drug-reimbursement-game/src/payoff_input.rs`,
+  `crates/new-drug-reimbursement-game/src/paignia_acceptance.rs`,
+  `crates/new-drug-reimbursement-game/tests/paignia_result_contract.rs`, and
+  `docs/architecture/paignia-result-acceptance.md`.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  paignia_result_contract` (future). Reject unsupported/nonconverged results and
+  paignia_result_contract`. Reject unsupported/nonconverged results and
   incomplete catalogues for a requested exhaustive claim; neither means an
   economic zero or proof that no equilibrium exists. Preserve game class,
   information structure, solution concept, algorithm/version, tolerance,
@@ -59,6 +60,11 @@ approval loop. No package-release or scientific method is completed by this move
   learning and solver restart frequency must not silently become Nash predictions
   or behavioural probabilities. Independent references allow legitimate corrected
   results rather than forcing parity with a flawed historical seed.
+- Candidate evidence: the valued-payoff path admits the exact solver identity
+  and one completed policy. Five native contract tests distinguish structurally
+  valid failed statuses, an exhaustive claim, a foreign solver run, missing
+  choices and an unsupported algorithm version. The broader consumer receipt
+  remains in T17.09.artifact.
 
 #### Future slice T17.09.observation — enforce the case's lawful policy input
 

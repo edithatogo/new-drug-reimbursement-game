@@ -10,6 +10,8 @@ use paignia_solve::{
     backward_induction_result, BackwardInductionResult, ResultSolveError, SolverConfig,
 };
 
+use crate::paignia_acceptance::{accept, AcceptanceError, ResultUse};
+
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct PayoffBasis {
     pub unit: String,
@@ -42,6 +44,7 @@ pub enum PayoffInputError {
     PerspectiveMismatch { node: NodeId, player: PlayerId },
     InvalidValue { node: NodeId, player: PlayerId },
     Solver(ResultSolveError),
+    ResultAcceptance(AcceptanceError),
 }
 
 impl fmt::Display for PayoffInputError {
@@ -90,6 +93,7 @@ impl fmt::Display for PayoffInputError {
                 player.0, node.0
             ),
             Self::Solver(error) => error.fmt(formatter),
+            Self::ResultAcceptance(error) => error.fmt(formatter),
         }
     }
 }
@@ -98,6 +102,7 @@ impl std::error::Error for PayoffInputError {
     fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
         match self {
             Self::Solver(error) => Some(error),
+            Self::ResultAcceptance(error) => Some(error),
             _ => None,
         }
     }
@@ -184,6 +189,7 @@ pub fn solve_valued_game(
             _ => {}
         }
     }
+    let requested_identities = identities.clone();
     let policy = backward_induction_result(
         &specification,
         STATIC_GAME_PROFILE_V1,
@@ -191,5 +197,12 @@ pub fn solve_valued_game(
         SolverConfig::default(),
     )
     .map_err(PayoffInputError::Solver)?;
+    accept(
+        &policy.envelope,
+        &specification,
+        &requested_identities,
+        ResultUse::ContingentPolicy,
+    )
+    .map_err(PayoffInputError::ResultAcceptance)?;
     Ok(ValuedSolution { policy, valuations })
 }
