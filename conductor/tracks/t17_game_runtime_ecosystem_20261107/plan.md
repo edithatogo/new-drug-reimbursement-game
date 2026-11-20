@@ -9,17 +9,15 @@ approval loop. No package-release or scientific method is completed by this move
 
 ## Active application leaves
 
-### [~] T17.09 — qualify the reimbursement application as a Paignia consumer
+### [x] T17.09 — qualify the reimbursement application as a Paignia consumer
 
 - Behavior: consume one immutable Paignia revision, construct the application
   game locally, and retain an independently checkable result.
-- Dependency: actual Paignia provider commit and supported static contract.
-  Release acceptance still requires provider T17.03 artifacts and the full
-  application model/profile receipt; no optional native adapter is required.
-- Current source target: `crates/new-drug-reimbursement-game/tests/paignia_static_game.rs`.
-  It calls existing application valuation and Paignia backward induction with
-  the synthetic 25,000 offer / 100,000 total / zero institution-benefit oracle.
-  It does not alter the full economic model or constitute empirical validation.
+- Dependency: the qualified Paignia T17.03 archives and the finite
+  perfect-information static profile.
+- Accepted source: the [Chapter 8 application case](../../../docs/architecture/paignia-chapter8-application.md)
+  merged in [#114](https://github.com/edithatogo/new-drug-reimbursement-game/pull/114).
+  The earlier `paignia_static_game` smoke remains a source-integration control.
 - Bounded execution slices (each at most five files):
   1. Remove the four tracked files in the transferred core package; keep its
      source history and Paignia notices/provenance.
@@ -92,23 +90,27 @@ approval loop. No package-release or scientific method is completed by this move
   real-model or second-application receipt.
 - The application-owned [finite Chapter 8 model](../../../docs/architecture/paignia-chapter8-application.md)
   applies the existing fixed-budget valuation to each offer and uses the
-  admitted Paignia policy to recover the reimbursement decision. The four
-  `paignia_chapter8_application` tests check the independent equation 8.2
-  result, an off-threshold menu, rejection and invalid inputs. The model is
-  the maintained Chapter 8 application case with explicitly synthetic inputs.
-  Isolated artifact execution and its receipt follow the source eligibility tests.
-- Files (5): application `Cargo.toml`, `Cargo.lock`,
-  `scripts/validate_paignia_consumer.py` (future),
-  `tests/test_paignia_consumer_artifact.py` (future),
-  `docs/validation/paignia-consumer-receipt.json` (future).
+  admitted Paignia policy to recover the reimbursement decision. Six tests check
+  the independent equation 8.2 result, an off-threshold menu, rejection, invalid
+  inputs, reciprocal overflow and near-tie order invariance. The model uses the
+  maintained Chapter 8 example with explicitly synthetic inputs.
+- The verifier stages the path dependencies and its resolved lock outside the
+  checkout. The normal application uses its reviewed immutable Git pins.
 - Check: `python -m unittest discover -s tests -p
   'test_paignia_consumer_artifact.py'` and `python
-  scripts/validate_paignia_consumer.py` (future). Execute the real native case
+  scripts/validate_paignia_consumer.py`. Execute the real native case
   with provider checkout unavailable; bind artifact/hash/lock/feature closure,
   nonzero tests and declared profile. Reject duplicate application IDs,
   source-tree-only claims or mismatched artifacts. Paignia T17.02/.03/.12 own
   minimal/default/advertised-extra and build/transitive isolation plus the
   two-real-consumer release gate; no duplicate provider guard is created here.
+- Accepted artifact evidence: [receipt](../../../docs/validation/paignia-consumer-receipt.json)
+  and [execution log](../../../docs/validation/receipts/t17-reimbursement-chapter8.log).
+  The model at `63a3801d378e04f59fec4124e67281f7cbba0b94` passed all six tests
+  on Rust 1.75.0 against the qualified `bd880dd` archives. The same macOS policy
+  denied source and Git cache reads and network access during resolution,
+  compilation and tests. The log retains the resolved paths, feature sets and
+  exact lock. It covers the declared synthetic case and static profile.
 
 ### [~] T17.11 — reject incompatible valued-payoff inputs at the application port
 
