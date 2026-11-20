@@ -12,7 +12,6 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 from enum import StrEnum
-from typing import TypeAlias
 
 
 class Chapter7Scenario(StrEnum):
@@ -62,7 +61,7 @@ class Scenario4Inputs:
     evidence_revision: str
 
 
-Chapter7Inputs: TypeAlias = Scenario1Inputs | Scenario2Inputs | Scenario3Inputs | Scenario4Inputs
+Chapter7Inputs = Scenario1Inputs | Scenario2Inputs | Scenario3Inputs | Scenario4Inputs
 
 
 @dataclass(frozen=True, slots=True)

@@ -28,7 +28,7 @@
       "license_decision": "Apache-2.0; original contributor attribution retained in package LICENSE/NOTICE",
       "name": "Paignia",
       "repository": "https://github.com/edithatogo/paignia",
-      "revision": "12b22ce7571b9c590405bf53c2c1c5862b49cd64"
+      "revision": "bd880dd756d2ba56cc5f479bc078cea31b53c1d1"
     }
   ],
   "open_decisions": [],
@@ -39,7 +39,7 @@
       "dev": [
         "basedpyright==1.39.10",
         "build==1.5.0",
-        "matplotlib==3.11.1",
+        "matplotlib==3.11.2",
         "numpy>=2.0",
         "pytest-cov==7.1.0",
         "pytest==9.1.1",
@@ -47,7 +47,7 @@
         "ty==0.0.73"
       ],
       "voiage": [
-        "voiage"
+        "voiage==3.1.0"
       ]
     },
     "python_runtime_dependencies": [],

@@ -1,7 +1,8 @@
 # Tech stack
 
-- Python 3.11 or later with setuptools, Ruff, `ty` for routine type checking,
-  basedpyright before pull requests, and unittest.
+- CPython 3.15.2 from `.python-version`, with locked dependencies in
+  `target/dev-python`. The checks use setuptools, pytest, Ruff, `ty` and
+  basedpyright.
 - Rust application workspace with immutable Paignia Git dependencies, rustfmt,
   Clippy and Cargo tests. Local integration is checked with Rust 1.75; hosted
   application CI retains its stable profile.

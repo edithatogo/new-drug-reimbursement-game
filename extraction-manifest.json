@@ -49,16 +49,16 @@
   "mode": "external_provider",
   "provider": {
     "repository": "https://github.com/edithatogo/paignia",
-    "revision": "12b22ce7571b9c590405bf53c2c1c5862b49cd64",
+    "revision": "bd880dd756d2ba56cc5f479bc078cea31b53c1d1",
     "packages": [
       "paignia-core",
       "paignia-solve"
     ],
     "version": "0.1.0",
     "track": "conductor/tracks/t17_game_runtime_ecosystem_20261107",
-    "reviewed_tree": "f438caa902e07a7ec5b7be3020c94d5b7e4868e8",
-    "pull_request": "https://github.com/edithatogo/paignia/pull/2",
-    "hosted_ci": "https://github.com/edithatogo/paignia/actions/runs/42420971781"
+    "reviewed_tree": "d4caa9722a0a126c20cba3fd0d0872488099af14",
+    "pull_request": "https://github.com/edithatogo/paignia/pull/34",
+    "hosted_ci": "https://github.com/edithatogo/paignia/actions/runs/44060831778"
   },
   "forbidden_local_crates": [
     "crates/paignia-core",

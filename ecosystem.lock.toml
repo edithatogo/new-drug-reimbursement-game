@@ -37,7 +37,7 @@ integration = "local reviewed derived export; no raw-source copying"
 [[component]]
 name = "Paignia"
 repository = "https://github.com/edithatogo/paignia"
-revision = "12b22ce7571b9c590405bf53c2c1c5862b49cd64"
+revision = "bd880dd756d2ba56cc5f479bc078cea31b53c1d1"
 role = "authoritative reusable native game representations and bounded static solvers"
 license = "Apache-2.0; original contributor attribution retained in package LICENSE/NOTICE"
 integration = "immutable Rust Cargo dependency; provider release and real-model qualification remain separate"

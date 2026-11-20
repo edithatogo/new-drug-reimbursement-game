@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import hashlib
 import unittest
 from email.message import Message
@@ -20,7 +22,7 @@ class FakeResponse:
         self.headers["Content-Type"] = "application/json"
         self.headers["ETag"] = '"revision"'
 
-    def __enter__(self) -> "FakeResponse":
+    def __enter__(self) -> FakeResponse:
         return self
 
     def __exit__(self, *_args: object) -> None:

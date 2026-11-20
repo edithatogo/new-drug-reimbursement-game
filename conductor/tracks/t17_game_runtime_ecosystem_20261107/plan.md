@@ -97,19 +97,22 @@ approval loop. No package-release or scientific method is completed by this move
   minimal/default/advertised-extra and build/transitive isolation plus the
   two-real-consumer release gate; no duplicate provider guard is created here.
 
-### [ ] T17.11 — reject incompatible valued-payoff inputs at the application port
+### [~] T17.11 — reject incompatible valued-payoff inputs at the application port
 
 - Behavior: reject a payoff whose unit or perspective differs from the declared
   consumer contract before invoking Paignia; preserve valuation provenance.
 - Depends on: Paignia T17.01 contract. HEOR valuation and Voiage VOI keep their
   own owners; no valuation algorithm moves into generic core or Kairos.
-- Files (4): `crates/new-drug-reimbursement-game/src/lib.rs`,
-  `crates/new-drug-reimbursement-game/tests/payoff_input_contract.rs` (future),
-  `docs/architecture/payoff-input-contract.md` (future),
-  `fixtures/conformance/payoff-input-v1.json` (future).
+- Files (5): the application's `src/lib.rs` module binding, `src/payoff_input.rs`,
+  `tests/payoff_input_contract.rs`, `tests/paignia_static_game.rs`, and
+  [the payoff input contract](../../../docs/architecture/payoff-input-contract.md).
+  The typed Rust fixture in `payoff_input_contract.rs` supplies the planned
+  conformance cases with a distinct provenance revision for every payoff.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  payoff_input_contract` (future target). Valid matching inputs pass; incompatible
-  inputs fail without implicit conversion. A missing/zero-test target is not a pass.
+  payoff_input_contract --test paignia_static_game`. The six port cases
+  and the existing finite offer case pass against the versioned Paignia
+  static contract at `bd880dd756d2ba56cc5f479bc078cea31b53c1d1`.
+  The real artifact and extended Voiage receipts remain separate.
 
 #### Future slice T17.11.metric — preserve the declared information-value meaning
 
