@@ -1,5 +1,6 @@
 //! Domain application using the domain-neutral game runtime.
 
+pub mod chapter8_finite;
 pub mod paignia_acceptance;
 pub mod payoff_input;
 
@@ -460,23 +461,30 @@ pub fn net_economic_benefit_health(
     result.is_finite().then_some(result)
 }
 
+fn valid_game1_domain(incremental_health_effect: f64, opportunities: OpportunitySet) -> bool {
+    let (Some(n), Some(m), Some(d)) = (
+        opportunities.expansion_icer,
+        opportunities.contraction_icer,
+        opportunities.displacement_icer,
+    ) else {
+        return false;
+    };
+    incremental_health_effect.is_finite()
+        && incremental_health_effect > 0.0
+        && valid_opportunity_set(opportunities)
+        && opportunities.additional_best_productivity == 0.0
+        && m > n
+        && n <= d
+        && d <= m
+}
+
 /// Solve Pekarsky Chapter 8 Game 1 only when its quantitative assumptions hold.
 #[must_use]
 pub fn solve_pekarsky_game1(
     incremental_health_effect: f64,
     opportunities: OpportunitySet,
 ) -> Option<Chapter8Game1Equilibrium> {
-    if !incremental_health_effect.is_finite()
-        || incremental_health_effect <= 0.0
-        || !valid_opportunity_set(opportunities)
-        || opportunities.additional_best_productivity != 0.0
-    {
-        return None;
-    }
-    let n = opportunities.expansion_icer?;
-    let m = opportunities.contraction_icer?;
-    let d = opportunities.displacement_icer?;
-    if !(m > n && n <= d && d <= m) {
+    if !valid_game1_domain(incremental_health_effect, opportunities) {
         return None;
     }
     let offered_iper = fixed_budget_shadow_price(opportunities)?;
