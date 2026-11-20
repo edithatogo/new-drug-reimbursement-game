@@ -103,3 +103,33 @@ fn rejects_out_of_profile_opportunities_and_invalid_offer_menus() {
         ));
     }
 }
+
+#[test]
+fn rejects_opportunities_whose_reciprocals_overflow() {
+    let displacement = f64::MIN_POSITIVE / 4.0;
+    let offers = [displacement];
+    let mut inputs = case(&offers);
+    inputs.incremental_health_effect = 1.0;
+    inputs.opportunities = OpportunitySet {
+        expansion_icer: Some(displacement / 2.0),
+        contraction_icer: Some(displacement),
+        displacement_icer: Some(displacement),
+        additional_best_productivity: 0.0,
+    };
+    assert!(matches!(
+        solve_finite_game1(inputs, identities()),
+        Err(Chapter8FiniteError::OutsideSourceModel)
+    ));
+}
+
+#[test]
+fn near_tie_selection_is_invariant_to_offer_menu_order() {
+    let h = 2.0_f64.powi(-40);
+    for offers in [[h, 2.0 * h, 3.0 * h], [3.0 * h, 2.0 * h, h]] {
+        let mut inputs = case(&offers);
+        inputs.incremental_health_effect = 1.0;
+        let outcome = solve_finite_game1(inputs, identities()).unwrap();
+        assert!(outcome.reimbursed);
+        close(outcome.equilibrium.offered_iper, 3.0 * h, 0.0);
+    }
+}

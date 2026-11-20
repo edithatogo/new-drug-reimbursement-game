@@ -9,15 +9,18 @@ manufacturer `price × health effect` in currency and the institution the
 application's net economic benefit in health (NEBh).
 
 The adapter uses the same input domain as `solve_pekarsky_game1`, including
-`n ≤ d ≤ m`, `n < m`, and no additional reallocation strategy. It rejects
+`n ≤ d ≤ m`, `n < m`, and no additional reallocation strategy. It requires a
+finite shadow price so overflow in reciprocal ICERs cannot affect NEBh. It rejects
 an empty menu, duplicate prices and nonpositive or nonfinite valuations where
 the source model requires positive finite values. It retains signed NEBh.
 The application declares each player's unit and perspective and records the
 valuation revision. Paignia's backward induction selects a completed policy.
 The provider resolves payoffs within its configured tolerance by action ID.
 `accept` sorts before `reject`, so the institution accepts at indifference.
-Offer IDs sort by the positive binary64 price, so an all-rejected menu
-selects its lowest offer. The application retains the admitted result and
+Offer IDs sort by the positive binary64 price. The adapter evaluates offers
+in that order so reordering a menu gives the same result, even with
+pairwise tolerance. An all-rejected menu selects its lowest offer.
+The application retains the admitted result and
 provenance through its [valued-payoff port](payoff-input-contract.md).
 
 ## Independent expected result
@@ -39,8 +42,9 @@ offers `12,000`, `22,000` and `16,000`, the selected offer is `16,000` with
 rent `160,000` and NEBh `2/3`. A menu of prices above the threshold gives
 zero rent and zero NEBh through rejection. The test uses absolute tolerances
 of `1e-9` for price, `1e-8` for currency payoffs and `1e-12` for health payoffs.
-It also requires rejection of invalid menus and a nonzero alternative
-reallocation productivity outside Game 1.
+The controls also cover invalid menus, a nonzero alternative reallocation
+productivity outside Game 1, reciprocal overflow, and two permutations of
+a near-tied menu.
 
 The case qualifies the application model on synthetic parameters under the
 declared finite perfect-information profile. The closed-form solver remains

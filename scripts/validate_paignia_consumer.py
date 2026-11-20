@@ -25,6 +25,7 @@ PROFILE = "paignia/static-finite-perfect-information-sparse-zero/1.0.0"
 NAMES = ("paignia-core", "paignia-solve")
 CRATE = Path("crates/new-drug-reimbursement-game")
 TEST_TARGET = "paignia_chapter8_application"
+EXPECTED_TESTS = 6
 EVIDENCE_PATH = "docs/validation/receipts/t17-reimbursement-chapter8.log"
 SANDBOX = """(version 1)
 (allow default)
@@ -173,12 +174,14 @@ def verify_resolution(metadata: dict, locked: dict, resolved: dict, artifacts: d
 def passing_tests(output: str) -> int:
     summaries = re.findall(r"^test result:.*$", output, re.MULTILINE)
     if len(summaries) != 1 or not re.fullmatch(
-        r"test result: ok\. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; "
+        rf"test result: ok\. {EXPECTED_TESTS} passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; "
         r"finished in \d+\.\d+s",
         summaries[0],
     ):
-        raise ValueError("expected exactly four Chapter 8 tests without failures or skips")
-    return 4
+        raise ValueError(
+            f"expected exactly {EXPECTED_TESTS} Chapter 8 tests without failures or skips"
+        )
+    return EXPECTED_TESTS
 
 
 def run_case(args: argparse.Namespace, stage: Path) -> None:

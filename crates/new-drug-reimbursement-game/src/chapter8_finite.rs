@@ -12,7 +12,8 @@ use crate::payoff_input::{
     ValuedSolution,
 };
 use crate::{
-    net_economic_benefit_health, valid_game1_domain, Chapter8Game1Equilibrium, OpportunitySet,
+    fixed_budget_shadow_price, net_economic_benefit_health, valid_game1_domain,
+    Chapter8Game1Equilibrium, OpportunitySet,
 };
 
 const ACCEPT: &str = "accept";
@@ -49,7 +50,7 @@ impl fmt::Display for Chapter8FiniteError {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::OutsideSourceModel => {
-                formatter.write_str("inputs are outside fixed-budget Chapter 8 Game 1")
+                formatter.write_str("inputs are outside the supported Chapter 8 Game 1 domain")
             }
             Self::InvalidOfferMenu => {
                 formatter.write_str("offer menu must contain distinct positive finite prices")
@@ -86,7 +87,9 @@ pub fn solve_finite_game1(
     inputs: Chapter8FiniteInputs<'_>,
     identities: ResultIdentityRecord,
 ) -> Result<Chapter8FiniteOutcome, Chapter8FiniteError> {
-    if !valid_game1_domain(inputs.incremental_health_effect, inputs.opportunities) {
+    if !valid_game1_domain(inputs.incremental_health_effect, inputs.opportunities)
+        || fixed_budget_shadow_price(inputs.opportunities).is_none()
+    {
         return Err(Chapter8FiniteError::OutsideSourceModel);
     }
     if inputs.offers.is_empty() {
@@ -228,6 +231,7 @@ fn build_offer_graph(
             target: response,
         });
     }
+    edges.sort_unstable_by(|left, right| left.action.cmp(&right.action));
     let root = NodeId("firm-offer".into());
     nodes.insert(
         root.clone(),

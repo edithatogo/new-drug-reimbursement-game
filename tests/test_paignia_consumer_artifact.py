@@ -23,19 +23,19 @@ class ArtifactQualificationTests(unittest.TestCase):
 
     def test_requires_one_complete_native_summary(self):
         summary = (
-            "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; "
+            "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; "
             "finished in 0.00s\n"
         )
-        self.assertEqual(passing_tests(summary), 4)
+        self.assertEqual(passing_tests(summary), 6)
         for bad in (
             "",
             summary * 2,
-            summary.replace("4 passed", "0 passed"),
+            summary.replace("6 passed", "0 passed"),
             summary.replace("0 ignored", "1 ignored"),
             summary.replace("0 failed", "1 failed"),
             summary.replace("0 filtered out", "1 filtered out"),
         ):
-            with self.subTest(bad=bad), self.assertRaisesRegex(ValueError, "exactly four"):
+            with self.subTest(bad=bad), self.assertRaisesRegex(ValueError, "exactly 6"):
                 passing_tests(bad)
 
     def test_resolution_requires_archive_paths_features_and_unchanged_registry_closure(self):
