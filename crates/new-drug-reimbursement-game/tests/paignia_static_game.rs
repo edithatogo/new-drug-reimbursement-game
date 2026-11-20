@@ -6,9 +6,51 @@
 
 use std::collections::BTreeMap;
 
+use new_drug_reimbursement_game::payoff_input::{solve_valued_game, PayoffBasis, ValuedPayoff};
 use new_drug_reimbursement_game::{net_economic_benefit_health, OpportunitySet};
-use paignia_core::{ActionEdge, ActionId, Game, Node, NodeId, PlayerId};
-use paignia_solve::backward_induction;
+use paignia_core::{
+    ActionEdge, ActionId, Game, GameInstanceId, GameSpecification, GameSpecificationId, Node,
+    NodeId, PlayerId, ResultIdentityRecord, SolverRunId, RESULT_IDENTITY_SCHEMA_VERSION,
+};
+
+fn fixture_basis(firm: &PlayerId, institution: &PlayerId) -> BTreeMap<PlayerId, PayoffBasis> {
+    BTreeMap::from([
+        (
+            firm.clone(),
+            PayoffBasis {
+                unit: "fixture-currency-unit".into(),
+                perspective: "manufacturing-firm".into(),
+            },
+        ),
+        (
+            institution.clone(),
+            PayoffBasis {
+                unit: "fixture-net-health-unit".into(),
+                perspective: "funding-institution".into(),
+            },
+        ),
+    ])
+}
+
+fn fixture_specification(game: Game) -> (GameSpecification, ResultIdentityRecord) {
+    let id = "urn:ndrg:test:finite-offers".to_string();
+    (
+        GameSpecification {
+            schema_version: "1.0.0".into(),
+            id: id.clone(),
+            game,
+        },
+        ResultIdentityRecord {
+            schema_version: RESULT_IDENTITY_SCHEMA_VERSION.into(),
+            specification_id: GameSpecificationId(id),
+            game_instance_id: GameInstanceId("urn:ndrg:test:finite-offers:instance".into()),
+            solver_run_id: SolverRunId("urn:ndrg:test:finite-offers:solver-run".into()),
+            session_id: None,
+            policy_artifact_id: None,
+            solver_trace_id: None,
+        },
+    )
+}
 
 #[test]
 fn finite_offer_game_selects_the_highest_accepted_price() {
@@ -23,13 +65,24 @@ fn finite_offer_game_selects_the_highest_accepted_price() {
     };
     let firm = PlayerId("firm".into());
     let institution = PlayerId("institution".into());
+    let basis = fixture_basis(&firm, &institution);
+    let valued = |player: &PlayerId, amount| ValuedPayoff {
+        amount,
+        basis: basis[player].clone(),
+        valuation_revision: "finite-offer-acceptance-fixture-v1".into(),
+    };
     let root = NodeId("firm_offer".into());
     let rejected = NodeId("rejected".into());
-    let mut nodes = BTreeMap::from([(
+    let terminal = || Node::Terminal {
+        payoffs: BTreeMap::new(),
+    };
+    let mut nodes = BTreeMap::from([(rejected.clone(), terminal())]);
+    let mut valuations = BTreeMap::from([(
         rejected.clone(),
-        Node::Terminal {
-            payoffs: BTreeMap::from([(firm.clone(), 0.0), (institution.clone(), 0.0)]),
-        },
+        BTreeMap::from([
+            (firm.clone(), valued(&firm, 0.0)),
+            (institution.clone(), valued(&institution, 0.0)),
+        ]),
     )]);
     let mut offer_edges = Vec::new();
 
@@ -44,14 +97,13 @@ fn finite_offer_game_selects_the_highest_accepted_price() {
         let total_cost = 4.0 * price_per_health_unit;
         let health_benefit = net_economic_benefit_health(total_cost, 4.0, opportunities)
             .expect("synthetic application inputs are valid");
-        nodes.insert(
+        nodes.insert(accepted.clone(), terminal());
+        valuations.insert(
             accepted.clone(),
-            Node::Terminal {
-                payoffs: BTreeMap::from([
-                    (firm.clone(), total_cost),
-                    (institution.clone(), health_benefit),
-                ]),
-            },
+            BTreeMap::from([
+                (firm.clone(), valued(&firm, total_cost)),
+                (institution.clone(), valued(&institution, health_benefit)),
+            ]),
         );
         nodes.insert(
             response.clone(),
@@ -81,11 +133,14 @@ fn finite_offer_game_selects_the_highest_accepted_price() {
             edges: offer_edges,
         },
     );
-    let solution = backward_induction(&Game {
+    let (specification, identities) = fixture_specification(Game {
         root: root.clone(),
         nodes,
-    })
-    .expect("finite application game is supported");
+    });
+    let result = solve_valued_game(specification, identities, &basis, valuations)
+        .expect("finite valued application game is supported");
+    assert_eq!(result.policy.envelope.solutions.len(), 1);
+    let solution = &result.policy.envelope.solutions[0];
 
     // Independently: beta = 1 / (1/50000 + 1/25000 - 1/50000) = 25000.
     // Institution utilities are 0.8, 0, -0.8; accept wins the declared tie.
