@@ -139,12 +139,19 @@ def stage_registry(registry: Path, cargo_home: Path, lock: dict) -> None:
         raise ValueError("the Cargo cache needs the application's locked registry archives")
 
 
-def verify_resolution(metadata: dict, locked: dict, resolved: dict, artifacts: dict) -> None:
+def verify_resolution(
+    metadata: dict,
+    locked: dict,
+    resolved: dict,
+    artifacts: dict,
+    provider_revision: str,
+) -> None:
+    source = f"git+{PROVIDER}?rev={provider_revision}#{provider_revision}"
     expected = {**locked, "package": []}
     for original in locked["package"]:
         entry = original.copy()
-        if entry["name"] in NAMES:
-            del entry["source"]
+        if entry["name"] in NAMES and entry.pop("source", None) != source:
+            raise ValueError(f"original lock source for {entry['name']} differs from the handoff")
         expected["package"].append(entry)
     if expected != resolved:
         raise ValueError("artifact resolution changed the locked dependency closure")
@@ -184,6 +191,25 @@ def passing_tests(output: str) -> int:
     return EXPECTED_TESTS
 
 
+def application_tree(revision: str) -> str:
+    if not re.fullmatch(r"[0-9a-f]{40}", revision):
+        raise ValueError("provide the full application commit SHA")
+    commit = subprocess.run(
+        ["git", "rev-parse", "--verify", f"{revision}^{{commit}}"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if commit.returncode or commit.stdout.strip() != revision:
+        raise ValueError("the application SHA must name a commit object")
+    return subprocess.check_output(
+        ["git", "rev-parse", f"{revision}^{{tree}}"],
+        cwd=ROOT,
+        text=True,
+    ).strip()
+
+
 def run_case(args: argparse.Namespace, stage: Path) -> None:
     provider, registry = args.provider.resolve(), args.cargo_registry.resolve()
     cargo_git = registry.parent / "git"
@@ -193,17 +219,16 @@ def run_case(args: argparse.Namespace, stage: Path) -> None:
     handoff = json.loads(handoff_path.read_text())
     artifacts = verify_and_unpack(provider, handoff, args.archives.resolve(), stage)
     revision = args.revision
-    if not re.fullmatch(r"[0-9a-f]{40}", revision):
-        raise ValueError("provide the full application commit SHA")
-    tree = subprocess.check_output(
-        ["git", "rev-parse", f"{revision}^{{tree}}"], cwd=ROOT, text=True
-    )
+    tree = application_tree(revision)
     snapshot = stage / "application.tar"
     subprocess.run(["git", "archive", "-o", str(snapshot), revision], cwd=ROOT, check=True)
     application = stage / "application"
     with tarfile.open(snapshot) as source:
         source.extractall(application, filter="data")
-    locked = stage_application(application, handoff["provider_revision"], artifacts)
+    lockfile = application / "Cargo.lock"
+    original_lock_hash = sha256(lockfile)
+    provider_revision = handoff["provider_revision"]
+    locked = stage_application(application, provider_revision, artifacts)
     stage_registry(registry, stage / "cargo-home", locked)
     sdk = subprocess.check_output(["/usr/bin/xcrun", "--show-sdk-path"], text=True).strip()
     compiler = handoff["selected_compiler"].split()[1]
@@ -274,7 +299,8 @@ def run_case(args: argparse.Namespace, stage: Path) -> None:
 
     retain(
         f"{platform.platform()} | {sys.version}\nApplication commit {revision}\n"
-        f"Application tree {tree.strip()}\nApplication archive SHA-256 {sha256(snapshot)}\n"
+        f"Application tree {tree}\nApplication archive SHA-256 {sha256(snapshot)}\n"
+        f"Original lock SHA-256 {original_lock_hash}\n"
         f"Verifier SHA-256 {sha256(Path(__file__))}\n"
         f"Provider handoff SHA-256 {sha256(handoff_path)}\n{json.dumps(handoff, indent=2)}\n"
         "Local paths use the aliases in the commands. The same sandbox wraps every command."
@@ -294,8 +320,13 @@ def run_case(args: argparse.Namespace, stage: Path) -> None:
     metadata_args = [str(cargo), "metadata", "--offline", "--format-version", "1"]
     run(metadata_args)
     metadata = run([*metadata_args, "--locked"])
-    lockfile = application / "Cargo.lock"
-    verify_resolution(json.loads(metadata), locked, tomllib.loads(lockfile.read_text()), artifacts)
+    verify_resolution(
+        json.loads(metadata),
+        locked,
+        tomllib.loads(lockfile.read_text()),
+        artifacts,
+        provider_revision,
+    )
     (stage / "resolved-graph.json").write_text(metadata)
     retain(f"Resolved lock SHA-256 {sha256(lockfile)}\n{lockfile.read_text()}")
     output = run([str(cargo), "test", "--offline", "--locked", "--test", TEST_TARGET])

@@ -2,11 +2,22 @@
 
 import copy
 import hashlib
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.validate_paignia_consumer import NAMES, passing_tests, verified_file, verify_resolution
+from scripts.validate_paignia_consumer import (
+    NAMES,
+    PROVIDER,
+    ROOT,
+    application_tree,
+    passing_tests,
+    verified_file,
+    verify_resolution,
+)
+
+PROVIDER_REVISION = "1" * 40
 
 
 class ArtifactQualificationTests(unittest.TestCase):
@@ -20,6 +31,16 @@ class ArtifactQualificationTests(unittest.TestCase):
             archive.write_bytes(original + b"changed")
             with self.assertRaisesRegex(ValueError, "SHA-256 mismatch"):
                 verified_file(archive, digest)
+
+    def test_application_revision_must_be_an_actual_commit(self):
+        revision, tree = subprocess.check_output(
+            ["git", "rev-parse", "HEAD", "HEAD^{tree}"],
+            cwd=ROOT,
+            text=True,
+        ).splitlines()
+        self.assertEqual(application_tree(revision), tree)
+        with self.assertRaisesRegex(ValueError, "must name a commit object"):
+            application_tree(tree)
 
     def test_requires_one_complete_native_summary(self):
         summary = (
@@ -42,7 +63,7 @@ class ArtifactQualificationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             stage = Path(temporary).resolve()
             metadata, locked, resolved, archives = _resolution(stage)
-            verify_resolution(metadata, locked, resolved, archives)
+            verify_resolution(metadata, locked, resolved, archives, PROVIDER_REVISION)
             for field, value in (
                 ("source", "git+https://example.invalid/provider"),
                 ("manifest_path", str(stage / "provider" / "Cargo.toml")),
@@ -51,22 +72,31 @@ class ArtifactQualificationTests(unittest.TestCase):
                 changed = copy.deepcopy(metadata)
                 changed["packages"][0][field] = value
                 with self.subTest(field=field), self.assertRaisesRegex(ValueError, "archive"):
-                    verify_resolution(changed, locked, resolved, archives)
+                    verify_resolution(changed, locked, resolved, archives, PROVIDER_REVISION)
             changed = copy.deepcopy(metadata)
             changed["resolve"]["nodes"][1]["features"] = ["correlated-equilibrium"]
             with self.assertRaisesRegex(ValueError, "archive"):
-                verify_resolution(changed, locked, resolved, archives)
+                verify_resolution(changed, locked, resolved, archives, PROVIDER_REVISION)
             changed_lock = copy.deepcopy(resolved)
             changed_lock["package"][-1]["checksum"] = "changed"
             with self.assertRaisesRegex(ValueError, "locked dependency closure"):
-                verify_resolution(metadata, locked, changed_lock, archives)
+                verify_resolution(metadata, locked, changed_lock, archives, PROVIDER_REVISION)
+
+    def test_resolution_checks_both_original_lock_sources(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            metadata, locked, resolved, archives = _resolution(Path(temporary).resolve())
+            for index, name in enumerate(NAMES):
+                changed_lock = copy.deepcopy(locked)
+                changed_lock["package"][index]["source"] = f"git+{PROVIDER}?rev=other#other"
+                with self.subTest(name=name), self.assertRaisesRegex(ValueError, "lock source"):
+                    verify_resolution(metadata, changed_lock, resolved, archives, PROVIDER_REVISION)
 
     def test_resolution_requires_app_and_solver_to_use_the_same_core(self):
         with tempfile.TemporaryDirectory() as temporary:
             metadata, locked, resolved, archives = _resolution(Path(temporary).resolve())
             metadata["resolve"]["nodes"][1]["dependencies"] = []
             with self.assertRaisesRegex(ValueError, "dependency edges"):
-                verify_resolution(metadata, locked, resolved, archives)
+                verify_resolution(metadata, locked, resolved, archives, PROVIDER_REVISION)
 
 
 def _resolution(stage):
@@ -89,9 +119,10 @@ def _resolution(stage):
         {"id": app, "features": [], "dependencies": list(NAMES)},
     ]
     registry_crate = {"name": "thiserror", "version": "1.0.69", "checksum": "expected"}
+    source = f"git+{PROVIDER}?rev={PROVIDER_REVISION}#{PROVIDER_REVISION}"
     locked = {
         "version": 3,
-        "package": [{"name": name, "version": version, "source": "git"} for name in NAMES]
+        "package": [{"name": name, "version": version, "source": source} for name in NAMES]
         + [registry_crate],
     }
     resolved = {
