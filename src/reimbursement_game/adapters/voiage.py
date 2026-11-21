@@ -29,6 +29,8 @@ class VoiageHandoffReceipt:
 
 
 class VoiageAdapter:
+    """Convert application net-benefit samples to Voiage's DecisionAnalysis."""
+
     def evpi(self, net_benefit_samples: Sequence[Sequence[float]]) -> float:
         rows = _validated_rows(net_benefit_samples)
         try:
@@ -73,6 +75,8 @@ class VoiageAdapter:
         return values, parameters
 
     def handoff_receipt(self, bundle: VoiageSampleBundle) -> VoiageHandoffReceipt:
+        """Return a hash-bound receipt without importing or running Voiage."""
+
         rows, parameter_roles = _validated_bundle(bundle)
         payload = {
             "evidence_revision": bundle.evidence_revision,

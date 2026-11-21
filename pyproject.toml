@@ -7,7 +7,7 @@ name = "new-drug-reimbursement-game"
 version = "0.4.0"
 description = "Ecosystem-first price-effectiveness and reimbursement-game research software"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.15.2,<3.16"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 authors = [{name = "New Drug Reimbursement Game contributors"}]
@@ -18,8 +18,8 @@ dependencies = []
 # Voiage is user-owned and authoritative for VOI. It remains optional so the
 # deterministic PEA core can run offline and so repository checkout order is
 # controllable through ecosystem.lock.toml.
-voiage = ["voiage"]
-dev = ["basedpyright==1.39.10", "build==1.5.0", "matplotlib==3.11.1", "numpy>=2.0", "pytest==9.1.1", "pytest-cov==7.1.0", "ruff==0.16.3", "ty==0.0.73"]
+voiage = ["voiage==3.1.0"]
+dev = ["basedpyright==1.39.10", "build==1.5.0", "matplotlib==3.11.2", "numpy>=2.0", "pytest==9.1.1", "pytest-cov==7.1.0", "ruff==0.17.5", "ty==0.0.73"]
 
 [project.scripts]
 ndr-game = "reimbursement_game.cli:main"
@@ -31,7 +31,7 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py315"
 line-length = 100
 
 [tool.ruff.lint]
@@ -43,11 +43,11 @@ ignore = ["E501", "RUF001", "RUF002", "S101"]
 "tests/*.py" = ["S603", "S607"]
 
 [tool.ty.environment]
-python-version = "3.11"
+python-version = "3.15"
 
 [tool.basedpyright]
 include = ["src"]
-pythonVersion = "3.11"
+pythonVersion = "3.15"
 typeCheckingMode = "standard"
 reportMissingImports = false
 reportMissingTypeStubs = false

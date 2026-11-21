@@ -3,12 +3,19 @@
   "registry_id": "T17",
   "type": "refactor",
   "status": "in_progress",
-  "execution_status": "immutable_native_consumer_local_validation_passed",
+  "execution_status": "first_application_artifact_consumer_qualified",
   "created_at": "2026-11-07T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-20T14:50:48Z",
   "description": "Paignia immutable application consumption and valued-payoff contract; provider work handed off",
   "base_revision": "ab4ce37a905a8cf9bb54d1ad905de4b0f34b7165",
   "refinement_base_revision": "90602b93db7352bfb307bac7852db211cf94af1e",
+  "first_consumer_receipt": {
+    "path": "docs/validation/paignia-consumer-receipt.json",
+    "sha256": "f9d0d6f79b3864f6c790fab3e139adf3a55dab11f0ca5a81278ba1268fe027d3",
+    "application_revision": "63a3801d378e04f59fec4124e67281f7cbba0b94",
+    "provider_revision": "bd880dd756d2ba56cc5f479bc078cea31b53c1d1",
+    "artifact_tests_passed": 6
+  },
   "repositories": [
     ".",
     "edithatogo/careops-sim",

@@ -7,8 +7,8 @@ rust-version.workspace = true
 repository.workspace = true
 
 [dependencies]
-paignia-core = { git = "https://github.com/edithatogo/paignia", rev = "12b22ce7571b9c590405bf53c2c1c5862b49cd64", version = "0.1.0" }
-paignia-solve = { git = "https://github.com/edithatogo/paignia", rev = "12b22ce7571b9c590405bf53c2c1c5862b49cd64", version = "0.1.0" }
+paignia-core = { git = "https://github.com/edithatogo/paignia", rev = "bd880dd756d2ba56cc5f479bc078cea31b53c1d1", version = "0.1.0" }
+paignia-solve = { git = "https://github.com/edithatogo/paignia", rev = "bd880dd756d2ba56cc5f479bc078cea31b53c1d1", version = "0.1.0" }
 
 [lints]
 workspace = true

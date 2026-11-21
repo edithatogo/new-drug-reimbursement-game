@@ -9,17 +9,15 @@ approval loop. No package-release or scientific method is completed by this move
 
 ## Active application leaves
 
-### [~] T17.09 — qualify the reimbursement application as a Paignia consumer
+### [x] T17.09 — qualify the reimbursement application as a Paignia consumer
 
 - Behavior: consume one immutable Paignia revision, construct the application
   game locally, and retain an independently checkable result.
-- Dependency: actual Paignia provider commit and supported static contract.
-  Release acceptance still requires provider T17.03 artifacts and the full
-  application model/profile receipt; no optional native adapter is required.
-- Current source target: `crates/new-drug-reimbursement-game/tests/paignia_static_game.rs`.
-  It calls existing application valuation and Paignia backward induction with
-  the synthetic 25,000 offer / 100,000 total / zero institution-benefit oracle.
-  It does not alter the full economic model or constitute empirical validation.
+- Dependency: the qualified Paignia T17.03 archives and the finite
+  perfect-information static profile.
+- Accepted source: the [Chapter 8 application case](../../../docs/architecture/paignia-chapter8-application.md)
+  merged in [#114](https://github.com/edithatogo/new-drug-reimbursement-game/pull/114).
+  The earlier `paignia_static_game` smoke remains a source-integration control.
 - Bounded execution slices (each at most five files):
   1. Remove the four tracked files in the transferred core package; keep its
      source history and Paignia notices/provenance.
@@ -41,17 +39,18 @@ approval loop. No package-release or scientific method is completed by this move
   evidence, not registry release, the second application receipt or S01–S04
   completion. Only numerical/native capabilities actually used add prerequisites.
 
-#### Future slice T17.09.result — reject an unsupported or incomplete result
+#### T17.09.result — reject an unsupported or incomplete result
 
 - Depends on: Paignia T17.01's actual result contract and the selected numerical
   method; missing fields return to that provider owner instead of being invented
   in this application. This is not a new generic result implementation here.
-- Files (4): `crates/new-drug-reimbursement-game/src/lib.rs`,
-  `crates/new-drug-reimbursement-game/src/paignia_acceptance.rs` (future),
-  `crates/new-drug-reimbursement-game/tests/paignia_result_contract.rs` (future),
-  `docs/architecture/paignia-result-acceptance.md` (future).
+- Files (5): `crates/new-drug-reimbursement-game/src/lib.rs`,
+  `crates/new-drug-reimbursement-game/src/payoff_input.rs`,
+  `crates/new-drug-reimbursement-game/src/paignia_acceptance.rs`,
+  `crates/new-drug-reimbursement-game/tests/paignia_result_contract.rs`, and
+  `docs/architecture/paignia-result-acceptance.md`.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  paignia_result_contract` (future). Reject unsupported/nonconverged results and
+  paignia_result_contract`. Reject unsupported/nonconverged results and
   incomplete catalogues for a requested exhaustive claim; neither means an
   economic zero or proof that no equilibrium exists. Preserve game class,
   information structure, solution concept, algorithm/version, tolerance,
@@ -59,6 +58,11 @@ approval loop. No package-release or scientific method is completed by this move
   learning and solver restart frequency must not silently become Nash predictions
   or behavioural probabilities. Independent references allow legitimate corrected
   results rather than forcing parity with a flawed historical seed.
+- Candidate evidence: the valued-payoff path admits the exact solver identity
+  and one completed policy. Five native contract tests distinguish structurally
+  valid failed statuses, an exhaustive claim, a foreign solver run, missing
+  choices and an unsupported algorithm version. The broader consumer receipt
+  remains in T17.09.artifact.
 
 #### Future slice T17.09.observation — enforce the case's lawful policy input
 
@@ -78,38 +82,52 @@ approval loop. No package-release or scientific method is completed by this move
   under the selected coupling. Separately solving fully observed hidden states
   and averaging their outcomes is not an information-consistent policy/game.
 
-#### Future slice T17.09.artifact — accept a real case outside the provider checkout
+#### T17.09.artifact — accept a real case outside the provider checkout
 
 - Depends on: provider T17.03's actual artifacts and the case-specific result
   contract. Use independent expected results, declared unsupported cases and
   solver/version identity; do not count the local synthetic fixture as the full
   real-model or second-application receipt.
-- Files (5): application `Cargo.toml`, `Cargo.lock`,
-  `scripts/validate_paignia_consumer.py` (future),
-  `tests/test_paignia_consumer_artifact.py` (future),
-  `docs/validation/paignia-consumer-receipt.json` (future).
+- The application-owned [finite Chapter 8 model](../../../docs/architecture/paignia-chapter8-application.md)
+  applies the existing fixed-budget valuation to each offer and uses the
+  admitted Paignia policy to recover the reimbursement decision. Six tests check
+  the independent equation 8.2 result, an off-threshold menu, rejection, invalid
+  inputs, reciprocal overflow and near-tie order invariance. The model uses the
+  maintained Chapter 8 example with explicitly synthetic inputs.
+- The verifier stages the path dependencies and its resolved lock outside the
+  checkout. The normal application uses its reviewed immutable Git pins.
 - Check: `python -m unittest discover -s tests -p
   'test_paignia_consumer_artifact.py'` and `python
-  scripts/validate_paignia_consumer.py` (future). Execute the real native case
+  scripts/validate_paignia_consumer.py`. Execute the real native case
   with provider checkout unavailable; bind artifact/hash/lock/feature closure,
   nonzero tests and declared profile. Reject duplicate application IDs,
   source-tree-only claims or mismatched artifacts. Paignia T17.02/.03/.12 own
   minimal/default/advertised-extra and build/transitive isolation plus the
   two-real-consumer release gate; no duplicate provider guard is created here.
+- Accepted artifact evidence: [receipt](../../../docs/validation/paignia-consumer-receipt.json)
+  and [execution log](../../../docs/validation/receipts/t17-reimbursement-chapter8.log).
+  The model at `63a3801d378e04f59fec4124e67281f7cbba0b94` passed all six tests
+  on Rust 1.75.0 against the qualified `bd880dd` archives. The same macOS policy
+  denied source and Git cache reads and network access during resolution,
+  compilation and tests. The log retains the resolved paths, feature sets and
+  exact lock. It covers the declared synthetic case and static profile.
 
-### [ ] T17.11 — reject incompatible valued-payoff inputs at the application port
+### [~] T17.11 — reject incompatible valued-payoff inputs at the application port
 
 - Behavior: reject a payoff whose unit or perspective differs from the declared
   consumer contract before invoking Paignia; preserve valuation provenance.
 - Depends on: Paignia T17.01 contract. HEOR valuation and Voiage VOI keep their
   own owners; no valuation algorithm moves into generic core or Kairos.
-- Files (4): `crates/new-drug-reimbursement-game/src/lib.rs`,
-  `crates/new-drug-reimbursement-game/tests/payoff_input_contract.rs` (future),
-  `docs/architecture/payoff-input-contract.md` (future),
-  `fixtures/conformance/payoff-input-v1.json` (future).
+- Files (5): the application's `src/lib.rs` module binding, `src/payoff_input.rs`,
+  `tests/payoff_input_contract.rs`, `tests/paignia_static_game.rs`, and
+  [the payoff input contract](../../../docs/architecture/payoff-input-contract.md).
+  The typed Rust fixture in `payoff_input_contract.rs` supplies the planned
+  conformance cases with a distinct provenance revision for every payoff.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  payoff_input_contract` (future target). Valid matching inputs pass; incompatible
-  inputs fail without implicit conversion. A missing/zero-test target is not a pass.
+  payoff_input_contract --test paignia_static_game`. The six port cases
+  and the existing finite offer case pass against the versioned Paignia
+  static contract at `bd880dd756d2ba56cc5f479bc078cea31b53c1d1`.
+  The real artifact and extended Voiage receipts remain separate.
 
 #### Future slice T17.11.metric — preserve the declared information-value meaning
 

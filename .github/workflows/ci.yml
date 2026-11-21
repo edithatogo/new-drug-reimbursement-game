@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   python:
+    env:
+      UV_PROJECT_ENVIRONMENT: target/dev-python
     permissions:
       contents: read
       id-token: write
@@ -25,12 +27,29 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
-          python-version: "3.11"
-          cache: pip
-      - name: Install package and development tools
-        run: python -m pip install --upgrade pip && python -m pip install -e '.[dev,voiage]'
+          python-version-file: .python-version
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
+        with:
+          version: "0.13.9"
+      - name: Install and verify the pinned project environment
+        run: |
+          uv sync --locked --python "$(cat .python-version)" --extra dev --extra voiage
+          target/dev-python/bin/python -I - <<'PYTHON'
+          import platform
+          import sys
+          from pathlib import Path
+
+          expected = Path(".python-version").read_text().strip()
+          if platform.python_implementation() != "CPython" or platform.python_version() != expected:
+              raise SystemExit(f"Expected CPython {expected}, found {sys.version}")
+          if Path(sys.prefix).resolve() != Path("target/dev-python").resolve():
+              raise SystemExit(f"Unexpected environment {sys.prefix}")
+          print(sys.executable, sys.version)
+          PYTHON
+          echo "VIRTUAL_ENV=$GITHUB_WORKSPACE/target/dev-python" >> "$GITHUB_ENV"
+          echo "$GITHUB_WORKSPACE/target/dev-python/bin" >> "$GITHUB_PATH"
       - name: Scope and clean-room validation
         run: python scripts/validate_scope.py
       - name: Unit tests and coverage
