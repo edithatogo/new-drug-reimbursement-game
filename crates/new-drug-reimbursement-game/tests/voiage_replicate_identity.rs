@@ -60,12 +60,16 @@ fn a_simulation_replicate_cannot_become_a_parameter_draw() {
             ..*row
         })
         .collect::<Vec<_>>();
-    assert_eq!(
-        PLAN.accept(RecordedDraws {
+    let error = PLAN
+        .accept(RecordedDraws {
             producer_run_id: RUN,
             draws: &flattened,
-        }),
-        Err(DrawIdentityError::UnknownParameterDraw)
+        })
+        .unwrap_err();
+    assert_eq!(error, DrawIdentityError::UnknownParameterDraw);
+    assert_eq!(
+        error.to_string(),
+        "an outcome refers to an undeclared parameter draw"
     );
 }
 
@@ -89,25 +93,30 @@ fn model_equilibrium_and_measurement_coordinates_cannot_be_substituted() {
             ..FIRST
         },
     ] {
-        assert_eq!(
-            PLAN.accept(RecordedDraws {
+        let error = PLAN
+            .accept(RecordedDraws {
                 producer_run_id: RUN,
                 draws: &[DrawIdentity { inner, ..ROWS[0] }, ROWS[1]],
-            }),
-            Err(DrawIdentityError::UnplannedInnerIdentity)
+            })
+            .unwrap_err();
+        assert_eq!(error, DrawIdentityError::UnplannedInnerIdentity);
+        assert_eq!(
+            error.to_string(),
+            "an outcome has undeclared conditional coordinates"
         );
     }
 }
 
 #[test]
 fn outcome_draws_must_be_complete_unique_and_bound_to_the_run() {
-    for (recorded, expected) in [
+    for (recorded, expected, explanation) in [
         (
             RecordedDraws {
                 producer_run_id: "foreign-run",
                 draws: ROWS,
             },
             DrawIdentityError::RunMismatch,
+            "the recorded draws must match the declared producer run",
         ),
         (
             RecordedDraws {
@@ -115,6 +124,7 @@ fn outcome_draws_must_be_complete_unique_and_bound_to_the_run() {
                 draws: &ROWS[..1],
             },
             DrawIdentityError::MissingOutcome,
+            "one or more planned paired outcomes are missing",
         ),
         (
             RecordedDraws {
@@ -122,9 +132,12 @@ fn outcome_draws_must_be_complete_unique_and_bound_to_the_run() {
                 draws: &[ROWS[0], ROWS[0]],
             },
             DrawIdentityError::DuplicateOutcome,
+            "the producer repeated a paired outcome draw",
         ),
     ] {
-        assert_eq!(PLAN.accept(recorded), Err(expected));
+        let error = PLAN.accept(recorded).unwrap_err();
+        assert_eq!(error, expected);
+        assert_eq!(error.to_string(), explanation);
     }
 }
 
@@ -162,14 +175,19 @@ fn replicate_ids_are_scoped_to_their_own_parameter_draws() {
 
 #[test]
 fn malformed_declarations_fail_before_counting_outer_draws() {
-    for (declared, expected) in [
-        (&[][..], DrawIdentityError::EmptyPlan),
+    for (declared, expected, explanation) in [
+        (
+            &[][..],
+            DrawIdentityError::EmptyPlan,
+            "the sampling plan needs at least one parameter draw",
+        ),
         (
             &[DeclaredParameterDraw {
                 id: "",
                 ..DECLARED[0]
             }][..],
             DrawIdentityError::InvalidParameterDraw,
+            "the parameter draw identity is invalid",
         ),
         (
             &[DeclaredParameterDraw {
@@ -177,10 +195,12 @@ fn malformed_declarations_fail_before_counting_outer_draws() {
                 ..DECLARED[0]
             }][..],
             DrawIdentityError::EmptyReplicateSet,
+            "each parameter draw needs at least one planned replicate",
         ),
         (
             &[DECLARED[0], DECLARED[0]][..],
             DrawIdentityError::DuplicateParameterDraw,
+            "the sampling plan repeats a parameter draw identity",
         ),
         (
             &[DeclaredParameterDraw {
@@ -191,6 +211,7 @@ fn malformed_declarations_fail_before_counting_outer_draws() {
                 ..DECLARED[0]
             }][..],
             DrawIdentityError::InvalidInnerIdentity,
+            "the conditional draw identity is invalid",
         ),
         (
             &[DeclaredParameterDraw {
@@ -198,19 +219,20 @@ fn malformed_declarations_fail_before_counting_outer_draws() {
                 ..DECLARED[0]
             }][..],
             DrawIdentityError::DuplicatePlannedReplicate,
+            "the sampling plan repeats a conditional draw",
         ),
     ] {
-        assert_eq!(
-            DrawPlan {
-                parameter_draws: declared,
-                ..PLAN
-            }
-            .accept(RecordedDraws {
-                producer_run_id: RUN,
-                draws: ROWS,
-            }),
-            Err(expected)
-        );
+        let error = DrawPlan {
+            parameter_draws: declared,
+            ..PLAN
+        }
+        .accept(RecordedDraws {
+            producer_run_id: RUN,
+            draws: ROWS,
+        })
+        .unwrap_err();
+        assert_eq!(error, expected);
+        assert_eq!(error.to_string(), explanation);
     }
 }
 
@@ -228,15 +250,18 @@ fn monte_carlo_precision_keeps_unestimated_and_reported_error_distinct() {
         assert_eq!(report.inner_budgets[PARAMETER], 2);
     }
     for error in [f64::NAN, f64::INFINITY, -0.1] {
+        let rejected = DrawPlan {
+            precision: SamplingPrecision::MonteCarlo {
+                standard_error: Some(error),
+            },
+            ..PLAN
+        }
+        .accept(recorded)
+        .unwrap_err();
+        assert_eq!(rejected, DrawIdentityError::InvalidPrecision);
         assert_eq!(
-            DrawPlan {
-                precision: SamplingPrecision::MonteCarlo {
-                    standard_error: Some(error)
-                },
-                ..PLAN
-            }
-            .accept(recorded),
-            Err(DrawIdentityError::InvalidPrecision)
+            rejected.to_string(),
+            "a Monte Carlo standard error must be finite and nonnegative"
         );
     }
 }
