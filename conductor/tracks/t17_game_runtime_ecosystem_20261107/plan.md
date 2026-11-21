@@ -129,22 +129,29 @@ approval loop. No package-release or scientific method is completed by this move
   static contract at `bd880dd756d2ba56cc5f479bc078cea31b53c1d1`.
   The real artifact and extended Voiage receipts remain separate.
 
-#### Future slice T17.11.metric — preserve the declared information-value meaning
+#### T17.11.metric — preserve the declared information-value meaning
 
 - Depends on: the application's valuation contract and accepted Voiage SI01–SI04
   / signed-social inputs. This application supplies data/meaning; Voiage owns
   conventional EVPI/EVSI and information-value arithmetic. Do not add an evaluator.
-- Files (4): `crates/new-drug-reimbursement-game/src/lib.rs`,
-  `crates/new-drug-reimbursement-game/src/voiage_input.rs` (future),
-  `crates/new-drug-reimbursement-game/tests/voiage_input_contract.rs` (future),
-  `fixtures/conformance/voiage-input-contract-v1.json` (future).
+- Implementation: `crates/new-drug-reimbursement-game/src/voiage_input.rs`
+  reuses the valued-payoff basis and binds a report to its declared metric,
+  design, comparator, actor, unit, perspective and valuation revision.
+  The request retains information use, policy selection, welfare assumptions,
+  transfers and resource costs.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  voiage_input_contract` (future). Preserve recipient, timing, disclosure,
+  voiage_input_contract`. Preserve recipient, timing, disclosure,
   commitments, observation model and equilibrium selection. Conventional
   EVPI/EVSI, research net benefit, strategic information value and social
   information value retain distinct labels. Preserve signed reference values,
   explicit welfare assumptions and transfer-versus-resource accounting; reject
   implicit clipping or incompatible metric/perspective substitution.
+- The [synthetic conformance fixture](../../../fixtures/conformance/voiage-input-contract-v1.json)
+  runs through the installed Voiage API. The declared-response comparison
+  keeps the recipient's value of −2. With an internal transfer of 1 and a
+  resource cost of 0.5, the separate social comparison gives 1.5.
+  Qualified provider selection and the comparative application pilot remain
+  part of the SI03 and SI04 acceptance work.
 
 #### Future slice T17.11.identities — keep simulation noise out of parameter learning
 

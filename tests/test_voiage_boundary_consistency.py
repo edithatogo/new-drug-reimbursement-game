@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from dataclasses import replace
 from importlib.util import find_spec
+from pathlib import Path
 from unittest.mock import patch
 
 from reimbursement_game.adapters.voiage import VoiageAdapter
@@ -17,9 +19,7 @@ def valid_bundle() -> VoiageSampleBundle:
     return VoiageSampleBundle(
         strategy_names=("reimburse", "alternative"),
         net_benefit_samples=((1.0, 2.0), (2.0, 1.0)),
-        parameter_samples=(
-            ParameterSamples(ParameterRole.EXPANSION_ICER, (10.0, 20.0)),
-        ),
+        parameter_samples=(ParameterSamples(ParameterRole.EXPANSION_ICER, (10.0, 20.0)),),
         perspective="health",
         health_unit="QALY",
         evidence_revision="sha256:" + "a" * 64,
@@ -27,9 +27,7 @@ def valid_bundle() -> VoiageSampleBundle:
 
 
 class VoiageBoundaryConsistencyTests(unittest.TestCase):
-    def assert_rejected_before_import(
-        self, bundle: VoiageSampleBundle, message: str
-    ) -> None:
+    def assert_rejected_before_import(self, bundle: VoiageSampleBundle, message: str) -> None:
         adapter = VoiageAdapter()
         # A validation failure must be the same whether the provider is installed
         # or not. No provider mock should conceal a missing boundary check.
@@ -84,9 +82,7 @@ class VoiageBoundaryConsistencyTests(unittest.TestCase):
         self.assert_rejected_before_import(
             replace(
                 valid_bundle(),
-                parameter_samples=(
-                    ParameterSamples(ParameterRole.EXPANSION_ICER, (10.0,)),
-                ),
+                parameter_samples=(ParameterSamples(ParameterRole.EXPANSION_ICER, (10.0,)),),
             ),
             "align with strategy samples",
         )
@@ -98,7 +94,9 @@ class VoiageBoundaryConsistencyTests(unittest.TestCase):
             replace(bundle, health_unit=""),
         ):
             with self.subTest(perspective=invalid.perspective, health_unit=invalid.health_unit):
-                self.assert_rejected_before_import(invalid, "requires an explicit health perspective")
+                self.assert_rejected_before_import(
+                    invalid, "requires an explicit health perspective"
+                )
 
     def test_unpinned_evidence_revision_is_rejected_in_both_paths(self) -> None:
         self.assert_rejected_before_import(
@@ -123,9 +121,7 @@ class VoiageBoundaryConsistencyTests(unittest.TestCase):
         receipt = VoiageAdapter().handoff_receipt(bundle)
         reordered = replace(
             bundle,
-            parameter_samples=(
-                ParameterSamples(ParameterRole.EXPANSION_ICER, (20.0, 10.0)),
-            ),
+            parameter_samples=(ParameterSamples(ParameterRole.EXPANSION_ICER, (20.0, 10.0)),),
         )
         self.assertNotEqual(receipt.digest, VoiageAdapter().handoff_receipt(reordered).digest)
         self.assertEqual(receipt, VoiageAdapter().handoff_receipt(bundle))
@@ -143,6 +139,37 @@ class VoiageBoundaryConsistencyTests(unittest.TestCase):
         self.assertEqual(values.numpy_values.tolist(), [[1.0, 2.0], [2.0, 1.0]])
         self.assertEqual(parameters.to_polars().to_dict(as_series=False), {"n": [10.0, 20.0]})
         self.assertEqual(adapter.evpi(bundle.net_benefit_samples), 0.5)
+
+    @unittest.skipUnless(find_spec("voiage"), "requires the optional Voiage installation")
+    def test_signed_information_fixture_preserves_signed_values_and_accounts(self) -> None:
+        from voiage import signed_social_information_value
+
+        path = (
+            Path(__file__).resolve().parents[1]
+            / "fixtures/conformance/voiage-input-contract-v1.json"
+        )
+        fixture = json.loads(path.read_text(encoding="utf-8"))
+        information_use = fixture["information_use"]
+        result = signed_social_information_value(fixture["voiage_request"]).to_contract_dict()
+        designs = {design["design_id"]: design for design in result["designs"]}
+        for expected in fixture["expected_values"]:
+            with self.subTest(metric=expected["metric"]):
+                design = designs[expected["design_id"]]
+                actor = expected["actor"]
+                values = design["signed_values"]
+                amount = values["social"] if actor is None else values["by_agent"][actor]
+                self.assertEqual(amount, expected["value"])
+                self.assertEqual(result["value_unit"], expected["unit"])
+                self.assertEqual(
+                    design["comparator_design_id"], information_use["comparator_design_id"]
+                )
+                self.assertEqual(design["recipients"], information_use["recipients"])
+                self.assertEqual(design["selected_policy_id"], information_use["selected_policy"])
+                self.assertFalse(values["clipped_at_zero"])
+        ledgers = designs["observe_with_accounting"]["ledgers"]
+        self.assertEqual(ledgers["transfer"]["institution"], 1.0)
+        self.assertEqual(ledgers["transfer"]["public"], -1.0)
+        self.assertEqual(ledgers["cost"]["institution"], 0.5)
 
 
 if __name__ == "__main__":
