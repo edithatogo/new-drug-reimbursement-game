@@ -1,5 +1,7 @@
 //! Application declarations for a valued comparison evaluated by Voiage.
 
+pub mod replicates;
+
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
 

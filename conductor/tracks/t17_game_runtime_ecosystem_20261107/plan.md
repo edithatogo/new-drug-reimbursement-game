@@ -153,16 +153,15 @@ approval loop. No package-release or scientific method is completed by this move
   Qualified provider selection and the comparative application pilot remain
   part of the SI03 and SI04 acceptance work.
 
-#### Future slice T17.11.identities — keep simulation noise out of parameter learning
+#### T17.11.identities — keep simulation noise out of parameter learning
 
 - Depends on: the accepted input identity contract and T17.11.metric; Voiage
   supplies the independent arithmetic oracle and precision/budget contract.
-- Files (4): `crates/new-drug-reimbursement-game/src/voiage_input.rs` (future),
-  `crates/new-drug-reimbursement-game/tests/voiage_replicate_identity.rs` (future),
-  `fixtures/conformance/voiage-noise-identities-v1.json` (future),
-  `docs/architecture/voiage-input-identities.md` (future).
+- Implementation: the [application sampling contract](../../../docs/architecture/voiage-input-identities.md)
+  binds every recorded paired draw to its producer run and the full declared
+  parameter, model, equilibrium, measurement and replicate coordinates.
 - Check: `cargo test --locked -p new-drug-reimbursement-game --test
-  voiage_replicate_identity` (future). Preserve parameter, model, equilibrium,
+  voiage_replicate_identity`. Preserve parameter, model, equilibrium,
   measurement and simulation-replicate identities. One parameter state with
   replicates A=[-1,1] and B=[1,-1] has conditional means and parameter EVPI 0;
   mislabelling replicates as parameter draws yields the invalid value 1. Reject
