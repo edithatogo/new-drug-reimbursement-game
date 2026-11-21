@@ -171,6 +171,37 @@ class VoiageBoundaryConsistencyTests(unittest.TestCase):
         self.assertEqual(ledgers["transfer"]["public"], -1.0)
         self.assertEqual(ledgers["cost"]["institution"], 0.5)
 
+    @unittest.skipUnless(find_spec("voiage"), "requires the optional Voiage installation")
+    def test_parameter_evpi_excludes_the_within_state_replicate_contrast(self) -> None:
+        path = (
+            Path(__file__).resolve().parents[1]
+            / "fixtures/conformance/voiage-noise-identities-v1.json"
+        )
+        fixture = json.loads(path.read_text(encoding="utf-8"))
+        schedule = fixture["sampling_plan"]
+        outcomes = fixture["outcomes"]
+        parameter_ids = set(schedule["inner_replicates"])
+        self.assertEqual(len(parameter_ids), schedule["outer_draws"])
+        self.assertEqual({outcome["parameter_draw_id"] for outcome in outcomes}, parameter_ids)
+        self.assertCountEqual(
+            [
+                (parameter, replicate)
+                for parameter, replicates in schedule["inner_replicates"].items()
+                for replicate in replicates
+            ],
+            [(outcome["parameter_draw_id"], outcome["replicate_id"]) for outcome in outcomes],
+        )
+        reference = fixture["reference"]
+        ordered = [outcome["values"] for outcome in outcomes]
+        means = [[sum(column) / len(column) for column in zip(*ordered, strict=True)]]
+        self.assertEqual(means, reference["conditional_values"])
+
+        adapter = VoiageAdapter()
+        self.assertEqual(adapter.evpi(means), reference["parameter_evpi"])
+        self.assertEqual(
+            adapter.evpi(ordered), reference["invalid_evpi_if_replicates_become_parameter_draws"]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

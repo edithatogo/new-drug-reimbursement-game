@@ -196,3 +196,15 @@
   CPython 3.15.2 suite passed 166 tests. All 12 Voiage boundary tests also passed
   with the installed wheel built from the signed Voiage SI02 tree
   `41f825a14c9ffd27610f5567bf13b44b1b738d07`.
+
+## 2026-11-21 — Application replicate identity contract
+
+- The same chat and worktree continue T17.11 on branch
+  `codex/t17-voiage-replicate-identities-20261121` from merged metric PR #116.
+  Native scope is `voiage_input/replicates.rs`, its tests and the synthetic
+  parameter EVPI fixture. The next operation is exact-revision consumer CI.
+- All 46 workspace tests passed on Rust 1.75.0 and 1.100.0, including seven
+  checks for nested identities, admitted budgets and reported precision.
+  CPython 3.15.2 executed 167 tests with the locked dependencies. The installed
+  Voiage SI02 wheel passed all 13 boundary tests, giving parameter EVPI of
+  zero and reproducing the invalid value of 1 for the flattened comparison.

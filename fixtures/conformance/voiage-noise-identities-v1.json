@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "case": "One synthetic parameter state with two paired simulation replicates",
+  "producer_run_id": "synthetic-reimbursement-run-v1",
+  "strategy_order": ["strategy-a", "strategy-b"],
+  "sampling_plan": {
+    "outer_draws": 1,
+    "inner_replicates": {"only-parameter-state": ["replicate-a", "replicate-b"]},
+    "precision": "exact_enumeration"
+  },
+  "outcomes": [
+    {
+      "parameter_draw_id": "only-parameter-state",
+      "model_id": "reimbursement-model",
+      "equilibrium_id": "fixed-response",
+      "measurement_id": "fixed-measurement",
+      "replicate_id": "replicate-a",
+      "values": [-1.0, 1.0]
+    },
+    {
+      "parameter_draw_id": "only-parameter-state",
+      "model_id": "reimbursement-model",
+      "equilibrium_id": "fixed-response",
+      "measurement_id": "fixed-measurement",
+      "replicate_id": "replicate-b",
+      "values": [1.0, -1.0]
+    }
+  ],
+  "reference": {
+    "conditional_values": [[0.0, 0.0]],
+    "parameter_evpi": 0.0,
+    "invalid_evpi_if_replicates_become_parameter_draws": 1.0
+  }
+}
