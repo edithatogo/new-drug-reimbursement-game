@@ -91,6 +91,33 @@ class VoiageBoundaryConsistencyTests(unittest.TestCase):
             "align with strategy samples",
         )
 
+    def test_incompatible_valuation_basis_is_rejected_in_both_paths(self) -> None:
+        bundle = valid_bundle()
+        for invalid in (
+            replace(bundle, perspective="monetary"),
+            replace(bundle, health_unit=""),
+        ):
+            with self.subTest(perspective=invalid.perspective, health_unit=invalid.health_unit):
+                self.assert_rejected_before_import(invalid, "requires an explicit health perspective")
+
+    def test_unpinned_evidence_revision_is_rejected_in_both_paths(self) -> None:
+        self.assert_rejected_before_import(
+            replace(valid_bundle(), evidence_revision="unversioned"),
+            "requires a sha256 evidence revision",
+        )
+
+    def test_strategy_labels_must_match_sample_width_in_both_paths(self) -> None:
+        self.assert_rejected_before_import(
+            replace(valid_bundle(), strategy_names=("reimburse",)),
+            "names must align with sample columns",
+        )
+
+    def test_missing_parameter_samples_are_rejected_in_both_paths(self) -> None:
+        self.assert_rejected_before_import(
+            replace(valid_bundle(), parameter_samples=()),
+            "requires parameter samples",
+        )
+
     def test_receipt_retains_joint_parameter_draw_order(self) -> None:
         bundle = valid_bundle()
         receipt = VoiageAdapter().handoff_receipt(bundle)
