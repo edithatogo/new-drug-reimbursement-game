@@ -112,7 +112,7 @@ approval loop. No package-release or scientific method is completed by this move
   compilation and tests. The log retains the resolved paths, feature sets and
   exact lock. It covers the declared synthetic case and static profile.
 
-### [~] T17.11 — reject incompatible valued-payoff inputs at the application port
+### [x] T17.11 — reject incompatible valued-payoff inputs at the application port
 
 - Behavior: reject a payoff whose unit or perspective differs from the declared
   consumer contract before invoking Paignia; preserve valuation provenance.
@@ -150,8 +150,8 @@ approval loop. No package-release or scientific method is completed by this move
   runs through the installed Voiage API. The declared-response comparison
   keeps the recipient's value of −2. With an internal transfer of 1 and a
   resource cost of 0.5, the separate social comparison gives 1.5.
-  Qualified provider selection and the comparative application pilot remain
-  part of the SI03 and SI04 acceptance work.
+  The [accepted SI03 adapter](https://github.com/edithatogo/voiage/pull/1386)
+  admits the qualified static policy used in the application pilot below.
 
 #### T17.11.identities — keep simulation noise out of parameter learning
 
@@ -168,6 +168,65 @@ approval loop. No package-release or scientific method is completed by this move
   that mislabelling and preserve the truthful valuation/identity input to
   Voiage. Report Monte Carlo precision and inner/outer budgets; do not implement
   a second VOI calculation or treat numerical noise as learnable uncertainty.
+
+#### T17.11.pilot — compare synthetic reimbursement evidence regimes
+
+The application example commits the firm to price 5 with a production resource
+cost of 2. The institution can respond after disclosure of either of two equally
+likely evidence states with health gains of 9 and 1. The declared shadow price
+of 1 converts the application's net health benefit to the common synthetic
+monetary unit. Paignia selects reimbursement in the favourable state and
+withholding in the adverse state. The firm has already committed its price, so
+the disclosed signal conditions the only player's decision at that stage.
+
+The signed changes below use a fixed undisclosed reimbursement commitment as
+the comparator. The price is already accounted for in both parties' payoffs.
+The research arm assigns a separate resource cost of 0.75 to the sponsor.
+Disclosure-only uses the same synthetic signal from an existing report.
+
+| Regime | Institution | Firm | Sponsor | Declared welfare |
+| --- | ---: | ---: | ---: | ---: |
+| Fixed response after disclosure | 0 | 0 | 0 | 0 |
+| Research only | 0 | 0 | −0.75 | −0.75 |
+| Disclosure only | +2 | −1.5 | 0 | +0.5 |
+| Research with a recomputed disclosed response | +2 | −1.5 | −0.75 | −0.25 |
+
+The installed Voiage evaluator reproduced the independent ledger and selected
+disclosure-only. Exhaustive evaluation of a one-world approximation gave
+wrong-design probability 0.5, expected decision regret 0.25 and mean absolute
+value error 0.5. A sample of the favourable world leaves disclosure tied with
+the fixed response and selects the baseline under the declared tie rule.
+This benchmark scores errors against the exact two-world comparison. A measured
+macOS run including interpreter and import time took 1.54 seconds and reached
+311,148,544 bytes maximum resident memory.
+
+The native application example ran on Rust 1.75.0 using both exact Paignia
+`bd880dd` archives with default features disabled. The isolated run denied
+network, the source checkouts and the Cargo Git cache. It reproduced the
+normal locked run byte for byte with native report SHA-256
+`380efb2eed3d8ca5849aa32884efee485409cce69a757ac7a1172757708a7696`.
+The installed evaluation uses a wheel from the tree accepted in
+[Voiage #1386](https://github.com/edithatogo/voiage/pull/1386).
+Both stale native bytes and an observation-inconsistent choice failed.
+The case is synthetic and retains the existing Atlas and domain-review gates
+for empirical work. [Qualified package handoff](https://github.com/edithatogo/paignia/blob/a09c3f8359363b228154c9e07af20a36bf0dcd4e/docs/validation/receipts/t17-bd880dd-handoff.json)
+
+To replay the locked-source route, set `VOIAGE_PILOT_PYTHON` to the qualified
+Python 3.15.2 environment with that installed Voiage wheel.
+
+```sh
+cargo +1.75.0 run --locked --example reimbursement_evidence_pilot > target/evidence-policy.tsv
+policy_sha=$(shasum -a 256 target/evidence-policy.tsv | cut -d ' ' -f 1)
+"$VOIAGE_PILOT_PYTHON" -I scripts/verify_reimbursement_information_pilot.py \
+  target/evidence-policy.tsv "$policy_sha" > target/evidence-pilot.json
+```
+
+The synthetic application pilot belongs to chat
+`01a1f635-4bc4-73f0-b6f2-2d2541bb46a0` in
+`/Volumes/PortableSSD/GitHub/reimbursement-t17-voiage-boundary`.
+Its scope covers the example, the installed verification script and this
+plan entry. Its native operation is the isolated package replay. After hosted
+verification, the receiving step is the Paignia T17.11 evidence reconciliation.
 
 ### Existing strategic-pilot observation handoff
 
@@ -193,7 +252,7 @@ or make the entire medicines programme gate the existing bounded static case.
 | T17.08 | Paignia | Optional Kairos adapter; independent of static solving. |
 | T17.09 | This application | Active immutable consumer work above; release acceptance open. |
 | T17.10 | Selected second consumer / Innovate G01–G04 | Its own real case and matching-artifact receipt; not a local duplicate task. |
-| T17.11 | This application | Valued-payoff contract above. |
+| T17.11 | This application | Valued-payoff contract and bounded application pilot qualified. |
 | T17.12 | Paignia | Two real consumer receipts for bounded package release eligibility. |
 | T17.13, .14, .15, .16, .17 | Paignia | Conversion, lawful observation, RNG isolation, replay and information sets remain open. |
 
