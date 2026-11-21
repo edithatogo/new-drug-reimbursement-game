@@ -3,6 +3,7 @@
 pub mod chapter8_finite;
 pub mod paignia_acceptance;
 pub mod payoff_input;
+pub mod voiage_input;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct OpportunitySet {

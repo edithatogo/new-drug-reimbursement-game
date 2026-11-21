@@ -182,3 +182,17 @@
   CI, full real-model/artifact acceptance, a second consumer, valued-input
   implementation and S01–S04 remain open. No remote write was made by this
   local reconciliation.
+
+## 2026-11-21 — Application information-value metric contract
+
+- The T17.11 metric change is owned by chat `01a1f635-4bc4-73f0-b6f2-2d2541bb46a0`
+  in worktree `/Volumes/PortableSSD/GitHub/reimbursement-t17-voiage-boundary`,
+  branch `codex/t17-voiage-metric-contract-20261121`. Its native scope is
+  `crates/new-drug-reimbursement-game/src/voiage_input.rs`, the shared payoff
+  label check and the associated Rust and installed-provider fixtures.
+  The next operation is exact-revision consumer CI for this change.
+- Seven Rust cases exercise the declared metrics, signed values, comparison
+  identities, valuation basis, policy selection and accounting. The locked
+  CPython 3.15.2 suite passed 166 tests. All 12 Voiage boundary tests also passed
+  with the installed wheel built from the signed Voiage SI02 tree
+  `41f825a14c9ffd27610f5567bf13b44b1b738d07`.

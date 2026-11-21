@@ -108,7 +108,7 @@ impl std::error::Error for PayoffInputError {
     }
 }
 
-fn declared_label(label: &str) -> bool {
+pub(crate) fn declared_label(label: &str) -> bool {
     !label.is_empty() && label.trim() == label
 }
 
