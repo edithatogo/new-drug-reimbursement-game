@@ -32,6 +32,11 @@ jobs:
       RENOVATE_REPOSITORIES: '["edithatogo/new-drug-reimbursement-game"]'
       RENOVATE_REQUIRE_CONFIG: required
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: Run one repository-scoped Renovate cycle
         uses: renovatebot/github-action@e09d604f8f803bb527bd8321ed5be06c460b8682 # v46.2.2
         with:
