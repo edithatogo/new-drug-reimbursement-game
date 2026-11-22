@@ -264,3 +264,28 @@ eligibility, without waiving artifact or consumer requirements. Rollback uses
 an actually qualified immutable provider revision; source ownership stays with
 Paignia. Restore historical code only through an explicit ordinary revert,
 never silently as a second supported core.
+
+## T17-P: Downstream game intake policy — 22 November 2026
+
+- [x] Register the UOGTO/Paignia intake contracts and canonical dispositions in
+  agent and contributor instructions, with separate semantic and implementation
+  evidence; verify this bounded documentation change locally.
+
+Base: `dab9bde089a3e315edad19cd8f4b223c198e0b37`.
+Allowed files: `AGENTS.md`, `CONTRIBUTING.md` and this plan.
+The [intake rule](../../../CONTRIBUTING.md#game-capability-intake) links both
+upstream contracts and uses the same key for existing support, demonstrated
+gaps or explicit pending assessments. Domain data, assumptions, payoff
+construction and calibration retain their existing ownership.
+
+This policy step leaves T17 ownership and existing receipts unchanged. It does
+not claim new provider support, consumer qualification, valued-payoff acceptance
+or release eligibility.
+
+Local verification: the standard-library documentation check validated both
+new local links/anchors, canonical upstream pointers and per-provider
+dispositions, changed-file scope and EOF newlines. Scoped `git diff HEAD --check`
+and staged `git diff --cached --check` passed. `python scripts/validate_scope.py`
+also passed. No runtime tests were run for this documentation-only change.
+No runtime or dependency changes are part of this step. Remote publication,
+upstream-document availability and hosted checks remain pending integration.
