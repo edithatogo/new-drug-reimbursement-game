@@ -183,3 +183,19 @@ independent health-economic review; see
 `docs/architecture/evidence-calibration-contract.md`.
 The NHS England pilot remains candidate-only; see
 `docs/research/nhs-england-methodological-pilot.md`.
+
+## Development
+
+Follow the [maintainer workflow](CONTRIBUTING.md#maintainer-workflow) for
+the existing quality gate and [agent instructions](AGENTS.md) for required
+checks. Record the commands and outcomes for the revision being changed.
+
+## Security
+
+Follow the [security policy](SECURITY.md) to report vulnerabilities
+privately. Keep credentials and sensitive data out of public issues and pull requests.
+
+## License
+
+See [LICENSE](LICENSE) for this repository's licensing terms. Retain the
+licences and attribution that accompany third-party material.
