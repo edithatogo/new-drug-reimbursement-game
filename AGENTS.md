@@ -32,6 +32,20 @@ Read these files before editing:
   named alternatives and provenance.
 - Mark experimental models honestly.
 
+## Game capability intake
+
+Every newly identified, added or materially changed game follows the
+[contributor intake rule](CONTRIBUTING.md#game-capability-intake) and the linked
+[UOGTO semantic contract](https://github.com/edithatogo/UOGTO/blob/main/docs/contracts/downstream-game-intake.md)
+and [Paignia implementation contract](https://github.com/edithatogo/paignia/blob/main/docs/integrations/downstream-game-intake.md).
+Record UOGTO's `reuse_existing`, `extension_required`, `unsupported` or
+`mapping_review_pending` disposition separately from Paignia's `reuse_existing`,
+`extension_required`, `unsupported`, `domain_only` or `assessment_pending`.
+Reuse the same intake key in all three repositories. Payer/manufacturer rules,
+valuation, empirical evidence and payoff construction remain here. Adoption
+needs exact accepted provider revisions and the actual semantic/native/consumer
+checks; intake does not close T17 release or valued-input acceptance gates.
+
 ## Required checks
 
 ```bash
