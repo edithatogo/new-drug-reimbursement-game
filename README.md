@@ -7,8 +7,8 @@ This repository owns the reimbursement application: price-effectiveness
 analysis, specific games, payoff construction, evidence and interpretation.
 The reusable game capability is [**Paignia**](https://github.com/edithatogo/paignia),
 a separate Rust library originally incubated here. The application consumes its
-`paignia-core` and `paignia-solve` packages at one immutable Git revision; no
-parallel local game core is maintained.
+`paignia-core` and `paignia-solve` packages at the immutable commit behind
+[Paignia 0.1.0](https://doi.org/10.5281/zenodo.24515285).
 
 The repository does **not** contain the book, copied figures, copied tables, or
 substantial source text. It implements equations and concepts independently and
@@ -26,7 +26,7 @@ ecosystem, that capability is authoritative:
 | Value of information | [`edithatogo/voiage`](https://github.com/edithatogo/voiage) | Convert reimbursement outcomes to Voiage inputs |
 | Reimbursement evidence | [`edithatogo/reimbursement-atlas`](https://github.com/edithatogo/reimbursement-atlas) | Consume reviewed derived records; no parallel data lake |
 | Hugging Face assets | [`edithatogo/*`](https://huggingface.co/edithatogo) only | Manifests and derived configs; no third-party Hub dependency |
-| General game capability | [Paignia](https://github.com/edithatogo/paignia) | Immutable Rust dependency; domain models/payoffs stay here; release qualification remains open |
+| General game capability | [Paignia](https://github.com/edithatogo/paignia) | Signed 0.1.0 source pin for the Rust application. Domain models and payoff construction stay here. |
 
 No runtime dependency on Nashpy, Gambit/pygambit, OpenSpiel, BCEA, heemod, or
 dampack is permitted. Generic implementation libraries may be used only through
@@ -70,8 +70,9 @@ diagnostic visits to hypothetical branches are not simulation events. The
 bounded static package qualification from native integration and the pending
 advanced numerical methods. The former
 `uogto-game-core` / `uogto-game-solve` sources have moved into Paignia. Its
-repository exists; registry publication and real-consumer release qualification
-remain open. See the [source transfer and retention map](docs/architecture/paignia-transfer-map.md)
+signed 0.1.0 release qualified the Chapter 8 finite-offer case against the
+archived packages. Other models have their own validation obligations. See the
+[source transfer and retention map](docs/architecture/paignia-transfer-map.md)
 and [Paignia/T17 ownership record](conductor/tracks/t17_game_runtime_ecosystem_20261107/paignia-identity-and-promotion.md).
 
 ## Implemented now
