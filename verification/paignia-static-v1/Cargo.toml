@@ -1,0 +1,19 @@
+[package]
+name = "reimbursement-paignia-static-v1"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "Apache-2.0"
+publish = false
+
+[workspace]
+
+[dependencies]
+paignia-io = { git = "https://github.com/edithatogo/paignia", rev = "2f297bf3eb6031e455af41211063a949656a3bcf", version = "=0.1.0" }
+
+[[test]]
+name = "replay"
+path = "replay.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
