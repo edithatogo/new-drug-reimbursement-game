@@ -37,10 +37,10 @@ integration = "local reviewed derived export; no raw-source copying"
 [[component]]
 name = "Paignia"
 repository = "https://github.com/edithatogo/paignia"
-revision = "bd880dd756d2ba56cc5f479bc078cea31b53c1d1"
+revision = "a04a19da06cc50e310a172574ed66f62000b891a"
 role = "authoritative reusable native game representations and bounded static solvers"
 license = "Apache-2.0; original contributor attribution retained in package LICENSE/NOTICE"
-integration = "immutable Rust Cargo dependency; provider release and real-model qualification remain separate"
+integration = "immutable Rust Cargo dependency at signed Paignia 0.1.0; Chapter 8 archive qualification recorded"
 
 [[hugging_face_repo]]
 id = "edithatogo/reimbursement-atlas"
