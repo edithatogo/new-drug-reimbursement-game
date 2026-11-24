@@ -1,0 +1,143 @@
+{
+  "instance": "https://example.org/paignia/offer#instance",
+  "nodes": [
+    {
+      "id": "https://example.org/paignia/offer#accept",
+      "node": {
+        "kind": "terminal",
+        "payoffs": [
+          {
+            "id": "https://example.org/paignia/offer#aa",
+            "player": "https://example.org/paignia/offer#acheteur",
+            "value": 0.0
+          },
+          {
+            "id": "https://example.org/paignia/offer#ad",
+            "player": "https://example.org/paignia/offer#décideur",
+            "value": 6.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://example.org/paignia/offer#decline",
+      "node": {
+        "kind": "terminal",
+        "payoffs": [
+          {
+            "id": "https://example.org/paignia/offer#da",
+            "player": "https://example.org/paignia/offer#acheteur",
+            "value": 1.0
+          },
+          {
+            "id": "https://example.org/paignia/offer#dd",
+            "player": "https://example.org/paignia/offer#décideur",
+            "value": 3.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://example.org/paignia/offer#draw",
+      "node": {
+        "kind": "chance",
+        "outcomes": [
+          {
+            "id": "https://example.org/paignia/offer#high-edge",
+            "probability": 0.25,
+            "target": "https://example.org/paignia/offer#high"
+          },
+          {
+            "id": "https://example.org/paignia/offer#respond-edge",
+            "probability": 0.75,
+            "target": "https://example.org/paignia/offer#respond"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://example.org/paignia/offer#guarantee",
+      "node": {
+        "kind": "terminal",
+        "payoffs": [
+          {
+            "id": "https://example.org/paignia/offer#sa",
+            "player": "https://example.org/paignia/offer#acheteur",
+            "value": 1.0
+          },
+          {
+            "id": "https://example.org/paignia/offer#sd",
+            "player": "https://example.org/paignia/offer#décideur",
+            "value": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://example.org/paignia/offer#high",
+      "node": {
+        "kind": "terminal",
+        "payoffs": [
+          {
+            "id": "https://example.org/paignia/offer#ha",
+            "player": "https://example.org/paignia/offer#acheteur",
+            "value": 8.0
+          },
+          {
+            "id": "https://example.org/paignia/offer#hd",
+            "player": "https://example.org/paignia/offer#décideur",
+            "value": -2.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://example.org/paignia/offer#respond",
+      "node": {
+        "actions": [
+          {
+            "action": "https://example.org/paignia/offer#take",
+            "id": "https://example.org/paignia/offer#take-edge",
+            "target": "https://example.org/paignia/offer#accept"
+          },
+          {
+            "action": "https://example.org/paignia/offer#pass",
+            "id": "https://example.org/paignia/offer#pass-edge",
+            "target": "https://example.org/paignia/offer#decline"
+          }
+        ],
+        "kind": "decision",
+        "player": "https://example.org/paignia/offer#décideur"
+      }
+    },
+    {
+      "id": "https://example.org/paignia/offer#start",
+      "node": {
+        "actions": [
+          {
+            "action": "https://example.org/paignia/lottery#choice",
+            "id": "https://example.org/paignia/offer#lottery-edge",
+            "target": "https://example.org/paignia/offer#draw"
+          },
+          {
+            "action": "https://example.org/paignia/safe#choice",
+            "id": "https://example.org/paignia/offer#safe-edge",
+            "target": "https://example.org/paignia/offer#guarantee"
+          }
+        ],
+        "kind": "decision",
+        "player": "https://example.org/paignia/offer#acheteur"
+      }
+    }
+  ],
+  "root": "https://example.org/paignia/offer#start",
+  "run": "https://example.org/paignia/offer#run",
+  "semantic_profile": "paignia/static-finite-perfect-information-sparse-zero/1.0.0",
+  "source": {
+    "ontology_revision": "cc0c84201929996580bb4af98774cf2145b224ae",
+    "rdf_sha256": "a32c0bd431eb8dced873bca9909ee8c8421c8c3ea026121bdf9ec22418e71a7e",
+    "representation": "https://example.org/paignia/offer#tree"
+  },
+  "specification": "https://example.org/paignia/offer#offer",
+  "version": "1.0.0"
+}

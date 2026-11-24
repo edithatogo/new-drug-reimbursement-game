@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "native_result_version": "1.0.0",
+  "semantic_profile": "paignia/static-finite-perfect-information-sparse-zero/1.0.0",
+  "source": {
+    "ontology_revision": "cc0c84201929996580bb4af98774cf2145b224ae",
+    "rdf_sha256": "a32c0bd431eb8dced873bca9909ee8c8421c8c3ea026121bdf9ec22418e71a7e",
+    "representation": "https://example.org/paignia/offer#tree"
+  },
+  "specification": "https://example.org/paignia/offer#offer",
+  "instance": "https://example.org/paignia/offer#instance",
+  "run": "https://example.org/paignia/offer#run",
+  "method": "backward_induction",
+  "method_version": "1.0.1",
+  "status": "completed",
+  "tolerance": 1e-12,
+  "choices": {
+    "https://example.org/paignia/offer#respond": "https://example.org/paignia/offer#take",
+    "https://example.org/paignia/offer#start": "https://example.org/paignia/lottery#choice"
+  },
+  "expected_payoffs": {
+    "https://example.org/paignia/offer#acheteur": 2.0,
+    "https://example.org/paignia/offer#décideur": 4.0
+  }
+}

@@ -109,6 +109,22 @@ jobs:
         # This workspace includes the application and paignia_static_game target;
         # complete release/real-model qualification remains separate.
         run: cargo test --workspace --locked
+      - name: Replay frozen Paignia static v1 records
+        working-directory: verification/paignia-static-v1
+        run: |
+          sha256sum --check SHA256SUMS
+          cargo fetch --locked
+          cargo test --locked --offline
+          {
+            printf '### Paignia static v1 replay passed\n\n'
+            printf 'Application revision %s\n\n' "$(git rev-parse HEAD)"
+            printf '```text\n'
+            rustc --version
+            cargo pkgid --locked --offline paignia-io
+            sha256sum Cargo.lock
+            cat SHA256SUMS
+            printf '```\n'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Install Rust coverage tool
         run: cargo install cargo-llvm-cov --version 0.8.7 --locked
       - name: Collect Rust coverage
