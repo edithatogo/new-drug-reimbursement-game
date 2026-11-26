@@ -211,8 +211,15 @@ Both stale native bytes and an observation-inconsistent choice failed.
 The case is synthetic and retains the existing Atlas and domain-review gates
 for empirical work. [Qualified package handoff](https://github.com/edithatogo/paignia/blob/a09c3f8359363b228154c9e07af20a36bf0dcd4e/docs/validation/receipts/t17-bd880dd-handoff.json)
 
-To replay the locked-source route, set `VOIAGE_PILOT_PYTHON` to the qualified
-Python 3.15.2 environment with that installed Voiage wheel.
+The active application now pins signed Paignia 0.1.0. Its report carries the
+provider revision and the actual backward-induction version `1.0.1`.
+Admission checks both Cargo pins against the signed package handoff.
+The historical report remains replayable under its recorded provenance when
+its exact SHA-256 matches the archived result.
+
+To replay the active locked-source route, set `VOIAGE_PILOT_PYTHON` to a
+qualified Python 3.15.2 environment with an installed Voiage SI03 wheel that
+accepts the signed Paignia algorithm revision.
 
 ```sh
 cargo +1.75.0 run --locked --example reimbursement_evidence_pilot > target/evidence-policy.tsv
