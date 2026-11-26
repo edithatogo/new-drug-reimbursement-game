@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import tomllib
 from dataclasses import asdict
 from hashlib import sha256
 from importlib import import_module
@@ -15,8 +16,15 @@ from typing import Any
 
 _ROOT = Path(__file__).resolve().parents[1]
 _RECIPE = _ROOT / ("crates/new-drug-reimbursement-game/examples/reimbursement_evidence_pilot.rs")
-_PROVIDER_REVISION = "bd880dd756d2ba56cc5f479bc078cea31b53c1d1"
-_PACKAGE_RECEIPT = "4dedd2b14aad9ffc12e0975202c82091ff678a372bd9312bafff2b97be4e7c01"
+_PROVIDER_REVISION = "a04a19da06cc50e310a172574ed66f62000b891a"
+_SIGNED_ALGORITHM = "1.0.1"
+_PACKAGE_RECEIPT = "c47e1d1f7c0ce8f69daf3544301c22bff97fd4109c1aab499a8d64bd8a86cdb0"
+_HISTORICAL_REPORT = "380efb2eed3d8ca5849aa32884efee485409cce69a757ac7a1172757708a7696"
+_HISTORICAL_BINDING = (
+    "bd880dd756d2ba56cc5f479bc078cea31b53c1d1",
+    "4dedd2b14aad9ffc12e0975202c82091ff678a372bd9312bafff2b97be4e7c01",
+    "ecc827cf7ed032e3c343f0f22f417438e31e761213a89b237a8209c97429fb43",
+)
 _SPECIFICATION = "urn:ndrg:si04:synthetic-committed-offer-v1"
 _INSTANCE = "urn:ndrg:si04:synthetic-two-state-instance"
 _RUN = "urn:ndrg:si04:valued-policy-run"
@@ -36,11 +44,24 @@ def _encode(packet: dict[str, Any]) -> bytes:
     return json.dumps(packet, sort_keys=True, allow_nan=False, separators=(",", ":")).encode()
 
 
-def _native_projection(
-    report: bytes, game_digest: str
-) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def _native_projection(report: bytes) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     header, *rows = (line.split("\t") for line in report.decode().splitlines())
+    if sha256(report).hexdigest() == _HISTORICAL_REPORT:
+        provider_revision, package_receipt, game_digest = _HISTORICAL_BINDING
+    else:
+        if len(header) != 8 or header.pop() != _PROVIDER_REVISION:
+            raise ValueError("native pilot must identify the signed Paignia provider revision")
+        crates = {"paignia-core", "paignia-solve"}
+        packages = tomllib.loads((_ROOT / "Cargo.lock").read_text())["package"]
+        locked = {row["name"]: row.get("source") for row in packages if row["name"] in crates}
+        source = f"git+https://github.com/edithatogo/paignia?rev={_PROVIDER_REVISION}#{_PROVIDER_REVISION}"
+        if locked != dict.fromkeys(crates, source):
+            raise ValueError("the application lock differs from the signed Paignia provider")
+        provider_revision, package_receipt = _PROVIDER_REVISION, _PACKAGE_RECEIPT
+        game_digest = sha256(_RECIPE.read_bytes()).hexdigest()
     schema, profile, algorithm_version, specification, instance, run, tolerance = header
+    if provider_revision == _PROVIDER_REVISION and algorithm_version != _SIGNED_ALGORITHM:
+        raise ValueError("native pilot algorithm does not match the signed Paignia provider")
     if len(rows) != 2:
         raise ValueError("the native pilot must report both evidence states")
 
@@ -64,8 +85,8 @@ def _native_projection(
 
     projection = {
         "projection_version": "1.0.0",
-        "provider_revision": _PROVIDER_REVISION,
-        "package_receipt_sha256": _PACKAGE_RECEIPT,
+        "provider_revision": provider_revision,
+        "package_receipt_sha256": package_receipt,
         "game_sha256": game_digest,
         "analysis_id": _ANALYSIS,
         "design_id": "disclosure_only",
@@ -275,8 +296,7 @@ def verify_pilot(report: bytes, expected_report_sha256: str) -> dict[str, Any]:
     if report_digest != expected_report_sha256:
         raise ValueError("native pilot report does not match its producer digest")
 
-    game_digest = sha256(_RECIPE.read_bytes()).hexdigest()
-    projection, worlds = _native_projection(report, game_digest)
+    projection, worlds = _native_projection(report)
     comparison = _comparison(worlds)
     specification = _encode(comparison)
     decisions = _encode(projection)
@@ -285,9 +305,9 @@ def verify_pilot(report: bytes, expected_report_sha256: str) -> dict[str, Any]:
     if not adapter_path.is_relative_to(Path(sys.prefix).resolve()):
         raise RuntimeError("run the pilot with an installed Voiage wheel")
     binding = adapter.PaigniaStaticPolicyBinding(
-        provider_revision=_PROVIDER_REVISION,
-        package_receipt_sha256=_PACKAGE_RECEIPT,
-        game_sha256=game_digest,
+        provider_revision=projection["provider_revision"],
+        package_receipt_sha256=projection["package_receipt_sha256"],
+        game_sha256=projection["game_sha256"],
         specification_id=_SPECIFICATION,
         game_instance_id=_INSTANCE,
         solver_run_id=_RUN,

@@ -22,6 +22,7 @@ use paignia_core::{
 const SPECIFICATION: &str = "urn:ndrg:si04:synthetic-committed-offer-v1";
 const INSTANCE: &str = "urn:ndrg:si04:synthetic-two-state-instance";
 const RUN: &str = "urn:ndrg:si04:valued-policy-run";
+const PROVIDER_REVISION: &str = "a04a19da06cc50e310a172574ed66f62000b891a";
 const UNIT: &str = "synthetic-common-monetary-unit";
 const PRICE: f64 = 5.0;
 const PRODUCTION_COST: f64 = 2.0;
@@ -188,7 +189,7 @@ fn main() {
     // The first row binds the producer run. Subsequent rows report the two
     // observation-conditioned choices and the original valued offer payoffs.
     println!(
-        "{}\t{}\t{}\t{}\t{}\t{}\t{}",
+        "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{PROVIDER_REVISION}",
         native.schema_version,
         native.semantic_profile,
         native.algorithm.version,
